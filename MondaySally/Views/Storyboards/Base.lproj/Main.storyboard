@@ -384,6 +384,69 @@
             </objects>
             <point key="canvasLocation" x="28" y="755.9113300492611"/>
         </scene>
+        <!--먼데이샐리-->
+        <scene sceneID="YSN-Uu-WkV">
+            <objects>
+                <viewController id="p6o-Xd-Imq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lm2-2K-j2S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="f5R-2e-f8L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="먼데이샐리" id="lzM-aa-nEs"/>
+                    <connections>
+                        <segue destination="h1o-kg-9TD" kind="show" id="jb0-3t-O13"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKR-Uj-Zzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="1494"/>
+        </scene>
+        <!--출퇴근 인증-->
+        <scene sceneID="BGT-qx-o0F">
+            <objects>
+                <viewController id="h1o-kg-9TD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YGR-U8-UsY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz9-rh-KN9">
+                                <rect key="frame" x="159" y="166" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W0S-ZT-WYV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="출퇴근 인증" id="tVu-gx-QW0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iZ-1m-FmM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1526" y="1494"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n9P-i8-bTz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="01U-FC-wST" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bIh-JY-MUI">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="p6o-Xd-Imq" kind="relationship" relationship="rootViewController" id="vgf-U5-uiK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGh-ch-QfZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2000000000000002" y="1494.8275862068965"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
