@@ -49,7 +49,7 @@
     <resources>
         <image name="splashLogo" width="116.5" height="65.5"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.47058823529999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.47099998593330383" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
