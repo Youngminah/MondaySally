@@ -123,7 +123,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ES9-Fg-wiZ">
                                 <rect key="frame" x="16" y="656" width="343" height="62"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="n0y-wU-hUE"/>
                                 </constraints>
@@ -131,8 +131,11 @@
                                 <state key="normal" title="입력완료">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="completeButtonTab:" destination="IG8-Zc-Dt7" eventType="touchUpInside" id="MYf-gL-ST7"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="직원 코드를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-Qd-T9S">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="직원 코드를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-Qd-T9S">
                                 <rect key="frame" x="16" y="144" width="343" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="oFt-sD-xwV"/>
@@ -159,27 +162,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="직원 코드 입력" id="HQ1-JC-sXE"/>
+                    <connections>
+                        <outlet property="codeTextField" destination="bfl-Qd-T9S" id="B4Y-6z-j79"/>
+                        <outlet property="completeButton" destination="ES9-Fg-wiZ" id="u0X-eZ-TFW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKs-Q3-Hcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765.60000000000002" y="755.9113300492611"/>
         </scene>
-        <!--View Controller-->
+        <!--Join View Controller-->
         <scene sceneID="nak-jt-DWx">
             <objects>
-                <viewController id="t7f-KE-xUA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinView" id="t7f-KE-xUA" customClass="JoinViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HWj-QN-sy6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="귀하의 입사를 축하드립니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-uw-MRG">
-                                <rect key="frame" x="40" y="475" width="295" height="27"/>
+                                <rect key="frame" x="40" y="465" width="295" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-GP-02U" userLabel="먼데이샐리를 통해 보다 더  즐거운 회사생활을 경험해보세요.">
-                                <rect key="frame" x="40" y="517" width="295" height="43.666666666666629"/>
+                                <rect key="frame" x="40" y="507.00000000000006" width="295" height="43.666666666666686"/>
                                 <string key="text">먼데이샐리를 통해 보다 더 
 즐거운 회사생활을 경험해보세요.</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="15"/>
@@ -196,9 +203,12 @@
                                 <state key="normal" title="홈으로 가기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="goHomeButtonTab:" destination="t7f-KE-xUA" eventType="touchUpInside" id="ONw-Fe-RjF"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustWelcome" translatesAutoresizingMaskIntoConstraints="NO" id="rdO-oI-yX1">
-                                <rect key="frame" x="40" y="207" width="295" height="228"/>
+                                <rect key="frame" x="40" y="197" width="295" height="228"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rdO-oI-yX1" secondAttribute="height" multiplier="295:228" id="nM0-eT-dfD"/>
                                 </constraints>
@@ -213,7 +223,7 @@
                             <constraint firstItem="3AM-uw-MRG" firstAttribute="width" secondItem="rdO-oI-yX1" secondAttribute="width" id="Ab4-eN-FA9"/>
                             <constraint firstItem="rdO-oI-yX1" firstAttribute="width" secondItem="LYo-Jc-eAv" secondAttribute="height" multiplier="295:734" id="K43-8o-KNE"/>
                             <constraint firstItem="rdO-oI-yX1" firstAttribute="centerX" secondItem="LYo-Jc-eAv" secondAttribute="centerX" id="LSQ-1S-n99"/>
-                            <constraint firstItem="rdO-oI-yX1" firstAttribute="centerY" secondItem="LYo-Jc-eAv" secondAttribute="centerY" constant="-90" id="PIf-kU-Uuz"/>
+                            <constraint firstItem="rdO-oI-yX1" firstAttribute="centerY" secondItem="LYo-Jc-eAv" secondAttribute="centerY" constant="-100" id="PIf-kU-Uuz"/>
                             <constraint firstItem="b2W-GP-02U" firstAttribute="top" secondItem="3AM-uw-MRG" secondAttribute="bottom" constant="15" id="Szf-HQ-3gb"/>
                             <constraint firstItem="3AM-uw-MRG" firstAttribute="centerX" secondItem="b2W-GP-02U" secondAttribute="centerX" id="T4z-oP-6n0"/>
                             <constraint firstItem="jym-Zh-Chf" firstAttribute="leading" secondItem="LYo-Jc-eAv" secondAttribute="leading" constant="16" id="gHs-VG-T9U"/>
@@ -221,27 +231,30 @@
                             <constraint firstItem="LYo-Jc-eAv" firstAttribute="trailing" secondItem="jym-Zh-Chf" secondAttribute="trailing" constant="16" id="kDb-PC-4lT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="goHomeButton" destination="jym-Zh-Chf" id="2So-hr-R4X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMm-sj-J43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1476" y="755.9113300492611"/>
         </scene>
-        <!--View Controller-->
+        <!--Fail View Controller-->
         <scene sceneID="PK6-3P-072">
             <objects>
-                <viewController id="QaO-Mu-aKU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FailView" id="QaO-Mu-aKU" customClass="FailViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Ao-3f-NWF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="귀하의 입사를 축하드립니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-tp-Oj7">
-                                <rect key="frame" x="32.666666666666657" y="489.66666666666669" width="310" height="27.000000000000057"/>
+                                <rect key="frame" x="32.666666666666657" y="479.66666666666669" width="310" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVr-5s-pTz">
-                                <rect key="frame" x="32.666666666666657" y="531.66666666666663" width="310" height="44"/>
+                                <rect key="frame" x="32.666666666666657" y="521.66666666666663" width="310" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xDS-mq-SGT"/>
                                 </constraints>
@@ -261,9 +274,12 @@
                                 <state key="normal" title="직원 코드 입력">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="goPreviewButtonTab:" destination="QaO-Mu-aKU" eventType="touchUpInside" id="fyd-uM-dFd"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustFail" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-2p-gJQ">
-                                <rect key="frame" x="32.666666666666657" y="192.33333333333334" width="310" height="257.33333333333326"/>
+                                <rect key="frame" x="32.666666666666657" y="182.33333333333334" width="310" height="257.33333333333326"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b1j-2p-gJQ" secondAttribute="height" multiplier="275:228" id="aIv-LW-qh4"/>
                                 </constraints>
@@ -279,13 +295,16 @@
                             <constraint firstItem="lQe-tp-Oj7" firstAttribute="top" secondItem="b1j-2p-gJQ" secondAttribute="bottom" constant="40" id="GYw-be-5d1"/>
                             <constraint firstItem="eaR-Ya-gEb" firstAttribute="bottom" secondItem="gRL-CZ-vh5" secondAttribute="bottom" constant="60" id="KP0-BT-cT2"/>
                             <constraint firstItem="gRL-CZ-vh5" firstAttribute="leading" secondItem="eaR-Ya-gEb" secondAttribute="leading" constant="16" id="NN4-y4-k6l"/>
-                            <constraint firstItem="b1j-2p-gJQ" firstAttribute="centerY" secondItem="eaR-Ya-gEb" secondAttribute="centerY" constant="-90" id="RzU-zL-SKf"/>
+                            <constraint firstItem="b1j-2p-gJQ" firstAttribute="centerY" secondItem="eaR-Ya-gEb" secondAttribute="centerY" constant="-100" id="RzU-zL-SKf"/>
                             <constraint firstItem="eaR-Ya-gEb" firstAttribute="trailing" secondItem="gRL-CZ-vh5" secondAttribute="trailing" constant="16" id="geA-Ds-r6X"/>
                             <constraint firstItem="lQe-tp-Oj7" firstAttribute="width" secondItem="b1j-2p-gJQ" secondAttribute="width" id="lj8-rl-6u1"/>
                             <constraint firstItem="KVr-5s-pTz" firstAttribute="top" secondItem="lQe-tp-Oj7" secondAttribute="bottom" constant="15" id="mLq-Ng-zcq"/>
                             <constraint firstItem="b1j-2p-gJQ" firstAttribute="centerX" secondItem="eaR-Ya-gEb" secondAttribute="centerX" id="xTg-IW-Goi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="goPreviewButton" destination="gRL-CZ-vh5" id="vdX-0w-Oki"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPn-UM-b9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,6 +334,9 @@
                                 <state key="normal" title="건너뛰기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startButtonTab:" destination="zVf-Fa-eBZ" eventType="touchUpInside" id="WVl-AW-lel"/>
+                                </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Mel-iS-JY8">
                                 <rect key="frame" x="127.33333333333334" y="745.66666666666663" width="120.33333333333334" height="26.333333333333371"/>
@@ -343,10 +365,10 @@
             </objects>
             <point key="canvasLocation" x="783" y="83"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Register Navigation View Controller-->
         <scene sceneID="C5P-A6-keG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7DW-K2-bGd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RegisterNavigationView" automaticallyAdjustsScrollViewInsets="NO" id="7DW-K2-bGd" customClass="RegisterNavigationViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCC-01-Cva">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

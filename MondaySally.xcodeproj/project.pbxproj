@@ -16,6 +16,10 @@
 		BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EC7268DC4AA00AF4A56 /* UIView.swift */; };
 		BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EC9268DCB0400AF4A56 /* OnBoardingInfo.swift */; };
 		BBD09ECC268DCD7A00AF4A56 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ECB268DCD7A00AF4A56 /* OnBoardingViewModel.swift */; };
+		BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ECD268E079600AF4A56 /* JoinViewController.swift */; };
+		BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ECF268E07B100AF4A56 /* FailViewController.swift */; };
+		BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */; };
+		BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED5268E14D300AF4A56 /* UITextField.swift */; };
 		BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F6268B008600B9CA54 /* AppDelegate.swift */; };
 		BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */; };
 		BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82FA268B008600B9CA54 /* IntroViewController.swift */; };
@@ -45,6 +49,10 @@
 		BBD09EC7268DC4AA00AF4A56 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BBD09EC9268DCB0400AF4A56 /* OnBoardingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfo.swift; sourceTree = "<group>"; };
 		BBD09ECB268DCD7A00AF4A56 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		BBD09ECD268E079600AF4A56 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		BBD09ECF268E07B100AF4A56 /* FailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailViewController.swift; sourceTree = "<group>"; };
+		BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNavigationViewController.swift; sourceTree = "<group>"; };
+		BBD09ED5268E14D300AF4A56 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		BBEB82F3268B008600B9CA54 /* MondaySally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MondaySally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEB82F6268B008600B9CA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,9 +104,8 @@
 		BBD09EB4268B3B5A00AF4A56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BBEB82FA268B008600B9CA54 /* IntroViewController.swift */,
-				BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */,
-				BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */,
+				BBD09ED2268E07C700AF4A56 /* Intro */,
+				BBD09ED1268E07B600AF4A56 /* Register */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -129,6 +136,26 @@
 				BBD09EBF268B9ABD00AF4A56 /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		BBD09ED1268E07B600AF4A56 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */,
+				BBD09ECF268E07B100AF4A56 /* FailViewController.swift */,
+				BBD09ECD268E079600AF4A56 /* JoinViewController.swift */,
+				BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		BBD09ED2268E07C700AF4A56 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				BBEB82FA268B008600B9CA54 /* IntroViewController.swift */,
+				BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		BBEB82EA268B008600B9CA54 = {
@@ -218,6 +245,7 @@
 				BBEB8322268B057E00B9CA54 /* UIViewController.swift */,
 				BBEB8324268B05CC00B9CA54 /* UINavigationBar.swift */,
 				BBD09EC7268DC4AA00AF4A56 /* UIView.swift */,
+				BBD09ED5268E14D300AF4A56 /* UITextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -315,6 +343,7 @@
 			files = (
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
 				BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */,
+				BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */,
 				BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */,
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
@@ -326,11 +355,14 @@
 				BBEB8329268B0D6100B9CA54 /* JwtToken.swift in Sources */,
 				BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */,
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
+				BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */,
+				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
 				BBEB831D268B050B00B9CA54 /* String.swift in Sources */,
 				BBEB8317268B049D00B9CA54 /* Device.swift in Sources */,
 				BBEB831F268B053900B9CA54 /* Color.swift in Sources */,
+				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
 				BBD09ECC268DCD7A00AF4A56 /* OnBoardingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
