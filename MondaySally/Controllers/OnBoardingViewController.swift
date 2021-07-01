@@ -13,7 +13,8 @@ class OnBoardingViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var startButton: UIButton!
     
-    var images = [ #imageLiteral(resourceName: "illustTimePoint"), #imageLiteral(resourceName: "illustGift"), #imageLiteral(resourceName: "illustTwinkleChicken") ]
+    let infoViewModel = OnBoardingViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +22,9 @@ class OnBoardingViewController: UIViewController {
         self.addContentScrollView()
     }
     
-    private func setPageControlSelectedPage(currentPage: Int){
-        self.pageControl.currentPage = currentPage
-        if self.pageControl.currentPage == 2 {
-            self.startButton.titleLabel?.text = "시작하기"
-        }
-    }
-    
     private func addContentScrollView() {
         
-        for i in 0..<3 {
+        for i in 0..<infoViewModel.numOfBountyInfoList {
             let uiView = UIView()
             let xPos = self.view.frame.width * CGFloat(i)
             uiView.frame = CGRect(x: xPos, y: 0, width: self.scrollView.bounds.width, height: self.scrollView.bounds.height)
@@ -41,8 +35,7 @@ class OnBoardingViewController: UIViewController {
                                      y: self.view.frame.height/5,
                                      width: (self.scrollView.bounds.width/3) * 2 ,
                                      height: (self.scrollView.bounds.width/3) * 2 )
-            imageView.image = images[i]
-            uiView.addSubview(imageView)
+            imageView.image = infoViewModel.onBoardingInfo(at: i).image
             
             let titleLabel = UILabel()
             titleLabel.frame = CGRect(x: imageView.frame.origin.x,
@@ -51,24 +44,22 @@ class OnBoardingViewController: UIViewController {
                                       height: 27)
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 18)
-            titleLabel.text = "출퇴근 시간에 따른 포인트"
+            titleLabel.text = infoViewModel.onBoardingInfo(at: i).titleLabel
             
-            let textLabel = UILabel()
-            textLabel.frame = CGRect(x: titleLabel.frame.origin.x,
+            let contentLabel = UILabel()
+            contentLabel.frame = CGRect(x: titleLabel.frame.origin.x,
                                       y: titleLabel.bottom + 20,
                                       width: titleLabel.bounds.width,
                                       height: 52)
-            textLabel.textAlignment = .center
-            textLabel.font = UIFont(name: "NotoSansKR-Thin", size: 15)
-            textLabel.numberOfLines = 2
-            textLabel.text = """
-출퇴근 시 QR 코드 인증을 통해
-근무시간을 포인트화 해보세요.
-"""
+            contentLabel.textAlignment = .center
+            contentLabel.font = UIFont(name: "NotoSansKR-Thin", size: 15)
+            contentLabel.numberOfLines = 2
+            contentLabel.text = infoViewModel.onBoardingInfo(at: i).contentLabel
         
             
+            uiView.addSubview(imageView)
             uiView.addSubview(titleLabel)
-            uiView.addSubview(textLabel)
+            uiView.addSubview(contentLabel)
             scrollView.addSubview(uiView)
             scrollView.contentSize.width = uiView.frame.width * CGFloat(i+1)
         }
@@ -78,12 +69,32 @@ class OnBoardingViewController: UIViewController {
 }
 
 extension OnBoardingViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+//        let currentPageNumber = Int(round(value))
+//        print("\(currentPageNumber)")
+//        setPageControlSelectedPage(currentPage: currentPageNumber)
+//    }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let value = scrollView.contentOffset.x/scrollView.frame.size.width
-        let currentPageNumber = Int(round(value))
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let value = targetContentOffset.pointee.x/scrollView.frame.size.width
+        let currentPageNumber = Int(value)
         print("\(currentPageNumber)")
         setPageControlSelectedPage(currentPage: currentPageNumber)
+        setButtonTitle(currentPage: currentPageNumber)
     }
     
+    
+    private func setPageControlSelectedPage(currentPage: Int){
+        self.pageControl.currentPage = currentPage
+    }
+    
+    private func setButtonTitle(currentPage: Int){
+        if currentPage == 2 {
+            self.startButton.setTitle("시작하기", for: .normal)
+        }
+        else {
+            self.startButton.setTitle("건너뛰기", for: .normal)
+        }
+    }
 }
