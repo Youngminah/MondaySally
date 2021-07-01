@@ -20,9 +20,13 @@ class OnBoardingViewController: UIViewController {
         super.viewDidLoad()
         self.scrollView.delegate = self
         self.addContentScrollView()
+        self.startButton.layer.cornerRadius = 4
     }
     
     private func addContentScrollView() {
+        
+        //MARK:  이 줄이 없다면 오토레이아웃이 맞지 않는다!
+        scrollView.frame = view.bounds
         
         for i in 0..<infoViewModel.numOfBountyInfoList {
             let uiView = UIView()
@@ -31,10 +35,11 @@ class OnBoardingViewController: UIViewController {
             
             let imageView = UIImageView()
             //상위뷰에 대한 상대적 위치라서 x는 0 이됨.
-            imageView.frame = CGRect(x: self.view.frame.width/6,
-                                     y: self.view.frame.height/5,
-                                     width: (self.scrollView.bounds.width/3) * 2 ,
-                                     height: (self.scrollView.bounds.width/3) * 2 )
+            let size = self.view.bounds.width/3
+            imageView.frame = CGRect(x: view.bounds.width/2 - size,
+                                     y: self.view.bounds.height/5,
+                                     width: size * 2 ,
+                                     height: size * 2 )
             imageView.image = infoViewModel.onBoardingInfo(at: i).image
             
             let titleLabel = UILabel()
@@ -45,7 +50,9 @@ class OnBoardingViewController: UIViewController {
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 18)
             titleLabel.text = infoViewModel.onBoardingInfo(at: i).titleLabel
-            
+            titleLabel.adjustsFontSizeToFitWidth = true
+            titleLabel.minimumScaleFactor = 0.2
+
             let contentLabel = UILabel()
             contentLabel.frame = CGRect(x: titleLabel.frame.origin.x,
                                       y: titleLabel.bottom + 20,
@@ -55,12 +62,15 @@ class OnBoardingViewController: UIViewController {
             contentLabel.font = UIFont(name: "NotoSansKR-Thin", size: 15)
             contentLabel.numberOfLines = 2
             contentLabel.text = infoViewModel.onBoardingInfo(at: i).contentLabel
+            contentLabel.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
+            contentLabel.adjustsFontSizeToFitWidth = true
+            contentLabel.minimumScaleFactor = 0.2
         
             
+            scrollView.addSubview(uiView)
             uiView.addSubview(imageView)
             uiView.addSubview(titleLabel)
             uiView.addSubview(contentLabel)
-            scrollView.addSubview(uiView)
             scrollView.contentSize.width = uiView.frame.width * CGFloat(i+1)
         }
         
@@ -79,7 +89,6 @@ extension OnBoardingViewController: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let value = targetContentOffset.pointee.x/scrollView.frame.size.width
         let currentPageNumber = Int(value)
-        print("\(currentPageNumber)")
         setPageControlSelectedPage(currentPage: currentPageNumber)
         setButtonTitle(currentPage: currentPageNumber)
     }
