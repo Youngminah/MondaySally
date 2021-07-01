@@ -15,7 +15,6 @@ class OnBoardingViewController: UIViewController {
     
     let infoViewModel = OnBoardingViewModel()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView.delegate = self
@@ -24,7 +23,6 @@ class OnBoardingViewController: UIViewController {
     }
     
     private func addContentScrollView() {
-        
         //MARK:  이 줄이 없다면 오토레이아웃이 맞지 않는다!
         scrollView.frame = view.bounds
         
@@ -65,7 +63,6 @@ class OnBoardingViewController: UIViewController {
             contentLabel.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
             contentLabel.adjustsFontSizeToFitWidth = true
             contentLabel.minimumScaleFactor = 0.2
-        
             
             scrollView.addSubview(uiView)
             uiView.addSubview(imageView)
@@ -73,18 +70,10 @@ class OnBoardingViewController: UIViewController {
             uiView.addSubview(contentLabel)
             scrollView.contentSize.width = uiView.frame.width * CGFloat(i+1)
         }
-        
     }
-    
 }
 
 extension OnBoardingViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let value = scrollView.contentOffset.x/scrollView.frame.size.width
-//        let currentPageNumber = Int(round(value))
-//        print("\(currentPageNumber)")
-//        setPageControlSelectedPage(currentPage: currentPageNumber)
-//    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let value = targetContentOffset.pointee.x/scrollView.frame.size.width
@@ -92,7 +81,6 @@ extension OnBoardingViewController: UIScrollViewDelegate {
         setPageControlSelectedPage(currentPage: currentPageNumber)
         setButtonTitle(currentPage: currentPageNumber)
     }
-    
     
     private func setPageControlSelectedPage(currentPage: Int){
         self.pageControl.currentPage = currentPage
