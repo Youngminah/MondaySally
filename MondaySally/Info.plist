@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BM_Dohyeon</string>
 		<string>NotoSansKR-Thin</string>
 		<string>NotoSansKR-Bold</string>
 		<string>NotoSansKR-Medium</string>

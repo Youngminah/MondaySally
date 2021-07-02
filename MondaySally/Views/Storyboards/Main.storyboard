@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BM_Dohyeon.otf">
+            <string>BMDoHyeon-OTF</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--홈-->
+        <scene sceneID="0dt-hH-wak">
+            <objects>
+                <viewController id="Ww1-SP-7Hg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P5s-4B-8ch">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="VVP-Nr-4cg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="홈" id="pfq-LC-ibS"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="xhv-DF-gj9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="O0a-U4-4mx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="yDd-5J-24s">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BMDoHyeon-OTF" family="BM DoHyeon OTF" pointSize="18"/>
+                                <state key="normal" title="먼데이샐리">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sMo-Cj-vpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742" y="-6431"/>
+        </scene>
+        <!--기프트 샵-->
+        <scene sceneID="5GL-gW-pJI">
+            <objects>
+                <viewController id="OcP-li-gkJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UuE-0D-DyO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PwX-Yz-q6z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="기프트 샵" id="CaD-Pl-n2T"/>
+                    <navigationItem key="navigationItem" id="2MZ-a5-z1P">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="itV-gN-wsX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gIp-Sn-384">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BMDoHyeon-OTF" family="BM DoHyeon OTF" pointSize="18"/>
+                                <state key="normal" title="먼데이샐리">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZE-4f-oI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125" y="-6431"/>
+        </scene>
+        <!--트윙클-->
+        <scene sceneID="4EQ-3s-Dqm">
+            <objects>
+                <viewController id="cs1-O8-7aW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edj-xf-f9X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WM0-qf-dnO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="트윙클" id="oWa-38-ogO"/>
+                    <navigationItem key="navigationItem" id="PrJ-SM-RcJ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="3rV-2i-0DP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fsO-eR-g0g">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BMDoHyeon-OTF" family="BM DoHyeon OTF" pointSize="18"/>
+                                <state key="normal" title="먼데이샐리">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TG8-zq-KNb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="970" y="-6431"/>
+        </scene>
+        <!--출퇴근 인증-->
+        <scene sceneID="WvD-lm-u0X">
+            <objects>
+                <viewController id="soC-4D-GoR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hDW-ju-CGs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6E-MS-ZV3">
+                                <rect key="frame" x="159" y="166" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DfT-3r-cMs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="출퇴근 인증" id="B6u-o6-vv4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj6-OA-8BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="-7867"/>
+        </scene>
+        <!--마이페이지-->
+        <scene sceneID="Is3-Cs-pPz">
+            <objects>
+                <viewController id="La2-cT-b6y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DzK-L9-BHO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1jZ-hb-0YK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="마이페이지" id="kVK-Sa-IvQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUq-hV-j38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="971" y="-7205"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sCo-W4-HyZ">
+            <objects>
+                <navigationController id="NWg-9E-41e" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RCK-bv-3qC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Z4m-Ti-dyh" kind="relationship" relationship="rootViewController" id="Inn-ml-dRQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdM-yL-tay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742" y="-7205"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kQZ-Nc-KNd">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Z4m-Ti-dyh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="vnE-rU-7BH">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="yOh-cY-sE5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9pc-2A-HSH">
+                                <rect key="frame" x="20" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BMDoHyeon-OTF" family="BM DoHyeon OTF" pointSize="18"/>
+                                <state key="normal" title="먼데이샐리">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="4Uw-bc-IhU">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2rL-9n-kG8">
+                                    <rect key="frame" x="354" y="2" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                </button>
+                                <connections>
+                                    <segue destination="La2-cT-b6y" kind="show" id="EKh-2x-P4X"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="ojA-sL-Xqx">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WHn-IR-IaF">
+                                    <rect key="frame" x="325.5" y="11" width="20.5" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="barcode.viewfinder" catalog="system"/>
+                                </button>
+                                <connections>
+                                    <segue destination="soC-4D-GoR" kind="show" id="LvO-xW-DjE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dwk-ca-naD">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ww1-SP-7Hg" kind="relationship" relationship="viewControllers" id="3lZ-ZZ-Ik9"/>
+                        <segue destination="OcP-li-gkJ" kind="relationship" relationship="viewControllers" id="EzP-tt-tBf"/>
+                        <segue destination="cs1-O8-7aW" kind="relationship" relationship="viewControllers" id="IrD-aT-elF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEC-Sb-XUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125" y="-7205"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="barcode.viewfinder" catalog="system" width="128" height="115"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.47099998593330383" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
