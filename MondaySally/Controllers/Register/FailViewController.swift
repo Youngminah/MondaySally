@@ -17,7 +17,10 @@ class FailViewController: UIViewController {
     }
     
     @IBAction func goPreviewButtonTab(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        guard let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MainNavigationView") as? MainNavigationViewController else{
+            return
+        }
+        self.changeRootViewController(mainTabBarController)
     }
     
 }
