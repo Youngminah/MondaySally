@@ -19,6 +19,11 @@
 		BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */; };
 		BBA56F01268F6D95000FDFC0 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */; };
 		BBA56F032691A318000FDFC0 /* GiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F022691A318000FDFC0 /* GiftCell.swift */; };
+		BBA56F082691C993000FDFC0 /* TwinkleFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F072691C993000FDFC0 /* TwinkleFeedCell.swift */; };
+		BBA56F0A2691CA57000FDFC0 /* TwinkleStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F092691CA57000FDFC0 /* TwinkleStatusViewController.swift */; };
+		BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */; };
+		BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */; };
+		BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */; };
 		BBD09EB9268B49D400AF4A56 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */; };
 		BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */; };
 		BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD09EBF268B9ABD00AF4A56 /* NotoSansKR-Regular.otf */; };
@@ -64,6 +69,11 @@
 		BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleTabViewController.swift; sourceTree = "<group>"; };
 		BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		BBA56F022691A318000FDFC0 /* GiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCell.swift; sourceTree = "<group>"; };
+		BBA56F072691C993000FDFC0 /* TwinkleFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleFeedCell.swift; sourceTree = "<group>"; };
+		BBA56F092691CA57000FDFC0 /* TwinkleStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStatusViewController.swift; sourceTree = "<group>"; };
+		BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStatusCell.swift; sourceTree = "<group>"; };
+		BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryPreViewController.swift; sourceTree = "<group>"; };
+		BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryPreViewCell.swift; sourceTree = "<group>"; };
 		BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BBD09EBD268B9AB300AF4A56 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -129,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				BBA56EF9268F6D26000FDFC0 /* HomeTabViewController.swift */,
+				BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */,
+				BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -146,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */,
+				BBA56F072691C993000FDFC0 /* TwinkleFeedCell.swift */,
+				BBA56F092691CA57000FDFC0 /* TwinkleStatusViewController.swift */,
+				BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */,
 			);
 			path = Twinkle;
 			sourceTree = "<group>";
@@ -412,12 +427,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
+				BBA56F0A2691CA57000FDFC0 /* TwinkleStatusViewController.swift in Sources */,
 				BBA56F032691A318000FDFC0 /* GiftCell.swift in Sources */,
 				BBA56EF6268F6CAA000FDFC0 /* ProfileEditViewController.swift in Sources */,
 				BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */,
 				BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */,
 				BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */,
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
+				BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */,
 				BBA56EFA268F6D26000FDFC0 /* HomeTabViewController.swift in Sources */,
 				BBA56EF1268F6A9D000FDFC0 /* MainTabBarViewController.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
@@ -435,8 +452,11 @@
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
 				BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */,
 				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
+				BBA56F082691C993000FDFC0 /* TwinkleFeedCell.swift in Sources */,
 				BBA56EFC268F6D36000FDFC0 /* GiftTabViewController.swift in Sources */,
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
+				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
+				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
 				BBEB831D268B050B00B9CA54 /* String.swift in Sources */,
 				BBEB8317268B049D00B9CA54 /* Device.swift in Sources */,
