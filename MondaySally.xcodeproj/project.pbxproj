@@ -117,13 +117,37 @@
 				BBA56EF3268F6ACC000FDFC0 /* MyPageViewController.swift */,
 				BBA56EF5268F6CAA000FDFC0 /* ProfileEditViewController.swift */,
 				BBA56EF7268F6CEB000FDFC0 /* ResignationViewController.swift */,
-				BBA56EF9268F6D26000FDFC0 /* HomeTabViewController.swift */,
-				BBA56EFB268F6D36000FDFC0 /* GiftTabViewController.swift */,
-				BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */,
 				BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */,
-				BBA56F022691A318000FDFC0 /* GiftCell.swift */,
+				BBA56F042691C7EA000FDFC0 /* Home */,
+				BBA56F052691C7F0000FDFC0 /* GiftShop */,
+				BBA56F062691C7F6000FDFC0 /* Twinkle */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		BBA56F042691C7EA000FDFC0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BBA56EF9268F6D26000FDFC0 /* HomeTabViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BBA56F052691C7F0000FDFC0 /* GiftShop */ = {
+			isa = PBXGroup;
+			children = (
+				BBA56F022691A318000FDFC0 /* GiftCell.swift */,
+				BBA56EFB268F6D36000FDFC0 /* GiftTabViewController.swift */,
+			);
+			path = GiftShop;
+			sourceTree = "<group>";
+		};
+		BBA56F062691C7F6000FDFC0 /* Twinkle */ = {
+			isa = PBXGroup;
+			children = (
+				BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */,
+			);
+			path = Twinkle;
 			sourceTree = "<group>";
 		};
 		BBD09EB2268B3B3C00AF4A56 /* ViewModels */ = {

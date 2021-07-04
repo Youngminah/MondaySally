@@ -1368,20 +1368,55 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Q5-As-5w6">
-                                    <size key="itemSize" width="134" height="116.5"/>
+                                    <size key="itemSize" width="94" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fy7-uz-2tk">
-                                        <rect key="frame" x="0.0" y="-6" width="134" height="116.5"/>
+                                        <rect key="frame" x="0.0" y="-0.5" width="94" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xjw-lS-w6M">
-                                            <rect key="frame" x="0.0" y="0.0" width="134" height="116.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxt-48-r3x">
+                                                    <rect key="frame" x="15.5" y="21.5" width="63" height="63"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHf-E7-1qp">
+                                                            <rect key="frame" x="3" y="3" width="57" height="57"/>
+                                                            <color key="backgroundColor" name="DefaultColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="OHf-E7-1qp" secondAttribute="height" multiplier="1:1" id="3VZ-Qv-0ea"/>
+                                                                <constraint firstAttribute="width" constant="57" id="OLu-Hf-KL3"/>
+                                                            </constraints>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="AccentColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="63" id="Eap-2g-Shc"/>
+                                                        <constraint firstAttribute="width" secondItem="fxt-48-r3x" secondAttribute="height" multiplier="1:1" id="OOG-kX-Oqx"/>
+                                                        <constraint firstItem="OHf-E7-1qp" firstAttribute="centerY" secondItem="fxt-48-r3x" secondAttribute="centerY" id="W0i-Ec-hXz"/>
+                                                        <constraint firstItem="OHf-E7-1qp" firstAttribute="centerX" secondItem="fxt-48-r3x" secondAttribute="centerX" id="wy7-Iz-2dT"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icUnprovenTwinkleOrange" translatesAutoresizingMaskIntoConstraints="NO" id="Kae-0l-kjb">
+                                                    <rect key="frame" x="15.5" y="21.5" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="16" id="IHw-XM-k1E"/>
+                                                        <constraint firstAttribute="height" constant="16" id="diE-BV-6la"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Kae-0l-kjb" firstAttribute="top" secondItem="fxt-48-r3x" secondAttribute="top" id="6XL-yI-HbJ"/>
+                                                <constraint firstItem="fxt-48-r3x" firstAttribute="centerY" secondItem="xjw-lS-w6M" secondAttribute="centerY" id="XOM-ge-TPs"/>
+                                                <constraint firstItem="Kae-0l-kjb" firstAttribute="leading" secondItem="fxt-48-r3x" secondAttribute="leading" id="gEG-ge-aq8"/>
+                                                <constraint firstItem="fxt-48-r3x" firstAttribute="centerX" secondItem="xjw-lS-w6M" secondAttribute="centerX" id="gIk-Mw-H3s"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="134" height="116.5"/>
+                                        <size key="customSize" width="94" height="106"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -1413,6 +1448,7 @@
         <image name="icTabHomeOffGray" width="26" height="26"/>
         <image name="icTabTwinkleOffGray" width="29" height="28"/>
         <image name="icTabTwinkleOnOrange" width="29" height="28"/>
+        <image name="icUnprovenTwinkleOrange" width="16" height="16"/>
         <image name="illustSallyBlank" width="75" height="75"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">
