@@ -1,20 +1,17 @@
 //
-//  TwinkleFeedCell.swift
+//  TotalCloverCell.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/04.
+//  Created by meng on 2021/07/05.
 //
 
 import UIKit
 
-class TwinkleFeedCell: UITableViewCell {
+class TotalCloverCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageButton: UIButton!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.profileImageButton.layer.cornerRadius = self.profileImageButton.bounds.width/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -8,5 +8,10 @@
 import UIKit
 
 class GiftCell: UICollectionViewCell {
+    @IBOutlet weak var giftImageButton: UIButton!
+    
+    func updateUI(){
+
+    }
     
 }

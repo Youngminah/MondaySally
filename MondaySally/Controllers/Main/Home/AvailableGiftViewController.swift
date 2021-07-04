@@ -1,39 +1,39 @@
 //
-//  TwinkleStatusViewController.swift
+//  AvailableGiftViewController.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/04.
+//  Created by meng on 2021/07/05.
 //
 
 import UIKit
 
-class TwinkleStatusViewController: UIViewController {
+class AvailableGiftViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
+
 }
 
-extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+extension AvailableGiftViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwinkleStatusCell", for: indexPath) as? TwinkleStatusCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AvailableGiftCell", for: indexPath) as? AvailableGiftCell else {
             return UICollectionViewCell()
         }
-        cell.updateUI()
         return cell
     }
     
     //UICollectionViewDelegateFlowLayout 프로토콜
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width - 16)/5
-        let height: CGFloat = width
+        let width: CGFloat = (collectionView.bounds.width - 18)/2.5
+        let height: CGFloat = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
     

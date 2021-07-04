@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
+		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
+		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
+		BB5FE587269247B600F2A7A6 /* TotalCloverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE586269247B600F2A7A6 /* TotalCloverCell.swift */; };
+		BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */; };
+		BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */; };
+		BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -24,6 +31,9 @@
 		BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */; };
 		BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */; };
 		BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */; };
+		BBA56F122691DD79000FDFC0 /* WorkingMemberPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F112691DD79000FDFC0 /* WorkingMemberPreViewController.swift */; };
+		BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F132691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift */; };
+		BBA56F16269221F6000FDFC0 /* CloverHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F15269221F6000FDFC0 /* CloverHistoryViewController.swift */; };
 		BBD09EB9268B49D400AF4A56 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */; };
 		BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */; };
 		BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD09EBF268B9ABD00AF4A56 /* NotoSansKR-Regular.otf */; };
@@ -57,6 +67,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
+		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
+		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
+		BB5FE586269247B600F2A7A6 /* TotalCloverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverCell.swift; sourceTree = "<group>"; };
+		BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverCell.swift; sourceTree = "<group>"; };
+		BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGiftViewController.swift; sourceTree = "<group>"; };
+		BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGiftCell.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +91,9 @@
 		BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStatusCell.swift; sourceTree = "<group>"; };
 		BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryPreViewController.swift; sourceTree = "<group>"; };
 		BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryPreViewCell.swift; sourceTree = "<group>"; };
+		BBA56F112691DD79000FDFC0 /* WorkingMemberPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingMemberPreViewController.swift; sourceTree = "<group>"; };
+		BBA56F132691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingMemberPreViewCell.swift; sourceTree = "<group>"; };
+		BBA56F15269221F6000FDFC0 /* CloverHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverHistoryViewController.swift; sourceTree = "<group>"; };
 		BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BBD09EBD268B9AB300AF4A56 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -141,6 +161,16 @@
 				BBA56EF9268F6D26000FDFC0 /* HomeTabViewController.swift */,
 				BBA56F0D2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift */,
 				BBA56F0F2691D575000FDFC0 /* GiftHistoryPreViewCell.swift */,
+				BBA56F112691DD79000FDFC0 /* WorkingMemberPreViewController.swift */,
+				BBA56F132691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift */,
+				BBA56F15269221F6000FDFC0 /* CloverHistoryViewController.swift */,
+				BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */,
+				BB5FE586269247B600F2A7A6 /* TotalCloverCell.swift */,
+				BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */,
+				BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */,
+				BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */,
+				BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */,
+				BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -427,28 +457,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
+				BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */,
 				BBA56F0A2691CA57000FDFC0 /* TwinkleStatusViewController.swift in Sources */,
 				BBA56F032691A318000FDFC0 /* GiftCell.swift in Sources */,
 				BBA56EF6268F6CAA000FDFC0 /* ProfileEditViewController.swift in Sources */,
 				BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */,
 				BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */,
 				BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */,
+				BBA56F122691DD79000FDFC0 /* WorkingMemberPreViewController.swift in Sources */,
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
 				BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */,
+				BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */,
 				BBA56EFA268F6D26000FDFC0 /* HomeTabViewController.swift in Sources */,
 				BBA56EF1268F6A9D000FDFC0 /* MainTabBarViewController.swift in Sources */,
+				BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
 				BBA56EF4268F6ACC000FDFC0 /* MyPageViewController.swift in Sources */,
+				BB5FE587269247B600F2A7A6 /* TotalCloverCell.swift in Sources */,
 				BBEB8323268B057E00B9CA54 /* UIViewController.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BBEB8315268B045000B9CA54 /* Constant.swift in Sources */,
 				BBEB8321268B056400B9CA54 /* UIButton.swift in Sources */,
 				BBD09EB9268B49D400AF4A56 /* OnBoardingViewController.swift in Sources */,
+				BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */,
 				BBEB8329268B0D6100B9CA54 /* JwtToken.swift in Sources */,
 				BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */,
 				BBA56F01268F6D95000FDFC0 /* QRCodeViewController.swift in Sources */,
 				BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */,
+				BBA56F16269221F6000FDFC0 /* CloverHistoryViewController.swift in Sources */,
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
 				BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */,
 				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
@@ -457,11 +494,14 @@
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
 				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
+				BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
 				BBEB831D268B050B00B9CA54 /* String.swift in Sources */,
 				BBEB8317268B049D00B9CA54 /* Device.swift in Sources */,
 				BBEB831F268B053900B9CA54 /* Color.swift in Sources */,
 				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
+				BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */,
+				BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */,
 				BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */,
 				BBD09ECC268DCD7A00AF4A56 /* OnBoardingViewModel.swift in Sources */,
 			);
