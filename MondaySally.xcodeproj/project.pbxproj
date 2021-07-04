@@ -18,6 +18,7 @@
 		BBA56EFC268F6D36000FDFC0 /* GiftTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EFB268F6D36000FDFC0 /* GiftTabViewController.swift */; };
 		BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */; };
 		BBA56F01268F6D95000FDFC0 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */; };
+		BBA56F032691A318000FDFC0 /* GiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56F022691A318000FDFC0 /* GiftCell.swift */; };
 		BBD09EB9268B49D400AF4A56 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */; };
 		BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */; };
 		BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBD09EBF268B9ABD00AF4A56 /* NotoSansKR-Regular.otf */; };
@@ -62,6 +63,7 @@
 		BBA56EFB268F6D36000FDFC0 /* GiftTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTabViewController.swift; sourceTree = "<group>"; };
 		BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleTabViewController.swift; sourceTree = "<group>"; };
 		BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		BBA56F022691A318000FDFC0 /* GiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCell.swift; sourceTree = "<group>"; };
 		BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BBD09EBD268B9AB300AF4A56 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				BBA56EFB268F6D36000FDFC0 /* GiftTabViewController.swift */,
 				BBA56EFD268F6D41000FDFC0 /* TwinkleTabViewController.swift */,
 				BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */,
+				BBA56F022691A318000FDFC0 /* GiftCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
+				BBA56F032691A318000FDFC0 /* GiftCell.swift in Sources */,
 				BBA56EF6268F6CAA000FDFC0 /* ProfileEditViewController.swift in Sources */,
 				BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */,
 				BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */,
