@@ -8,7 +8,7 @@
 import UIKit
 
 class GiftCell: UICollectionViewCell {
-    @IBOutlet weak var giftImageButton: UIButton!
+    @IBOutlet weak var giftImageView: UIImageView!
     
     func updateUI(){
 

@@ -38,4 +38,11 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
         return CGSize(width: width, height: height)
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftShopDetailView") as? GiftShopDetailViewController else{
+            return
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
