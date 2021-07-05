@@ -30,5 +30,12 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
         return size
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
+            return
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }

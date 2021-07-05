@@ -21,6 +21,11 @@
 		BB5FE5972692EBC200F2A7A6 /* TwinkleRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5962692EBC200F2A7A6 /* TwinkleRankingCell.swift */; };
 		BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5982692F0D200F2A7A6 /* GiftShopDetailViewController.swift */; };
 		BB5FE59B2693577E00F2A7A6 /* GiftCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE59A2693577E00F2A7A6 /* GiftCompletedViewController.swift */; };
+		BB5FE59D269375D200F2A7A6 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE59C269375D200F2A7A6 /* UITextView.swift */; };
+		BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE59E26938F3600F2A7A6 /* TwinklePostViewController.swift */; };
+		BB5FE5A126938F5400F2A7A6 /* TwinklePostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */; };
+		BB5FE5A326938F8F00F2A7A6 /* TwinklePostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */; };
+		BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -88,6 +93,11 @@
 		BB5FE5962692EBC200F2A7A6 /* TwinkleRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleRankingCell.swift; sourceTree = "<group>"; };
 		BB5FE5982692F0D200F2A7A6 /* GiftShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShopDetailViewController.swift; sourceTree = "<group>"; };
 		BB5FE59A2693577E00F2A7A6 /* GiftCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCompletedViewController.swift; sourceTree = "<group>"; };
+		BB5FE59C269375D200F2A7A6 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		BB5FE59E26938F3600F2A7A6 /* TwinklePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostViewController.swift; sourceTree = "<group>"; };
+		BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostImageViewController.swift; sourceTree = "<group>"; };
+		BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostImageCell.swift; sourceTree = "<group>"; };
+		BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostCommentCell.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +222,10 @@
 				BBA56F072691C993000FDFC0 /* TwinkleFeedCell.swift */,
 				BBA56F092691CA57000FDFC0 /* TwinkleStatusViewController.swift */,
 				BBA56F0B2691CAD3000FDFC0 /* TwinkleStatusCell.swift */,
+				BB5FE59E26938F3600F2A7A6 /* TwinklePostViewController.swift */,
+				BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */,
+				BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */,
+				BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */,
 			);
 			path = Twinkle;
 			sourceTree = "<group>";
@@ -380,6 +394,7 @@
 				BBEB8324268B05CC00B9CA54 /* UINavigationBar.swift */,
 				BBD09EC7268DC4AA00AF4A56 /* UIView.swift */,
 				BBD09ED5268E14D300AF4A56 /* UITextField.swift */,
+				BB5FE59C269375D200F2A7A6 /* UITextView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -499,9 +514,11 @@
 				BB5FE587269247B600F2A7A6 /* TotalCloverCell.swift in Sources */,
 				BB5FE59B2693577E00F2A7A6 /* GiftCompletedViewController.swift in Sources */,
 				BBEB8323268B057E00B9CA54 /* UIViewController.swift in Sources */,
+				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BBEB8315268B045000B9CA54 /* Constant.swift in Sources */,
+				BB5FE5A326938F8F00F2A7A6 /* TwinklePostImageCell.swift in Sources */,
 				BBEB8321268B056400B9CA54 /* UIButton.swift in Sources */,
 				BBD09EB9268B49D400AF4A56 /* OnBoardingViewController.swift in Sources */,
 				BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */,
@@ -521,17 +538,20 @@
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
 				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
 				BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */,
+				BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
 				BBEB831D268B050B00B9CA54 /* String.swift in Sources */,
 				BB5FE5932692E1F000F2A7A6 /* GiftHistoryHeader.swift in Sources */,
 				BB5FE58F2692DED600F2A7A6 /* GiftHistoryViewController.swift in Sources */,
 				BBEB8317268B049D00B9CA54 /* Device.swift in Sources */,
+				BB5FE59D269375D200F2A7A6 /* UITextView.swift in Sources */,
 				BBEB831F268B053900B9CA54 /* Color.swift in Sources */,
 				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
 				BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */,
 				BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */,
 				BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */,
 				BBD09ECC268DCD7A00AF4A56 /* OnBoardingViewModel.swift in Sources */,
+				BB5FE5A126938F5400F2A7A6 /* TwinklePostImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
