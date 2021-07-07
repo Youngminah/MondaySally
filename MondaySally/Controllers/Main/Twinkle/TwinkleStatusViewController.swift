@@ -37,4 +37,10 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
+            return
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

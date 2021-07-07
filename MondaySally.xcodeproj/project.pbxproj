@@ -26,6 +26,7 @@
 		BB5FE5A126938F5400F2A7A6 /* TwinklePostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */; };
 		BB5FE5A326938F8F00F2A7A6 /* TwinklePostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */; };
 		BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */; };
+		BB5FE5A72695AF8A00F2A7A6 /* TwinkleWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A62695AF8A00F2A7A6 /* TwinkleWriteViewController.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -98,6 +99,7 @@
 		BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostImageViewController.swift; sourceTree = "<group>"; };
 		BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostImageCell.swift; sourceTree = "<group>"; };
 		BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostCommentCell.swift; sourceTree = "<group>"; };
+		BB5FE5A62695AF8A00F2A7A6 /* TwinkleWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleWriteViewController.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */,
 				BB5FE5A026938F5400F2A7A6 /* TwinklePostImageViewController.swift */,
 				BB5FE5A226938F8F00F2A7A6 /* TwinklePostImageCell.swift */,
+				BB5FE5A62695AF8A00F2A7A6 /* TwinkleWriteViewController.swift */,
 			);
 			path = Twinkle;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */,
 				BBA56F082691C993000FDFC0 /* TwinkleFeedCell.swift in Sources */,
 				BB5FE5912692E00700F2A7A6 /* GiftHistoryCell.swift in Sources */,
+				BB5FE5A72695AF8A00F2A7A6 /* TwinkleWriteViewController.swift in Sources */,
 				BBA56EFC268F6D36000FDFC0 /* GiftTabViewController.swift in Sources */,
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
