@@ -12,18 +12,11 @@ class MainNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.label,
+         NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Medium", size: 15)!]
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

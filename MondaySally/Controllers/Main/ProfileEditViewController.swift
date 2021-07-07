@@ -14,12 +14,23 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //키보드보일때, 숨길때 일어나는 뷰위치 조정.
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.updateUI()
-
+        self.nickNameTextField.delegate = self
+        self.phoneNumberTextField.delegate = self
+        self.accountTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
     }
+    
     
     private func updateUI(){
         self.photoSelectButton.layer.borderWidth = 1
@@ -44,7 +55,80 @@ class ProfileEditViewController: UIViewController {
         self.unselectedAccountTextFieldUI()
         self.unselectedEmailTextFieldUI()
     }
+    
+    @IBAction func completeButtonTap(_ sender: UIButton) {
+    }
+    
+}
 
+//키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기.
+extension ProfileEditViewController {
+    
+    //아무곳이나 클릭하면 키보드 내려가게 하기
+    func hideKeyboardWhenTappedAround() {
+      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+      tap.cancelsTouchesInView = false
+      view.addGestureRecognizer(tap)
+    }
+    
+    @objc override func dismissKeyboard() {
+      view.endEditing(true)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            print(adjustmentHeight)
+            scrollViewBottom.constant = adjustmentHeight
+        } else {
+            scrollViewBottom.constant = 0
+        }
+    }
+}
+
+
+
+extension ProfileEditViewController : UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 0 {
+            self.selectedNickNameTextFieldUI()
+        }
+        else if textField.tag == 1{
+            self.selectedPhoneNumberTextFieldUI()
+        }
+        else if textField.tag == 2{
+            self.selectedAccountTextFieldUI()
+        }
+        else if textField.tag == 3{
+            self.selectedEmailTextFieldUI()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 0 {
+            self.unselectedNickNameTextFieldUI()
+        }
+        else if textField.tag == 1{
+            self.unselectedPhoneNumberTextFieldUI()
+        }
+        else if textField.tag == 2{
+            self.unselectedAccountTextFieldUI()
+        }
+        else if textField.tag == 3{
+            self.unselectedEmailTextFieldUI()
+        }
+    }
+    
     
     private func selectedNickNameTextFieldUI(){
         self.nickNameTextField.layer.borderWidth = 1
