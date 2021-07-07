@@ -9,6 +9,8 @@ import UIKit
 
 class TwinklePostImageViewController: UIViewController {
 
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,7 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwinklePostImageCell", for: indexPath) as? TwinklePostImageCell else {
             return UICollectionViewCell()
         }
+        //self.setPageControlSelectedPage(currentPage: indexPath.item)
         return cell
     }
     
@@ -35,6 +38,13 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = collectionView.bounds.height
         return CGSize(width: width, height: height)
+    }
+    
+    // MARK: UICollectionViewDelegate에 있는 메소드
+    // 사용자가 직접 광고 CollectionView를 스크롤할 경우를 대비한 메소드
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / self.view.frame.width)
+      pageControl.currentPage = page
     }
     
 }

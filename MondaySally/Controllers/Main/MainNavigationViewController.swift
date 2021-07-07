@@ -11,10 +11,10 @@ class MainNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.label,
-         NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Medium", size: 15)!]
+        self.navigationBar.applyFontAndSize()
+        //self.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.layoutIfNeeded()
     }
     
 

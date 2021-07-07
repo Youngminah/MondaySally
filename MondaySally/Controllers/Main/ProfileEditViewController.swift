@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileEditViewController: UIViewController {
+class ProfileEditViewController: UIViewController{
 
     @IBOutlet weak var photoSelectButton: UIButton!
     @IBOutlet weak var nickNameTextField: UITextField!
@@ -56,7 +56,32 @@ class ProfileEditViewController: UIViewController {
         self.unselectedEmailTextFieldUI()
     }
     
+    @IBAction func photoSelectButtonTabp(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
     @IBAction func completeButtonTap(_ sender: UIButton) {
+    }
+    
+}
+
+extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.photoSelectButton.setImage(image, for: .normal)
+            print("dd")
+        }
+        //self.photoSelectButton.imageView?.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -65,5 +65,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>사진첩 접근을 허용하시겠습니까?</string>
 </dict>
 </plist>

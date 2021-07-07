@@ -11,9 +11,19 @@ class RegisterNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.titleTextAttributes =
-        [NSAttributedString.Key.foregroundColor: UIColor.label,
-         NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Medium", size: 15)!]
+        self.navigationBar.applyFontAndSize()
+        self.setupStyle()
+        self.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        //self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.layoutIfNeeded()
+
+    }
+    
+    func setupStyle() {
+        UINavigationBar.clearShadow()
+        self.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
     }
 
 }
+
+
