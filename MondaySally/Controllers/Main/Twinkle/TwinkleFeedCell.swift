@@ -40,5 +40,9 @@ class TwinkleFeedCell: UITableViewCell {
             scrollView.contentSize.width = imageView.frame.width * CGFloat(i+1)
         }
     }
-
+    
+    @IBAction func likeButtonTouchUp(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
 }
