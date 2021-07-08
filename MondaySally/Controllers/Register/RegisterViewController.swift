@@ -11,6 +11,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var completeButton: UIButton!
+    let viewModel = TeamCodeViewModel(dataService: DataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,15 @@ class RegisterViewController: UIViewController {
         self.codeTextField.delegate = self
     }
     
+    
+    @IBAction func completeButtonTab(_ sender: UIButton) {
+        guard let teamCodeId = self.codeTextField.text else {
+            print("텍스트 필드에 유저가 입력한 값이 없어서 API 호출 함수가 실행되지 않습니다.")
+            return
+        }
+        self.attemptFetchTeamCode(withId :teamCodeId)
+    }
+
     private func updateUI(){
         self.completeButton.layer.cornerRadius = 4
         self.codeTextField.layer.cornerRadius = 4
@@ -27,14 +37,6 @@ class RegisterViewController: UIViewController {
         self.disableButtonSetting()
     }
     
-    @IBAction func completeButtonTab(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "JoinView") as? JoinViewController else {
-            return
-        }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     //화면 아무곳 클릭하면 키보드 내려가게 하기.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
          self.view.endEditing(true)
@@ -42,6 +44,65 @@ class RegisterViewController: UIViewController {
     
 }
 
+// MARK: - Networking
+extension RegisterViewController {
+    
+    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    private func attemptFetchTeamCode(withId teamCodeId: String) {
+        viewModel.fetchJwt(with: teamCodeId)
+        
+        viewModel.updateLoadingStatus = {
+            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+        }
+        
+        viewModel.showAlertClosure = {
+            if let error = self.viewModel.error {
+                print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+            }
+            self.moveToFailView()
+        }
+        
+        viewModel.didFinishFetch = {
+            self.moveToJoinView()
+        }
+    }
+    
+    // MARK: - 네트워크 통신중 UI표시 Setup
+    private func activityIndicatorStart() {
+        // Code for show activity indicator view
+        // ...
+        self.showIndicator()
+        print("인디케이터 시작")
+    }
+    
+    private func activityIndicatorStop() {
+        // Code for stop activity indicator view
+        // ...
+        self.dismissIndicator()
+        print("인디케이터 스탑")
+    }
+    
+    //팀 코드가 유효할 경우 조인 페이지로 이동.
+    private func moveToJoinView(){
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "JoinView") as? JoinViewController else {
+            return
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //팀 코드가 유요하지 않을 경우 실패 페이지로 이동.
+    private func moveToFailView(){
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "FailView") as? FailViewController else {
+            return
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: - 텍스트뷰 관련 코드
 extension RegisterViewController : UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

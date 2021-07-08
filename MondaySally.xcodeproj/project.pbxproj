@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,17 @@
 		BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */; };
 		BB5FE5A72695AF8A00F2A7A6 /* TwinkleWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A62695AF8A00F2A7A6 /* TwinkleWriteViewController.swift */; };
 		BB5FE5A92695EBF300F2A7A6 /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5A82695EBF300F2A7A6 /* UITabBar.swift */; };
+		BB5FE5AB269636D100F2A7A6 /* TeamCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5AA269636D100F2A7A6 /* TeamCodeInfo.swift */; };
+		BB5FE5AD2696374F00F2A7A6 /* AutoLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5AC2696374F00F2A7A6 /* AutoLoginInfo.swift */; };
+		BB5FE5AF269637AB00F2A7A6 /* ResignationRequestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5AE269637AB00F2A7A6 /* ResignationRequestInfo.swift */; };
+		BB5FE5B126963CDF00F2A7A6 /* TeamCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */; };
+		BB5FE5B326963CF200F2A7A6 /* AutoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */; };
+		BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */; };
+		BB5FE5B82696417F00F2A7A6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B72696417F00F2A7A6 /* DataService.swift */; };
+		BB5FE5BA269705C300F2A7A6 /* AppVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B9269705C300F2A7A6 /* AppVersionInfo.swift */; };
+		BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */; };
+		BB5FE5BE269709D100F2A7A6 /* MyProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BD269709D100F2A7A6 /* MyProfileInfo.swift */; };
+		BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -105,6 +116,17 @@
 		BB5FE5A426938FC200F2A7A6 /* TwinklePostCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinklePostCommentCell.swift; sourceTree = "<group>"; };
 		BB5FE5A62695AF8A00F2A7A6 /* TwinkleWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleWriteViewController.swift; sourceTree = "<group>"; };
 		BB5FE5A82695EBF300F2A7A6 /* UITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
+		BB5FE5AA269636D100F2A7A6 /* TeamCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCodeInfo.swift; sourceTree = "<group>"; };
+		BB5FE5AC2696374F00F2A7A6 /* AutoLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginInfo.swift; sourceTree = "<group>"; };
+		BB5FE5AE269637AB00F2A7A6 /* ResignationRequestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignationRequestInfo.swift; sourceTree = "<group>"; };
+		BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCodeViewModel.swift; sourceTree = "<group>"; };
+		BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginViewModel.swift; sourceTree = "<group>"; };
+		BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignationViewModel.swift; sourceTree = "<group>"; };
+		BB5FE5B72696417F00F2A7A6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		BB5FE5B9269705C300F2A7A6 /* AppVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionInfo.swift; sourceTree = "<group>"; };
+		BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
+		BB5FE5BD269709D100F2A7A6 /* MyProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileInfo.swift; sourceTree = "<group>"; };
+		BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +202,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB5FE5B62696412F00F2A7A6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BB5FE5B72696417F00F2A7A6 /* DataService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		BBA56EED268F6A47000FDFC0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				BBD09ECB268DCD7A00AF4A56 /* OnBoardingViewModel.swift */,
+				BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */,
+				BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */,
+				BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -260,6 +293,12 @@
 			isa = PBXGroup;
 			children = (
 				BBD09EC9268DCB0400AF4A56 /* OnBoardingInfo.swift */,
+				BB5FE5AA269636D100F2A7A6 /* TeamCodeInfo.swift */,
+				BB5FE5AC2696374F00F2A7A6 /* AutoLoginInfo.swift */,
+				BB5FE5AE269637AB00F2A7A6 /* ResignationRequestInfo.swift */,
+				BB5FE5B9269705C300F2A7A6 /* AppVersionInfo.swift */,
+				BB5FE5BD269709D100F2A7A6 /* MyProfileInfo.swift */,
+				BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				BBEB830A268B028400B9CA54 /* Configuration */,
+				BB5FE5B62696412F00F2A7A6 /* Network */,
 				BBD09EB3268B3B4400AF4A56 /* Models */,
 				BBD09EB2268B3B3C00AF4A56 /* ViewModels */,
 				BBEB830B268B02A200B9CA54 /* Views */,
@@ -399,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				BBEB8328268B0D6100B9CA54 /* JwtToken.swift */,
+				BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -443,7 +484,6 @@
 				12056DD067E4AC28B679051F /* Pods-MondaySally.debug.xcconfig */,
 				DEE9AA0A7DCB4BC6CA28E14E /* Pods-MondaySally.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -567,6 +607,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB5FE5B126963CDF00F2A7A6 /* TeamCodeViewModel.swift in Sources */,
+				BB5FE5BE269709D100F2A7A6 /* MyProfileInfo.swift in Sources */,
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
 				BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */,
 				BBA56F0A2691CA57000FDFC0 /* TwinkleStatusViewController.swift in Sources */,
@@ -579,6 +621,7 @@
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
 				BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */,
 				BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */,
+				BB5FE5AD2696374F00F2A7A6 /* AutoLoginInfo.swift in Sources */,
 				BBA56EFA268F6D26000FDFC0 /* HomeTabViewController.swift in Sources */,
 				BBA56EF1268F6A9D000FDFC0 /* MainTabBarViewController.swift in Sources */,
 				BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */,
@@ -593,6 +636,8 @@
 				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
+				BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */,
+				BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */,
 				BBEB8315268B045000B9CA54 /* Constant.swift in Sources */,
 				BB5FE5A326938F8F00F2A7A6 /* TwinklePostImageCell.swift in Sources */,
 				BBEB8321268B056400B9CA54 /* UIButton.swift in Sources */,
@@ -605,6 +650,7 @@
 				BBA56F16269221F6000FDFC0 /* CloverHistoryViewController.swift in Sources */,
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
 				BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */,
+				BB5FE5B326963CF200F2A7A6 /* AutoLoginViewModel.swift in Sources */,
 				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
 				BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */,
 				BBA56F082691C993000FDFC0 /* TwinkleFeedCell.swift in Sources */,
@@ -614,15 +660,20 @@
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
 				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
+				BB5FE5B82696417F00F2A7A6 /* DataService.swift in Sources */,
 				BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */,
+				BB5FE5AF269637AB00F2A7A6 /* ResignationRequestInfo.swift in Sources */,
 				BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
+				BB5FE5BA269705C300F2A7A6 /* AppVersionInfo.swift in Sources */,
+				BB5FE5AB269636D100F2A7A6 /* TeamCodeInfo.swift in Sources */,
 				BBEB831D268B050B00B9CA54 /* String.swift in Sources */,
 				BB5FE5932692E1F000F2A7A6 /* GiftHistoryHeader.swift in Sources */,
 				BB5FE58F2692DED600F2A7A6 /* GiftHistoryViewController.swift in Sources */,
 				BBEB8317268B049D00B9CA54 /* Device.swift in Sources */,
 				BB5FE59D269375D200F2A7A6 /* UITextView.swift in Sources */,
 				BBEB831F268B053900B9CA54 /* Color.swift in Sources */,
+				BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */,
 				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
 				BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */,
 				BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */,

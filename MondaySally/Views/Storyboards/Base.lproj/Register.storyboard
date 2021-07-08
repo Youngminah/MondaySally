@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BzJ-a4-lhd">
-                                <rect key="frame" x="42" y="218.33333333333334" width="333" height="32.666666666666657"/>
+                                <rect key="frame" x="42" y="218.33333333333334" width="333" height="40.666666666666657"/>
                                 <string key="text">월요병 NO! 출근이 즐거워
 직장인들의 만병인 월요병 이제는 극복해보세요.</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="14"/>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygg-e8-Tfk">
-                                <rect key="frame" x="42" y="271" width="333" height="15"/>
+                                <rect key="frame" x="42" y="279" width="333" height="15"/>
                                 <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".AppleKoreanFont" pointSize="13"/>
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="바로 시작하기" image="chevron.right" catalog="system">
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-Tn-a3a">
-                                <rect key="frame" x="42" y="287" width="83" height="0.66666666666668561"/>
+                                <rect key="frame" x="42" y="295" width="83" height="0.66666666666668561"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.69999999999999996" id="MkV-Cz-56R"/>
@@ -180,13 +180,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="귀하의 입사를 축하드립니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-uw-MRG">
-                                <rect key="frame" x="40" y="465" width="295" height="21"/>
+                                <rect key="frame" x="40" y="465" width="295" height="26.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-GP-02U" userLabel="먼데이샐리를 통해 보다 더  즐거운 회사생활을 경험해보세요.">
-                                <rect key="frame" x="40" y="501" width="295" height="35"/>
+                                <rect key="frame" x="40" y="506.66666666666669" width="295" height="43.666666666666686"/>
                                 <string key="text">먼데이샐리를 통해 보다 더 
 즐거운 회사생활을 경험해보세요.</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="15"/>
@@ -247,19 +247,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="귀하의 입사를 축하드립니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-tp-Oj7">
-                                <rect key="frame" x="32.666666666666657" y="479.66666666666669" width="310" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 저희의 가족이 아니시군요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-tp-Oj7">
+                                <rect key="frame" x="32.666666666666657" y="479.66666666666669" width="310" height="26.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVr-5s-pTz">
-                                <rect key="frame" x="32.666666666666657" y="515.66666666666663" width="310" height="44"/>
+                                <rect key="frame" x="32.666666666666657" y="521.33333333333337" width="310" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xDS-mq-SGT"/>
                                 </constraints>
-                                <string key="text">먼데이샐리를 통해 보다 더 
-즐거운 회사생활을 경험해보세요.</string>
+                                <string key="text">관리자를 통해 귀하의 직원코드를 
+발급받아 시작해보세요.</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

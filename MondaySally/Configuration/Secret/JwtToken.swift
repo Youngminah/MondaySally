@@ -6,5 +6,5 @@
 //
 
 struct JwtToken {
-    static let token: String = "token입력하세요"
+    static let jwt: String = ""
 }

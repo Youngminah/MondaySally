@@ -17,11 +17,10 @@ class JoinViewController: UIViewController {
     }
     
     @IBAction func goHomeButtonTab(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "FailView") as? FailViewController else {
+        guard let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MainNavigationView") as? MainNavigationViewController else{
             return
         }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.changeRootViewController(mainTabBarController)
     }
     
 }
