@@ -45,13 +45,26 @@ extension IntroViewController {
     private func attemptFetchAutoLogin() {
         self.viewModel.fetchAutoLogin()
         self.viewModel.updateLoadingStatus = {
-            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.activityIndicatorStart() : strongSelf.activityIndicatorStop()
+            }
         }
         
         self.viewModel.showAlertClosure = {
             if let error = self.viewModel.error {
                 print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+                let alert = UIAlertController(title: "서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.", message: .none, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in
+                    DispatchQueue.main.async {
+                        exit(0)
+                    }
+                }))
+                self.present(alert, animated: true)
             }
+            
             if let message = self.viewModel.failMessage {
                 print(message)
             }
@@ -65,6 +78,7 @@ extension IntroViewController {
     // MARK: - 네트워크 통신중 UI표시 Setup
     private func activityIndicatorStart() {
         // Code for show activity indicator view
+        
         self.showIndicator()
         print("인디케이터 시작")
     }

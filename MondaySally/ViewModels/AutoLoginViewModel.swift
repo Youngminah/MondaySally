@@ -44,6 +44,7 @@ class AutoLoginViewModel {
     }
     
     func fetchAutoLogin(){
+        self.isLoading = true
         self.dataService?.requestFetchAutoLogin(completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error

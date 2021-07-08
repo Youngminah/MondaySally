@@ -36,6 +36,7 @@ class MyProfileViewModel {
     }
     
     func fetchMyProfile(with teamCodeId: String){
+        self.isLoading = true
         self.dataService?.requestFetchMyProfile(completion: { [weak self] myProfileResponse, error in
             if let error = error {
                 self?.error = error

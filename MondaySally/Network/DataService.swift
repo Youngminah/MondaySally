@@ -116,7 +116,7 @@ struct DataService {
     
     
     //퇴사신청
-    func requestFetchResignation(with teamCode: String, completion: @escaping (ResignationRequestResponse?, Error?) -> ()) {
+    func requestFetchResignation(completion: @escaping (ResignationRequestResponse?, Error?) -> ()) {
         let url = "\(resignationUrl)"
 
         AF.request(url, method: .post, parameters: nil,encoding: URLEncoding.default, headers: Constant.HEADERS)

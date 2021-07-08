@@ -51,7 +51,12 @@ extension RegisterViewController {
     private func attemptFetchTeamCode(withId teamCodeId: String) {
         self.viewModel.fetchJwt(with: teamCodeId)
         self.viewModel.updateLoadingStatus = {
-            let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.activityIndicatorStart() : strongSelf.activityIndicatorStop()
+            }
         }
         
         self.viewModel.showAlertClosure = {

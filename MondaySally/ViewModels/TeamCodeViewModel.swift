@@ -43,6 +43,7 @@ class TeamCodeViewModel {
     }
     
     func fetchJwt(with teamCodeId: String){
+        self.isLoading = true
         self.dataService?.requestFetchTeamCode(with: teamCodeId, completion: { [weak self] (teamCodeResponse, error) in
             if let error = error {
                 self?.error = error
