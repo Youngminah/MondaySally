@@ -43,7 +43,7 @@ extension IntroViewController {
     
     //유요한 팀코드로 jwt생성 하는 API 호출 함수
     private func attemptFetchAutoLogin() {
-        self.viewModel.fetchAutoLogin()
+        
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else {
@@ -53,26 +53,28 @@ extension IntroViewController {
             }
         }
         
-        self.viewModel.showAlertClosure = {
-            if let error = self.viewModel.error {
-                print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
-                let alert = UIAlertController(title: "서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.", message: .none, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in
-                    DispatchQueue.main.async {
-                        exit(0)
-                    }
-                }))
-                self.present(alert, animated: true)
-            }
-            
-            if let message = self.viewModel.failMessage {
-                print(message)
+        self.viewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.viewModel.error {
+                    print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                
+                if let message = self?.viewModel.failMessage {
+                    print(message)
+                }
             }
         }
-        self.viewModel.didFinishFetch = {
-            print(self.viewModel.message)
-            self.moveToMainTabBar()
+        self.viewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {
+                    return
+                }
+                print(strongSelf.viewModel.message)
+                strongSelf.moveToMainTabBar()
+            }
         }
+        self.viewModel.fetchAutoLogin()
     }
     
     // MARK: - 네트워크 통신중 UI표시 Setup

@@ -72,4 +72,14 @@ extension UIViewController {
     @objc func dismissIndicator() {
         IndicatorView.shared.dismiss()
     }
+    
+    func networkFailToExit(){
+        let alert = UIAlertController(title: "서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.", message: .none, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in
+            DispatchQueue.main.async {
+                exit(0)
+            }
+        }))
+        self.present(alert, animated: true)
+    }
 }

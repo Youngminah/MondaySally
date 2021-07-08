@@ -27,8 +27,8 @@ extension ResignationViewController {
     
     //유요한 팀코드로 jwt생성 하는 API 호출 함수
     private func attemptFetchResignation() {
-        self.viewModel.fetchResignation()
-        self.viewModel.updateLoadingStatus = {
+        
+        self.viewModel.updateLoadingStatus = { [weak self] () in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else {
                     return
@@ -37,22 +37,32 @@ extension ResignationViewController {
             }
         }
         
-        self.viewModel.showAlertClosure = {
-            if let error = self.viewModel.error {
-                print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
-            }
-            if let message = self.viewModel.failMessage {
-                print("success값은 false입니다 메세지는 -> \(message)")
+        self.viewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.viewModel.error {
+                    print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                if let message = self?.viewModel.failMessage {
+                    print("success값은 false입니다 메세지는 -> \(message)")
+                }
             }
         }
         
-        self.viewModel.didFinishFetch = {
-            print("성공했습니다 !! -> \(self.viewModel.message)")
-            //삭제할 값들 추가
-            JwtToken.jwt = ""
-            UserDefaults.standard.removeObject(forKey: "JwtToken")
-            self.moveToIntroView()
+        self.viewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                print("성공했습니다 !! -> \(strongSelf.viewModel.message)")
+                //삭제할 값들 추가
+                JwtToken.jwt = ""
+                UserDefaults.standard.removeObject(forKey: "JwtToken")
+                strongSelf.moveToIntroView()
+            }
         }
+        
+        self.viewModel.fetchResignation()
     }
     
     // MARK: - 네트워크 통신중 UI표시 Setup
