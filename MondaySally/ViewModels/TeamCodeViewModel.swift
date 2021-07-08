@@ -7,7 +7,6 @@
 
 class TeamCodeViewModel {
     private var dataService: DataService?
-    
     // MARK: - Properties
     private var teamCodeInfo: TeamCodeInfo? {
         didSet {
@@ -18,18 +17,25 @@ class TeamCodeViewModel {
         didSet { self.showAlertClosure?() }
     }
     
-    var fail: Bool? {
-        didSet { self.showAlertClosure?() }
-    }
-    
     var isLoading: Bool = false {
         didSet { self.updateLoadingStatus?() }
+    }
+    
+    var failMessage: String? {
+        didSet { self.showAlertClosure?() }
     }
     
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
+    var jwtToken: String {
+        guard let jwt = teamCodeInfo?.jwt else {
+            print("인터넷 통신은 완료 되었지만, jwt를 upwrapping 할 수 없습니다")
+            return ""
+        }
+        return jwt
+    }
     
     // MARK: - 생성자
     init(dataService: DataService) {
@@ -45,12 +51,13 @@ class TeamCodeViewModel {
             }
             if let isSuccess = teamCodeResponse?.isSuccess {
                 if !isSuccess {
-                    self?.fail = isSuccess
+                    self?.failMessage = teamCodeResponse?.message
                     self?.isLoading = false
                     return
                 }
             }
             self?.error = nil
+            self?.failMessage = nil
             self?.isLoading = false
             self?.teamCodeInfo = teamCodeResponse?.result
         })

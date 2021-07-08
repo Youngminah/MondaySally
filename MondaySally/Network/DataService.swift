@@ -47,7 +47,7 @@ struct DataService {
     
     //팀코드로 jwt발급
     func requestFetchTeamCode(with teamCode: String, completion: @escaping (TeamCodeResponse?, Error?) -> ()) {
-        let url = "\(teamCodeUrl)?teamCode=\(teamCode)&companyIdx=2&memberID=2"
+        let url = "\(teamCodeUrl)?teamCode=\(teamCode)&companyIdx=1&memberID=1"
 
         AF.request(url, method: .post, parameters: nil,encoding: URLEncoding.default, headers: nil)
             .validate()
@@ -69,7 +69,7 @@ struct DataService {
     }
     
     //자동 로그인
-    func requestFetchAutoLogin(with teamCode: String, completion: @escaping (AutoLoginResponse?, Error?) -> ()) {
+    func requestFetchAutoLogin(completion: @escaping (AutoLoginResponse?, Error?) -> ()) {
         let url = "\(autoLoginUrl)"
 
         AF.request(url, method: .get, parameters: nil,encoding: URLEncoding.default, headers: Constant.HEADERS)
@@ -92,7 +92,7 @@ struct DataService {
     }
     
     //프로필 조회
-    func requestFetchMyProfile(with teamCode: String, completion: @escaping (MyProfileInfo?, Error?) -> ()) {
+    func requestFetchMyProfile(completion: @escaping (MyProfileResponse?, Error?) -> ()) {
         let url = "\(myProfileUrl)"
 
         AF.request(url, method: .get, parameters: nil,encoding: URLEncoding.default, headers: Constant.HEADERS)
@@ -101,9 +101,9 @@ struct DataService {
                 switch response.result {
                 case .success(let response):
                     if response.isSuccess{
-                        completion(response.result, nil)
+                        completion(response, nil)
                     }else{
-                        completion(response.result, nil)
+                        completion(response, nil)
                         print(response.message)
                     }
                 case .failure(let error):

@@ -1,14 +1,14 @@
 //
-//  AutoLoginViewModel.swift
+//  MyProfileViewModel.swift
 //  MondaySally
 //
 //  Created by meng on 2021/07/08.
 //
 
-class AutoLoginViewModel {
+class MyProfileViewModel {
     private var dataService: DataService?
     // MARK: - Properties
-    private var autoLoginResponse: AutoLoginResponse? {
+    private var myProfileInfo: MyProfileInfo? {
         didSet {
             self.didFinishFetch?()
         }
@@ -29,38 +29,29 @@ class AutoLoginViewModel {
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
-    var message: String {
-        guard let message = autoLoginResponse?.message else {
-            print("인터넷 통신은 완료 되었지만, 응답의 message를 upwrapping 할 수 없습니다")
-            return ""
-        }
-        return message
-    }
-    
     
     // MARK: - 생성자
     init(dataService: DataService) {
         self.dataService = dataService
     }
     
-    func fetchAutoLogin(){
-        self.dataService?.requestFetchAutoLogin(completion: { [weak self] response, error in
+    func fetchMyProfile(with teamCodeId: String){
+        self.dataService?.requestFetchMyProfile(completion: { [weak self] myProfileResponse, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
                 return
             }
-            if let isSuccess = response?.isSuccess {
+            if let isSuccess = myProfileResponse?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = response?.message
+                    self?.failMessage = myProfileResponse?.message
                     self?.isLoading = false
                     return
                 }
             }
             self?.error = nil
             self?.isLoading = false
-            self?.failMessage = nil
-            self?.autoLoginResponse = response
+            self?.myProfileInfo = myProfileResponse?.result
         })
     }
 }

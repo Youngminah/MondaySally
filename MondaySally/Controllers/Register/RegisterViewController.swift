@@ -49,20 +49,26 @@ extension RegisterViewController {
     
     //유요한 팀코드로 jwt생성 하는 API 호출 함수
     private func attemptFetchTeamCode(withId teamCodeId: String) {
-        viewModel.fetchJwt(with: teamCodeId)
-        
-        viewModel.updateLoadingStatus = {
+        self.viewModel.fetchJwt(with: teamCodeId)
+        self.viewModel.updateLoadingStatus = {
             let _ = self.viewModel.isLoading ? self.activityIndicatorStart() : self.activityIndicatorStop()
         }
         
-        viewModel.showAlertClosure = {
+        self.viewModel.showAlertClosure = {
             if let error = self.viewModel.error {
                 print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+                self.moveToFailView()
             }
-            self.moveToFailView()
+            if let _ = self.viewModel.failMessage {
+                self.moveToFailView()
+            }
         }
-        
-        viewModel.didFinishFetch = {
+        self.viewModel.didFinishFetch = {
+            JwtToken.jwt = self.viewModel.jwtToken
+            print("Jwt 성공적으로 저장완료! JWT: \(JwtToken.jwt)")
+            print(Constant.HEADERS)
+            UserDefaults.standard.setValue(self.viewModel.jwtToken, forKey: "JwtToken")
+            //UserDefaults.standard.removeObject(forKey: "JwtToken")
             self.moveToJoinView()
         }
     }
@@ -70,14 +76,12 @@ extension RegisterViewController {
     // MARK: - 네트워크 통신중 UI표시 Setup
     private func activityIndicatorStart() {
         // Code for show activity indicator view
-        // ...
         self.showIndicator()
         print("인디케이터 시작")
     }
     
     private func activityIndicatorStop() {
         // Code for stop activity indicator view
-        // ...
         self.dismissIndicator()
         print("인디케이터 스탑")
     }

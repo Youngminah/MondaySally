@@ -5,6 +5,7 @@
 //  Created by meng on 2021/06/29.
 //
 
+import UIKit
 struct JwtToken {
-    static let jwt: String = ""
+    static var jwt: String = UserDefaults.standard.string(forKey: "JwtToken") ?? ""
 }
