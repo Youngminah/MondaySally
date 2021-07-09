@@ -19,6 +19,6 @@ struct MyProfileInfo: Decodable{
     var department: String?
     var position: String?
     var gender: String?
-    var WorkingYear: Int?
-    var CompanyName: String
+    var workingYear: Int?
+    var companyName: String
 }

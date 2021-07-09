@@ -13,6 +13,7 @@ class MyProfileViewModel {
             self.didFinishFetch?()
         }
     }
+    
     var error: Error? {
         didSet { self.showAlertClosure?() }
     }
@@ -25,6 +26,10 @@ class MyProfileViewModel {
         didSet { self.updateLoadingStatus?() }
     }
     
+    var getMyProfileInfo: MyProfileInfo? {
+        return myProfileInfo
+    }
+    
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
@@ -35,7 +40,7 @@ class MyProfileViewModel {
         self.dataService = dataService
     }
     
-    func fetchMyProfile(with teamCodeId: String){
+    func fetchMyProfile(){
         self.isLoading = true
         self.dataService?.requestFetchMyProfile(completion: { [weak self] myProfileResponse, error in
             if let error = error {

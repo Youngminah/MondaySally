@@ -85,8 +85,19 @@ class ProfileEditViewController: UIViewController{
             self.attemptFetchEditProfile(with: input)
             return
         }
-        let input = EditProfileInput(nickname: nickName, imgUrl: photoUrl, phoneNumber: phoneNumber, bankAccount: account, email: email)
+        let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
         self.attemptFetchEditProfile(with: input)
+        self.editProfileAlertPresent()
+    }
+    
+    private func editProfileAlertPresent(){
+        let alert = UIAlertController(title: "프로필 수정이 완료되었습니다.", message: .none, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }))
+        self.present(alert, animated: true)
     }
     
 }

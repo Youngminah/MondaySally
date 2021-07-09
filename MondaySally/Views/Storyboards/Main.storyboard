@@ -2034,8 +2034,10 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="n1q-tg-NLe"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="companyInfoLabel" destination="lgM-tH-RD1" id="hQX-uK-le7"/>
                         <outlet property="emailLabel" destination="JcP-Ku-gLP" id="78J-Eh-JdF"/>
                         <outlet property="nameLabel" destination="LzZ-8u-cBc" id="Ikv-sI-Jek"/>
+                        <outlet property="positionWorkInfoLabel" destination="pbv-aX-GL0" id="nhG-JN-yBt"/>
                         <outlet property="profileImage" destination="1Ze-cs-VhH" id="bAr-5I-NMg"/>
                     </connections>
                 </viewController>
