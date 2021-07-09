@@ -1,14 +1,14 @@
 //
-//  MyProfileViewModel.swift
+//  ProfileEditViewModel.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/08.
+//  Created by meng on 2021/07/09.
 //
 
-class MyProfileViewModel {
+class EditProfileViewModel {
     private var dataService: DataService?
     // MARK: - Properties
-    private var myProfileInfo: MyProfileInfo? {
+    private var editProfileResponse: EditProfileResponse? {
         didSet {
             self.didFinishFetch?()
         }
@@ -25,6 +25,15 @@ class MyProfileViewModel {
         didSet { self.updateLoadingStatus?() }
     }
     
+    var message: String {
+        guard let message = editProfileResponse?.message else {
+            print("인터넷 통신은 완료 되었지만, 응답의 message를 upwrapping 할 수 없습니다")
+            return ""
+        }
+        return message
+    }
+    
+    
     var showAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
@@ -35,17 +44,17 @@ class MyProfileViewModel {
         self.dataService = dataService
     }
     
-    func fetchMyProfile(with teamCodeId: String){
+    func fetchEditProfile(with input: EditProfileInput){
         self.isLoading = true
-        self.dataService?.requestFetchMyProfile(completion: { [weak self] myProfileResponse, error in
+        self.dataService?.requestFetchEditProfile(with: input, completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
                 return
             }
-            if let isSuccess = myProfileResponse?.isSuccess {
+            if let isSuccess = response?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = myProfileResponse?.message
+                    self?.failMessage = response?.message
                     self?.isLoading = false
                     return
                 }
@@ -53,7 +62,8 @@ class MyProfileViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.isLoading = false
-            self?.myProfileInfo = myProfileResponse?.result
+            self?.editProfileResponse = response
+            
         })
     }
 }

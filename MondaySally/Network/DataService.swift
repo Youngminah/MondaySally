@@ -19,6 +19,7 @@ struct DataService {
     private var autoLoginUrl = "\(Constant.BASE_URL)/auto-login"
     private var myProfileUrl = "\(Constant.BASE_URL)/mypage"
     private var resignationUrl = "\(Constant.BASE_URL)/out"
+    private var profileEditUrl = "\(Constant.BASE_URL)/profile"
     
     
     // MARK: - 프로필이나 로그인 관련 Services
@@ -35,12 +36,9 @@ struct DataService {
                         completion(response.result, nil)
                     }else{
                         completion(response.result, nil)
-                        print(response.message)
                     }
                 case .failure(let error):
                     completion(nil, error)
-                    print("서버와의 연결이 원활하지 않습니다")
-                    print(error.localizedDescription)
                 }
             }
     }
@@ -58,12 +56,10 @@ struct DataService {
                         completion(response, nil)
                     }else{
                         completion(response, nil)
-                        print(response.message)
                     }
                 case .failure(let error):
                     completion(nil, error)
-                    print("서버와의 연결이 원활하지 않습니다")
-                    print(error.localizedDescription)
+
                 }
             }
     }
@@ -81,12 +77,9 @@ struct DataService {
                         completion(response, nil)
                     }else{
                         completion(response, nil)
-                        print(response.message)
                     }
                 case .failure(let error):
                     completion(nil, error)
-                    print("서버와의 연결이 원활하지 않습니다")
-                    print(error.localizedDescription)
                 }
             }
     }
@@ -104,12 +97,30 @@ struct DataService {
                         completion(response, nil)
                     }else{
                         completion(response, nil)
-                        print(response.message)
                     }
                 case .failure(let error):
                     completion(nil, error)
-                    print("서버와의 연결이 원활하지 않습니다")
-                    print(error.localizedDescription)
+                }
+            }
+    }
+    
+    //프로필 수정
+    func requestFetchEditProfile(with input: EditProfileInput,completion: @escaping (EditProfileResponse?, Error?) -> ()) {
+        let url = "\(profileEditUrl)"
+
+        AF.request(url, method: .patch, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: EditProfileResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
                 }
             }
     }
@@ -128,12 +139,10 @@ struct DataService {
                         completion(response, nil)
                     }else{
                         completion(response, nil)
-                        print(response.message)
+                        
                     }
                 case .failure(let error):
                     completion(nil, error)
-                    print("서버와의 연결이 원활하지 않습니다")
-                    print(error.localizedDescription)
                 }
             }
     }

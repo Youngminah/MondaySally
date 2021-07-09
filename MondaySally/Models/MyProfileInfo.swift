@@ -14,11 +14,11 @@ struct MyProfileResponse: Decodable{
 
 struct MyProfileInfo: Decodable{
     var nickname: String
-    var email: String
-    var imgUrl: String
-    var department: String
-    var position: String
-    var gender: String
-    var WorkingYear: Int
+    var email: String?
+    var imgUrl: String?
+    var department: String?
+    var position: String?
+    var gender: String?
+    var WorkingYear: Int?
     var CompanyName: String
 }

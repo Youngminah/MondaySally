@@ -42,65 +42,6 @@ class RegisterViewController: UIViewController {
          self.view.endEditing(true)
     }
     
-}
-
-// MARK: - Networking
-extension RegisterViewController {
-    
-    //유요한 팀코드로 jwt생성 하는 API 호출 함수
-    private func attemptFetchTeamCode(withId teamCodeId: String) {
-        
-        self.viewModel.updateLoadingStatus = { [weak self] () in
-            guard let strongSelf = self else {
-                return
-            }
-            DispatchQueue.main.async {
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.activityIndicatorStart() : strongSelf.activityIndicatorStop()
-            }
-        }
-        
-        self.viewModel.showAlertClosure = { [weak self] () in
-            DispatchQueue.main.async {
-                if let error = self?.viewModel.error {
-                    print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
-                    self?.networkFailToExit()
-                }
-                if let _ = self?.viewModel.failMessage {
-                    self?.moveToFailView()
-                }
-            }
-        }
-        
-        self.viewModel.didFinishFetch = { [weak self] () in
-            guard let strongSelf = self else {
-                return
-            }
-            DispatchQueue.main.async {
-                JwtToken.jwt = strongSelf.viewModel.jwtToken
-                print("Jwt 성공적으로 저장완료! JWT: \(JwtToken.jwt)")
-                print(Constant.HEADERS)
-                UserDefaults.standard.setValue(strongSelf.viewModel.jwtToken, forKey: "JwtToken")
-                //UserDefaults.standard.removeObject(forKey: "JwtToken")
-                strongSelf.moveToJoinView()
-            }
-        }
-        
-        self.viewModel.fetchJwt(with: teamCodeId)
-    }
-    
-    // MARK: - 네트워크 통신중 UI표시 Setup
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        self.showIndicator()
-        print("인디케이터 시작")
-    }
-    
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        self.dismissIndicator()
-        print("인디케이터 스탑")
-    }
-    
     //팀 코드가 유효할 경우 조인 페이지로 이동.
     private func moveToJoinView(){
         guard let vc = self.storyboard?.instantiateViewController(identifier: "JoinView") as? JoinViewController else {
@@ -118,7 +59,53 @@ extension RegisterViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+}
+
+// MARK: - Networking
+extension RegisterViewController {
     
+    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    private func attemptFetchTeamCode(withId teamCodeId: String) {
+        
+        self.viewModel.updateLoadingStatus = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.viewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.viewModel.error {
+                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                if let message = self?.viewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                    self?.moveToFailView()
+                }
+            }
+        }
+        
+        self.viewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                JwtToken.jwt = strongSelf.viewModel.jwtToken
+                print("Jwt 성공적으로 저장완료! JWT: \(JwtToken.jwt)")
+                print(Constant.HEADERS)
+                UserDefaults.standard.setValue(strongSelf.viewModel.jwtToken, forKey: "JwtToken")
+                //UserDefaults.standard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+                //UserDefaults.standard.removeObject(forKey: "JwtToken")
+                strongSelf.moveToJoinView()
+            }
+        }
+        
+        self.viewModel.fetchJwt(with: teamCodeId)
+    }
 }
 
 //MARK: - 텍스트뷰 관련 코드

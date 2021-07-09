@@ -20,6 +20,13 @@ class ResignationViewController: UIViewController {
         self.attemptFetchResignation()
     }
     
+    private func moveToIntroView(){
+        guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "IntroView") as? IntroViewController else{
+            return
+        }
+        self.changeRootViewController(vc)
+    }
+    
 }
 
 // MARK: - Networking
@@ -33,18 +40,18 @@ extension ResignationViewController {
                 guard let strongSelf = self else {
                     return
                 }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.activityIndicatorStart() : strongSelf.activityIndicatorStop()
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
         self.viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
                 if let error = self?.viewModel.error {
-                    print("서버에서 알려준 에러는 -> \(error.localizedDescription)")
+                    print("서버와 통신이 원활하지 않습니다 -> \(error.localizedDescription)")
                     self?.networkFailToExit()
                 }
                 if let message = self?.viewModel.failMessage {
-                    print("success값은 false입니다 메세지는 -> \(message)")
+                    print("통신은 되었으나 false 서버에서 알려준 에러는-> \(message)")
                 }
             }
         }
@@ -64,26 +71,4 @@ extension ResignationViewController {
         
         self.viewModel.fetchResignation()
     }
-    
-    // MARK: - 네트워크 통신중 UI표시 Setup
-    private func activityIndicatorStart() {
-        // Code for show activity indicator view
-        self.showIndicator()
-        print("인디케이터 시작")
-    }
-    
-    private func activityIndicatorStop() {
-        // Code for stop activity indicator view
-        self.dismissIndicator()
-        print("인디케이터 스탑")
-    }
-    
-    private func moveToIntroView(){
-        guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "IntroView") as? IntroViewController else{
-            return
-        }
-        self.changeRootViewController(vc)
-    }
-    
-
 }

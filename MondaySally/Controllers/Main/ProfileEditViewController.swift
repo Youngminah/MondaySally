@@ -18,6 +18,8 @@ class ProfileEditViewController: UIViewController{
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
+    let viewModel = EditProfileViewModel(dataService: DataService())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //키보드보일때, 숨길때 일어나는 뷰위치 조정.
@@ -65,18 +67,78 @@ class ProfileEditViewController: UIViewController{
     }
     
     @IBAction func completeButtonTap(_ sender: UIButton) {
+        let photoUrl = ""
+        guard let nickName = nickNameTextField.text else {
+            return
+        }
+        guard let phoneNumber = phoneNumberTextField.text else {
+            return
+        }
+        guard let account = accountTextField.text else {
+            return
+        }
+        guard let email = emailTextField.text else {
+            return
+        }
+        guard let photo = photoSelectButton.imageView?.image else {
+            let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
+            self.attemptFetchEditProfile(with: input)
+            return
+        }
+        let input = EditProfileInput(nickname: nickName, imgUrl: photoUrl, phoneNumber: phoneNumber, bankAccount: account, email: email)
+        self.attemptFetchEditProfile(with: input)
     }
     
 }
+
+// MARK: - Networking
+extension ProfileEditViewController {
+    
+    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    private func attemptFetchEditProfile(with input: EditProfileInput) {
+        
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.viewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.viewModel.error {
+                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                
+                if let message = self?.viewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        
+        self.viewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {
+                    return
+                }
+                print("성공했습니다 !! -> \(strongSelf.viewModel.message)")
+            }
+        }
+        
+        self.viewModel.fetchEditProfile(with: input)
+    }
+}
+
 
 extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.photoSelectButton.setImage(image, for: .normal)
-            print("dd")
         }
-        //self.photoSelectButton.imageView?.image = image
         picker.dismiss(animated: true, completion: nil)
     }
     
