@@ -11,7 +11,8 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var completeButton: UIButton!
-    let viewModel = TeamCodeViewModel(dataService: DataService())
+    let teamCodeViewModel = TeamCodeViewModel(dataService: DataService())
+    let myProfileViewModel = MyProfileViewModel(dataService: DataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,13 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func completeButtonTab(_ sender: UIButton) {
+        
         guard let teamCodeId = self.codeTextField.text else {
             print("텍스트 필드에 유저가 입력한 값이 없어서 API 호출 함수가 실행되지 않습니다.")
             return
         }
+        
+        
         self.attemptFetchTeamCode(withId :teamCodeId)
     }
 
@@ -59,6 +63,19 @@ class RegisterViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+    
+    private func saveUserInfo(with data: MyProfileInfo){
+        UserDefaults.standard.setValue(data.nickname, forKey: "nickName")
+        UserDefaults.standard.setValue(data.email, forKey: "email")
+        UserDefaults.standard.setValue(data.imgUrl, forKey: "imageUrl")
+        UserDefaults.standard.setValue(data.department, forKey: "department")
+        UserDefaults.standard.setValue(data.position, forKey: "position")
+        UserDefaults.standard.setValue(data.gender, forKey: "gender")
+        UserDefaults.standard.setValue(data.bankAccount, forKey: "account")
+        UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
+        UserDefaults.standard.setValue("\(data.workingYear ?? 0)", forKey: "workingPeriod")
+        UserDefaults.standard.setValue(data.companyName, forKey: "company")
+    }
 }
 
 // MARK: - Networking
@@ -67,44 +84,87 @@ extension RegisterViewController {
     //유요한 팀코드로 jwt생성 하는 API 호출 함수
     private func attemptFetchTeamCode(withId teamCodeId: String) {
         
-        self.viewModel.updateLoadingStatus = { [weak self] () in
+        self.teamCodeViewModel.updateLoadingStatus = { [weak self] () in
             guard let strongSelf = self else {
                 return
             }
             DispatchQueue.main.async {
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.teamCodeViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
-        self.viewModel.showAlertClosure = { [weak self] () in
+        self.teamCodeViewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
-                if let error = self?.viewModel.error {
+                if let error = self?.teamCodeViewModel.error {
                     print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
                     self?.networkFailToExit()
                 }
-                if let message = self?.viewModel.failMessage {
+                if let message = self?.teamCodeViewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
                     self?.moveToFailView()
                 }
             }
         }
         
-        self.viewModel.didFinishFetch = { [weak self] () in
+        self.teamCodeViewModel.didFinishFetch = { [weak self] () in
             guard let strongSelf = self else {
                 return
             }
             DispatchQueue.main.async {
-                JwtToken.jwt = strongSelf.viewModel.jwtToken
-                print("Jwt 성공적으로 저장완료! JWT: \(JwtToken.jwt)")
+                JwtToken.jwt = strongSelf.teamCodeViewModel.jwtToken
+                print("Jwt 발급에 성공했습니다 -> JWT: \(JwtToken.jwt)")
                 print(Constant.HEADERS)
-                UserDefaults.standard.setValue(strongSelf.viewModel.jwtToken, forKey: "JwtToken")
-                //UserDefaults.standard.setValue(<#T##value: Any?##Any?#>, forKey: <#T##String#>)
+                UserDefaults.standard.setValue(strongSelf.teamCodeViewModel.jwtToken, forKey: "JwtToken")
                 //UserDefaults.standard.removeObject(forKey: "JwtToken")
+                strongSelf.attemptFetchMyProfile()
+                
+            }
+        }
+        
+        self.teamCodeViewModel.fetchJwt(with: teamCodeId)
+    }
+    
+    //내 프로필 조회 API 호출 함수
+    private func attemptFetchMyProfile() {
+        
+        self.myProfileViewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else {
+                    return
+                }
+                let _ = strongSelf.myProfileViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.myProfileViewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.myProfileViewModel.error {
+                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                
+                if let message = self?.myProfileViewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        
+        self.myProfileViewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {
+                    return
+                }
+                print("프로필 조회에 성공했습니다 !! ")
+                guard let data = strongSelf.myProfileViewModel.getMyProfileInfo else {
+                    print("성공했으나 들어온 데이터를 뜯지 못했습니다.")
+                    return
+                }
+                strongSelf.saveUserInfo(with: data)
                 strongSelf.moveToJoinView()
             }
         }
         
-        self.viewModel.fetchJwt(with: teamCodeId)
+        self.myProfileViewModel.fetchMyProfile()
     }
 }
 

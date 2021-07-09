@@ -42,6 +42,7 @@
 		BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */; };
 		BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */; };
 		BB5FE5C426982FE700F2A7A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */; };
+		BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -131,6 +132,7 @@
 		BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			children = (
 				BBEB8328268B0D6100B9CA54 /* JwtToken.swift */,
 				BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */,
+				BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */,
 				BB5FE5B126963CDF00F2A7A6 /* TeamCodeViewModel.swift in Sources */,
 				BB5FE5BE269709D100F2A7A6 /* MyProfileInfo.swift in Sources */,
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,

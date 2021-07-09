@@ -61,7 +61,7 @@ extension ResignationViewController {
                 return
             }
             DispatchQueue.main.async {
-                print("성공했습니다 !! -> \(strongSelf.viewModel.message)")
+                print("퇴사에 성공했습니다 !! -> \(strongSelf.viewModel.message)")
                 //삭제할 값들 추가
                 JwtToken.jwt = ""
                 UserDefaults.standard.removeObject(forKey: "JwtToken")

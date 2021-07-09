@@ -87,17 +87,32 @@ class ProfileEditViewController: UIViewController{
         }
         let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
         self.attemptFetchEditProfile(with: input)
-        self.editProfileAlertPresent()
     }
     
-    private func editProfileAlertPresent(){
+    private func editSuccessAlertPresent(){
         let alert = UIAlertController(title: "프로필 수정이 완료되었습니다.", message: .none, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.dismiss(animated: true, completion: nil)
-            }
-        }))
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(alert, animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func editFailAlertPresent(with message: String){
+        let alert = UIAlertController(title: message, message: .none, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    private func editUserInfo(with input: EditProfileInput){
+        UserDefaults.standard.setValue(input.nickname, forKey: "nickName")
+        UserDefaults.standard.setValue(input.email, forKey: "email")
+        UserDefaults.standard.setValue(input.imgUrl, forKey: "imageUrl")
+        UserDefaults.standard.setValue(input.phoneNumber, forKey: "phoneNumber")
+        UserDefaults.standard.setValue(input.bankAccount, forKey: "account")
+        UserInfo.nickName = input.nickname
+        UserInfo.email = input.email
+        UserInfo.imageUrl = input.imgUrl
+        UserInfo.phoneNumber = input.phoneNumber
+        UserInfo.account = input.bankAccount
     }
     
 }
@@ -126,6 +141,7 @@ extension ProfileEditViewController {
                 
                 if let message = self?.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
+                    self?.editFailAlertPresent(with: message)
                 }
             }
         }
@@ -135,7 +151,9 @@ extension ProfileEditViewController {
                 guard let strongSelf = self else {
                     return
                 }
-                print("성공했습니다 !! -> \(strongSelf.viewModel.message)")
+                print("프로필 수정이 성공했습니다 !! -> \(strongSelf.viewModel.message)")
+                strongSelf.editUserInfo(with :input)
+                strongSelf.editSuccessAlertPresent()
             }
         }
         

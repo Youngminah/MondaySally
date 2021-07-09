@@ -70,7 +70,7 @@ extension IntroViewController {
                 guard let strongSelf = self else {
                     return
                 }
-                print(strongSelf.viewModel.message)
+                print("자동 로그인에 성공했습니다 !! -> 서버에서 보내준 메세지: \(strongSelf.viewModel.message)")
                 strongSelf.moveToMainTabBar()
             }
         }
