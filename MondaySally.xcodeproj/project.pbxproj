@@ -46,6 +46,7 @@
 		BB5FE5C82698A3DD00F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5C72698A3DD00F2A7A6 /* GoogleService-Info.plist */; };
 		BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */; };
 		BB5FE5CC269B183500F2A7A6 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */; };
+		BB5FE5CE269B7C2400F2A7A6 /* SallyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -139,6 +140,7 @@
 		BB5FE5C72698A3DD00F2A7A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SallyAlert.storyboard; sourceTree = "<group>"; };
 		BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyAlert.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			children = (
 				BBEB8316268B049D00B9CA54 /* Device.swift */,
 				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
+				BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
 				BB5FE5972692EBC200F2A7A6 /* TwinkleRankingCell.swift in Sources */,
+				BB5FE5CE269B7C2400F2A7A6 /* SallyAlert.swift in Sources */,
 				BBA56EF4268F6ACC000FDFC0 /* MyPageViewController.swift in Sources */,
 				BB5FE5A92695EBF300F2A7A6 /* UITabBar.swift in Sources */,
 				BB5FE587269247B600F2A7A6 /* TotalCloverCell.swift in Sources */,

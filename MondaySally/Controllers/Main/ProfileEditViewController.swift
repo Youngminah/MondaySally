@@ -19,6 +19,7 @@ class ProfileEditViewController: UIViewController{
     @IBOutlet weak var contentView: UIView!
     
     let viewModel = EditProfileViewModel(dataService: DataService())
+    let customAlert = SallyAlert()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,28 @@ class ProfileEditViewController: UIViewController{
         self.present(alert, animated: true)
     }
     
+    private func editSuccessSallyAlertPresent(){
+//        guard let vc = UIStoryboard(name: "SallyAlert", bundle: nil).instantiateViewController(identifier: "AlertView") as? AlertViewController else{
+//            return
+//        }
+//        //vc.modalPresentationStyle = .
+//        self.present(vc, animated: true) {
+//            vc.titleLabel.text = "프로필 수정이 완료되었습니다."
+//            vc.subTitleLabel.text = ""
+//            self.navigationController?.popViewController(animated: true)
+//        }
+        self.navigationController?.navigationBar.layer.zPosition = -1;
+        customAlert.showAlert(with: "프로필 수정이 완료되었습니다.", message: "", on: self)
+        self.customAlert.didDismiss = {
+            self.navigationController?.navigationBar.layer.zPosition = 0;
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc func dismissAlert() {
+        customAlert.dismissAlert()
+    }
+    
     private func editFailAlertPresent(with message: String){
         let alert = UIAlertController(title: message, message: .none, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
@@ -154,7 +177,7 @@ extension ProfileEditViewController {
                 }
                 print("프로필 수정이 성공했습니다 !! -> \(strongSelf.viewModel.message)")
                 strongSelf.editUserInfo(with :input)
-                strongSelf.editSuccessAlertPresent()
+                strongSelf.editSuccessSallyAlertPresent()
             }
         }
         

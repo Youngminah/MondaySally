@@ -21,8 +21,8 @@
         <!--Alert View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="AlertViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController storyboardIdentifier="AlertView" modalTransitionStyle="crossDissolve" id="Y6W-OH-hqX" customClass="AlertViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -64,6 +64,9 @@
                                                                 <state key="normal" title="확인">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="confirmButtonTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l8W-Co-jz0"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -80,7 +83,7 @@
                                                     <constraint firstItem="E6f-Yh-txU" firstAttribute="leading" secondItem="a5y-RK-Qfc" secondAttribute="leading" id="i8C-0P-v1I"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderRadius">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="11"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -112,6 +115,8 @@
                     <connections>
                         <outlet property="alertButton" destination="82g-md-5Ww" id="JLm-sU-Vxg"/>
                         <outlet property="alertView" destination="a5y-RK-Qfc" id="TKq-jk-f4C"/>
+                        <outlet property="subTitleLabel" destination="EnC-4R-xR5" id="X9K-D8-EO3"/>
+                        <outlet property="titleLabel" destination="CDK-gl-5VG" id="frH-G3-Ewx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
