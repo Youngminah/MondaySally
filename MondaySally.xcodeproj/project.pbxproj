@@ -43,6 +43,9 @@
 		BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */; };
 		BB5FE5C426982FE700F2A7A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */; };
 		BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */; };
+		BB5FE5C82698A3DD00F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5C72698A3DD00F2A7A6 /* GoogleService-Info.plist */; };
+		BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */; };
+		BB5FE5CC269B183500F2A7A6 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -133,6 +136,9 @@
 		BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		BB5FE5C72698A3DD00F2A7A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SallyAlert.storyboard; sourceTree = "<group>"; };
+		BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -315,8 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				BBD09ED2268E07C700AF4A56 /* Intro */,
-				BBD09ED1268E07B600AF4A56 /* Register */,
 				BBA56EED268F6A47000FDFC0 /* Main */,
+				BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			children = (
 				BBEB82FC268B008600B9CA54 /* Register.storyboard */,
 				BBA56EEB268F360A000FDFC0 /* Main.storyboard */,
+				BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -351,22 +358,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		BBD09ED1268E07B600AF4A56 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */,
-				BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */,
-				BBD09ECD268E079600AF4A56 /* JoinViewController.swift */,
-				BBD09ECF268E07B100AF4A56 /* FailViewController.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
 		BBD09ED2268E07C700AF4A56 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
 				BBEB82FA268B008600B9CA54 /* IntroViewController.swift */,
 				BBD09EB8268B49D400AF4A56 /* OnBoardingViewController.swift */,
+				BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */,
+				BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */,
+				BBD09ECD268E079600AF4A56 /* JoinViewController.swift */,
+				BBD09ECF268E07B100AF4A56 /* FailViewController.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -399,6 +399,7 @@
 				BBEB830B268B02A200B9CA54 /* Views */,
 				BBD09EB4268B3B5A00AF4A56 /* Controllers */,
 				BBEB8304268B008D00B9CA54 /* Info.plist */,
+				BB5FE5C72698A3DD00F2A7A6 /* GoogleService-Info.plist */,
 			);
 			path = MondaySally;
 			sourceTree = "<group>";
@@ -562,6 +563,8 @@
 				BBD09EC5268BA07400AF4A56 /* NotoSansKR-Medium.otf in Resources */,
 				BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */,
 				BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */,
+				BB5FE5C82698A3DD00F2A7A6 /* GoogleService-Info.plist in Resources */,
+				BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */,
 				BBEB8300268B008D00B9CA54 /* Assets.xcassets in Resources */,
 				BBEB82FE268B008600B9CA54 /* Register.storyboard in Resources */,
 			);
@@ -645,6 +648,7 @@
 				BBEB8323268B057E00B9CA54 /* UIViewController.swift in Sources */,
 				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
+				BB5FE5CC269B183500F2A7A6 /* AlertViewController.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */,
 				BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */,

@@ -51,9 +51,9 @@ class HomeTabViewController: UIViewController {
         self.firstRankingImageBorderView.layer.borderWidth = 1
         self.secondRankingImageBorderView.layer.borderWidth = 1
         self.thridRankingImageBorderView.layer.borderWidth = 1
-        self.firstRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        self.secondRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        self.thridRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.firstRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+        self.secondRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+        self.thridRankingImageBorderView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         
         self.firstRankingImageBorderView.layer.cornerRadius = self.firstRankingImageBorderView.bounds.width/2
         self.secondRankingImageBorderView.layer.cornerRadius = self.secondRankingImageBorderView.bounds.width/2

@@ -91,9 +91,10 @@ class ProfileEditViewController: UIViewController{
     
     private func editSuccessAlertPresent(){
         let alert = UIAlertController(title: "프로필 수정이 완료되었습니다.", message: .none, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }))
         self.present(alert, animated: true)
-        self.dismiss(animated: true, completion: nil)
     }
     
     private func editFailAlertPresent(with message: String){

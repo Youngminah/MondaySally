@@ -5,9 +5,13 @@ target 'MondaySally' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for MondaySally
+  # 알라모파이어
   pod 'Alamofire', '~> 5.4'
+
+  # 파이어베이스
+  pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'Firebase/Analytics'
 
 
 end

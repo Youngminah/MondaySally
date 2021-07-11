@@ -44,7 +44,7 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
     // 사용자가 직접 광고 CollectionView를 스크롤할 경우를 대비한 메소드
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let page = Int(targetContentOffset.pointee.x / self.view.frame.width)
-      pageControl.currentPage = page
+        self.pageControl.currentPage = page
     }
     
 }

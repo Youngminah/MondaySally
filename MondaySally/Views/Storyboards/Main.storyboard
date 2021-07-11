@@ -996,13 +996,13 @@
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-o1-618">
-                                                                        <rect key="frame" x="340.5" y="32" width="14.5" height="17"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCloverWhite" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-o1-618">
+                                                                        <rect key="frame" x="341" y="33.5" width="14" height="14"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rl-YN-fag">
-                                                                        <rect key="frame" x="284.5" y="30.5" width="52" height="20"/>
+                                                                        <rect key="frame" x="285" y="30.5" width="52" height="20"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -1038,13 +1038,13 @@
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hpW-xk-gGX">
-                                                                        <rect key="frame" x="340.5" y="32" width="14.5" height="17"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCloverWhite" translatesAutoresizingMaskIntoConstraints="NO" id="hpW-xk-gGX">
+                                                                        <rect key="frame" x="341" y="33.5" width="14" height="14"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8,910" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtQ-Qu-1Nf">
-                                                                        <rect key="frame" x="293.5" y="30.5" width="43" height="20"/>
+                                                                        <rect key="frame" x="294" y="30.5" width="43" height="20"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -1077,13 +1077,13 @@
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6PY-fJ-7mv">
-                                                                        <rect key="frame" x="340.5" y="32" width="14.5" height="17"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCloverWhite" translatesAutoresizingMaskIntoConstraints="NO" id="6PY-fJ-7mv">
+                                                                        <rect key="frame" x="341" y="33.5" width="14" height="14"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29,100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5n-ab-NwD">
-                                                                        <rect key="frame" x="284.5" y="30.5" width="52" height="20"/>
+                                                                        <rect key="frame" x="285" y="30.5" width="52" height="20"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -3625,7 +3625,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.up.doc" catalog="system" width="115" height="128"/>
         <image name="buttonPhotoAdd" width="105" height="105"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="dummyImage1" width="300" height="313"/>
@@ -3635,6 +3634,7 @@
         <image name="icCloverBlue" width="25" height="25"/>
         <image name="icCloverGray" width="11" height="11"/>
         <image name="icCloverOrange" width="25" height="25"/>
+        <image name="icCloverWhite" width="14" height="14"/>
         <image name="icCloverYellow" width="25" height="25"/>
         <image name="icHeaderRightMypageGray" width="19" height="19"/>
         <image name="icHeaderRightQrGray" width="19" height="19"/>
