@@ -45,13 +45,13 @@ class TwinklePostViewController: UIViewController {
         self.postTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
         let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
         self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height
+        self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 15
         self.title = "미누스님의 트윙클"
         self.commentTextField.layer.borderWidth = 1
         self.commentTextField.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
-        self.commentTextField.layer.cornerRadius = self.commentTextField.bounds.height/2
+        self.commentTextField.layer.cornerRadius = self.commentTextField.bounds.height/2 - 3
         self.commentTextField.setLeftPaddingPoints(16)
-        self.commentButton.layer.cornerRadius = self.commentButton.bounds.height/2
+        self.commentButton.layer.cornerRadius = self.commentButton.bounds.height/2 - 3
     }
 }
 

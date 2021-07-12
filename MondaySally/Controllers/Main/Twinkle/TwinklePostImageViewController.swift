@@ -13,7 +13,7 @@ class TwinklePostImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
     }
 
 }

@@ -24,7 +24,7 @@ extension UINavigationBar {
     func applyFontAndSize(){
         self.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.label,
-         NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Medium", size: 15)!]
+         NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Medium", size: 17)!]
     }
     
     // 기본 그림자 스타일을 초기화해야 커스텀 스타일을 적용할 수 있다.
