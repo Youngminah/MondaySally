@@ -34,7 +34,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = (collectionView.bounds.width - 16)/2
-        let height: CGFloat = width * 265/200
+        let height: CGFloat = width * 226/177
         return CGSize(width: width, height: height)
     }
     
@@ -45,4 +45,20 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    // 헤더뷰 어떻게 표시할까?
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind { // kind의 종류는 크게 해더와 푸터가 있음
+        case UICollectionView.elementKindSectionHeader:
+            //해더, footer등등 를 deque할 땐 supplementaryView임.
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GiftHistoryHeader", for: indexPath) as? GiftHistoryHeader else {
+                return UICollectionReusableView()
+            }
+            return header
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
 }

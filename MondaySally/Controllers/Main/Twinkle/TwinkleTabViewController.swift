@@ -27,7 +27,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let size = self.view.bounds.width + 200
+        let size = self.view.bounds.width + 190
         return size
     }
     
