@@ -2301,7 +2301,7 @@
         <scene sceneID="sCo-W4-HyZ">
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationView" id="NWg-9E-41e" customClass="MainNavigationViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RCK-bv-3qC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="icChevronLeftGray" backIndicatorTransitionMaskImage="icChevronLeftGray" id="RCK-bv-3qC">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2608,17 +2608,17 @@
                                 <rect key="frame" x="16" y="142" width="343" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="16" id="01b-Yi-251">
-                                    <size key="itemSize" width="193" height="265"/>
+                                    <size key="itemSize" width="193" height="250"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GiftHistoryCell" id="kOz-sz-fdc" customClass="GiftHistoryCell" customModule="MondaySally" customModuleProvider="target">
-                                        <rect key="frame" x="75" y="50" width="193" height="265"/>
+                                        <rect key="frame" x="75" y="50" width="193" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="znj-tR-UxA">
-                                            <rect key="frame" x="0.0" y="0.0" width="193" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="193" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage1" translatesAutoresizingMaskIntoConstraints="NO" id="Ez5-cq-Nh4">
@@ -2626,8 +2626,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Ez5-cq-Nh4" secondAttribute="height" multiplier="1:1" id="tsr-fx-iBm"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2R-ay-Fs3">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2R-ay-Fs3">
                                                     <rect key="frame" x="10" y="10" width="39" height="39"/>
                                                     <color key="backgroundColor" name="AccentColor"/>
                                                     <constraints>
@@ -2640,19 +2645,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rql-tD-Q6o">
-                                                    <rect key="frame" x="0.0" y="193" width="193" height="72"/>
+                                                    <rect key="frame" x="0.0" y="193" width="193" height="57"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-5A-is8">
-                                                            <rect key="frame" x="0.0" y="15.666666666666654" width="193" height="40.666666666666657"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-5A-is8">
+                                                            <rect key="frame" x="0.0" y="3.3333333333333428" width="81.333333333333329" height="38.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="증빙완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUY-KS-cUr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="193" height="17.666666666666668"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="17.666666666666668"/>
                                                                     <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구에게 쏜다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFY-xR-4Zm">
-                                                                    <rect key="frame" x="0.0" y="19.666666666666686" width="193" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="17.666666666666657" width="81.333333333333329" height="21"/>
                                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -2663,8 +2668,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="7EK-5A-is8" firstAttribute="leading" secondItem="Rql-tD-Q6o" secondAttribute="leading" id="Tza-AF-PSP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="7EK-5A-is8" secondAttribute="trailing" id="XpT-KR-AcO"/>
-                                                        <constraint firstItem="7EK-5A-is8" firstAttribute="centerY" secondItem="Rql-tD-Q6o" secondAttribute="centerY" id="bUh-db-SqK"/>
+                                                        <constraint firstItem="7EK-5A-is8" firstAttribute="centerY" secondItem="Rql-tD-Q6o" secondAttribute="centerY" constant="-6" id="bUh-db-SqK"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -2681,7 +2685,10 @@
                                                 <constraint firstItem="Ez5-cq-Nh4" firstAttribute="top" secondItem="znj-tR-UxA" secondAttribute="top" id="qtE-vy-aW2"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="193" height="265"/>
+                                        <size key="customSize" width="193" height="250"/>
+                                        <connections>
+                                            <outlet property="badgeLabel" destination="E2R-ay-Fs3" id="4Dg-XI-33l"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GiftHistoryHeader" id="Oru-Og-rqe" customClass="GiftHistoryHeader" customModule="MondaySally" customModuleProvider="target">
@@ -2724,7 +2731,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZq-lp-s3k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2251" y="-5337"/>
+            <point key="canvasLocation" x="-2252" y="-5337.1921182266015"/>
         </scene>
         <!--Gift History Pre View Controller-->
         <scene sceneID="jUA-ck-u0D">
@@ -3653,6 +3660,7 @@
         <image name="dummyImage2" width="480" height="474"/>
         <image name="dummyImage3" width="2048" height="2048"/>
         <image name="gridQr" width="300.33334350585938" height="300.33334350585938"/>
+        <image name="icChevronLeftGray" width="9.3333330154418945" height="15.333333015441895"/>
         <image name="icCloverBlue" width="25" height="25"/>
         <image name="icCloverGray" width="11" height="11"/>
         <image name="icCloverOrange" width="25" height="25"/>

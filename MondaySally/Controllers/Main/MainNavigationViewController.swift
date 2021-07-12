@@ -14,7 +14,12 @@ class MainNavigationViewController: UINavigationController {
         self.navigationBar.applyFontAndSize()
         //self.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationBar.shadowImage = UIImage()
+        
+        self.navigationBar.backIndicatorImage = UIImage(named: "icChevronLeftGray")
+        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icChevronLeftGray")
         self.navigationBar.layoutIfNeeded()
+        
+        
     }
     
 

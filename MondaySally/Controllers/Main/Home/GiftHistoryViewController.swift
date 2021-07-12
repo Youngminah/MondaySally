@@ -27,7 +27,7 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftHistoryCell", for: indexPath) as? GiftHistoryCell else {
             return UICollectionViewCell()
         }
-        //cell.updateUI()
+        cell.updateUI()
         return cell
     }
     
@@ -35,7 +35,7 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = (collectionView.bounds.width - 16)/2
-        let height: CGFloat = width / 193 * 265
+        let height: CGFloat = width / 163 * 229
         return CGSize(width: width, height: height)
     }
     

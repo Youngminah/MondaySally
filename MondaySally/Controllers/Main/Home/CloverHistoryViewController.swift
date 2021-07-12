@@ -38,7 +38,7 @@ class CloverHistoryViewController: UIViewController {
     }
     
     private func slideViewAnimation(moveX: CGFloat){
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5,initialSpringVelocity: 1, options: .allowUserInteraction,
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8,initialSpringVelocity: 1, options: .allowUserInteraction,
                        animations: {
                         //변하기 전의 모습으로는 identity로 접근이 가능함.
                         self.animationView.transform = CGAffineTransform(translationX: moveX, y: 0)
