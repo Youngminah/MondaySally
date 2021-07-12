@@ -39,9 +39,9 @@ class HomeTabViewController: UIViewController {
         self.usedCloverButtonView.layer.cornerRadius = 10
         self.currentCloverButtonView.layer.cornerRadius = 10
         
-        self.firstRankingLabel.layer.cornerRadius = 14
-        self.secondRankingLabel.layer.cornerRadius = 14
-        self.thirdRankingLabel.layer.cornerRadius = 14
+        self.firstRankingLabel.layer.cornerRadius = 10
+        self.secondRankingLabel.layer.cornerRadius = 10
+        self.thirdRankingLabel.layer.cornerRadius = 10
         
         self.secondRankingLabel.layer.borderWidth = 1
         self.thirdRankingLabel.layer.borderWidth = 1

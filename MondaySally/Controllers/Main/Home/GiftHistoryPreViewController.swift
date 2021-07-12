@@ -9,6 +9,8 @@ import UIKit
 
 class GiftHistoryPreViewController: UIViewController {
 
+
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,16 @@ class GiftHistoryPreViewController: UIViewController {
 extension GiftHistoryPreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        let number = 0
+        if number == 0 {
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.collectionView.bounds.size.width, height: self.collectionView.bounds.size.height))
+            noDataLabel.text = "아직 사용하신 히스토리가 없어요"
+            noDataLabel.font = UIFont(name: "NotoSansCJKkr-Regular", size: 13)
+            noDataLabel.textColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
+            noDataLabel.textAlignment = NSTextAlignment.center
+            self.collectionView.backgroundView = noDataLabel
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

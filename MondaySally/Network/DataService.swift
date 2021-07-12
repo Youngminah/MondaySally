@@ -45,7 +45,7 @@ struct DataService {
     
     //팀코드로 jwt발급
     func requestFetchTeamCode(with teamCode: String, completion: @escaping (TeamCodeResponse?, Error?) -> ()) {
-        let url = "\(teamCodeUrl)?teamCode=\(teamCode)&companyIdx=2&memberID=2"
+        let url = "\(teamCodeUrl)?teamCode=\(teamCode)&companyIdx=1&memberID=1"
 
         AF.request(url, method: .post, parameters: nil,encoding: URLEncoding.default, headers: nil)
             .validate()
