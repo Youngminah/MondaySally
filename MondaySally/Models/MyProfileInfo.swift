@@ -9,9 +9,12 @@ struct MyProfileResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: MyProfileInfo
+    var result: MemberInfo
 }
 
+struct MemberInfo: Decodable{
+    var member: MyProfileInfo
+}
 struct MyProfileInfo: Decodable{
     var nickname: String
     var email: String?

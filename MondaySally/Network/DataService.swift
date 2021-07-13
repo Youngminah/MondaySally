@@ -15,7 +15,7 @@ struct DataService {
     
     // MARK: - URL
     private var appVersionUrl = "\(Constant.BASE_URL)/app"
-    private var teamCodeUrl = "\(Constant.BASE_URL)/teamCode"
+    private var teamCodeUrl = "\(Constant.BASE_URL)/code"
     private var autoLoginUrl = "\(Constant.BASE_URL)/auto-login"
     private var myProfileUrl = "\(Constant.BASE_URL)/mypage"
     private var resignationUrl = "\(Constant.BASE_URL)/out"
@@ -45,9 +45,11 @@ struct DataService {
     
     //팀코드로 jwt발급
     func requestFetchTeamCode(with teamCode: String, completion: @escaping (TeamCodeResponse?, Error?) -> ()) {
-        let url = "\(teamCodeUrl)?teamCode=\(teamCode)&companyIdx=1&memberID=1"
+        let url = "\(teamCodeUrl)"
 
-        AF.request(url, method: .post, parameters: nil,encoding: URLEncoding.default, headers: nil)
+        let teamCodeDic: [String: String]  = [ "code": teamCode]
+
+        AF.request(url, method: .post, parameters: teamCodeDic,encoding: URLEncoding.default, headers: nil)
             .validate()
             .responseDecodable(of: TeamCodeResponse.self) { (response) in
                 switch response.result {

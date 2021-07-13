@@ -12,6 +12,7 @@ target 'MondaySally' do
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
 
 
 end

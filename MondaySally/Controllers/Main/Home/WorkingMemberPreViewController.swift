@@ -21,7 +21,7 @@ class WorkingMemberPreViewController: UIViewController {
 extension WorkingMemberPreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let number = 0
+        let number = 50
         if number == 0 {
             let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.collectionView.bounds.size.width, height: self.collectionView.bounds.size.height))
             noDataLabel.text = "현재 근무중인 멤버가 없어요"
@@ -30,7 +30,7 @@ extension WorkingMemberPreViewController: UICollectionViewDelegate, UICollection
             noDataLabel.textAlignment = NSTextAlignment.center
             self.collectionView.backgroundView = noDataLabel
         }
-        return 0
+        return number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,8 +44,8 @@ extension WorkingMemberPreViewController: UICollectionViewDelegate, UICollection
     //UICollectionViewDelegateFlowLayout 프로토콜
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width - 8)/3
-        let height: CGFloat = (collectionView.bounds.height - 32)/5
+        let width: CGFloat = (collectionView.bounds.width - 28)/3
+        let height: CGFloat = collectionView.bounds.width/138 * 16
         return CGSize(width: width, height: height)
     }
 }

@@ -75,6 +75,16 @@ class RegisterViewController: UIViewController {
         UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
         UserDefaults.standard.setValue("\(data.workingYear ?? 0)", forKey: "workingPeriod")
         UserDefaults.standard.setValue(data.companyName, forKey: "company")
+        UserInfo.nickName = data.nickname
+        UserInfo.email = data.email ?? ""
+        UserInfo.imageUrl = data.imgUrl ?? ""
+        UserInfo.phoneNumber = data.phoneNumber ?? ""
+        UserInfo.account = data.bankAccount ?? ""
+        UserInfo.department = data.department ?? ""
+        UserInfo.position = data.position ?? ""
+        UserInfo.gender = data.gender ?? ""
+        UserInfo.phoneNumber = data.phoneNumber ?? ""
+        UserInfo.workingPeriod = "\(data.workingYear ?? 0)"
     }
 }
 
@@ -112,6 +122,7 @@ extension RegisterViewController {
             }
             DispatchQueue.main.async {
                 JwtToken.jwt = strongSelf.teamCodeViewModel.jwtToken
+                Constant.HEADERS = ["x-access-token" : JwtToken.jwt]
                 print("Jwt 발급에 성공했습니다 -> JWT: \(JwtToken.jwt)")
                 print(Constant.HEADERS)
                 UserDefaults.standard.setValue(strongSelf.teamCodeViewModel.jwtToken, forKey: "JwtToken")
