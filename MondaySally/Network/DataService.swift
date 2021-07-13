@@ -15,11 +15,13 @@ struct DataService {
     
     // MARK: - URL
     private var appVersionUrl = "\(Constant.BASE_URL)/app"
+    private var deviceTokenSaveUrl = "\(Constant.BASE_URL)/firebase"
     private var teamCodeUrl = "\(Constant.BASE_URL)/code"
     private var autoLoginUrl = "\(Constant.BASE_URL)/auto-login"
     private var myProfileUrl = "\(Constant.BASE_URL)/mypage"
     private var resignationUrl = "\(Constant.BASE_URL)/out"
     private var profileEditUrl = "\(Constant.BASE_URL)/profile"
+    
     
     
     // MARK: - 프로필이나 로그인 관련 Services
@@ -49,7 +51,7 @@ struct DataService {
 
         let teamCodeDic: [String: String]  = [ "code": teamCode]
 
-        AF.request(url, method: .post, parameters: teamCodeDic,encoding: URLEncoding.default, headers: nil)
+        AF.request(url, method: .post, parameters: teamCodeDic, encoding: URLEncoding.default, headers: nil)
             .validate()
             .responseDecodable(of: TeamCodeResponse.self) { (response) in
                 switch response.result {
@@ -149,4 +151,25 @@ struct DataService {
             }
     }
     
+    //FCM 디바이스 토큰 서버로 전달
+    func requestFetchFCMDeviceToken(with deviceToken: String, completion: @escaping (FCMDeviceTokenSaveReponse?, Error?) -> ()) {
+        let url = "\(deviceTokenSaveUrl)"
+        let deviceTokenDictionary: [String: String]  = ["token": deviceToken]
+
+        AF.request(url, method: .post, parameters: deviceTokenDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: FCMDeviceTokenSaveReponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
 }
