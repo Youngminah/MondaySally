@@ -13,14 +13,14 @@
         <array key="NotoSansKR-Bold.otf">
             <string>NotoSansCJKkr-Bold</string>
         </array>
+        <array key="NotoSansKR-Light.otf">
+            <string>NotoSansKR-Light</string>
+        </array>
         <array key="NotoSansKR-Medium.otf">
             <string>NotoSansCJKkr-Medium</string>
         </array>
         <array key="NotoSansKR-Regular.otf">
             <string>NotoSansCJKkr-Regular</string>
-        </array>
-        <array key="NotoSansKR-Thin.otf">
-            <string>NotoSansKR-Thin</string>
         </array>
     </customFonts>
     <scenes>
@@ -51,13 +51,13 @@
                                 <rect key="frame" x="42" y="218.33333333333334" width="333" height="32.666666666666657"/>
                                 <string key="text">월요병 NO! 출근이 즐거워
 직장인들의 만병인 월요병 이제는 극복해보세요.</string>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygg-e8-Tfk">
-                                <rect key="frame" x="42" y="271" width="333" height="15"/>
-                                <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".AppleKoreanFont" pointSize="13"/>
+                                <rect key="frame" x="42" y="271" width="333" height="16"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="바로 시작하기" image="chevron.right" catalog="system">
                                     <color key="titleColor" name="AccentColor"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-Tn-a3a">
-                                <rect key="frame" x="42" y="287" width="83" height="0.66666666666668561"/>
+                                <rect key="frame" x="42" y="288" width="83" height="0.66666666666668561"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.69999999999999996" id="MkV-Cz-56R"/>
@@ -117,8 +117,8 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 발급된 코드를 통해 자동 등록 및 로그인이 됩니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtX-HN-Io0">
                                 <rect key="frame" x="16" y="219" width="343" height="19"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="13"/>
+                                <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ES9-Fg-wiZ">
@@ -189,8 +189,8 @@
                                 <rect key="frame" x="40" y="501" width="295" height="35"/>
                                 <string key="text">먼데이샐리를 통해 보다 더 
 즐거운 회사생활을 경험해보세요.</string>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="15"/>
+                                <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jym-Zh-Chf">
@@ -260,8 +260,8 @@
                                 </constraints>
                                 <string key="text">관리자를 통해 귀하의 직원코드를 
 발급받아 시작해보세요.</string>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="15"/>
+                                <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRL-CZ-vh5">

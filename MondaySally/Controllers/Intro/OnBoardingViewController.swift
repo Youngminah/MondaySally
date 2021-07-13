@@ -60,7 +60,7 @@ class OnBoardingViewController: UIViewController {
                                       width: imageView.bounds.width,
                                       height: 27)
             titleLabel.textAlignment = .center
-            titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 18)
+            titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 17)
             titleLabel.text = infoViewModel.onBoardingInfo(at: i).titleLabel
             titleLabel.adjustsFontSizeToFitWidth = true
             titleLabel.minimumScaleFactor = 0.2
@@ -71,7 +71,7 @@ class OnBoardingViewController: UIViewController {
                                       width: titleLabel.bounds.width,
                                       height: 52)
             contentLabel.textAlignment = .center
-            contentLabel.font = UIFont(name: "NotoSansKR-Thin", size: 15)
+            contentLabel.font = UIFont(name: "NotoSansKR-Light", size: 15)
             contentLabel.numberOfLines = 2
             contentLabel.text = infoViewModel.onBoardingInfo(at: i).contentLabel
             contentLabel.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)

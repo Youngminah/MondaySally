@@ -28,12 +28,12 @@ class CloverHistoryViewController: UIViewController {
             self.totalCloverSelected()
             self.changeViewToTotalCloverView()
         } else if sender.tag == 1{
-            self.usedCloverSelected()
-            self.changeViewToUsedCloverView()
-        }
-        else{
             self.currentCloverSelected()
             self.changeViewToCurrentCloverView()
+        }
+        else{
+            self.usedCloverSelected()
+            self.changeViewToUsedCloverView()
         }
     }
     
@@ -101,7 +101,7 @@ class CloverHistoryViewController: UIViewController {
         self.slideViewAnimation(moveX: 0)
     }
     
-    private func usedCloverSelected(){
+    private func currentCloverSelected(){
         self.usedCloverButton.setTitleColor(#colorLiteral(red: 0.9843137255, green: 0.4590537548, blue: 0.254901737, alpha: 1), for: .normal)
         self.usedCloverButton.titleLabel?.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
         self.totalCloverButton.setTitleColor(#colorLiteral(red: 0.6862745098, green: 0.6862745098, blue: 0.6862745098, alpha: 1), for: .normal)
@@ -111,7 +111,7 @@ class CloverHistoryViewController: UIViewController {
         self.slideViewAnimation(moveX: self.view.frame.width/3)
     }
     
-    private func currentCloverSelected(){
+    private func usedCloverSelected(){
         self.currentButton.setTitleColor(#colorLiteral(red: 0.9843137255, green: 0.4590537548, blue: 0.254901737, alpha: 1), for: .normal)
         self.currentButton.titleLabel?.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
         self.totalCloverButton.setTitleColor(#colorLiteral(red: 0.6862745098, green: 0.6862745098, blue: 0.6862745098, alpha: 1), for: .normal)

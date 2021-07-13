@@ -50,6 +50,7 @@
 		BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */; };
 		BB5FE5D7269DD38600F2A7A6 /* FCMDeviceTokenSaveReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveReponse.swift */; };
 		BB5FE5D9269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5D8269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift */; };
+		BB5FE5DB269E28C800F2A7A6 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5DA269E28C800F2A7A6 /* NotoSansKR-Light.otf */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -148,6 +149,7 @@
 		BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDeviceTokenSaveReponse.swift; sourceTree = "<group>"; };
 		BB5FE5D8269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDeviceTokenViewModel.swift; sourceTree = "<group>"; };
+		BB5FE5DA269E28C800F2A7A6 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */,
+				BB5FE5DA269E28C800F2A7A6 /* NotoSansKR-Light.otf */,
 				BBD09EC3268B9F4B00AF4A56 /* NotoSansKR-Thin.otf */,
 				BBD09EBD268B9AB300AF4A56 /* NotoSansKR-Bold.otf */,
 				BBD09EBE268B9AB700AF4A56 /* NotoSansKR-Medium.otf */,
@@ -576,6 +579,7 @@
 				BBD09EC4268B9FA200AF4A56 /* NotoSansKR-Thin.otf in Resources */,
 				BBD09EC5268BA07400AF4A56 /* NotoSansKR-Medium.otf in Resources */,
 				BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */,
+				BB5FE5DB269E28C800F2A7A6 /* NotoSansKR-Light.otf in Resources */,
 				BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */,
 				BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */,
 				BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */,

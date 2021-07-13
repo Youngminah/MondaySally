@@ -24,6 +24,7 @@
 	<string>사진첩 접근을 허용하시겠습니까?</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NotoSansKR-Light</string>
 		<string>BM_Dohyeon</string>
 		<string>NotoSansKR-Thin</string>
 		<string>NotoSansKR-Bold</string>
