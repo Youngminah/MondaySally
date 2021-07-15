@@ -16,8 +16,8 @@
 		BB4CD4B126A0879E00BD1E91 /* GiftRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B026A0879E00BD1E91 /* GiftRequestInput.swift */; };
 		BB4CD4B326A087AC00BD1E91 /* GiftRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B226A087AC00BD1E91 /* GiftRequestResponse.swift */; };
 		BB4CD4B526A087BF00BD1E91 /* GiftRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B426A087BF00BD1E91 /* GiftRequestViewModel.swift */; };
-		BB4CD4B726A087E600BD1E91 /* MyGiftLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B626A087E600BD1E91 /* MyGiftLogViewModel.swift */; };
-		BB4CD4B926A0881000BD1E91 /* MyGiftLogInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B826A0881000BD1E91 /* MyGiftLogInfo.swift */; };
+		BB4CD4B726A087E600BD1E91 /* GiftHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B626A087E600BD1E91 /* GiftHistoryViewModel.swift */; };
+		BB4CD4B926A0881000BD1E91 /* GiftHistoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B826A0881000BD1E91 /* GiftHistoryInfo.swift */; };
 		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
 		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
@@ -122,8 +122,8 @@
 		BB4CD4B026A0879E00BD1E91 /* GiftRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRequestInput.swift; sourceTree = "<group>"; };
 		BB4CD4B226A087AC00BD1E91 /* GiftRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRequestResponse.swift; sourceTree = "<group>"; };
 		BB4CD4B426A087BF00BD1E91 /* GiftRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRequestViewModel.swift; sourceTree = "<group>"; };
-		BB4CD4B626A087E600BD1E91 /* MyGiftLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftLogViewModel.swift; sourceTree = "<group>"; };
-		BB4CD4B826A0881000BD1E91 /* MyGiftLogInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftLogInfo.swift; sourceTree = "<group>"; };
+		BB4CD4B626A087E600BD1E91 /* GiftHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryViewModel.swift; sourceTree = "<group>"; };
+		BB4CD4B826A0881000BD1E91 /* GiftHistoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryInfo.swift; sourceTree = "<group>"; };
 		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 				BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */,
 				BB4CD4AC26A081E800BD1E91 /* GiftDetailViewModel.swift */,
 				BB4CD4B426A087BF00BD1E91 /* GiftRequestViewModel.swift */,
-				BB4CD4B626A087E600BD1E91 /* MyGiftLogViewModel.swift */,
+				BB4CD4B626A087E600BD1E91 /* GiftHistoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				BB4CD4AE26A081F900BD1E91 /* GiftDetailInfo.swift */,
 				BB4CD4B026A0879E00BD1E91 /* GiftRequestInput.swift */,
 				BB4CD4B226A087AC00BD1E91 /* GiftRequestResponse.swift */,
-				BB4CD4B826A0881000BD1E91 /* MyGiftLogInfo.swift */,
+				BB4CD4B826A0881000BD1E91 /* GiftHistoryInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -710,10 +710,10 @@
 				BBA56F16269221F6000FDFC0 /* CloverHistoryViewController.swift in Sources */,
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
 				BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */,
-				BB4CD4B926A0881000BD1E91 /* MyGiftLogInfo.swift in Sources */,
+				BB4CD4B926A0881000BD1E91 /* GiftHistoryInfo.swift in Sources */,
 				BB4CD4B326A087AC00BD1E91 /* GiftRequestResponse.swift in Sources */,
 				BB5FE5B326963CF200F2A7A6 /* AutoLoginViewModel.swift in Sources */,
-				BB4CD4B726A087E600BD1E91 /* MyGiftLogViewModel.swift in Sources */,
+				BB4CD4B726A087E600BD1E91 /* GiftHistoryViewModel.swift in Sources */,
 				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
 				BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */,
 				BBA56F082691C993000FDFC0 /* TwinkleFeedCell.swift in Sources */,

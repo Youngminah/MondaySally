@@ -5,7 +5,7 @@
 //  Created by meng on 2021/07/16.
 //
 
-class MyGiftLogViewModel {
+class GiftHistoryViewModel {
     private var dataService: DataService?
     // MARK: - Properties
     private var myGiftLogInfo: [MyGiftLogInfo] = [] {

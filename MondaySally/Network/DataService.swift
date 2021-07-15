@@ -243,12 +243,12 @@ struct DataService {
     
     
     //내가 신청한 기프트 로그 조회 API
-    func requestFetchMyGiftLog(completion: @escaping (MyGiftLogResponse?, Error?) -> ()) {
+    func requestFetchMyGiftLog(completion: @escaping (GiftHistoryResponse?, Error?) -> ()) {
         let url = "\(myGiftLogUrl)"
 
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
-            .responseDecodable(of: MyGiftLogResponse.self) { (response) in
+            .responseDecodable(of: GiftHistoryResponse.self) { (response) in
                 switch response.result {
                 case .success(let response):
                     if response.isSuccess{
