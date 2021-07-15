@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "illustCloverGift.png",
+      "filename" : "checkBoxOnOrange.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "illustCloverGift@2x.png",
+      "filename" : "checkBoxOnOrange@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "illustCloverGift@3x.png",
+      "filename" : "checkBoxOnOrange@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

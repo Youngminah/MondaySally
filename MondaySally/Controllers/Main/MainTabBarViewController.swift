@@ -16,7 +16,7 @@ class MainTabBarViewController: UITabBarController {
     
     func setupStyle() {
         UITabBar.clearShadow()
-        tabBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
+        //tabBar.layer.applyShadow(color: .gray, alpha: 0.1, x: 0, y: 0, blur: 20)
     }
     
 }

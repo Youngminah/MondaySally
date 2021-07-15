@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "illustCloverGift.png",
+      "filename" : "dropShadow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "illustCloverGift@2x.png",
+      "filename" : "dropShadow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "illustCloverGift@3x.png",
+      "filename" : "dropShadow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

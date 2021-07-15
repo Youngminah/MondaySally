@@ -49,9 +49,9 @@ class OnBoardingViewController: UIViewController {
             //상위뷰에 대한 상대적 위치라서 x는 0 이됨.
             let size = self.view.bounds.width/3
             imageView.frame = CGRect(x: view.bounds.width/2 - size,
-                                     y: self.view.bounds.height/5,
+                                     y: self.view.bounds.height/4,
                                      width: size * 2 ,
-                                     height: size * 2 )
+                                     height: size * 460 / 265 )
             imageView.image = infoViewModel.onBoardingInfo(at: i).image
             
             let titleLabel = UILabel()
@@ -60,7 +60,7 @@ class OnBoardingViewController: UIViewController {
                                       width: imageView.bounds.width,
                                       height: 27)
             titleLabel.textAlignment = .center
-            titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 17)
+            titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 18)
             titleLabel.text = infoViewModel.onBoardingInfo(at: i).titleLabel
             titleLabel.adjustsFontSizeToFitWidth = true
             titleLabel.minimumScaleFactor = 0.2

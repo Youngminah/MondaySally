@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "illustTimepoint.png",
+      "filename" : "illustPoint.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "illustTimepoint@2x.png",
+      "filename" : "illustPoint@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "illustTimepoint@3x.png",
+      "filename" : "illustPoint@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -91,10 +91,8 @@ class ProfileEditViewController: UIViewController{
     }
     
     private func editSuccessSallyAlertPresent(){
-        self.navigationController?.navigationBar.layer.zPosition = -1;
-        customAlert.showAlert(with: "프로필 수정이 완료되었습니다.", message: "", on: self)
+        customAlert.showAlert(with: "프로필 수정이 완료되었습니다.", message: "")
         self.customAlert.didDismiss = {
-            self.navigationController?.navigationBar.layer.zPosition = 0;
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -154,10 +152,10 @@ extension ProfileEditViewController {
         }
         
         self.viewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
             DispatchQueue.main.async {
-                guard let strongSelf = self else {
-                    return
-                }
                 print("프로필 수정이 성공했습니다 !! -> \(strongSelf.viewModel.message)")
                 strongSelf.editUserInfo(with :input)
                 strongSelf.editSuccessSallyAlertPresent()

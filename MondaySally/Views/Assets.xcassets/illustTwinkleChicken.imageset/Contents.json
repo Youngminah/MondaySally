@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "illustTwinkleChicken.png",
+      "filename" : "illustTwinkle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "illustTwinkleChicken@2x.png",
+      "filename" : "illustTwinkle@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "illustTwinkleChicken@3x.png",
+      "filename" : "illustTwinkle@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

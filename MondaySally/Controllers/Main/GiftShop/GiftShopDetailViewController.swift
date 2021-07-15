@@ -11,6 +11,7 @@ class GiftShopDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "기프트 샵"
 
     }
     

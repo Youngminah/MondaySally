@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0E688E51A9206DF7A003D3 /* Pods_MondaySally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */; };
+		BB2FA681269F548100F09B4A /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */; };
 		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
 		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
@@ -43,8 +44,6 @@
 		BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */; };
 		BB5FE5C426982FE700F2A7A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */; };
 		BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */; };
-		BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */; };
-		BB5FE5CC269B183500F2A7A6 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */; };
 		BB5FE5CE269B7C2400F2A7A6 /* SallyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */; };
 		BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */; };
 		BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */; };
@@ -106,6 +105,7 @@
 /* Begin PBXFileReference section */
 		12056DD067E4AC28B679051F /* Pods-MondaySally.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MondaySally.debug.xcconfig"; path = "Target Support Files/Pods-MondaySally/Pods-MondaySally.debug.xcconfig"; sourceTree = "<group>"; };
 		4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MondaySally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +141,6 @@
 		BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SallyAlert.storyboard; sourceTree = "<group>"; };
-		BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyAlert.swift; sourceTree = "<group>"; };
 		BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShopHeader.swift; sourceTree = "<group>"; };
 		BB5FE5D3269DB06000F2A7A6 /* MondaySally.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MondaySally.entitlements; sourceTree = "<group>"; };
@@ -336,7 +334,6 @@
 			children = (
 				BBD09ED2268E07C700AF4A56 /* Intro */,
 				BBA56EED268F6A47000FDFC0 /* Main */,
-				BB5FE5CB269B183500F2A7A6 /* AlertViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -346,7 +343,6 @@
 			children = (
 				BBEB82FC268B008600B9CA54 /* Register.storyboard */,
 				BBA56EEB268F360A000FDFC0 /* Main.storyboard */,
-				BB5FE5C9269B169F00F2A7A6 /* SallyAlert.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -382,6 +378,7 @@
 				BBD09EBA268B4B6300AF4A56 /* RegisterViewController.swift */,
 				BBD09ECD268E079600AF4A56 /* JoinViewController.swift */,
 				BBD09ECF268E07B100AF4A56 /* FailViewController.swift */,
+				BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -581,7 +578,6 @@
 				BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */,
 				BB5FE5DB269E28C800F2A7A6 /* NotoSansKR-Light.otf in Resources */,
 				BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */,
-				BB5FE5CA269B16A000F2A7A6 /* SallyAlert.storyboard in Resources */,
 				BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */,
 				BBEB8300268B008D00B9CA54 /* Assets.xcassets in Resources */,
 				BBEB82FE268B008600B9CA54 /* Register.storyboard in Resources */,
@@ -669,7 +665,6 @@
 				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */,
 				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
-				BB5FE5CC269B183500F2A7A6 /* AlertViewController.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */,
 				BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */,
@@ -681,6 +676,7 @@
 				BBEB8329268B0D6100B9CA54 /* JwtToken.swift in Sources */,
 				BBD09EBB268B4B6300AF4A56 /* RegisterViewController.swift in Sources */,
 				BBA56F01268F6D95000FDFC0 /* QRCodeViewController.swift in Sources */,
+				BB2FA681269F548100F09B4A /* TermsOfServiceViewController.swift in Sources */,
 				BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */,
 				BBA56F16269221F6000FDFC0 /* CloverHistoryViewController.swift in Sources */,
 				BBEB8319268B04C800B9CA54 /* IndicatorView.swift in Sources */,
