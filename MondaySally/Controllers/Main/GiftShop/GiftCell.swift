@@ -9,9 +9,11 @@ import UIKit
 
 class GiftCell: UICollectionViewCell {
     @IBOutlet weak var giftImageView: UIImageView!
+    @IBOutlet weak var giftNameLabel: UILabel!
     
-    func updateUI(){
-
+    func updateUI(with giftInfo: GiftInfo){
+        //MARK: 이미지값 넣어야됨.
+        self.giftNameLabel.text = giftInfo.name
     }
     
 }

@@ -1553,6 +1553,7 @@
                                         <size key="customSize" width="177" height="226"/>
                                         <connections>
                                             <outlet property="giftImageView" destination="knV-GT-LM1" id="5zO-2P-TLY"/>
+                                            <outlet property="giftNameLabel" destination="rVT-Lx-OwB" id="QAl-TJ-UuD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1579,6 +1580,9 @@
                                         <constraint firstItem="Awe-Ca-B8O" firstAttribute="centerY" secondItem="HN5-7P-hem" secondAttribute="centerY" id="lSr-pN-w6F"/>
                                         <constraint firstItem="HN5-7P-hem" firstAttribute="leading" secondItem="Keg-Vt-Q7R" secondAttribute="leading" id="tC3-p1-fLR"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="totalGiftCountLabel" destination="Awe-Ca-B8O" id="uMR-MP-Vw7"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="OcP-li-gkJ" id="hwo-jC-u0c"/>
@@ -1607,6 +1611,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="T2h-a8-US1" id="mIh-sz-5QI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZE-4f-oI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

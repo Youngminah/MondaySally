@@ -34,31 +34,6 @@ class ProfileEditViewController: UIViewController{
         self.hideKeyboardWhenTappedAround()
     }
     
-    
-    private func updateUI(){
-        self.photoSelectButton.layer.borderWidth = 1
-        self.photoSelectButton.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
-        self.photoSelectButton.clipsToBounds = true
-        self.photoSelectButton.layer.cornerRadius = self.photoSelectButton.bounds.width/2
-        self.photoSelectButton.layer.masksToBounds = true
-        self.nickNameTextField.layer.cornerRadius = 4
-        self.nickNameTextField.clipsToBounds = true
-        self.nickNameTextField.setLeftPaddingPoints(16)
-        self.phoneNumberTextField.layer.cornerRadius = 4
-        self.phoneNumberTextField.clipsToBounds = true
-        self.phoneNumberTextField.setLeftPaddingPoints(16)
-        self.accountTextField.layer.cornerRadius = 4
-        self.accountTextField.clipsToBounds = true
-        self.accountTextField.setLeftPaddingPoints(16)
-        self.emailTextField.layer.cornerRadius = 4
-        self.emailTextField.clipsToBounds = true
-        self.emailTextField.setLeftPaddingPoints(16)
-        self.unselectedNickNameTextFieldUI()
-        self.unselectedPhoneNumberTextFieldUI()
-        self.unselectedAccountTextFieldUI()
-        self.unselectedEmailTextFieldUI()
-    }
-    
     @IBAction func photoSelectButtonTabp(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
@@ -120,6 +95,29 @@ class ProfileEditViewController: UIViewController{
         UserInfo.account = input.bankAccount
     }
     
+    private func updateUI(){
+        self.photoSelectButton.layer.borderWidth = 1
+        self.photoSelectButton.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
+        self.photoSelectButton.clipsToBounds = true
+        self.photoSelectButton.layer.cornerRadius = self.photoSelectButton.bounds.width/2
+        self.photoSelectButton.layer.masksToBounds = true
+        self.nickNameTextField.layer.cornerRadius = 4
+        self.nickNameTextField.clipsToBounds = true
+        self.nickNameTextField.setLeftPaddingPoints(16)
+        self.phoneNumberTextField.layer.cornerRadius = 4
+        self.phoneNumberTextField.clipsToBounds = true
+        self.phoneNumberTextField.setLeftPaddingPoints(16)
+        self.accountTextField.layer.cornerRadius = 4
+        self.accountTextField.clipsToBounds = true
+        self.accountTextField.setLeftPaddingPoints(16)
+        self.emailTextField.layer.cornerRadius = 4
+        self.emailTextField.clipsToBounds = true
+        self.emailTextField.setLeftPaddingPoints(16)
+        self.unselectedNickNameTextFieldUI()
+        self.unselectedPhoneNumberTextFieldUI()
+        self.unselectedAccountTextFieldUI()
+        self.unselectedEmailTextFieldUI()
+    }
 }
 
 // MARK: - Networking

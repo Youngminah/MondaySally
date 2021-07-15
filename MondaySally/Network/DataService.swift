@@ -22,9 +22,12 @@ struct DataService {
     private var resignationUrl = "\(Constant.BASE_URL)/out"
     private var profileEditUrl = "\(Constant.BASE_URL)/profile"
     
+    private var giftUrl = "\(Constant.BASE_URL)/gift"
+    private var myGiftLogUrl = "\(Constant.BASE_URL)/giftlog"
     
     
-    // MARK: - 프로필이나 로그인 관련 Services
+    
+    // MARK: - 프로필이나 로그인 관련 API
     //앱 버전확인
     func requestFetchAppVersion(with teamCode: String, completion: @escaping (AppVersion?, Error?) -> ()) {
         let url = "\(appVersionUrl)/ios"
@@ -109,7 +112,7 @@ struct DataService {
     }
     
     //프로필 수정
-    func requestFetchEditProfile(with input: EditProfileInput,completion: @escaping (EditProfileResponse?, Error?) -> ()) {
+    func requestFetchEditProfile(with input: EditProfileInput, completion: @escaping (EditProfileResponse?, Error?) -> ()) {
         let url = "\(profileEditUrl)"
 
         AF.request(url, method: .patch, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
@@ -159,6 +162,93 @@ struct DataService {
         AF.request(url, method: .post, parameters: deviceTokenDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: FCMDeviceTokenSaveReponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    //MARK: 기프트 관련 API
+    //기프트 리스트 조회 API
+    func requestFetchGiftList(completion: @escaping (GiftListResponse?, Error?) -> ()) {
+        let url = "\(giftUrl)"
+
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: GiftListResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    
+    //기프트 상세 조회 API
+    func requestFetchGiftDetail(with giftIndex: Int, completion: @escaping (GiftDetailResponse?, Error?) -> ()) {
+        let url = "\(giftUrl)/\(giftIndex)"
+
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: GiftDetailResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    //기프트 신청 API
+    func requestFetchGift(with input: GiftRequestInput, completion: @escaping (GiftRequestResponse?, Error?) -> ()) {
+        let url = "\(giftUrl)"
+
+        AF.request(url, method: .post, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: GiftRequestResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    
+    //내가 신청한 기프트 로그 조회 API
+    func requestFetchMyGiftLog(completion: @escaping (MyGiftLogResponse?, Error?) -> ()) {
+        let url = "\(myGiftLogUrl)"
+
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: MyGiftLogResponse.self) { (response) in
                 switch response.result {
                 case .success(let response):
                     if response.isSuccess{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="328-2X-l95">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -183,13 +183,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="귀하의 입사를 축하드립니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-uw-MRG">
-                                <rect key="frame" x="40" y="465" width="295" height="26.666666666666686"/>
+                                <rect key="frame" x="40" y="465" width="295" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-GP-02U" userLabel="먼데이샐리를 통해 보다 더  즐거운 회사생활을 경험해보세요.">
-                                <rect key="frame" x="40" y="506.66666666666669" width="295" height="43.666666666666686"/>
+                                <rect key="frame" x="40" y="507.00000000000006" width="295" height="43.666666666666686"/>
                                 <string key="text">먼데이샐리를 통해 보다 더 
 즐거운 회사생활을 경험해보세요.</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="15"/>
@@ -251,13 +251,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 저희의 가족이 아니시군요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lQe-tp-Oj7">
-                                <rect key="frame" x="32.666666666666657" y="479.66666666666669" width="310" height="26.666666666666686"/>
+                                <rect key="frame" x="32.666666666666657" y="479.66666666666669" width="310" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KVr-5s-pTz">
-                                <rect key="frame" x="32.666666666666657" y="521.33333333333337" width="310" height="44"/>
+                                <rect key="frame" x="32.666666666666657" y="521.66666666666663" width="310" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xDS-mq-SGT"/>
                                 </constraints>
