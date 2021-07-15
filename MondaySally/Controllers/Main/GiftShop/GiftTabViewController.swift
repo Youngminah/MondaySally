@@ -31,7 +31,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftCell", for: indexPath) as? GiftCell else {
             return UICollectionViewCell()
         }
-        let data = self.viewModel.giftListInfo(at: indexPath.row)
+        let data = self.viewModel.giftListInfo(at: indexPath.item)
         cell.updateUI(with: data)
         return cell
     }
@@ -48,6 +48,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftShopDetailView") as? GiftShopDetailViewController else{
             return
         }
+        vc.giftIndex = self.viewModel.giftListInfo(at: indexPath.item).idx
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

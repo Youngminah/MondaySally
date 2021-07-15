@@ -31,6 +31,10 @@ class GiftDetailViewModel {
         didSet { self.updateLoadingStatus?() }
     }
     
+    var getGiftInfo: GiftDetailInfo? {
+        return giftDetailInfo
+    }
+    
     var numOfGiftOption: Int {
         return giftDetailInfo?.option.count ?? 0
     }
@@ -47,7 +51,7 @@ class GiftDetailViewModel {
         self.dataService = dataService
     }
     
-    func optionInfo(at index: Int) -> OptionInfo?{
+    func getOptionInfo(at index: Int) -> OptionInfo?{
         return giftDetailInfo?.option[index] ?? nil
     }
     
@@ -69,6 +73,7 @@ class GiftDetailViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
+            self?.isLoading = false
             self?.giftDetailInfo = response?.result
         })
     }

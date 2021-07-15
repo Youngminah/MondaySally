@@ -564,6 +564,11 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="320" height="800"/>
+                    <connections>
+                        <outlet property="giftContentLabel" destination="9T9-1h-ruS" id="Z7S-cs-wMQ"/>
+                        <outlet property="giftNameLabel" destination="u6E-l6-Fq5" id="ski-ao-lGy"/>
+                        <outlet property="giftRuleLabel" destination="W9Q-Ev-CHR" id="iRq-7d-04I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJV-wR-PDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
