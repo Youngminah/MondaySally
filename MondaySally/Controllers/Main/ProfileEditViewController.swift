@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ProfileEditViewController: UIViewController{
 
@@ -20,6 +21,8 @@ class ProfileEditViewController: UIViewController{
     
     let viewModel = EditProfileViewModel(dataService: DataService())
     let customAlert = SallyAlert()
+    
+    private let storage = Storage.storage().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,26 +46,37 @@ class ProfileEditViewController: UIViewController{
     }
     
     @IBAction func completeButtonTap(_ sender: UIButton) {
-        let photoUrl = ""
-        guard let nickName = nickNameTextField.text else {
-            return
-        }
-        guard let phoneNumber = phoneNumberTextField.text else {
-            return
-        }
-        guard let account = accountTextField.text else {
-            return
-        }
-        guard let email = emailTextField.text else {
-            return
-        }
+        guard let nickName = nickNameTextField.text else { return }
+        guard let phoneNumber = phoneNumberTextField.text else { return }
+        guard let account = accountTextField.text else { return }
+        guard let email = emailTextField.text else { return }
         guard let photo = photoSelectButton.imageView?.image else {
             let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
             self.attemptFetchEditProfile(with: input)
             return
         }
-        let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
-        self.attemptFetchEditProfile(with: input)
+        guard let imageData = photo.pngData() else {
+            print("이미지를 png로 만들 수 없습니다.")
+            return
+        }
+        self.showIndicator()
+        let uuid = UUID.init()
+        self.storage.child("test/profile/\(uuid)").putData(imageData, metadata: nil, completion: { [weak self] _ , error in
+            guard let strongSelf = self else { return }
+            guard error == nil else {
+                print("파이어베이스에 업로드하는데 실패하였습니다.")
+                return
+            }
+            strongSelf.storage.child("test/profile/\(uuid)").downloadURL { url, error in
+                guard let url = url , error == nil else {
+                    return
+                }
+                let urlString = url.absoluteString
+                print("파이어베이스에 등록된 프로필 이미지 URL주소 : \(urlString)")
+                let input = EditProfileInput(nickname: nickName, imgUrl: urlString, phoneNumber: phoneNumber, bankAccount: account, email: email)
+                strongSelf.attemptFetchEditProfile(with: input)
+            }
+        })
     }
     
     private func editSuccessSallyAlertPresent(){
@@ -120,6 +134,24 @@ class ProfileEditViewController: UIViewController{
     }
 }
 
+
+//MARK: 파이어베이스 이미지 업로드
+extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        self.photoSelectButton.setImage(image, for: .normal)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
 // MARK: - Networking
 extension ProfileEditViewController {
     
@@ -128,31 +160,28 @@ extension ProfileEditViewController {
         
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
+                guard let strongSelf = self else { return }
                 let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
         self.viewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                if let error = self?.viewModel.error {
+                if let error = strongSelf.viewModel.error {
                     print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
                     self?.networkFailToExit()
                 }
                 
-                if let message = self?.viewModel.failMessage {
+                if let message = strongSelf.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
-                    self?.editFailAlertPresent(with: message)
+                    strongSelf.editFailAlertPresent(with: message)
                 }
             }
         }
         
         self.viewModel.didFinishFetch = { [weak self] () in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 print("프로필 수정이 성공했습니다 !! -> \(strongSelf.viewModel.message)")
                 strongSelf.editUserInfo(with :input)
@@ -164,21 +193,6 @@ extension ProfileEditViewController {
     }
 }
 
-
-extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.photoSelectButton.setImage(image, for: .normal)
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-}
 
 //키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기.
 extension ProfileEditViewController {
@@ -208,8 +222,6 @@ extension ProfileEditViewController {
         }
     }
 }
-
-
 
 extension ProfileEditViewController : UITextFieldDelegate{
     
