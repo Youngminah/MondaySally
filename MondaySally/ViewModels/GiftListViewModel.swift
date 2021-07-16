@@ -4,7 +4,7 @@
 //
 //  Created by meng on 2021/07/15.
 //
-
+import UIKit
 
 class GiftListViewModel {
     private var dataService: DataService?
@@ -69,8 +69,8 @@ class GiftListViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.failCode = nil
-            self?.isLoading = false
             self?.giftList = response?.result ?? []
+            self?.isLoading = false
         })
     }
 }

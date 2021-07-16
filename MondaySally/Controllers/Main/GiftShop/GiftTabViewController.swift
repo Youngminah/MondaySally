@@ -16,6 +16,17 @@ class GiftTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.attemptFetchGiftList()
+        self.collectionView.refreshControl = UIRefreshControl()
+        self.collectionView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("기프트샵 컬렉션뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.attemptFetchGiftList()
+        }
     }
     
 
@@ -76,13 +87,16 @@ extension GiftTabViewController {
 
     //내 프로필 조회 API 호출 함수
     private func attemptFetchGiftList() {
-        self.viewModel.updateLoadingStatus = {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
+        if collectionView.refreshControl?.isRefreshing == false {
+            self.viewModel.updateLoadingStatus = {
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
                 }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
+            
         }
 
         self.viewModel.showAlertClosure = { [weak self] () in
@@ -114,9 +128,10 @@ extension GiftTabViewController {
                 }
                 print("기프트 리스트 조회에 성공했습니다 !! ")
                 strongSelf.collectionView.reloadData()
+                strongSelf.collectionView.refreshControl?.endRefreshing()
             }
         }
-
+        
         self.viewModel.fetchGiftList()
     }
     
