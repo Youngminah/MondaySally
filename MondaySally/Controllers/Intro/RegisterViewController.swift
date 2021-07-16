@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     let teamCodeViewModel = TeamCodeViewModel(dataService: AuthDataService())
     let myProfileViewModel = MyProfileViewModel(dataService: AuthDataService())
+    let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +92,9 @@ class RegisterViewController: UIViewController {
 // MARK: - Networking
 extension RegisterViewController {
     
-    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    //MARK: JWT생성 하는 API 호출 함수
     private func attemptFetchTeamCode(withId teamCodeId: String) {
-        
+        //통신동안 인디케이터 표시
         self.teamCodeViewModel.updateLoadingStatus = { [weak self] () in
             guard let strongSelf = self else {
                 return
@@ -102,7 +103,7 @@ extension RegisterViewController {
                 let _ = strongSelf.teamCodeViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
-        
+        //서버와의 통신중 에러가 났을 경우 실행
         self.teamCodeViewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
                 if let error = self?.teamCodeViewModel.error {
@@ -115,7 +116,7 @@ extension RegisterViewController {
                 }
             }
         }
-        
+        //성공적으로 통신 완료 경우 실행
         self.teamCodeViewModel.didFinishFetch = { [weak self] () in
             guard let strongSelf = self else {
                 return
@@ -128,54 +129,89 @@ extension RegisterViewController {
                 UserDefaults.standard.setValue(strongSelf.teamCodeViewModel.jwtToken, forKey: "JwtToken")
                 //UserDefaults.standard.removeObject(forKey: "JwtToken")
                 strongSelf.attemptFetchMyProfile()
-                
             }
         }
-        
         self.teamCodeViewModel.fetchJwt(with: teamCodeId)
     }
     
-    //내 프로필 조회 API 호출 함수
+    //MARK: 내 프로필 조회 API 호출 함수
     private func attemptFetchMyProfile() {
         
         self.myProfileViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
+                guard let strongSelf = self else { return }
                 let _ = strongSelf.myProfileViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
         self.myProfileViewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 if let error = self?.myProfileViewModel.error {
-                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
-                    self?.networkFailToExit()
+                    print("ERROR : 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
                 }
-                
                 if let message = self?.myProfileViewModel.failMessage {
-                    print("서버에서 알려준 에러는 -> \(message)")
+                    print("ERROR : 서버에서 알려준 에러는 -> \(message)")
                 }
             }
         }
         
         self.myProfileViewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                print("SUCCESS : 프로필 조회에 성공했습니다 !! ")
+                guard let data = strongSelf.myProfileViewModel.getMyProfileInfo else {
+                    print("ERROR : 성공했으나 들어온 데이터를 뜯지 못했습니다.")
+                    return
+                }
+                strongSelf.saveUserInfo(with: data)
+                strongSelf.attemptFetchFCMTokenSend()
+            }
+        }
+        self.myProfileViewModel.fetchMyProfile()
+    }
+    
+    //MARK: FCM 디바이스 토큰 서버에 전달 API 함수
+    private func attemptFetchFCMTokenSend() {
+        
+        self.fCMTokenViewModel.updateLoadingStatus = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                let _ = strongSelf.fCMTokenViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.fCMTokenViewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.fCMTokenViewModel.error {
+                    print("ERROR : 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                if let message = self?.fCMTokenViewModel.failMessage {
+                    print("ERROR : 서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        
+        self.fCMTokenViewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else {
                     return
                 }
-                print("프로필 조회에 성공했습니다 !! ")
-                guard let data = strongSelf.myProfileViewModel.getMyProfileInfo else {
-                    print("성공했으나 들어온 데이터를 뜯지 못했습니다.")
-                    return
-                }
-                strongSelf.saveUserInfo(with: data)
+                print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
                 strongSelf.moveToJoinView()
             }
         }
         
-        self.myProfileViewModel.fetchMyProfile()
+        guard let token = UserDefaults.standard.string(forKey: "FCMToken") else {
+            print("ERROR : FCM 디바이스 토큰이 없음 !!")
+            self.networkFailToExit()
+            return
+        }
+        self.fCMTokenViewModel.fetchFCMDeivceToken(with: token)
     }
 }
 

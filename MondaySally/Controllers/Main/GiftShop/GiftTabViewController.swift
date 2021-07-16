@@ -85,7 +85,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
 // MARK: - Networking
 extension GiftTabViewController {
 
-    //내 프로필 조회 API 호출 함수
+    //메인탭바 [기프트샵]화면 API 호출 함수
     private func attemptFetchGiftList() {
         if collectionView.refreshControl?.isRefreshing == false {
             self.viewModel.updateLoadingStatus = {
@@ -111,6 +111,7 @@ extension GiftTabViewController {
             }
         }
         
+        //jwt 토큰에 문제가 있을 경우 로그아웃 시켜야함.
         self.viewModel.logOutAlertClosure = { [weak self] () in
             guard let strongSelf = self else {
                 return

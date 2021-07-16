@@ -60,8 +60,8 @@ class FCMDeviceTokenViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.isLoading = false
             self?.deviceTokenResponse = response
+            self?.isLoading = false
             
         })
     }

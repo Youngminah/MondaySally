@@ -22,7 +22,15 @@ extension UIColor {
     // MARK: 메인 테마 색 또는 자주 쓰는 색을 정의
     // ex. label.textColor = .mainOrange
     @nonobjc class var mainOrange: UIColor {
-      return UIColor(red: 1.0, green: 120.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
+      return UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var mainBlue: UIColor {
+      return UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var mainYellow: UIColor {
+      return UIColor(red: 255.0 / 255.0, green: 120.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
     }
 }
 

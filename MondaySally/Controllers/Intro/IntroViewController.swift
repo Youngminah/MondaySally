@@ -10,6 +10,7 @@ import UIKit
 class IntroViewController: UIViewController {
     
     let viewModel = AutoLoginViewModel(dataService: AuthDataService())
+    let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +72,50 @@ extension IntroViewController {
                     return
                 }
                 print("자동 로그인에 성공했습니다 !! -> 서버에서 보내준 메세지: \(strongSelf.viewModel.message)")
-                strongSelf.moveToMainTabBar()
+                strongSelf.attemptFetchFCMTokenSend()
             }
         }
         self.viewModel.fetchAutoLogin()
     }
     
-
+    //MARK: FCM 디바이스 토큰 서버에 전달 API 함수
+    private func attemptFetchFCMTokenSend() {
+        self.fCMTokenViewModel.updateLoadingStatus = { [weak self] () in
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                let _ = strongSelf.fCMTokenViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.fCMTokenViewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.fCMTokenViewModel.error {
+                    print("ERROR : 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                if let message = self?.fCMTokenViewModel.failMessage {
+                    print("ERROR : 서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        
+        self.fCMTokenViewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {
+                    return
+                }
+                print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
+                strongSelf.moveToMainTabBar()
+            }
+        }
+        
+        guard let token = UserDefaults.standard.string(forKey: "FCMToken") else {
+            print("ERROR : FCM 디바이스 토큰이 없음 !!")
+            self.networkFailToExit()
+            return
+        }
+        self.fCMTokenViewModel.fetchFCMDeivceToken(with: token)
+    }
 }

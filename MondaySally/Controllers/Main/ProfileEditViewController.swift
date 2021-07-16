@@ -155,7 +155,7 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigat
 // MARK: - Networking
 extension ProfileEditViewController {
     
-    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    //프로필 수정 API 호출 함수
     private func attemptFetchEditProfile(with input: EditProfileInput) {
         
         self.viewModel.updateLoadingStatus = {
