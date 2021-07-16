@@ -92,6 +92,7 @@
 		BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ECF268E07B100AF4A56 /* FailViewController.swift */; };
 		BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */; };
 		BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED5268E14D300AF4A56 /* UITextField.swift */; };
+		BBE9FC9026A22E630057FDAD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9FC8F26A22E630057FDAD /* Int.swift */; };
 		BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F6268B008600B9CA54 /* AppDelegate.swift */; };
 		BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */; };
 		BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82FA268B008600B9CA54 /* IntroViewController.swift */; };
@@ -201,6 +202,7 @@
 		BBD09ECF268E07B100AF4A56 /* FailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailViewController.swift; sourceTree = "<group>"; };
 		BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNavigationViewController.swift; sourceTree = "<group>"; };
 		BBD09ED5268E14D300AF4A56 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		BBE9FC8F26A22E630057FDAD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		BBEB82F3268B008600B9CA54 /* MondaySally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MondaySally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEB82F6268B008600B9CA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 			children = (
 				BBEB831A268B04EE00B9CA54 /* Date.swift */,
 				BBEB831C268B050B00B9CA54 /* String.swift */,
+				BBE9FC8F26A22E630057FDAD /* Int.swift */,
 				BBEB831E268B053900B9CA54 /* Color.swift */,
 				BBEB8320268B056400B9CA54 /* UIButton.swift */,
 				BBEB8322268B057E00B9CA54 /* UIViewController.swift */,
@@ -702,6 +705,7 @@
 				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */,
 				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
+				BBE9FC9026A22E630057FDAD /* Int.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */,
 				BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */,

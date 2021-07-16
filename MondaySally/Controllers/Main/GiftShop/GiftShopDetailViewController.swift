@@ -4,6 +4,8 @@
 //
 //  Created by meng on 2021/07/05.
 //
+
+import TTGTagCollectionView
 import UIKit
 
 class GiftShopDetailViewController: UIViewController {
@@ -13,26 +15,71 @@ class GiftShopDetailViewController: UIViewController {
     @IBOutlet weak var giftRuleLabel: UILabel!
     @IBOutlet weak var optionTitleLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var parentView: UIView!
     
-    var input: GiftRequestInput?
-    let giftDetailViewModel = GiftDetailViewModel(dataService: GiftDataService())
-    let giftRequestViewModel = GiftRequestViewModel(dataService: GiftDataService())
-    var giftIndex: Int = -1
+    private let collectionView = TTGTextTagCollectionView()
+    private var selectOpionIndex = 0
+    
+    private var input: GiftRequestInput?
+    private let giftDetailViewModel = GiftDetailViewModel(dataService: GiftDataService())
+    private let giftRequestViewModel = GiftRequestViewModel(dataService: GiftDataService())
+    var giftIndex = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "기프트 샵"
-        if giftIndex != -1 {
-            self.attemptFetchGiftDetail(with: giftIndex)
-        }
+        self.attemptFetchGiftDetail(with: giftIndex)
+        self.updateUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.collectionView.frame = CGRect(x: optionTitleLabel.left, y: optionTitleLabel.bottom + 16, width: view.frame.size.width - 32, height: applyButton.top - optionTitleLabel.bottom - 32)
+        //print("x: \(optionTitleLabel.left) y:\(optionTitleLabel.bottom + 20) width: \(view.frame.size.width - 32) height: \(applyButton.top - optionTitleLabel.bottom)")
     }
     
     @IBAction func giftApplyButton(_ sender: UIButton) {
-        input = GiftRequestInput(giftIdx: giftIndex, usedClover: 30)
+        guard let clover = self.giftDetailViewModel.getOptionClover(at: self.selectOpionIndex) else {
+            return
+        }
+        input = GiftRequestInput(giftIdx: giftIndex, usedClover: clover)
         guard let input = input else { return }
         attemptFetchGiftRequest(with :input)
     }
     
+    private func updateUI(){
+        self.title = "기프트 샵"
+        self.collectionView.alignment = .left
+        self.collectionView.delegate = self
+        self.collectionView.selectionLimit = 2
+        //self.collectionView.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        self.parentView.addSubview(collectionView)
+    }
+    
+}
+
+extension GiftShopDetailViewController: TTGTextTagCollectionViewDelegate{
+    
+    func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
+        textTagCollectionView.getTagAt(UInt(self.selectOpionIndex)).selected = false
+        textTagCollectionView.reload()
+        self.selectOpionIndex = Int(index)
+        
+    }
+    
+    private func setTag(){
+        guard let optionTagList = self.giftDetailViewModel.optionTagList else {
+            print("ERROR: 옵션 태그로 변환 실패하다!!")
+            return
+        }
+        print(optionTagList)
+        self.collectionView.add(optionTagList)
+        self.collectionView.getTagAt(UInt(selectOpionIndex)).selected = true
+        self.collectionView.reload()
+    }
 }
 
 
@@ -73,6 +120,7 @@ extension GiftShopDetailViewController {
             DispatchQueue.main.async {
                 print("기프트 상세 조회에 성공했습니다 !! ")
                 strongSelf.updateGiftDetailUI()
+                strongSelf.updateAfterUI()
             }
         }
 
@@ -87,6 +135,24 @@ extension GiftShopDetailViewController {
         self.giftNameLabel.text = data.name
         //self.giftContentLabel.text = data.info
         //self.giftRuleLabel.text = data.rule
+    }
+    
+    private func updateAfterUI() {
+        if self.giftDetailViewModel.numOfGiftOption == 0 {
+            print("옵션 없음!!")
+            self.applyButton.isEnabled = false
+            self.applyButton.setTitle("준비중입니다.", for: .normal)
+            self.applyButton.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
+            let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.collectionView.bounds.size.width, height: self.collectionView.bounds.size.height))
+            noDataLabel.text = "해당 기프트의 옵션은 준비중입니다."
+            noDataLabel.font = UIFont(name: "NotoSansCJKkr-Regular", size: 13)
+            noDataLabel.textColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
+            noDataLabel.textAlignment = NSTextAlignment.center
+            self.parentView.addSubview(noDataLabel)
+            noDataLabel.center = self.collectionView.center
+            return
+        }
+        self.setTag()
     }
 }
 

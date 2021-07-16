@@ -167,6 +167,7 @@ extension RegisterViewController {
                 }
                 strongSelf.saveUserInfo(with: data)
                 strongSelf.attemptFetchFCMTokenSend()
+                strongSelf.moveToJoinView()
             }
         }
         self.myProfileViewModel.fetchMyProfile()
@@ -192,6 +193,7 @@ extension RegisterViewController {
                 }
                 if let message = self?.fCMTokenViewModel.failMessage {
                     print("ERROR : 서버에서 알려준 에러는 -> \(message)")
+                    self?.networkFailToExit()
                 }
             }
         }
@@ -202,7 +204,6 @@ extension RegisterViewController {
                     return
                 }
                 print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
-                strongSelf.moveToJoinView()
             }
         }
         

@@ -258,6 +258,7 @@
                         <outlet property="giftNameLabel" destination="u6E-l6-Fq5" id="ski-ao-lGy"/>
                         <outlet property="giftRuleLabel" destination="W9Q-Ev-CHR" id="iRq-7d-04I"/>
                         <outlet property="optionTitleLabel" destination="los-Mr-9ln" id="qlA-4U-ejk"/>
+                        <outlet property="parentView" destination="Ggj-Cg-iNt" id="M5D-TU-Hms"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJV-wR-PDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

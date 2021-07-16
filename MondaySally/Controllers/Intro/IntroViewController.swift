@@ -73,6 +73,7 @@ extension IntroViewController {
                 }
                 print("자동 로그인에 성공했습니다 !! -> 서버에서 보내준 메세지: \(strongSelf.viewModel.message)")
                 strongSelf.attemptFetchFCMTokenSend()
+                strongSelf.moveToMainTabBar()
             }
         }
         self.viewModel.fetchAutoLogin()
@@ -107,7 +108,7 @@ extension IntroViewController {
                     return
                 }
                 print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
-                strongSelf.moveToMainTabBar()
+                //strongSelf.moveToMainTabBar()
             }
         }
         
