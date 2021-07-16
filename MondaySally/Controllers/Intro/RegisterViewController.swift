@@ -11,8 +11,8 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var completeButton: UIButton!
-    let teamCodeViewModel = TeamCodeViewModel(dataService: DataService())
-    let myProfileViewModel = MyProfileViewModel(dataService: DataService())
+    let teamCodeViewModel = TeamCodeViewModel(dataService: AuthDataService())
+    let myProfileViewModel = MyProfileViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

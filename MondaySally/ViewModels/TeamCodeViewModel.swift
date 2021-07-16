@@ -6,7 +6,7 @@
 //
 
 class TeamCodeViewModel {
-    private var dataService: DataService?
+    private var dataService: AuthDataService?
     // MARK: - Properties
     private var teamCodeInfo: TeamCodeInfo? {
         didSet {
@@ -38,7 +38,7 @@ class TeamCodeViewModel {
     }
     
     // MARK: - 생성자
-    init(dataService: DataService) {
+    init(dataService: AuthDataService) {
         self.dataService = dataService
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 class IntroViewController: UIViewController {
     
-    let viewModel = AutoLoginViewModel(dataService: DataService())
+    let viewModel = AutoLoginViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

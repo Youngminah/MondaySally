@@ -7,7 +7,7 @@
 
 
 class GiftDetailViewModel {
-    private var dataService: DataService?
+    private var dataService: GiftDataService?
     // MARK: - Properties
     private var giftDetailInfo: GiftDetailInfo? {
         didSet {
@@ -47,7 +47,7 @@ class GiftDetailViewModel {
     
     
     // MARK: 생성자
-    init(dataService: DataService) {
+    init(dataService: GiftDataService) {
         self.dataService = dataService
     }
     

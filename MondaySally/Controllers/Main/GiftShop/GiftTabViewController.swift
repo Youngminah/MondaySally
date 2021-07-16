@@ -9,7 +9,7 @@ import UIKit
 
 class GiftTabViewController: UIViewController {
 
-    let viewModel = GiftListViewModel(dataService: DataService())
+    let viewModel = GiftListViewModel(dataService: GiftDataService())
     @IBOutlet weak var collectionView: UICollectionView!
 
     

@@ -6,9 +6,9 @@
 //
 
 class FCMDeviceTokenViewModel {
-    private var dataService: DataService?
+    private var dataService: AuthDataService?
     // MARK: - Properties
-    private var deviceTokenResponse: FCMDeviceTokenSaveReponse? {
+    private var deviceTokenResponse: FCMDeviceTokenSaveResponse? {
         didSet {
             self.didFinishFetch?()
         }
@@ -39,7 +39,7 @@ class FCMDeviceTokenViewModel {
     
     
     // MARK: - 생성자
-    init(dataService: DataService) {
+    init(dataService: AuthDataService) {
         self.dataService = dataService
     }
     

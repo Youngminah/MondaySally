@@ -6,7 +6,7 @@
 //
 
 class ResignationViewModel {
-    private var dataService: DataService?
+    private var dataService: AuthDataService?
     // MARK: - Properties
     private var resignationResponse: ResignationRequestResponse? {
         didSet {
@@ -39,7 +39,7 @@ class ResignationViewModel {
     
     
     // MARK: - 생성자
-    init(dataService: DataService) {
+    init(dataService: AuthDataService) {
         self.dataService = dataService
     }
     

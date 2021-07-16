@@ -14,5 +14,7 @@ target 'MondaySally' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
 
+  #킹피셔
+  pod 'Kingfisher', '~> 6.0'
 
 end

@@ -12,7 +12,7 @@ class GiftHistoryViewController: UIViewController {
     @IBOutlet weak var totalHistoryLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let viewModel = GiftHistoryViewModel(dataService: DataService())
+    let viewModel = GiftHistoryViewModel(dataService: GiftDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,7 +15,7 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var companyInfoLabel: UILabel!
     @IBOutlet weak var positionWorkInfoLabel: UILabel!
     
-    let viewModel = MyProfileViewModel(dataService: DataService())
+    let viewModel = MyProfileViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

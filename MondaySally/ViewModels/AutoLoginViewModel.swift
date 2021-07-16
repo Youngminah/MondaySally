@@ -6,7 +6,7 @@
 //
 
 class AutoLoginViewModel {
-    private var dataService: DataService?
+    private var dataService: AuthDataService?
     // MARK: - Properties
     private var autoLoginResponse: AutoLoginResponse? {
         didSet {
@@ -39,7 +39,7 @@ class AutoLoginViewModel {
     
     
     // MARK: - 생성자
-    init(dataService: DataService) {
+    init(dataService: AuthDataService) {
         self.dataService = dataService
     }
     

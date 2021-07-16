@@ -9,7 +9,7 @@ import UIKit
 
 class ResignationViewController: UIViewController {
     
-    let viewModel = ResignationViewModel(dataService: DataService())
+    let viewModel = ResignationViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

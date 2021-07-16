@@ -14,8 +14,8 @@ class GiftShopDetailViewController: UIViewController {
     @IBOutlet weak var giftRuleLabel: UILabel!
     
     var input: GiftRequestInput?
-    let giftDetailViewModel = GiftDetailViewModel(dataService: DataService())
-    let giftRequestViewModel = GiftRequestViewModel(dataService: DataService())
+    let giftDetailViewModel = GiftDetailViewModel(dataService: GiftDataService())
+    let giftRequestViewModel = GiftRequestViewModel(dataService: GiftDataService())
     var giftIndex: Int = -1
     
     override func viewDidLoad() {

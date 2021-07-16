@@ -19,7 +19,7 @@ class ProfileEditViewController: UIViewController{
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
-    let viewModel = EditProfileViewModel(dataService: DataService())
+    let viewModel = EditProfileViewModel(dataService: AuthDataService())
     let customAlert = SallyAlert()
     
     private let storage = Storage.storage().reference()

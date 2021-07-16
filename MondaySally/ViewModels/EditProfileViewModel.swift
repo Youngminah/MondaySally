@@ -6,7 +6,7 @@
 //
 
 class EditProfileViewModel {
-    private var dataService: DataService?
+    private var dataService: AuthDataService?
     // MARK: - Properties
     private var editProfileResponse: EditProfileResponse? {
         didSet {
@@ -40,7 +40,7 @@ class EditProfileViewModel {
     
     
     // MARK: - 생성자
-    init(dataService: DataService) {
+    init(dataService: AuthDataService) {
         self.dataService = dataService
     }
     
