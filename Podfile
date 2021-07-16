@@ -5,16 +5,20 @@ target 'MondaySally' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # 알라모파이어
+  # 네트워크 통신 관련 라이브러리
   pod 'Alamofire', '~> 5.4'
 
-  # 파이어베이스
+  # 파이어베이스 관련 라이브러리
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
 
-  #킹피셔
+  # 이미지처리 관련 라이브러리
   pod 'Kingfisher', '~> 6.0'
+
+  # 태그 컬렉션뷰 라이브러리
+  pod "TTGTagCollectionView"
+
 
 end

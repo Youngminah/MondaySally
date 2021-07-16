@@ -88,6 +88,7 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - TTGTagCollectionView (2.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - Kingfisher (~> 6.0)
+  - TTGTagCollectionView
 
 SPEC REPOS:
   trunk:
@@ -115,6 +117,7 @@ SPEC REPOS:
     - Kingfisher
     - nanopb
     - PromisesObjC
+    - TTGTagCollectionView
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -133,7 +136,8 @@ SPEC CHECKSUMS:
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  TTGTagCollectionView: 29d01ece199c257943ba490e9989734382cda5ae
 
-PODFILE CHECKSUM: f30648fb4c780a5ed3d1efd2b9c5519d4ec2869e
+PODFILE CHECKSUM: 19a3655aeec7b6810a57f499710ffa70767ab8f7
 
 COCOAPODS: 1.10.1

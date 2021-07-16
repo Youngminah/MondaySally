@@ -4,7 +4,6 @@
 //
 //  Created by meng on 2021/07/05.
 //
-
 import UIKit
 
 class GiftShopDetailViewController: UIViewController {
@@ -12,6 +11,8 @@ class GiftShopDetailViewController: UIViewController {
     @IBOutlet weak var giftNameLabel: UILabel!
     @IBOutlet weak var giftContentLabel: UILabel!
     @IBOutlet weak var giftRuleLabel: UILabel!
+    @IBOutlet weak var optionTitleLabel: UILabel!
+    @IBOutlet weak var applyButton: UIButton!
     
     var input: GiftRequestInput?
     let giftDetailViewModel = GiftDetailViewModel(dataService: GiftDataService())
