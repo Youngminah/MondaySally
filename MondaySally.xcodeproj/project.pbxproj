@@ -45,7 +45,7 @@
 		BB5FE5B126963CDF00F2A7A6 /* TeamCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */; };
 		BB5FE5B326963CF200F2A7A6 /* AutoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */; };
 		BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */; };
-		BB5FE5B82696417F00F2A7A6 /* AuthDataService..swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B72696417F00F2A7A6 /* AuthDataService..swift */; };
+		BB5FE5B82696417F00F2A7A6 /* AuthDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */; };
 		BB5FE5BA269705C300F2A7A6 /* AppVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B9269705C300F2A7A6 /* AppVersionResponse.swift */; };
 		BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */; };
 		BB5FE5BE269709D100F2A7A6 /* MyProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BD269709D100F2A7A6 /* MyProfileResponse.swift */; };
@@ -154,7 +154,7 @@
 		BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCodeViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignationViewModel.swift; sourceTree = "<group>"; };
-		BB5FE5B72696417F00F2A7A6 /* AuthDataService..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataService..swift; sourceTree = "<group>"; };
+		BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataService.swift; sourceTree = "<group>"; };
 		BB5FE5B9269705C300F2A7A6 /* AppVersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionResponse.swift; sourceTree = "<group>"; };
 		BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		BB5FE5BD269709D100F2A7A6 /* MyProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResponse.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		BB5FE5B62696412F00F2A7A6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BB5FE5B72696417F00F2A7A6 /* AuthDataService..swift */,
+				BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */,
 				BBEF261726A1F5F900893DD5 /* GiftDataService.swift */,
 			);
 			path = Network;
@@ -735,7 +735,7 @@
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
 				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
-				BB5FE5B82696417F00F2A7A6 /* AuthDataService..swift in Sources */,
+				BB5FE5B82696417F00F2A7A6 /* AuthDataService.swift in Sources */,
 				BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */,
 				BB5FE5AF269637AB00F2A7A6 /* ResignationRequestResponse.swift in Sources */,
 				BB4CD4A926A07E1300BD1E91 /* GiftListResponse.swift in Sources */,

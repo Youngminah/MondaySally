@@ -47,7 +47,7 @@ class TeamCodeViewModel {
             if let isSuccess = teamCodeResponse?.isSuccess {
                 if !isSuccess {
                     self?.failMessage = teamCodeResponse?.message
-                    self?.failCode = response?.code
+                    self?.failCode = teamCodeResponse?.code
                     self?.isLoading = false
                     return
                 }

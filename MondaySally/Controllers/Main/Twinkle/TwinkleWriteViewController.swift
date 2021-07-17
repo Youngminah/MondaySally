@@ -10,18 +10,31 @@ import UIKit
 class TwinkleWriteViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
-    var photoTag: Int = 0
-    
-    @IBOutlet weak var photoButtonFirst: UIButton!
-    @IBOutlet weak var photoButtonSecond: UIButton!
-    @IBOutlet weak var photoButtonThird: UIButton!
-    @IBOutlet weak var receiptPhotoButton: UIButton!
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
+    
+    //이미지 추가 버튼
+    @IBOutlet weak var imageFirstButton: UIButton!
+    @IBOutlet weak var imageSecondButton: UIButton!
+    @IBOutlet weak var imageThirdButton: UIButton!
+    @IBOutlet weak var receiptImageButton: UIButton!
+    
+    //삭제버튼
+    @IBOutlet weak var deleteFirstButton: UIButton!
+    @IBOutlet weak var deleteSecondButton: UIButton!
+    @IBOutlet weak var deleteThirdButton: UIButton!
+    @IBOutlet weak var receiptDeleteButton: UIButton!
+    
+    private var imageButtonList = [UIButton]()
+    private var receiptImage = UIImage()
+    private var photoTag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(postButtonTap))
         self.updateUI()
+        imageButtonList = [self.imageFirstButton, self.imageSecondButton, self.imageThirdButton, self.receiptImageButton]
         //키보드보일때, 숨길때 일어나는 뷰위치 조정.
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -30,16 +43,44 @@ class TwinkleWriteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.title = ""
     }
     
-    @IBAction func photoSelectButtonTap(_ sender: UIButton) {
+    @IBAction func selectImageButtonTap(_ sender: UIButton) {
         let vc = UIImagePickerController()
         self.photoTag = sender.tag
         vc.sourceType = .photoLibrary
         vc.delegate = self
         vc.allowsEditing = true
         present(vc, animated: true)
+        
+    }
+    
+    @IBAction func deleteButtonTap(_ sender: UIButton) {
+        sender.isHidden = true
+        self.setDefaultImage(at: sender.tag)
+    }
+    
+    var isReceiptImagePost: Bool {
+        return self.receiptImageButton.isSelected
+    }
+    
+    @objc func postButtonTap() {
+        
+        let imageList = self.willPostImageList()
+        if  imageList.count == 0 {
+            self.showSallyNotationAlert(with: "클로버 사용 증명사진을\n올려주세요.")
+            return
+        }
+        
+        if !isReceiptImagePost {
+            self.showSallyNotationAlert(with: "영수증 증명사진을\n올려주세요.")
+            return
+        }
+        
+        if textView.text.count == 0 {
+            self.showSallyNotationAlert(with: "트윙클 내용을\n올려주세요.")
+            return
+        }
     }
     
     private func updateUI(){
@@ -50,6 +91,14 @@ class TwinkleWriteViewController: UIViewController {
         self.textView.textContainer.lineFragmentPadding = 17;
         self.textView.textContainerInset = UIEdgeInsets(top: 17, left: 0, bottom: 0, right: 0);
         self.textView.delegate = self
+        self.imageFirstButton.layer.cornerRadius = 4
+        self.imageSecondButton.layer.cornerRadius = 4
+        self.imageThirdButton.layer.cornerRadius = 4
+        self.receiptImageButton.layer.cornerRadius = 4
+        self.deleteFirstButton.isHidden = true
+        self.deleteSecondButton.isHidden = true
+        self.deleteThirdButton.isHidden = true
+        self.receiptDeleteButton.isHidden = true
         placeholderSetting()
     }
 }
@@ -128,27 +177,69 @@ extension TwinkleWriteViewController: UITextViewDelegate {
     }
 }
 
+
+//버튼 이미지 관련 함수
 extension TwinkleWriteViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            if photoTag == 0 {
-                self.photoButtonFirst.setImage(image, for: .normal)
-            } else if photoTag == 1{
-                self.photoButtonSecond.setImage(image, for: .normal)
-            }else if photoTag == 2 {
-                self.photoButtonThird.setImage(image, for: .normal)
-            }else {
-                self.receiptPhotoButton.setImage(image, for: .normal)
-            }
-            
+            self.setSelectedImage(with: image, at: photoTag)
         }
-        //self.photoSelectButton.imageView?.image = image
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    private func setSelectedImage(with image:UIImage, at tag: Int){
+        if tag == 0 {
+            self.imageFirstButton.setImage(image, for: .normal)
+            self.imageFirstButton.isSelected = true
+            self.deleteFirstButton.isHidden = false
+        }else if tag == 1 {
+            self.imageSecondButton.setImage(image, for: .normal)
+            self.imageSecondButton.isSelected = true
+            self.deleteSecondButton.isHidden = false
+        }else if tag == 2 {
+            self.imageThirdButton.setImage(image, for: .normal)
+            self.imageThirdButton.isSelected = true
+            self.deleteThirdButton.isHidden = false
+        }else {
+            self.receiptImageButton.setImage(image, for: .normal)
+            self.receiptImageButton.isSelected = true
+            self.receiptDeleteButton.isHidden = false
+        }
+    }
+    
+    private func setDefaultImage(at tag: Int){
+        if tag == 0 {
+            self.imageFirstButton.setImage(#imageLiteral(resourceName: "buttonPhotoAdd"), for: .normal)
+            self.imageFirstButton.isSelected = false
+        }else if tag == 1 {
+            self.imageSecondButton.setImage(#imageLiteral(resourceName: "buttonPhotoAdd"), for: .normal)
+            self.imageSecondButton.isSelected = false
+        }else if tag == 2 {
+            self.imageThirdButton.setImage(#imageLiteral(resourceName: "buttonPhotoAdd"), for: .normal)
+            self.imageThirdButton.isSelected = false
+        }else {
+            self.receiptImageButton.setImage(#imageLiteral(resourceName: "buttonPhotoAdd"), for: .normal)
+            self.receiptImageButton.isSelected = false
+        }
+    }
+    
+    private func willPostImageList() -> [UIImage] {
+        var cloverImageList = [UIImage]()
+        for button in imageButtonList {
+            if button.isSelected {
+                guard let image = button.currentImage else {
+                    print("이미지 뜯기 실패")
+                    return []
+                }
+                cloverImageList.append(image)
+            }
+        }
+        return cloverImageList
     }
     
 }

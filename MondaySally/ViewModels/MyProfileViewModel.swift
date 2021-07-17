@@ -44,7 +44,7 @@ class MyProfileViewModel {
             if let isSuccess = myProfileResponse?.isSuccess {
                 if !isSuccess {
                     self?.failMessage = myProfileResponse?.message
-                    self?.failCode = response?.code
+                    self?.failCode = myProfileResponse?.code
                     self?.isLoading = false
                     return
                 }
