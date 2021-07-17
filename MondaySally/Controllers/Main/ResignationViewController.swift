@@ -9,7 +9,7 @@ import UIKit
 
 class ResignationViewController: UIViewController {
     
-    let viewModel = ResignationViewModel(dataService: AuthDataService())
+    private let viewModel = ResignationViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +18,6 @@ class ResignationViewController: UIViewController {
     
     @IBAction func resignButtonTap(_ sender: UIButton) {
         self.attemptFetchResignation()
-    }
-    
-    private func moveToIntroView(){
-        guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "IntroView") as? IntroViewController else{
-            return
-        }
-        self.changeRootViewController(vc)
     }
     
 }
@@ -63,9 +56,8 @@ extension ResignationViewController {
             DispatchQueue.main.async {
                 print("퇴사에 성공했습니다 !! -> \(strongSelf.viewModel.message)")
                 //삭제할 값들 추가
-                JwtToken.jwt = ""
-                UserDefaults.standard.removeObject(forKey: "JwtToken")
-                strongSelf.moveToIntroView()
+                strongSelf.removeAllUserInfos()
+                strongSelf.changeRootViewToIntro()
             }
         }
         

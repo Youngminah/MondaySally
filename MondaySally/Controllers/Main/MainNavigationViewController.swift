@@ -17,10 +17,5 @@ class MainNavigationViewController: UINavigationController {
         self.navigationBar.backIndicatorImage = UIImage(named: "icChevronLeftGray")
         self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icChevronLeftGray")
         self.navigationBar.layoutIfNeeded()
-        
-        
     }
-    
-
-
 }

@@ -19,7 +19,7 @@ class ProfileEditViewController: UIViewController{
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
-    let viewModel = EditProfileViewModel(dataService: AuthDataService())
+    private let viewModel = EditProfileViewModel(dataService: AuthDataService())
     
     private let storage = Storage.storage().reference()
     
@@ -99,11 +99,6 @@ class ProfileEditViewController: UIViewController{
         UserDefaults.standard.setValue(input.imgUrl, forKey: "imageUrl")
         UserDefaults.standard.setValue(input.phoneNumber, forKey: "phoneNumber")
         UserDefaults.standard.setValue(input.bankAccount, forKey: "account")
-        UserInfo.nickName = input.nickname
-        UserInfo.email = input.email
-        UserInfo.imageUrl = input.imgUrl
-        UserInfo.phoneNumber = input.phoneNumber
-        UserInfo.account = input.bankAccount
     }
     
     private func updateUI(){

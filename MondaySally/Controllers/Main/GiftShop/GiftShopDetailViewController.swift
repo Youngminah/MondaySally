@@ -37,7 +37,10 @@ class GiftShopDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.collectionView.frame = CGRect(x: optionTitleLabel.left, y: optionTitleLabel.bottom + 16, width: view.frame.size.width - 32, height: applyButton.top - optionTitleLabel.bottom - 32)
+        self.collectionView.frame = CGRect(x: optionTitleLabel.left,
+                                           y: optionTitleLabel.bottom + 16,
+                                           width: view.frame.size.width - 32,
+                                           height: applyButton.top - optionTitleLabel.bottom - 32)
         //print("x: \(optionTitleLabel.left) y:\(optionTitleLabel.bottom + 20) width: \(view.frame.size.width - 32) height: \(applyButton.top - optionTitleLabel.bottom)")
     }
     
@@ -55,19 +58,16 @@ class GiftShopDetailViewController: UIViewController {
         self.collectionView.alignment = .left
         self.collectionView.delegate = self
         self.collectionView.selectionLimit = 2
-        //self.collectionView.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         self.parentView.addSubview(collectionView)
     }
     
 }
 
 extension GiftShopDetailViewController: TTGTextTagCollectionViewDelegate{
-    
     func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
         textTagCollectionView.getTagAt(UInt(self.selectOpionIndex)).selected = false
         textTagCollectionView.reload()
         self.selectOpionIndex = Int(index)
-        
     }
     
     private func setTag(){
@@ -93,7 +93,6 @@ extension GiftShopDetailViewController {
                 let _ = strongSelf.giftDetailViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
-
         self.giftDetailViewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
@@ -107,10 +106,22 @@ extension GiftShopDetailViewController {
                 }
             }
         }
-        
         self.giftDetailViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
+                //JWT 관련 문제로 오류
+                if strongSelf.giftDetailViewModel.failCode != 404 {
+                    strongSelf.showSallyNotationAlert(with: "로그인 정보를 찾을 수 없어\n로그아웃 합니다.") {
+                        DispatchQueue.main.async {
+                            strongSelf.removeAllUserInfos()
+                            strongSelf.changeRootViewToIntro()
+                        }
+                    }
+                }
+                // 서버 문제로 오류
+                else {
+                    strongSelf.networkFailToExit()
+                }
             }
         }
 
@@ -122,7 +133,6 @@ extension GiftShopDetailViewController {
                 strongSelf.updateAfterUI()
             }
         }
-
         self.giftDetailViewModel.fetchGiftDetail(with: index)
     }
     
@@ -158,6 +168,7 @@ extension GiftShopDetailViewController {
 
 // MARK: 기프트 신청 API
 extension GiftShopDetailViewController {
+    
     private func attemptFetchGiftRequest(with input: GiftRequestInput) {
         self.giftRequestViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
@@ -165,7 +176,6 @@ extension GiftShopDetailViewController {
                 let _ = strongSelf.giftRequestViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
-
         self.giftRequestViewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
@@ -178,14 +188,15 @@ extension GiftShopDetailViewController {
                 }
             }
         }
-        
         self.giftRequestViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                SallyAlert.shared.showAlert(with: "클로버가 부족합니다.", message: "")
+                //Code 353 - 클로버 부족
+                if strongSelf.giftRequestViewModel.failCode == 353 {
+                    strongSelf.showSallyNotationAlert(with: "클로버가 부족합니다.", complition: nil)
+                }
             }
         }
-
         self.giftRequestViewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
@@ -193,7 +204,6 @@ extension GiftShopDetailViewController {
                 strongSelf.moveToCompletedView()
             }
         }
-
         self.giftRequestViewModel.fetchGiftRequest(with: input)
     }
     

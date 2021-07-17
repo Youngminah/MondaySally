@@ -8,6 +8,7 @@
 import UIKit
 
 class GiftHistoryHeader: UICollectionReusableView {
+    
     @IBOutlet weak var totalGiftCountLabel: UILabel!
     
 }

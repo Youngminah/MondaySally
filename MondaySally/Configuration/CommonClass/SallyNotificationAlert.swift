@@ -7,8 +7,8 @@
 
 import UIKit
 
-open class SallyAlert {
-    static let shared = SallyAlert()
+open class SallyNotificationAlert {
+    static let shared = SallyNotificationAlert()
     var didDismiss: (() -> ())?
     
     private let backgroundView: UIView = {
@@ -64,7 +64,6 @@ open class SallyAlert {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.backgroundView.frame = window.frame
         self.backgroundView.center = window.center
-        
         self.alertView.addSubview(titleLabel)
         self.alertView.addSubview(button)
         UIApplication.shared.windows.first?.addSubview(self.backgroundView)

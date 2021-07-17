@@ -52,8 +52,7 @@
 		BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */; };
 		BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */; };
 		BB5FE5C426982FE700F2A7A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */; };
-		BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */; };
-		BB5FE5CE269B7C2400F2A7A6 /* SallyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */; };
+		BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */; };
 		BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */; };
 		BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */; };
 		BB5FE5D7269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift */; };
@@ -161,8 +160,7 @@
 		BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyAlert.swift; sourceTree = "<group>"; };
+		BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyNotificationAlert.swift; sourceTree = "<group>"; };
 		BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShopHeader.swift; sourceTree = "<group>"; };
 		BB5FE5D3269DB06000F2A7A6 /* MondaySally.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MondaySally.entitlements; sourceTree = "<group>"; };
 		BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 			children = (
 				BBEB8328268B0D6100B9CA54 /* JwtToken.swift */,
 				BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */,
-				BB5FE5C52698519F00F2A7A6 /* UserInfo.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -525,7 +522,7 @@
 			children = (
 				BBEB8316268B049D00B9CA54 /* Device.swift */,
 				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
-				BB5FE5CD269B7C2400F2A7A6 /* SallyAlert.swift */,
+				BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -669,7 +666,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB5FE5C62698519F00F2A7A6 /* UserInfo.swift in Sources */,
 				BB5FE5B126963CDF00F2A7A6 /* TeamCodeViewModel.swift in Sources */,
 				BB5FE5BE269709D100F2A7A6 /* MyProfileResponse.swift in Sources */,
 				BBEB8327268B0B5700B9CA54 /* BaseViewController.swift in Sources */,
@@ -693,7 +689,7 @@
 				BB4CD4B126A0879E00BD1E91 /* GiftRequestInput.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
 				BB5FE5972692EBC200F2A7A6 /* TwinkleRankingCell.swift in Sources */,
-				BB5FE5CE269B7C2400F2A7A6 /* SallyAlert.swift in Sources */,
+				BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */,
 				BBA56EF4268F6ACC000FDFC0 /* MyPageViewController.swift in Sources */,
 				BB5FE5A92695EBF300F2A7A6 /* UITabBar.swift in Sources */,
 				BB4CD4AF26A081F900BD1E91 /* GiftDetailResponse.swift in Sources */,

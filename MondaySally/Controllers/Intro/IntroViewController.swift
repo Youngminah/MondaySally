@@ -9,16 +9,12 @@ import UIKit
 
 class IntroViewController: UIViewController {
     
-    let viewModel = AutoLoginViewModel(dataService: AuthDataService())
-    let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
+    private let viewModel = AutoLoginViewModel(dataService: AuthDataService())
+    private let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("토큰 현재 값 \(JwtToken.jwt)")
-        if JwtToken.jwt == "" {
-            return
-        }
-        self.attemptFetchAutoLogin()
+        self.checkAutoLogin()
     }
     
     @IBAction func directStartButtonTap(_ sender: UIButton) {
@@ -29,51 +25,48 @@ class IntroViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    private func moveToMainTabBar(){
-        guard let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MainNavigationView") as? MainNavigationViewController else{
-            return
-        }
-        self.changeRootViewController(mainTabBarController)
+    //JWT있는지 확인
+    private func checkAutoLogin(){
+        print("기계에 저장된 JWT토큰 값 \(JwtToken.jwt)")
+        if JwtToken.jwt == "" { return } //토큰이 없으면 화면 그대로
+        self.attemptFetchAutoLogin() //토큰이 있으면 자동로그인 API 호출
     }
-
 }
 
 
 // MARK: - Networking
 extension IntroViewController {
     
-    //유요한 팀코드로 jwt생성 하는 API 호출 함수
+    //MARK: 자동로그인 API 호출 함수
     private func attemptFetchAutoLogin() {
         
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
+                guard let strongSelf = self else { return }
                 let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
         self.viewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                if let error = self?.viewModel.error {
-                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
-                    self?.networkFailToExit()
+                if let error = strongSelf.viewModel.error {
+                    print("ERROR: 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
                 }
                 
                 if let message = self?.viewModel.failMessage {
-                    print("서버에서 알려준 에러는 -> \(message)")
+                    print("ERROR: 서버에서 알려준 에러는 -> \(message)")
                 }
             }
         }
+        
         self.viewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                guard let strongSelf = self else {
-                    return
-                }
-                print("자동 로그인에 성공했습니다 !! -> 서버에서 보내준 메세지: \(strongSelf.viewModel.message)")
+                print("SUCCESS: 자동 로그인에 성공했습니다 !! -> 서버에서 보내준 메세지: \(strongSelf.viewModel.message)")
                 strongSelf.attemptFetchFCMTokenSend()
-                strongSelf.moveToMainTabBar()
+                strongSelf.changeRootViewToMainTabBar()
             }
         }
         self.viewModel.fetchAutoLogin()
@@ -82,31 +75,28 @@ extension IntroViewController {
     //MARK: FCM 디바이스 토큰 서버에 전달 API 함수
     private func attemptFetchFCMTokenSend() {
         self.fCMTokenViewModel.updateLoadingStatus = { [weak self] () in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 let _ = strongSelf.fCMTokenViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
         
         self.fCMTokenViewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 if let error = self?.fCMTokenViewModel.error {
                     print("ERROR : 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
-                    self?.networkFailToExit()
+                    strongSelf.networkFailToExit()
                 }
-                if let message = self?.fCMTokenViewModel.failMessage {
+                if let message = strongSelf.fCMTokenViewModel.failMessage {
                     print("ERROR : 서버에서 알려준 에러는 -> \(message)")
                 }
             }
         }
         
         self.fCMTokenViewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                guard let strongSelf = self else {
-                    return
-                }
                 print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
                 //strongSelf.moveToMainTabBar()
             }

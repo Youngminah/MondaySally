@@ -11,14 +11,13 @@ class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupStyle()
+        self.setupStyle()
     }
     
-    func setupStyle() {
+    private func setupStyle() {
         UITabBar.clearShadow()
         //tabBar.layer.applyShadow(color: .gray, alpha: 0.1, x: 0, y: 0, blur: 20)
     }
-    
 }
 
 

@@ -13,7 +13,7 @@ class OnBoardingViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var startButton: UIButton!
     
-    let infoViewModel = OnBoardingViewModel()
+    private let infoViewModel = OnBoardingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +23,12 @@ class OnBoardingViewController: UIViewController {
     }
     
     @IBAction func startButtonTab(_ sender: UIButton) {
-        guard let registerVC = self.storyboard?.instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
-            return
-        }
-        if let window = UIApplication.shared.windows.first {
-            window.rootViewController = registerVC
-            UIView.transition(with: window, duration: 1.0, options: .transitionFlipFromRight, animations: nil)
-        } else {
-            registerVC.modalPresentationStyle = .overFullScreen
-            self.present(registerVC, animated: true, completion: nil)
-        }
-        
+        guard let registerVC = self.storyboard?.instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{ return }
+        registerVC.modalPresentationStyle = .overFullScreen
+        self.present(registerVC, animated: true, completion: nil)
     }
     
+    //스크롤 뷰안에 이미지 슬라이딩 코드로 작성한 것
     private func addContentScrollView() {
         //MARK:  이 줄이 없다면 오토레이아웃이 맞지 않는다!
         scrollView.frame = view.bounds
@@ -89,6 +82,7 @@ class OnBoardingViewController: UIViewController {
 
 extension OnBoardingViewController: UIScrollViewDelegate {
     
+    //스크롤 할 때 일어나는 일
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let value = targetContentOffset.pointee.x/scrollView.frame.size.width
         let currentPageNumber = Int(value)
@@ -96,10 +90,12 @@ extension OnBoardingViewController: UIScrollViewDelegate {
         setButtonTitle(currentPage: currentPageNumber)
     }
     
+    //페이지 컨트롤 표시
     private func setPageControlSelectedPage(currentPage: Int){
         self.pageControl.currentPage = currentPage
     }
     
+    //마지막 사진 스크롤시 버튼 문구 '시작하기'로 바꾸기
     private func setButtonTitle(currentPage: Int){
         if currentPage == 2 {
             self.startButton.setTitle("시작하기", for: .normal)

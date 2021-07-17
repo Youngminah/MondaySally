@@ -11,9 +11,9 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var completeButton: UIButton!
-    let teamCodeViewModel = TeamCodeViewModel(dataService: AuthDataService())
-    let myProfileViewModel = MyProfileViewModel(dataService: AuthDataService())
-    let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
+    private let teamCodeViewModel = TeamCodeViewModel(dataService: AuthDataService())
+    private let myProfileViewModel = MyProfileViewModel(dataService: AuthDataService())
+    private let fCMTokenViewModel = FCMDeviceTokenViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,16 +76,6 @@ class RegisterViewController: UIViewController {
         UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
         UserDefaults.standard.setValue("\(data.workingYear ?? 0)", forKey: "workingPeriod")
         UserDefaults.standard.setValue(data.companyName, forKey: "company")
-        UserInfo.nickName = data.nickname
-        UserInfo.email = data.email ?? ""
-        UserInfo.imageUrl = data.imgUrl ?? ""
-        UserInfo.phoneNumber = data.phoneNumber ?? ""
-        UserInfo.account = data.bankAccount ?? ""
-        UserInfo.department = data.department ?? ""
-        UserInfo.position = data.position ?? ""
-        UserInfo.gender = data.gender ?? ""
-        UserInfo.phoneNumber = data.phoneNumber ?? ""
-        UserInfo.workingPeriod = "\(data.workingYear ?? 0)"
     }
 }
 

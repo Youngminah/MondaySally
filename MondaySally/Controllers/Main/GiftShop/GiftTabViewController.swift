@@ -9,9 +9,9 @@ import UIKit
 
 class GiftTabViewController: UIViewController {
 
-    let viewModel = GiftListViewModel(dataService: GiftDataService())
     @IBOutlet weak var collectionView: UICollectionView!
 
+    private let viewModel = GiftListViewModel(dataService: GiftDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

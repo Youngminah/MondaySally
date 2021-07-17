@@ -14,12 +14,11 @@ class RegisterNavigationViewController: UINavigationController {
         self.navigationBar.applyFontAndSize()
         self.setupStyle()
         self.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        //self.navigationBar.shadowImage = UIImage()
         self.navigationBar.layoutIfNeeded()
 
     }
     
-    func setupStyle() {
+    private func setupStyle() {
         UINavigationBar.clearShadow()
         self.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
     }

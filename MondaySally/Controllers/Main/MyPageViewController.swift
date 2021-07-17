@@ -15,7 +15,7 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var companyInfoLabel: UILabel!
     @IBOutlet weak var positionWorkInfoLabel: UILabel!
     
-    let viewModel = MyProfileViewModel(dataService: AuthDataService())
+    private let viewModel = MyProfileViewModel(dataService: AuthDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +36,10 @@ class MyPageViewController: UIViewController {
     
     private func updateProfileUI(){
         //strongSelf.profileImage.image =
-        self.nameLabel.text = UserInfo.nickName
-        self.companyInfoLabel.text = "\(UserInfo.company) \(UserInfo.department)"
-        self.positionWorkInfoLabel.text = "\(UserInfo.position) | \(UserInfo.workingPeriod )"
-        self.emailLabel.text = UserInfo.email
+        self.nameLabel.text = UserDefaults.standard.string(forKey: "nickName")
+        self.companyInfoLabel.text = "\(String(describing: UserDefaults.standard.string(forKey: "company"))) \(String(describing: UserDefaults.standard.string(forKey: "department")))"
+        self.positionWorkInfoLabel.text = "\(String(describing: UserDefaults.standard.string(forKey: "position"))) | \(String(describing: UserDefaults.standard.string(forKey: "workingPeriod")) )"
+        self.emailLabel.text = UserDefaults.standard.string(forKey: "email")
     }
     
 }
