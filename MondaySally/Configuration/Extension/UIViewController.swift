@@ -75,6 +75,21 @@ extension UIViewController {
         IndicatorView.shared.dismiss()
     }
     
+    // MARK: 인디케이터 표시
+    func showSallyNotationAlert(with title: String , complition: @escaping () -> ()) {
+        SallyAlert.shared.showAlert(with: title, message: "")
+        SallyAlert.shared.didDismiss = {
+            complition()
+        }
+    }
+    
+    
+    @objc func dismissAlert() {
+        SallyAlert.shared.dismissAlert()
+    }
+    
+    
+    
     func networkFailToExit(){
         let alert = UIAlertController(title: "서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.", message: .none, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in

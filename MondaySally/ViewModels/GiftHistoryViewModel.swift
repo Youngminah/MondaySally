@@ -14,36 +14,24 @@ class GiftHistoryViewModel {
         }
     }
     
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
+    var error: Error? { didSet { self.showAlertClosure?() } }
+    var failMessage: String? { didSet { self.showAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
+    var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
     
-    var failMessage: String? {
-        didSet { self.showAlertClosure?() }
-    }
-    
-    var failCode: Int? {
-        didSet { self.logOutAlertClosure?() }
-    }
-    
-    var isLoading: Bool = false {
-        didSet { self.updateLoadingStatus?() }
+    //MARK: 클로져
+    var showAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
+    var updateLoadingStatus: (() -> ())?
+    var didFinishFetch: (() -> ())?
+
+    // MARK: 생성자
+    init(dataService: GiftDataService) {
+        self.dataService = dataService
     }
     
     var numOfGiftLogInfo: Int {
         return myGiftLogInfo.count
-    }
-    
-    //MARK: 클로져
-    var showAlertClosure: (() -> ())?
-    var logOutAlertClosure: (() -> ())?
-    var updateLoadingStatus: (() -> ())?
-    var didFinishFetch: (() -> ())?
-    
-    
-    // MARK: 생성자
-    init(dataService: GiftDataService) {
-        self.dataService = dataService
     }
     
     func myGiftLogInfo(at index: Int) -> MyGiftLogInfo?{

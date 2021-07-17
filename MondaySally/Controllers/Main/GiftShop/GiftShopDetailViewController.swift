@@ -108,10 +108,9 @@ extension GiftShopDetailViewController {
             }
         }
         
-        self.giftDetailViewModel.logOutAlertClosure = { [weak self] () in
+        self.giftDetailViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-
             }
         }
 
@@ -171,7 +170,7 @@ extension GiftShopDetailViewController {
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 if let error = strongSelf.giftRequestViewModel.error {
-                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
                     strongSelf.networkFailToExit()
                 }
                 if let message = strongSelf.giftRequestViewModel.failMessage {
@@ -180,10 +179,10 @@ extension GiftShopDetailViewController {
             }
         }
         
-        self.giftRequestViewModel.logOutAlertClosure = { [weak self] () in
+        self.giftRequestViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-
+                SallyAlert.shared.showAlert(with: "클로버가 부족합니다.", message: "")
             }
         }
 

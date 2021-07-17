@@ -19,14 +19,14 @@ class GiftDetailViewModel {
     
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
-    var failCode: Int? { didSet { self.logOutAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
     var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
     
     var getGiftInfo: GiftDetailInfo? { return giftDetailInfo }
 
     //MARK: 클로져
     var showAlertClosure: (() -> ())?
-    var logOutAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     

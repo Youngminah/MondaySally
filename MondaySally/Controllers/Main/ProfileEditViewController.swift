@@ -20,7 +20,6 @@ class ProfileEditViewController: UIViewController{
     @IBOutlet weak var contentView: UIView!
     
     let viewModel = EditProfileViewModel(dataService: AuthDataService())
-    let customAlert = SallyAlert()
     
     private let storage = Storage.storage().reference()
     
@@ -50,9 +49,12 @@ class ProfileEditViewController: UIViewController{
         guard let phoneNumber = phoneNumberTextField.text else { return }
         guard let account = accountTextField.text else { return }
         guard let email = emailTextField.text else { return }
-        guard let photo = photoSelectButton.imageView?.image else {
+        if !photoSelectButton.isHighlighted {
             let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
             self.attemptFetchEditProfile(with: input)
+            return
+        }
+        guard let photo = photoSelectButton.imageView?.image else {
             return
         }
         guard let imageData = photo.pngData() else {
@@ -80,14 +82,9 @@ class ProfileEditViewController: UIViewController{
     }
     
     private func editSuccessSallyAlertPresent(){
-        customAlert.showAlert(with: "프로필 수정이 완료되었습니다.", message: "")
-        self.customAlert.didDismiss = {
+        self.showSallyNotationAlert(with: "프로필 수정이\n완료되었습니다.") {
             self.navigationController?.popViewController(animated: true)
         }
-    }
-    
-    @objc func dismissAlert() {
-        customAlert.dismissAlert()
     }
     
     private func editFailAlertPresent(with message: String){
@@ -143,6 +140,7 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigat
             return
         }
         self.photoSelectButton.setImage(image, for: .normal)
+        self.photoSelectButton.isHighlighted = true
         picker.dismiss(animated: true, completion: nil)
     }
     

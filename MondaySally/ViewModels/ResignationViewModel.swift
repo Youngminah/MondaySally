@@ -13,19 +13,14 @@ class ResignationViewModel {
             self.didFinishFetch?()
         }
     }
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
+    var error: Error? { didSet { self.showAlertClosure?() } }
+    var failMessage: String? { didSet { self.showAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
+    var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
     
-    var failMessage: String? {
-        didSet { self.showAlertClosure?() }
-    }
-    
-    var isLoading: Bool = false {
-        didSet { self.updateLoadingStatus?() }
-    }
-    
+    //MARK: 클로져
     var showAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     

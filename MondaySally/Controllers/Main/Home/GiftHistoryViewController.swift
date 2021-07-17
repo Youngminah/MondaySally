@@ -85,7 +85,7 @@ extension GiftHistoryViewController {
             }
         }
         
-        self.viewModel.logOutAlertClosure = { [weak self] () in
+        self.viewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
 

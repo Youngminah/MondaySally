@@ -14,23 +14,14 @@ class MyProfileViewModel {
         }
     }
     
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
+    var error: Error? { didSet { self.showAlertClosure?() } }
+    var failMessage: String? { didSet { self.showAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
+    var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
     
-    var failMessage: String? {
-        didSet { self.showAlertClosure?() }
-    }
-    
-    var isLoading: Bool = false {
-        didSet { self.updateLoadingStatus?() }
-    }
-    
-    var getMyProfileInfo: MyProfileInfo? {
-        return myProfileInfo
-    }
-    
+    //MARK: 클로져
     var showAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
@@ -38,6 +29,10 @@ class MyProfileViewModel {
     // MARK: - 생성자
     init(dataService: AuthDataService) {
         self.dataService = dataService
+    }
+    
+    var getMyProfileInfo: MyProfileInfo? {
+        return myProfileInfo
     }
     
     func fetchMyProfile(){

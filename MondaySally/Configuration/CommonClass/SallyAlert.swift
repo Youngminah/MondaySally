@@ -8,7 +8,7 @@
 import UIKit
 
 open class SallyAlert {
-    
+    static let shared = SallyAlert()
     var didDismiss: (() -> ())?
     
     private let backgroundView: UIView = {
@@ -59,22 +59,25 @@ open class SallyAlert {
     
     private var myTargetView: UIView?
     
-    open func showAlert(with title: String, message: String) {
+    func showAlert(with title: String, message: String) {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
+        self.backgroundView.frame = window.frame
+        self.backgroundView.center = window.center
         
-        backgroundView.frame = window.bounds
+        self.alertView.addSubview(titleLabel)
+        self.alertView.addSubview(button)
         UIApplication.shared.windows.first?.addSubview(self.backgroundView)
         UIApplication.shared.windows.first?.addSubview(self.imageView)
         UIApplication.shared.windows.first?.addSubview(self.alertView)
         
         self.imageView.frame = CGRect(x: (window.frame.size.width - 100)/2, y: window.frame.midY - 125, width: 100, height: 50)
-        self.alertView.frame = CGRect(x: 60, y: 00, width: window.frame.size.width - 120, height: 150)
-        self.alertView.center = window.center
+        self.alertView.frame = CGRect(x: 30, y: 0, width: window.frame.size.width - 120, height: 150)
+        self.alertView.center = backgroundView.center
+
+        self.titleLabel.frame = CGRect(x:0, y:0, width: alertView.frame.size.width, height: 100)
+        self.titleLabel.text = title
         
-        titleLabel.frame = CGRect(x:0, y:0, width: alertView.frame.size.width, height: 100)
-        titleLabel.text = title
-        self.alertView.addSubview(titleLabel)
         
 //        messageLabel = UILabel(frame: CGRect(x:0, y:80, width: alertView.frame.size.width, height: 170))
 //        messageLabel.text = message
@@ -82,7 +85,6 @@ open class SallyAlert {
         
         button.frame = CGRect(x:0, y:alertView.frame.size.height - 50, width: alertView.frame.size.width, height: 50)
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
-        self.alertView.addSubview(button)
         
         let multipleValue = CGFloat(0.7)
         alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
@@ -102,7 +104,6 @@ open class SallyAlert {
     }
     
     @objc open func dismissAlert(){
-
         UIView.animate(withDuration: 0.1, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
             let multipleValue = CGFloat(0.7)
@@ -110,24 +111,14 @@ open class SallyAlert {
             self.imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
             self.alertView.alpha = 0
             self.imageView.alpha = 0
-        } , completion: { done in
-            if done {
-                UIView.animate(withDuration: 0.25, animations: {[weak self] in
-                    guard let self = self else { return print("self 뜯기 문제!") }
-                    self.backgroundView.alpha = 0
-                }, completion: { [weak self] done in
-                    guard let self = self else { return print("self 뜯기 문제!") }
-                    if done {
-                        self.imageView.removeFromSuperview()
-                        self.alertView.removeFromSuperview()
-                        self.backgroundView.removeFromSuperview()
-                        self.didDismiss?()
-                        
-                    }
-                    
-                })
-            }
-            
+        }, completion: { [weak self] _ in
+            guard let self = self else { return print("self 뜯기 문제!") }
+            self.alertView.transform = CGAffineTransform.identity
+            self.imageView.transform = CGAffineTransform.identity
+            self.didDismiss?()
+            self.imageView.removeFromSuperview()
+            self.alertView.removeFromSuperview()
+            self.backgroundView.removeFromSuperview()
         })
     }
     

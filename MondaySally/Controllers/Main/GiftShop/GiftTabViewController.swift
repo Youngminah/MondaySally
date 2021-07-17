@@ -112,7 +112,7 @@ extension GiftTabViewController {
         }
         
         //jwt 토큰에 문제가 있을 경우 로그아웃 시켜야함.
-        self.viewModel.logOutAlertClosure = { [weak self] () in
+        self.viewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else {
                 return
             }
