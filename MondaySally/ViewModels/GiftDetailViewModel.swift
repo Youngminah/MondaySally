@@ -9,20 +9,18 @@ import TTGTagCollectionView
 import UIKit
 
 class GiftDetailViewModel {
-    private var dataService: GiftDataService?
-    // MARK: - Properties
-    private var giftDetailInfo: GiftDetailInfo? {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
     
+    private var dataService: GiftDataService?
+    
+    // MARK: - Properties
+    private var giftDetailInfo: GiftDetailInfo? { didSet { self.didFinishFetch?() } }
+    var getGiftInfo: GiftDetailInfo? { return giftDetailInfo }
+    
+    //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
     var failCode: Int? { didSet { self.codeAlertClosure?() } }
     var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
-    
-    var getGiftInfo: GiftDetailInfo? { return giftDetailInfo }
 
     //MARK: 클로져
     var showAlertClosure: (() -> ())?
@@ -34,8 +32,13 @@ class GiftDetailViewModel {
     // MARK: 생성자
     init(dataService: GiftDataService) { self.dataService = dataService }
     
-    //MARK: 옵션관련 프로퍼티
+    //MARK: 옵션 갯수
     var numOfGiftOption: Int { return giftDetailInfo?.option.count ?? 0 }
+    
+    //MARK: 인덱스로 조회한 옵션의 클로버 조회
+    func getOptionClover(at index: Int) -> Int? {
+        return giftDetailInfo?.option[index].usedClover
+    }
     
     let nonSelectedAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.tagColor,
@@ -57,7 +60,6 @@ class GiftDetailViewModel {
         return style
     }()
     
-    
     private let nonSelectedimageAttachment: NSTextAttachment = {
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = #imageLiteral(resourceName: "icCloverGray")
@@ -71,11 +73,6 @@ class GiftDetailViewModel {
         imageAttachment.bounds = CGRect(x: 0, y: 0, width: 11, height: 11)
         return imageAttachment
     }()
-    
-    
-    func getOptionClover(at index: Int) -> Int? {
-        return giftDetailInfo?.option[index].usedClover
-    }
     
     //MARK: 네트워크 API 호출 함수
     func fetchGiftDetail(with index: Int){
@@ -102,12 +99,11 @@ class GiftDetailViewModel {
     }
 }
 
-//MARK: 옵션 태그에 관한 프로퍼티
+//MARK: 옵션 태그 TTGTextTag 생성 관한 프로퍼티
 extension GiftDetailViewModel {
     
     var optionTagList: [TTGTextTag]? {
         guard let optionList = giftDetailInfo?.option else { return []}
-        
         var optionTTGTextTags: [TTGTextTag] = []
         
         for option in optionList {
@@ -140,6 +136,4 @@ extension GiftDetailViewModel {
 
         return optionTTGTextTags
     }
-    
-    
 }

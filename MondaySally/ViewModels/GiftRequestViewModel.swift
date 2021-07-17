@@ -6,14 +6,12 @@
 //
 
 class GiftRequestViewModel {
-    private var dataService: GiftDataService?
-    // MARK: - Properties
-    private var giftRequestResponse: GiftRequestResponse? {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
     
+    // MARK: - Properties
+    private var dataService: GiftDataService?
+    private var giftRequestResponse: GiftRequestResponse? { didSet { self.didFinishFetch?() } }
+    
+    //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
     var failCode: Int? { didSet { self.codeAlertClosure?() } }
@@ -25,12 +23,12 @@ class GiftRequestViewModel {
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
-    
-    // MARK: 생성자
+    //MARK: 생성자
     init(dataService: GiftDataService) {
         self.dataService = dataService
     }
     
+    //MARK: 기프트 신청 API
     func fetchGiftRequest(with input: GiftRequestInput){
         self.isLoading = true
         self.dataService?.requestFetchGift(with: input, completion: { [weak self] response, error in

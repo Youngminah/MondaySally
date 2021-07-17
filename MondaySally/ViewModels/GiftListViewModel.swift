@@ -7,14 +7,12 @@
 import UIKit
 
 class GiftListViewModel {
-    private var dataService: GiftDataService?
-    // MARK: - Properties
-    private var giftList: [GiftInfo] = [] {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
     
+    // MARK: - Properties
+    private var dataService: GiftDataService?
+    private var giftList: [GiftInfo] = [] { didSet { self.didFinishFetch?() } }
+    
+    //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
     var failCode: Int? { didSet { self.codeAlertClosure?() } }
@@ -26,19 +24,22 @@ class GiftListViewModel {
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
-    var numOfGiftList: Int {
-        return giftList.count
-    }
-    
-    // MARK: 생성자
+    //MARK: 생성자
     init(dataService: GiftDataService) {
         self.dataService = dataService
     }
     
+    //MARK: 기프트의 총 갯수
+    var numOfGiftList: Int {
+        return giftList.count
+    }
+    
+    //MARK: 기프트 인덱스로 접근 함수
     func giftListInfo(at index: Int) -> GiftInfo{
         return giftList[index]
     }
     
+    //MARK: 기프트 리스트 API 호출 함수
     func fetchGiftList(){
         self.isLoading = true
         self.dataService?.requestFetchGiftList(completion: { [weak self] response, error in

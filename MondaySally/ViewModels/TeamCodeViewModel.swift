@@ -6,13 +6,12 @@
 //
 
 class TeamCodeViewModel {
-    private var dataService: AuthDataService?
+    
     // MARK: - Properties
-    private var teamCodeInfo: TeamCodeInfo? {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
+    private var dataService: AuthDataService?
+    private var teamCodeInfo: TeamCodeInfo? { didSet { self.didFinishFetch?() } }
+    
+    //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
     var failCode: Int? { didSet { self.codeAlertClosure?() } }
@@ -48,6 +47,7 @@ class TeamCodeViewModel {
             if let isSuccess = teamCodeResponse?.isSuccess {
                 if !isSuccess {
                     self?.failMessage = teamCodeResponse?.message
+                    self?.failCode = response?.code
                     self?.isLoading = false
                     return
                 }

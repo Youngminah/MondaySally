@@ -6,23 +6,26 @@
 //
 
 class EditProfileViewModel {
-    private var dataService: AuthDataService?
+    
     // MARK: - Properties
-    private var editProfileResponse: EditProfileResponse? {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
-    var error: Error? {
-        didSet { self.showAlertClosure?() }
-    }
+    private var dataService: AuthDataService?
+    private var editProfileResponse: EditProfileResponse? { didSet { self.didFinishFetch?() } }
     
-    var failMessage: String? {
-        didSet { self.showAlertClosure?() }
-    }
+    //MARK: 프로퍼티 DidSet
+    var error: Error? { didSet { self.showAlertClosure?() } }
+    var failMessage: String? { didSet { self.showAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
+    var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
     
-    var isLoading: Bool = false {
-        didSet { self.updateLoadingStatus?() }
+    //MARK: 클로져
+    var showAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
+    var updateLoadingStatus: (() -> ())?
+    var didFinishFetch: (() -> ())?
+    
+    // MARK: 생성자
+    init(dataService: AuthDataService) {
+        self.dataService = dataService
     }
     
     var message: String {
@@ -31,17 +34,6 @@ class EditProfileViewModel {
             return ""
         }
         return message
-    }
-    
-    
-    var showAlertClosure: (() -> ())?
-    var updateLoadingStatus: (() -> ())?
-    var didFinishFetch: (() -> ())?
-    
-    
-    // MARK: - 생성자
-    init(dataService: AuthDataService) {
-        self.dataService = dataService
     }
     
     func fetchEditProfile(with input: EditProfileInput){
@@ -55,6 +47,7 @@ class EditProfileViewModel {
             if let isSuccess = response?.isSuccess {
                 if !isSuccess {
                     self?.failMessage = response?.message
+                    self?.failCode = response?.code
                     self?.isLoading = false
                     return
                 }

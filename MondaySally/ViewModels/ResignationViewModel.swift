@@ -6,13 +6,12 @@
 //
 
 class ResignationViewModel {
-    private var dataService: AuthDataService?
+    
     // MARK: - Properties
-    private var resignationResponse: ResignationRequestResponse? {
-        didSet {
-            self.didFinishFetch?()
-        }
-    }
+    private var dataService: AuthDataService?
+    private var resignationResponse: ResignationRequestResponse? { didSet { self.didFinishFetch?() } }
+    
+    //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
     var failMessage: String? { didSet { self.showAlertClosure?() } }
     var failCode: Int? { didSet { self.codeAlertClosure?() } }
@@ -32,7 +31,6 @@ class ResignationViewModel {
         return message
     }
     
-    
     // MARK: - 생성자
     init(dataService: AuthDataService) {
         self.dataService = dataService
@@ -49,6 +47,7 @@ class ResignationViewModel {
             if let isSuccess = response?.isSuccess {
                 if !isSuccess {
                     self?.failMessage = response?.message
+                    self?.failCode = response?.code
                     self?.isLoading = false
                     return
                 }

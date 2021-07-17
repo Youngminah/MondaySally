@@ -8,8 +8,8 @@
 import UIKit
 
 extension UINavigationBar {
+    
     // MARK: 네비게이션바를 투명하게 처리
-
     var isTransparent: Bool {
         get {
             return false
@@ -21,6 +21,7 @@ extension UINavigationBar {
         }
     }
     
+    //네비게이션바 폰트와 사이즈
     func applyFontAndSize(){
         self.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.label,

@@ -2,13 +2,15 @@
 //  SallyAlert.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/12.
+//  Created by meng on 2021/07/17.
 //
 
 import UIKit
 
-open class SallyNotificationAlert {
-    static let shared = SallyNotificationAlert()
+import UIKit
+
+open class SallyAlert {
+    static let shared = SallyAlert()
     var didDismiss: (() -> ())?
     
     private let backgroundView: UIView = {
@@ -33,6 +35,14 @@ open class SallyNotificationAlert {
     }()
     
     private let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 2
+        titleLabel.font = UIFont(name: "NotoSansCJKkr-Regular", size: 14)
+        return titleLabel
+    }()
+    
+    private let messageLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
@@ -66,6 +76,11 @@ open class SallyNotificationAlert {
 
         self.titleLabel.frame = CGRect(x:0, y:0, width: alertView.frame.size.width, height: 100)
         self.titleLabel.text = title
+        
+        
+//        messageLabel = UILabel(frame: CGRect(x:0, y:80, width: alertView.frame.size.width, height: 170))
+//        messageLabel.text = message
+//        self.alertView.addSubview(messageLabel)
         
         button.frame = CGRect(x:0, y:alertView.frame.size.height - 50, width: alertView.frame.size.width, height: 50)
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
