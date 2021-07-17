@@ -64,4 +64,12 @@ class HomeTabViewController: UIViewController {
         
     }
     
+    @IBAction func moveToCloverHistoryView(_ sender: UIButton) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CloverHistoryView") as? CloverHistoryViewController else{
+            return
+        }
+        vc.tabTag = sender.tag
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

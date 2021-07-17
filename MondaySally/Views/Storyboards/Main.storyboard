@@ -548,13 +548,13 @@
         <!--클로버 히스토리-->
         <scene sceneID="Ahj-5H-XeO">
             <objects>
-                <viewController id="0ei-PV-dAZ" customClass="CloverHistoryViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CloverHistoryView" id="0ei-PV-dAZ" customClass="CloverHistoryViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ty-J4-IE0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g19-6R-y2u">
-                                <rect key="frame" x="0.0" y="88" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="53"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbY-KW-tUc">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="53"/>
@@ -601,7 +601,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYM-zn-TdG">
-                                <rect key="frame" x="0.0" y="141" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="2"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7l-Vc-7Xz">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="2"/>
@@ -618,7 +618,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X7-tg-E5v">
-                                <rect key="frame" x="0.0" y="143" width="375" height="669"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -709,7 +709,7 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c1-CD-xIJ">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="81"/>
                                                                         <connections>
-                                                                            <segue destination="0ei-PV-dAZ" kind="show" id="5mQ-hU-ipE"/>
+                                                                            <action selector="moveToCloverHistoryView:" destination="Ww1-SP-7Hg" eventType="touchUpInside" id="p9Z-ce-IpB"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -748,14 +748,14 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-PH-oVG">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-PH-oVG">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="81"/>
                                                                         <connections>
-                                                                            <segue destination="0ei-PV-dAZ" kind="show" id="O74-49-aiQ"/>
+                                                                            <action selector="moveToCloverHistoryView:" destination="Ww1-SP-7Hg" eventType="touchUpInside" id="gqQ-Lx-OD2"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="AccentColorB"/>
+                                                                <color key="backgroundColor" name="AccentColorY"/>
                                                                 <constraints>
                                                                     <constraint firstItem="HtQ-Qu-1Nf" firstAttribute="centerY" secondItem="iCs-bo-uqR" secondAttribute="centerY" id="4sB-ld-UGu"/>
                                                                     <constraint firstAttribute="trailing" secondItem="SYj-PH-oVG" secondAttribute="trailing" id="9g3-Ju-fXo"/>
@@ -790,14 +790,14 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8z-ii-ctN">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8z-ii-ctN">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="81"/>
                                                                         <connections>
-                                                                            <segue destination="0ei-PV-dAZ" kind="show" id="FI1-0h-1s0"/>
+                                                                            <action selector="moveToCloverHistoryView:" destination="Ww1-SP-7Hg" eventType="touchUpInside" id="V3A-RK-OXD"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="AccentColorY"/>
+                                                                <color key="backgroundColor" name="AccentColorB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="6PY-fJ-7mv" secondAttribute="trailing" constant="27" id="7l7-pH-Dor"/>
                                                                     <constraint firstAttribute="height" constant="81" id="O4O-9o-o9Q"/>
@@ -3396,9 +3396,6 @@
             <point key="canvasLocation" x="3401.5999999999999" y="-5755.4187192118225"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="FI1-0h-1s0"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="buttonPhotoAdd" width="105" height="105"/>
         <image name="buttonPhotoDelete" width="23" height="23"/>

@@ -15,12 +15,12 @@ class CloverHistoryViewController: UIViewController {
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var containerView: UIView!
     
+    var tabTag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.totalCloverButton.setTitleColor(#colorLiteral(red: 0.9843137255, green: 0.4590537548, blue: 0.254901737, alpha: 1), for: .normal)
-        self.totalCloverButton.titleLabel?.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
-        self.changeViewToTotalCloverView()
+        self.title = "클로버 히스토리"
+        self.initailSetting()
     }
     
     @IBAction func topTabBarButtonTap(_ sender: UIButton) {
@@ -44,6 +44,19 @@ class CloverHistoryViewController: UIViewController {
                         self.animationView.transform = CGAffineTransform(translationX: moveX, y: 0)
                        }, completion: {_ in
                        })
+    }
+    
+    private func initailSetting(){
+        if tabTag == 0 {
+            self.totalCloverSelected()
+            self.changeViewToTotalCloverView()
+        }else if tabTag == 1{
+            self.currentCloverSelected()
+            self.changeViewToCurrentCloverView()
+        }else {
+            self.usedCloverSelected()
+            self.changeViewToUsedCloverView()
+        }
     }
     
     // MARK: Custom TopTabBar 누적클로버 화면전환
