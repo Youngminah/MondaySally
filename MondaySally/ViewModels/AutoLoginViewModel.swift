@@ -7,7 +7,7 @@
 
 class AutoLoginViewModel {
     
-    // MARK: - Properties
+    //MARK: 기본 프로퍼티
     private var dataService: AuthDataService?
     private var autoLoginResponse: AutoLoginResponse? { didSet { self.didFinishFetch?() } }
     
@@ -31,8 +31,7 @@ class AutoLoginViewModel {
         return message
     }
     
-    
-    // MARK: - 생성자
+    // MARK: 생성자
     init(dataService: AuthDataService) {
         self.dataService = dataService
     }

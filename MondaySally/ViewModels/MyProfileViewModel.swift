@@ -35,16 +35,16 @@ class MyProfileViewModel {
     
     func fetchMyProfile(){
         self.isLoading = true
-        self.dataService?.requestFetchMyProfile(completion: { [weak self] myProfileResponse, error in
+        self.dataService?.requestFetchMyProfile(completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
                 return
             }
-            if let isSuccess = myProfileResponse?.isSuccess {
+            if let isSuccess = response?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = myProfileResponse?.message
-                    self?.failCode = myProfileResponse?.code
+                    self?.failMessage = response?.message
+                    self?.failCode = response?.code
                     self?.isLoading = false
                     return
                 }
@@ -52,7 +52,7 @@ class MyProfileViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.isLoading = false
-            self?.myProfileInfo = myProfileResponse?.result.member
+            self?.myProfileInfo = response?.result.member
         })
     }
 }

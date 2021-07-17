@@ -28,14 +28,6 @@ class EditProfileViewModel {
         self.dataService = dataService
     }
     
-    var message: String {
-        guard let message = editProfileResponse?.message else {
-            print("인터넷 통신은 완료 되었지만, 응답의 message를 upwrapping 할 수 없습니다")
-            return ""
-        }
-        return message
-    }
-    
     func fetchEditProfile(with input: EditProfileInput){
         self.isLoading = true
         self.dataService?.requestFetchEditProfile(with: input, completion: { [weak self] response, error in

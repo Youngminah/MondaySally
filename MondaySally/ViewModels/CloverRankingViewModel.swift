@@ -1,15 +1,15 @@
 //
-//  MyGiftLogViewModel.swift
+//  CloverRankingViewModel.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/16.
+//  Created by meng on 2021/07/18.
 //
 
-class GiftHistoryViewModel {
+class CloverRankingViewModel {
     
-    //MARK: - Properties
-    private var dataService: GiftDataService?
-    private var myGiftLogInfo: [MyGiftLogInfo] = [] { didSet { self.didFinishFetch?() } }
+    // MARK: 기본 프로퍼티
+    private var dataService: CloverDataService?
+    private var cloverRankingInfo: [CloverRankingInfo]? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -22,26 +22,26 @@ class GiftHistoryViewModel {
     var codeAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
-
-    //MARK: 생성자
-    init(dataService: GiftDataService) {
+    
+    // MARK: 생성자
+    init(dataService: CloverDataService) {
         self.dataService = dataService
     }
     
-    //MARK: 기프트 히스토리 전체 갯수
-    var numOfGiftLogInfo: Int {
-        return myGiftLogInfo.count
+    //MARK: 클로버 랭킹 총 갯수
+    var numOfCloverRankingList: Int? {
+        return cloverRankingInfo?.count
     }
     
-    //MARK: 특정 기프트 히스토리
-    func myGiftLogInfo(at index: Int) -> MyGiftLogInfo?{
-        return myGiftLogInfo[index]
+    //MARK: 클로버 랭킹 인덱스 조회
+    func cloverRankingList(at index: Int) -> CloverRankingInfo? {
+        return cloverRankingInfo?[index]
     }
     
-    //MARK: 기프트 히스토리 API 호출 함수
-    func fetchMyGiftLog(){
+    // MARK: 클로버 히스토리 API 호출 함수
+    func fetchCloverRanking(){
         self.isLoading = true
-        self.dataService?.requestFetchMyGiftLog(completion: { [weak self] response, error in
+        self.dataService?.requestFetchCloverRanking(completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
@@ -57,8 +57,9 @@ class GiftHistoryViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
+            self?.cloverRankingInfo = response?.result
             self?.isLoading = false
-            self?.myGiftLogInfo = response?.result ?? []
+            
         })
     }
 }

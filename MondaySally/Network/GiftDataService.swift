@@ -39,7 +39,6 @@ struct GiftDataService {
             }
     }
     
-    
     //기프트 상세 조회 API
     func requestFetchGiftDetail(with giftIndex: Int, completion: @escaping (GiftDetailResponse?, Error?) -> ()) {
         let url = "\(giftUrl)/\(giftIndex)"

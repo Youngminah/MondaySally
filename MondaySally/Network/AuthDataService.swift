@@ -23,8 +23,6 @@ struct AuthDataService {
     private var profileEditUrl = "\(Constant.BASE_URL)/profile"
     
     
-    
-    
     // MARK: - 프로필이나 로그인 관련 API
     //앱 버전확인
     func requestFetchAppVersion(with teamCode: String, completion: @escaping (AppVersion?, Error?) -> ()) {
@@ -130,7 +128,6 @@ struct AuthDataService {
             }
     }
     
-    
     //퇴사신청
     func requestFetchResignation(completion: @escaping (ResignationRequestResponse?, Error?) -> ()) {
         let url = "\(resignationUrl)"
@@ -173,5 +170,4 @@ struct AuthDataService {
                 }
             }
     }
-    
 }
