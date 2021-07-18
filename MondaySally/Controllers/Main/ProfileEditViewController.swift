@@ -176,7 +176,7 @@ extension ProfileEditViewController {
         self.viewModel.didFinishFetch = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                print("프로필 수정이 성공했습니다 !! -> \(strongSelf.viewModel.message)")
+                print("프로필 수정이 성공했습니다 !! ->")
                 strongSelf.editUserInfo(with :input)
                 strongSelf.editSuccessSallyAlertPresent()
             }

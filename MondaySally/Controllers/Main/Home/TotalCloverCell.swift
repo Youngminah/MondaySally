@@ -9,6 +9,10 @@ import UIKit
 
 class TotalCloverCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var cloverInfoLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -16,8 +20,11 @@ class TotalCloverCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    func updateUI(with data: TotalCloverInfo){
+        self.dateLabel.text = data.time
+        self.infoLabel.text = "\(data.worktime)시간 근무"
+        self.cloverInfoLabel.text = "+\(data.clover) clover"
+    }
 }

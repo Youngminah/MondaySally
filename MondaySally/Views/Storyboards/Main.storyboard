@@ -120,6 +120,11 @@
                                                 <constraint firstItem="Z9P-EK-re5" firstAttribute="centerY" secondItem="VBf-b1-EUr" secondAttribute="centerY" id="nHX-Bv-w6n"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cloverInfoLabel" destination="tro-R8-eRQ" id="3fc-54-hJW"/>
+                                            <outlet property="dateLabel" destination="Z9P-EK-re5" id="tDo-Ms-hmt"/>
+                                            <outlet property="titleLabel" destination="A7O-aw-cHN" id="NvH-J4-xWj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -140,6 +145,9 @@
                             <constraint firstItem="gPm-G4-aMH" firstAttribute="trailing" secondItem="GZd-xb-Xxx" secondAttribute="trailing" id="uiW-6C-EA6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cloverLabel" destination="aYF-6F-8l0" id="OMG-gb-2Mk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWk-DI-tEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,6 +434,9 @@
                             <constraint firstItem="a4X-lx-Zzo" firstAttribute="top" secondItem="IP3-bi-2Md" secondAttribute="bottom" constant="7" id="xDb-cq-A3r"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cloverLabel" destination="qE6-i4-fxb" id="MHP-Mi-QPH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jE-MB-dGw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -520,6 +531,11 @@
                                                 <constraint firstItem="zaa-NS-1BH" firstAttribute="centerY" secondItem="tgc-KU-ZZR" secondAttribute="centerY" id="yco-4i-N5Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cloverInfoLabel" destination="zaa-NS-1BH" id="CAu-iW-yQf"/>
+                                            <outlet property="dateLabel" destination="ceO-XP-gbz" id="djx-mk-sw6"/>
+                                            <outlet property="infoLabel" destination="1Uh-Hm-fPm" id="oV9-pK-Fq2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -540,6 +556,9 @@
                             <constraint firstItem="NZA-Jh-r0L" firstAttribute="trailing" secondItem="CPy-V0-omk" secondAttribute="trailing" id="vFX-5q-QFy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cloverLabel" destination="U6z-4g-WBx" id="ct8-DL-8WF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSz-QL-dmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1181,7 +1200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMo-Cj-vpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-741" y="-6272"/>
+            <point key="canvasLocation" x="-744" y="-6225"/>
         </scene>
         <!--기프트 샵-->
         <scene sceneID="5GL-gW-pJI">

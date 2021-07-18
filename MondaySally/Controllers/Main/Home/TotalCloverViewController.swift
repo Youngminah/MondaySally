@@ -9,22 +9,30 @@ import UIKit
 
 class TotalCloverViewController: UIViewController {
 
+    @IBOutlet weak var cloverLabel: UILabel!
+    var totalCloverInfo = [TotalCloverInfo]()
+    var clover = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.updateUI() 
     }
 
+    private func updateUI() {
+        self.cloverLabel.text = "\(clover)".insertComma
+    }
 }
 
 extension TotalCloverViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return self.totalCloverInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCloverCell", for: indexPath) as? TotalCloverCell else {
             return UITableViewCell()
         }
+        cell.updateUI(with: totalCloverInfo[indexPath.row])
         return cell
     }
     

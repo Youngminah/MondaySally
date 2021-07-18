@@ -9,7 +9,7 @@ class CloverHistoryViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: CloverDataService?
-    private var cloverHistoryInfo: CloverHistoryInfo? { didSet { self.didFinishFetch?() } }
+    var cloverHistoryInfo: CloverHistoryInfo? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -38,13 +38,24 @@ class CloverHistoryViewModel {
         return cloverHistoryInfo?.usedCloverList?.count
     }
     
+    //MARK: 누적 클로버 리스트
+    var totalCloverList: [TotalCloverInfo]? {
+        return cloverHistoryInfo?.accumulatedCloverList
+    }
+    
+    //MARK: 사용 클로버 리스트
+    var usedCloverList: [UsedCloverInfo]? {
+        return cloverHistoryInfo?.usedCloverList
+    }
+    
+    
     //MARK: 누적 클로버 리스트 인덱스 조회
-    func totalCloverList(at index: Int) -> TotalCloverInfo? {
+    func totalClover(at index: Int) -> TotalCloverInfo? {
         return cloverHistoryInfo?.accumulatedCloverList?[index]
     }
     
     //MARK: 사용 클로버 리스트 인덱스 조회
-    func usedCloverList(at index: Int) -> UsedCloverInfo? {
+    func usedClover(at index: Int) -> UsedCloverInfo? {
         return cloverHistoryInfo?.usedCloverList?[index]
     }
     
