@@ -15,8 +15,8 @@ struct CloverRankingResponse: Decodable{
 struct CloverRankingInfo: Decodable {
     var ranking: Int
     var imgUrl: String?
-    var nickname: String
+    var nickname: String?
     var currentClover: Int
     var accumulatedClover: Int
-    var totalworktime: String
+    var totalworktime: String?
 }

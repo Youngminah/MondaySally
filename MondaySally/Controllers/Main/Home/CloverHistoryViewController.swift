@@ -24,7 +24,7 @@ class CloverHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "클로버 히스토리"
-        self.attemptFetchGiftHistory()
+        self.attemptFetchCloverHistory()
     }
     
     @IBAction func topTabBarButtonTap(_ sender: UIButton) {
@@ -63,7 +63,7 @@ class CloverHistoryViewController: UIViewController {
 
 // MARK: 클로버 히스토리 조회 API
 extension CloverHistoryViewController {
-    private func attemptFetchGiftHistory() {
+    private func attemptFetchCloverHistory() {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }

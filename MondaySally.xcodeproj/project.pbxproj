@@ -28,8 +28,8 @@
 		BB5FE58F2692DED600F2A7A6 /* GiftHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58E2692DED600F2A7A6 /* GiftHistoryViewController.swift */; };
 		BB5FE5912692E00700F2A7A6 /* GiftHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5902692E00700F2A7A6 /* GiftHistoryCell.swift */; };
 		BB5FE5932692E1F000F2A7A6 /* GiftHistoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5922692E1F000F2A7A6 /* GiftHistoryHeader.swift */; };
-		BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5942692EBAA00F2A7A6 /* TwinkleRankingViewController.swift */; };
-		BB5FE5972692EBC200F2A7A6 /* TwinkleRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5962692EBC200F2A7A6 /* TwinkleRankingCell.swift */; };
+		BB5FE5952692EBAA00F2A7A6 /* CloverRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5942692EBAA00F2A7A6 /* CloverRankingViewController.swift */; };
+		BB5FE5972692EBC200F2A7A6 /* CloverRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5962692EBC200F2A7A6 /* CloverRankingCell.swift */; };
 		BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5982692F0D200F2A7A6 /* GiftShopDetailViewController.swift */; };
 		BB5FE59B2693577E00F2A7A6 /* GiftCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE59A2693577E00F2A7A6 /* GiftCompletedViewController.swift */; };
 		BB5FE59D269375D200F2A7A6 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE59C269375D200F2A7A6 /* UITextView.swift */; };
@@ -142,8 +142,8 @@
 		BB5FE58E2692DED600F2A7A6 /* GiftHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryViewController.swift; sourceTree = "<group>"; };
 		BB5FE5902692E00700F2A7A6 /* GiftHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryCell.swift; sourceTree = "<group>"; };
 		BB5FE5922692E1F000F2A7A6 /* GiftHistoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryHeader.swift; sourceTree = "<group>"; };
-		BB5FE5942692EBAA00F2A7A6 /* TwinkleRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleRankingViewController.swift; sourceTree = "<group>"; };
-		BB5FE5962692EBC200F2A7A6 /* TwinkleRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleRankingCell.swift; sourceTree = "<group>"; };
+		BB5FE5942692EBAA00F2A7A6 /* CloverRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverRankingViewController.swift; sourceTree = "<group>"; };
+		BB5FE5962692EBC200F2A7A6 /* CloverRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverRankingCell.swift; sourceTree = "<group>"; };
 		BB5FE5982692F0D200F2A7A6 /* GiftShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShopDetailViewController.swift; sourceTree = "<group>"; };
 		BB5FE59A2693577E00F2A7A6 /* GiftCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCompletedViewController.swift; sourceTree = "<group>"; };
 		BB5FE59C269375D200F2A7A6 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -292,8 +292,8 @@
 				BB5FE58E2692DED600F2A7A6 /* GiftHistoryViewController.swift */,
 				BB5FE5902692E00700F2A7A6 /* GiftHistoryCell.swift */,
 				BB5FE5922692E1F000F2A7A6 /* GiftHistoryHeader.swift */,
-				BB5FE5942692EBAA00F2A7A6 /* TwinkleRankingViewController.swift */,
-				BB5FE5962692EBC200F2A7A6 /* TwinkleRankingCell.swift */,
+				BB5FE5942692EBAA00F2A7A6 /* CloverRankingViewController.swift */,
+				BB5FE5962692EBC200F2A7A6 /* CloverRankingCell.swift */,
 				BBA56F112691DD79000FDFC0 /* WorkingMemberPreViewController.swift */,
 				BBA56F132691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift */,
 				BBA56F15269221F6000FDFC0 /* CloverHistoryViewController.swift */,
@@ -707,7 +707,7 @@
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
 				BB4CD4B126A0879E00BD1E91 /* GiftRequestInput.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
-				BB5FE5972692EBC200F2A7A6 /* TwinkleRankingCell.swift in Sources */,
+				BB5FE5972692EBC200F2A7A6 /* CloverRankingCell.swift in Sources */,
 				BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */,
 				BBA56EF4268F6ACC000FDFC0 /* MyPageViewController.swift in Sources */,
 				BBE9FC9226A285BB0057FDAD /* SallyAlert.swift in Sources */,
@@ -721,7 +721,7 @@
 				BB5FE59F26938F3600F2A7A6 /* TwinklePostViewController.swift in Sources */,
 				BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */,
 				BB73507726A356DD004C955F /* CloverHistoryViewModel.swift in Sources */,
-				BB5FE5952692EBAA00F2A7A6 /* TwinkleRankingViewController.swift in Sources */,
+				BB5FE5952692EBAA00F2A7A6 /* CloverRankingViewController.swift in Sources */,
 				BBE9FC9026A22E630057FDAD /* Int.swift in Sources */,
 				BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */,
 				BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */,
