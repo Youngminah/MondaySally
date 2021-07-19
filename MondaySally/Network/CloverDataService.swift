@@ -5,9 +5,7 @@
 //  Created by meng on 2021/07/18.
 //
 
-import Foundation
 import Alamofire
-
 
 struct CloverDataService {
     
