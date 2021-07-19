@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0E688E51A9206DF7A003D3 /* Pods_MondaySally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */; };
+		BB233C3D26A5D98800A443B0 /* CommuteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB233C3C26A5D98800A443B0 /* CommuteViewModel.swift */; };
 		BB2FA681269F548100F09B4A /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */; };
 		BB4CD4A926A07E1300BD1E91 /* GiftListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4A826A07E1300BD1E91 /* GiftListResponse.swift */; };
 		BB4CD4AB26A081D700BD1E91 /* GiftListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		12056DD067E4AC28B679051F /* Pods-MondaySally.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MondaySally.debug.xcconfig"; path = "Target Support Files/Pods-MondaySally/Pods-MondaySally.debug.xcconfig"; sourceTree = "<group>"; };
 		4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MondaySally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB233C3C26A5D98800A443B0 /* CommuteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewModel.swift; sourceTree = "<group>"; };
 		BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		BB4CD4A826A07E1300BD1E91 /* GiftListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListResponse.swift; sourceTree = "<group>"; };
 		BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListViewModel.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				BBD09ECB268DCD7A00AF4A56 /* OnBoardingViewModel.swift */,
 				BB5FE5B026963CDF00F2A7A6 /* TeamCodeViewModel.swift */,
 				BB5FE5B226963CF200F2A7A6 /* AutoLoginViewModel.swift */,
+				BB233C3C26A5D98800A443B0 /* CommuteViewModel.swift */,
 				BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */,
 				BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */,
 				BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */,
@@ -726,6 +729,7 @@
 				BBA56F122691DD79000FDFC0 /* WorkingMemberPreViewController.swift in Sources */,
 				BB73507126A35666004C955F /* CloverHistoryResponse.swift in Sources */,
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
+				BB233C3D26A5D98800A443B0 /* CommuteViewModel.swift in Sources */,
 				BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */,
 				BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */,
 				BB5FE5AD2696374F00F2A7A6 /* AutoLoginResponse.swift in Sources */,

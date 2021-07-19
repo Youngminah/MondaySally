@@ -20,6 +20,7 @@ struct AuthDataService {
     private var myProfileUrl = "\(Constant.BASE_URL)/mypage"
     private var resignationUrl = "\(Constant.BASE_URL)/out"
     private var profileEditUrl = "\(Constant.BASE_URL)/profile"
+    private var commuteUrl = "\(Constant.BASE_URL)/work"
     
     
     // MARK: - 프로필이나 로그인 관련 API
@@ -113,6 +114,27 @@ struct AuthDataService {
         AF.request(url, method: .patch, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: EditProfileResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    //QR 출퇴근 신청 API
+    func requestFetchCommute(completion: @escaping (NoDataResponse?, Error?) -> ()) {
+        let url = "\(commuteUrl)"
+
+        AF.request(url, method: .post, parameters: nil,encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: NoDataResponse.self) { (response) in
                 switch response.result {
                 case .success(let response):
                     if response.isSuccess{
