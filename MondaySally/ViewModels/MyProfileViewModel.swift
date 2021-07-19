@@ -52,7 +52,7 @@ class MyProfileViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.isLoading = false
-            self?.myProfileInfo = response?.result.member
+            self?.myProfileInfo = response?.result
         })
     }
 }

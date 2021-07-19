@@ -10,7 +10,7 @@ class GiftListViewModel {
     
     // MARK: - Properties
     private var dataService: GiftDataService?
-    private var giftList: [GiftInfo] = [] { didSet { self.didFinishFetch?() } }
+    private var giftList: GiftListInfo? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -30,19 +30,19 @@ class GiftListViewModel {
     }
     
     //MARK: 기프트의 총 갯수
-    var numOfGiftList: Int {
-        return giftList.count
+    var numOfGiftList: Int? {
+        return giftList?.gifts?.count
     }
     
     //MARK: 기프트 인덱스로 접근 함수
-    func giftListInfo(at index: Int) -> GiftInfo{
-        return giftList[index]
+    func giftListInfo(at index: Int) -> GiftInfo?{
+        return giftList?.gifts?[index]
     }
     
     //MARK: 기프트 리스트 API 호출 함수
     func fetchGiftList(){
         self.isLoading = true
-        self.dataService?.requestFetchGiftList(completion: { [weak self] response, error in
+        self.dataService?.requestFetchGiftList( completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
@@ -59,7 +59,36 @@ class GiftListViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.failCode = nil
-            self?.giftList = response?.result ?? []
+            self?.giftList = response?.result
+            self?.isLoading = false
+            
+        })
+    }
+    
+    
+    func next(){
+        guard let giftList = giftList else {
+            return
+        }
+        self.isLoading = true
+        self.dataService?.requestFetchGiftListNext(currentPage: giftList, completion: { [weak self] response, error in
+            if let error = error {
+                self?.error = error
+                self?.isLoading = false
+                return
+            }
+            if let isSuccess = response?.isSuccess {
+                if !isSuccess {
+                    self?.failMessage = response?.message
+                    self?.failCode = response?.code
+                    self?.isLoading = false
+                    return
+                }
+            }
+            self?.error = nil
+            self?.failMessage = nil
+            self?.failCode = nil
+            self?.giftList = response?.result 
             self?.isLoading = false
         })
     }

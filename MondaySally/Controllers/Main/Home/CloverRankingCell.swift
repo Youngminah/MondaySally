@@ -18,6 +18,7 @@ class CloverRankingCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.userImageView.layer.cornerRadius = self.userImageView.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

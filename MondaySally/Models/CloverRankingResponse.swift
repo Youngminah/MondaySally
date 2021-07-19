@@ -17,6 +17,4 @@ struct CloverRankingInfo: Decodable {
     var imgUrl: String?
     var nickname: String?
     var currentClover: Int
-    var accumulatedClover: Int
-    var totalworktime: String?
 }

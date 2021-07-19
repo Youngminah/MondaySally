@@ -11,7 +11,12 @@ struct GiftListResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: [GiftInfo]?
+    var result: GiftListInfo?
+}
+
+struct GiftListInfo: Decodable{
+    var totalCount: Int
+    var gifts: [GiftInfo]?
 }
 
 struct GiftInfo: Decodable{

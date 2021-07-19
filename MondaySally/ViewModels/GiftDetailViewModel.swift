@@ -33,11 +33,11 @@ class GiftDetailViewModel {
     init(dataService: GiftDataService) { self.dataService = dataService }
     
     //MARK: 옵션 갯수
-    var numOfGiftOption: Int { return giftDetailInfo?.option.count ?? 0 }
+    var numOfGiftOption: Int { return giftDetailInfo?.options.count ?? 0 }
     
     //MARK: 인덱스로 조회한 옵션의 클로버 조회
     func getOptionClover(at index: Int) -> Int? {
-        return giftDetailInfo?.option[index].usedClover
+        return giftDetailInfo?.options[index].usedClover
     }
     
     let nonSelectedAttributes: [NSAttributedString.Key: Any] = [
@@ -103,7 +103,7 @@ class GiftDetailViewModel {
 extension GiftDetailViewModel {
     
     var optionTagList: [TTGTextTag]? {
-        guard let optionList = giftDetailInfo?.option else { return []}
+        guard let optionList = giftDetailInfo?.options else { return []}
         var optionTTGTextTags: [TTGTextTag] = []
         
         for option in optionList {
@@ -112,8 +112,7 @@ extension GiftDetailViewModel {
             let nonSelectedString = NSMutableAttributedString(string: "")
             nonSelectedString.append(NSAttributedString(string: "\(option.usedClover) ", attributes: nonSelectedAttributes))
             nonSelectedString.append(NSAttributedString(attachment: self.nonSelectedimageAttachment))
-            nonSelectedString.append(NSAttributedString(string: "/ \(option.money.toCloverMoney)", attributes: nonSelectedAttributes))
-            print(nonSelectedString)
+            nonSelectedString.append(NSAttributedString(string: " / \(option.money.toCloverMoney)", attributes: nonSelectedAttributes))
             let content = TTGTextTagAttributedStringContent()
             content.attributedText = nonSelectedString
             self.tagStyle.borderWidth = 0.5
@@ -124,7 +123,7 @@ extension GiftDetailViewModel {
             let selectedString = NSMutableAttributedString(string: "")
             selectedString.append(NSAttributedString(string: "\(option.usedClover) ", attributes: selectedAttributes))
             selectedString.append(NSAttributedString(attachment: self.selectedimageAttachment))
-            selectedString.append(NSAttributedString(string: "/ \(option.money.toCloverMoney)", attributes: selectedAttributes))
+            selectedString.append(NSAttributedString(string: " / \(option.money.toCloverMoney)", attributes: selectedAttributes))
             content.attributedText = selectedString
             
             self.tagStyle.borderWidth = 1

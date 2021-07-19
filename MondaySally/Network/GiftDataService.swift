@@ -19,7 +19,7 @@ struct GiftDataService {
     //MARK: 기프트 관련 API
     //기프트 리스트 조회 API
     func requestFetchGiftList(completion: @escaping (GiftListResponse?, Error?) -> ()) {
-        let url = "\(giftUrl)"
+        let url = "\(giftUrl)?page=1"
 
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
@@ -37,6 +37,28 @@ struct GiftDataService {
                 }
             }
     }
+    
+    func requestFetchGiftListNext(currentPage: GiftListInfo, completion: @escaping (GiftListResponse?, Error?) -> ()) {
+        let url = "\(giftUrl)" //현재페이지의 넥스트.넣기
+
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: GiftListResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+
     
     //기프트 상세 조회 API
     func requestFetchGiftDetail(with giftIndex: Int, completion: @escaping (GiftDetailResponse?, Error?) -> ()) {

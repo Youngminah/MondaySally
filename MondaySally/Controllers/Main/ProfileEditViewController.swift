@@ -49,7 +49,7 @@ class ProfileEditViewController: UIViewController{
         guard let phoneNumber = phoneNumberTextField.text else { return }
         guard let account = accountTextField.text else { return }
         guard let email = emailTextField.text else { return }
-        if !photoSelectButton.isHighlighted {
+        if !photoSelectButton.isSelected {
             let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
             self.attemptFetchEditProfile(with: input)
             return
@@ -119,6 +119,10 @@ class ProfileEditViewController: UIViewController{
         self.emailTextField.layer.cornerRadius = 4
         self.emailTextField.clipsToBounds = true
         self.emailTextField.setLeftPaddingPoints(16)
+        self.nickNameTextField.text = UserDefaults.standard.string(forKey: "nickName")
+        self.phoneNumberTextField.text = UserDefaults.standard.string(forKey: "phoneNumber")
+        self.accountTextField.text = UserDefaults.standard.string(forKey: "account")
+        self.emailTextField.text = UserDefaults.standard.string(forKey: "email")
         self.unselectedNickNameTextFieldUI()
         self.unselectedPhoneNumberTextFieldUI()
         self.unselectedAccountTextFieldUI()
@@ -135,7 +139,7 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigat
             return
         }
         self.photoSelectButton.setImage(image, for: .normal)
-        self.photoSelectButton.isHighlighted = true
+        self.photoSelectButton.isSelected = true
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -219,7 +223,6 @@ extension ProfileEditViewController {
 extension ProfileEditViewController : UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         return true
     }
     

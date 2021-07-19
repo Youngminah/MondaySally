@@ -17,7 +17,7 @@ struct GiftDetailInfo: Decodable{
     var name: String
     var info: String
     var rule: String
-    var option: [OptionInfo]
+    var options: [OptionInfo]
 }
 
 struct OptionInfo: Decodable{

@@ -17,7 +17,12 @@ class CloverRankingViewController: UIViewController {
     private let viewModel = CloverRankingViewModel(dataService: CloverDataService())
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateMainUI()
         self.attemptFetchCloverRanking()
+    }
+    
+    private func updateMainUI(){
+        self.firstUserImageView.layer.cornerRadius = self.firstUserImageView.width / 2
     }
 }
 

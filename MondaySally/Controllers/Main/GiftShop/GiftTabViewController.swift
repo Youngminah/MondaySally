@@ -35,14 +35,16 @@ class GiftTabViewController: UIViewController {
 extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numOfGiftList
+        return self.viewModel.numOfGiftList ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftCell", for: indexPath) as? GiftCell else {
             return UICollectionViewCell()
         }
-        let data = self.viewModel.giftListInfo(at: indexPath.item)
+        guard let data = self.viewModel.giftListInfo(at: indexPath.item) else {
+            return cell
+        }
         cell.updateUI(with: data)
         return cell
     }
@@ -59,7 +61,10 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftShopDetailView") as? GiftShopDetailViewController else{
             return
         }
-        vc.giftIndex = self.viewModel.giftListInfo(at: indexPath.item).idx
+        guard let data = self.viewModel.giftListInfo(at: indexPath.item) else {
+            return
+        }
+        vc.giftIndex = data.idx
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -72,7 +77,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GiftHistoryHeader", for: indexPath) as? GiftHistoryHeader else {
                 return UICollectionReusableView()
             }
-            header.totalGiftCountLabel.text = "총 \(self.viewModel.numOfGiftList)건"
+            header.totalGiftCountLabel.text = "총 \(self.viewModel.numOfGiftList ?? 0)건"
             return header
         default:
             return UICollectionReusableView()

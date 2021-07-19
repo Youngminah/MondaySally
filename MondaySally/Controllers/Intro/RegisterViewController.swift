@@ -65,18 +65,6 @@ class RegisterViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    private func saveUserInfo(with data: MyProfileInfo){
-        UserDefaults.standard.setValue(data.nickname, forKey: "nickName")
-        UserDefaults.standard.setValue(data.email, forKey: "email")
-        UserDefaults.standard.setValue(data.imgUrl, forKey: "imageUrl")
-        UserDefaults.standard.setValue(data.department, forKey: "department")
-        UserDefaults.standard.setValue(data.position, forKey: "position")
-        UserDefaults.standard.setValue(data.gender, forKey: "gender")
-        UserDefaults.standard.setValue(data.bankAccount, forKey: "account")
-        UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
-        UserDefaults.standard.setValue("\(data.workingYear ?? 0)", forKey: "workingPeriod")
-        UserDefaults.standard.setValue(data.companyName, forKey: "company")
-    }
 }
 
 // MARK: - Networking
@@ -117,51 +105,13 @@ extension RegisterViewController {
                 print("Jwt 발급에 성공했습니다 -> JWT: \(JwtToken.jwt)")
                 print(Constant.HEADERS)
                 UserDefaults.standard.setValue(strongSelf.teamCodeViewModel.jwtToken, forKey: "JwtToken")
-                //UserDefaults.standard.removeObject(forKey: "JwtToken")
-                strongSelf.attemptFetchMyProfile()
+                strongSelf.attemptFetchFCMTokenSend()
+                strongSelf.moveToJoinView()
             }
         }
         self.teamCodeViewModel.fetchJwt(with: teamCodeId)
     }
     
-    //MARK: 내 프로필 조회 API 호출 함수
-    private func attemptFetchMyProfile() {
-        
-        self.myProfileViewModel.updateLoadingStatus = {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                let _ = strongSelf.myProfileViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
-            }
-        }
-        
-        self.myProfileViewModel.showAlertClosure = { [weak self] () in
-            guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
-                if let error = self?.myProfileViewModel.error {
-                    print("ERROR : 서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
-                    strongSelf.networkFailToExit()
-                }
-                if let message = self?.myProfileViewModel.failMessage {
-                    print("ERROR : 서버에서 알려준 에러는 -> \(message)")
-                }
-            }
-        }
-        
-        self.myProfileViewModel.didFinishFetch = { [weak self] () in
-            guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
-                print("SUCCESS : 프로필 조회에 성공했습니다 !! ")
-                guard let data = strongSelf.myProfileViewModel.getMyProfileInfo else {
-                    print("ERROR : 성공했으나 들어온 데이터를 뜯지 못했습니다.")
-                    return
-                }
-                strongSelf.saveUserInfo(with: data)
-                strongSelf.attemptFetchFCMTokenSend()
-                strongSelf.moveToJoinView()
-            }
-        }
-        self.myProfileViewModel.fetchMyProfile()
-    }
     
     //MARK: FCM 디바이스 토큰 서버에 전달 API 함수
     private func attemptFetchFCMTokenSend() {

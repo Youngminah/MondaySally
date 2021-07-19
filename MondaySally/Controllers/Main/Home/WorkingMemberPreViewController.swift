@@ -45,7 +45,7 @@ extension WorkingMemberPreViewController: UICollectionViewDelegate, UICollection
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = (collectionView.bounds.width - 28)/3
-        let height: CGFloat = collectionView.bounds.width/138 * 16
+        let height: CGFloat = collectionView.bounds.width/160 * 16
         return CGSize(width: width, height: height)
     }
 }

@@ -27,11 +27,11 @@ class GiftHistoryCell: UICollectionViewCell {
     
     private func updateStampUI(with response: String){
         if response == "N" {
-            self.badgeLabel.text = "승인\n" + "완료"
+            self.badgeLabel.text = "승인\n" + "거절"
         }else if response == "U"{
             self.badgeLabel.text = "승인\n" + "보류"
         }else {
-            self.badgeLabel.text = "승인\n" + "거절"
+            self.badgeLabel.text = "승인\n" + "완료"
         }
     }
     
