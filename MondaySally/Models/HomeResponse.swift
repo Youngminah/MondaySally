@@ -15,7 +15,7 @@ struct HomeResponse: Decodable{
 struct HomeInfo: Decodable{
     var nickname: String
     var companyIdx: Int
-    var logoImgUrl: String
+    var logoImgUrl: String?
     var totalWorkTime: String
     var status: String
     var accumulatedClover: Int

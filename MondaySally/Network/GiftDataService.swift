@@ -105,7 +105,7 @@ struct GiftDataService {
     
     //내가 신청한 기프트 로그 조회 API
     func requestFetchMyGiftLog(completion: @escaping (GiftHistoryResponse?, Error?) -> ()) {
-        let url = "\(myGiftLogUrl)"
+        let url = "\(myGiftLogUrl)?page=1"
 
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()

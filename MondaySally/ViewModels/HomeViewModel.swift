@@ -5,11 +5,13 @@
 //  Created by meng on 2021/07/20.
 //
 
+import UIKit
+
 class HomeViewModel {
     
     //MARK: 기본 프로퍼티
     private var dataService: HomeDataService?
-    private var homeInfo: HomeInfo? { didSet { self.didFinishFetch?() } }
+    var homeInfo: HomeInfo? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -58,6 +60,8 @@ class HomeViewModel {
         return homeInfo?.workingMemberlist?[index]
     }
     
+    
+    
     func fetchHome(){
         self.isLoading = true
         self.dataService?.requestFetchHome(completion: { [weak self] response, error in
@@ -75,9 +79,9 @@ class HomeViewModel {
                 }
             }
             self?.error = nil
-            self?.isLoading = false
             self?.failMessage = nil
             self?.homeInfo = response?.result
+            self?.isLoading = false
         })
     }
 }

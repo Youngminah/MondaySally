@@ -9,9 +9,11 @@ import UIKit
 
 class WorkingMemberPreViewCell: UICollectionViewCell {
     @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var nickNameLabel: UILabel!
     
-    func updateUI(){
+    func updateUI(with data: WorkingMember){
         self.statusView.layer.cornerRadius = self.statusView.bounds.width/2
+        self.nickNameLabel.text = "\(data.nickname) / Server"
     }
     
 }

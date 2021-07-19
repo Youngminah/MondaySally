@@ -9,7 +9,7 @@ class GiftHistoryViewModel {
     
     //MARK: - Properties
     private var dataService: GiftDataService?
-    private var myGiftLogInfo: [MyGiftLogInfo] = [] { didSet { self.didFinishFetch?() } }
+    private var myGiftLogInfo: GiftHistoryPagination? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -30,12 +30,12 @@ class GiftHistoryViewModel {
     
     //MARK: 기프트 히스토리 전체 갯수
     var numOfGiftLogInfo: Int {
-        return myGiftLogInfo.count
+        return myGiftLogInfo?.giftLogs?.count ?? 0
     }
     
     //MARK: 특정 기프트 히스토리
-    func myGiftLogInfo(at index: Int) -> MyGiftLogInfo?{
-        return myGiftLogInfo[index]
+    func myGiftLogInfo(at index: Int) -> MyGiftLogInfo? {
+        return myGiftLogInfo?.giftLogs?[index]
     }
     
     //MARK: 기프트 히스토리 API 호출 함수
@@ -58,7 +58,7 @@ class GiftHistoryViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.isLoading = false
-            self?.myGiftLogInfo = response?.result ?? []
+            self?.myGiftLogInfo = response?.result
         })
     }
 }

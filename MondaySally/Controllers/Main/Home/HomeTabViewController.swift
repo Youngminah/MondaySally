@@ -6,27 +6,219 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeTabViewController: UIViewController {
 
-
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var totalCloverLabel: UILabel!
+    @IBOutlet weak var currentCloverLabel: UILabel!
+    @IBOutlet weak var usedCloverLabel: UILabel!
     @IBOutlet weak var totalCloverButtonView: UIView!
     @IBOutlet weak var usedCloverButtonView: UIView!
     @IBOutlet weak var currentCloverButtonView: UIView!
     @IBOutlet weak var firstRankingLabel: UILabel!
     @IBOutlet weak var secondRankingLabel: UILabel!
     @IBOutlet weak var thirdRankingLabel: UILabel!
+    @IBOutlet weak var firstRankingNameLabel: UILabel!
+    @IBOutlet weak var secondRankingNameLabel: UILabel!
+    @IBOutlet weak var thirdRankingNameLabel: UILabel!
     @IBOutlet weak var firstRankingImageBorderView: UIView!
     @IBOutlet weak var secondRankingImageBorderView: UIView!
     @IBOutlet weak var thridRankingImageBorderView: UIView!
     @IBOutlet weak var firstRankingImageButton: UIButton!
     @IBOutlet weak var secondRankingImageButton: UIButton!
     @IBOutlet weak var thirdRankingImageButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private let viewModel = HomeViewModel(dataService: HomeDataService())
+    var giftHistoryPreViewController: GiftHistoryPreViewController!
+    
+    private let boldAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSansCJKkr-Bold", size: 23) as Any
+    ]
+    
+    private let lightAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSanskr-Light", size: 21) as Any
+    ]
+    
+    private let mediumAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSansCJKkr-Medium", size: 21) as Any
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
+        self.attemptFetchHome()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "giftHistoryPreviewSegue" {
+            let vc = segue.destination as? GiftHistoryPreViewController
+            giftHistoryPreViewController = vc
+            giftHistoryPreViewController.attemptFetchGiftHistory()
+        }
+    }
+    
+    @IBAction func moveToCloverHistoryView(_ sender: UIButton) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CloverHistoryView") as? CloverHistoryViewController else{
+            return
+        }
+        vc.tabTag = sender.tag
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+// MARK: 네트워킹
+extension HomeTabViewController {
+
+    //메인탭바 [홈]화면 API 호출 함수
+    private func attemptFetchHome() {
+
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        
+        self.viewModel.showAlertClosure = { [weak self] () in
+            DispatchQueue.main.async {
+                if let error = self?.viewModel.error {
+                    print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
+                    self?.networkFailToExit()
+                }
+                if let message = self?.viewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        
+        //jwt 토큰에 문제가 있을 경우 로그아웃 시켜야함.
+        self.viewModel.codeAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+
+            }
+        }
+
+        self.viewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                print("홈 조회에 성공했습니다 !! ")
+                strongSelf.updateAfterAPIUI()
+                strongSelf.collectionView.reloadData()
+            }
+        }
+        self.viewModel.fetchHome()
+    }
+    
+    private func updateAfterAPIUI(){
+        guard let data = self.viewModel.homeInfo else { return }
+        self.setMainLabel(with :data)
+        self.setCompanyLogoImage(with :data)
+        self.totalCloverLabel.text = "\(data.accumulatedClover)".insertComma
+        self.currentCloverLabel.text = "\(data.currentClover)".insertComma
+        self.usedCloverLabel.text = "\(data.usedClover)".insertComma
+        self.firstRankingNameLabel.text = data.twinkleRank?[0].nickname
+        self.secondRankingNameLabel.text = data.twinkleRank?[1].nickname
+        self.thirdRankingNameLabel.text = data.twinkleRank?[2].nickname
+        self.setFirstRankingImage(with :data)
+        self.setSecondRankingImage(with :data)
+        self.setThirdRankingImage(with :data)
+    }
+    
+    //MARK: 1등 랭킹 프로필화면 셋팅
+    private func setFirstRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[0].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.firstRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 2등 랭킹 프로필화면 셋팅
+    private func setSecondRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[1].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.secondRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 3등 랭킹 프로필화면 셋팅
+    private func setThirdRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[2].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 기업로고 셋팅
+    private func setCompanyLogoImage(with data: HomeInfo){
+        guard let url = data.logoImgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+
+    //MARK: 기업로고 셋팅
+    private func setMainLabel(with data: HomeInfo){
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(string: "\(data.nickname)님", attributes: boldAttributes))
+        attributedString.append(NSAttributedString(string: "의\n누적 근무 시간은\n", attributes: lightAttributes))
+        attributedString.append(NSAttributedString(string: "총 '\(data.totalWorkTime)시간'", attributes: mediumAttributes))
+        attributedString.append(NSAttributedString(string: "입니다.☀️", attributes: lightAttributes))
+        self.mainLabel.attributedText = attributedString
+    }
+}
+
+
+//MARK: 현재 출근 멤버 컬렉션 뷰
+extension HomeTabViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let number = self.viewModel.numOfWorkingMember ?? 0
+        if number == 0 {
+            self.collectionView.setEmptyView(message: "현재 근무중인 멤버가 없어요")
+        }else {
+            self.collectionView.restore()
+        }
+        return number
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WorkingMemberPreViewCell", for: indexPath) as? WorkingMemberPreViewCell else {
+            return UICollectionViewCell()
+        }
+        guard let data = self.viewModel.workingMemberList(at: indexPath.row) else {
+            return cell
+        }
+        cell.updateUI(with :data)
+        return cell
+    }
+    
+    //UICollectionViewDelegateFlowLayout 프로토콜
+    //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = (collectionView.bounds.width - 28)/3
+        let height: CGFloat = collectionView.bounds.width/160 * 16
+        return CGSize(width: width, height: height)
+    }
+}
+
+
+// MARK: 업데이트 UI
+extension HomeTabViewController {
     
     private func updateUI(){
         self.firstRankingImageButton.clipsToBounds = true
@@ -61,15 +253,5 @@ class HomeTabViewController: UIViewController {
         self.firstRankingImageButton.layer.cornerRadius = self.firstRankingImageButton.bounds.width/2
         self.secondRankingImageButton.layer.cornerRadius = self.secondRankingImageButton.bounds.width/2
         self.thirdRankingImageButton.layer.cornerRadius = self.thirdRankingImageButton.bounds.width/2
-        
     }
-    
-    @IBAction func moveToCloverHistoryView(_ sender: UIButton) {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CloverHistoryView") as? CloverHistoryViewController else{
-            return
-        }
-        vc.tabTag = sender.tag
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }

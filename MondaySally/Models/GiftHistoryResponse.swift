@@ -9,7 +9,12 @@ struct GiftHistoryResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: [MyGiftLogInfo]?
+    var result: GiftHistoryPagination?
+}
+
+struct GiftHistoryPagination: Decodable {
+    var totalCount: Int
+    var giftLogs: [MyGiftLogInfo]?
 }
 
 struct MyGiftLogInfo: Decodable{
