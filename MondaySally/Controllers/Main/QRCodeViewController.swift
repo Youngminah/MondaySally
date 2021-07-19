@@ -15,6 +15,7 @@ class QRCodeViewController: UIViewController {
     var captureSession = AVCaptureSession() //비디오에서 들어온 데이터 인풋을 아웃풋으로 조정하는데 쓰이는 객체
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private let viewModel = CommuteViewModel(dataService: AuthDataService())
+    @IBOutlet weak var noticeLabel: UILabel!
     
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
@@ -32,6 +33,15 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var qrCodeFrameView: UIView!
     
+    private let lightdAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSanskr-Light", size: 15) as Any
+    ]
+    
+    private let mediumAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSansCJKkr-Medium", size: 15) as Any
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +50,15 @@ class QRCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.createQRCaptureModule()
+        self.updateUI()
+    }
+    
+    private func updateUI(){
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(string: "현재 퇴근 상태로\n하단에 QR 코드를 인식시키면\n‘", attributes: lightdAttributes))
+        attributedString.append(NSAttributedString(string: "퇴근", attributes: mediumAttributes))
+        attributedString.append(NSAttributedString(string: "’이 됩니다.", attributes: lightdAttributes))
+        self.noticeLabel.attributedText = attributedString
     }
 }
 
@@ -125,7 +144,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func showAnimation(){
-        UIView.animate(withDuration: 0.4, animations: { [weak self] in
+        UIView.animate(withDuration: 0.4, delay: 0.3,animations: { [weak self] in
             guard let self = self else { return }
             self.qrImageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: 1.1, y: 1.1)
         })

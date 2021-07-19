@@ -1545,7 +1545,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruF-AA-VgW">
-                                <rect key="frame" x="96.666666666666686" y="180" width="182" height="65.333333333333314"/>
+                                <rect key="frame" x="96.666666666666686" y="177" width="182" height="65.333333333333314"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">현재 퇴근 상태로 
@@ -1578,7 +1578,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZM-aF-fZp">
-                                <rect key="frame" x="45" y="290.33333333333337" width="285" height="285.33333333333337"/>
+                                <rect key="frame" x="42" y="287.33333333333337" width="291" height="291.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BZM-aF-fZp" secondAttribute="height" multiplier="1:1" id="X3E-GI-j2I"/>
@@ -1591,7 +1591,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* QR코드를 인식시켜주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="62I-4d-Tzj" userLabel="먼데이샐리를 통해 보다 더  즐거운 회사생활을 경험해보세요.">
-                                <rect key="frame" x="105.33333333333333" y="597.66666666666663" width="164.33333333333337" height="20.333333333333371"/>
+                                <rect key="frame" x="105.33333333333333" y="600.66666666666663" width="164.33333333333337" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1601,7 +1601,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BZM-aF-fZp" firstAttribute="top" secondItem="ruF-AA-VgW" secondAttribute="bottom" constant="45" id="6Ga-BP-gZw"/>
-                            <constraint firstItem="aYT-bX-tgS" firstAttribute="height" secondItem="BZM-aF-fZp" secondAttribute="height" multiplier="1:0.95" id="AtD-nb-8Ft"/>
+                            <constraint firstItem="aYT-bX-tgS" firstAttribute="height" secondItem="BZM-aF-fZp" secondAttribute="height" multiplier="1:0.97" id="AtD-nb-8Ft"/>
                             <constraint firstItem="62I-4d-Tzj" firstAttribute="top" secondItem="BZM-aF-fZp" secondAttribute="bottom" constant="22" id="Sp1-gN-APL"/>
                             <constraint firstItem="BZM-aF-fZp" firstAttribute="centerX" secondItem="DfT-3r-cMs" secondAttribute="centerX" id="Vot-zp-EPV"/>
                             <constraint firstItem="BZM-aF-fZp" firstAttribute="centerY" secondItem="DfT-3r-cMs" secondAttribute="centerY" id="m4l-Pq-2Xr"/>
@@ -1613,6 +1613,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="출퇴근 인증" id="B6u-o6-vv4"/>
                     <connections>
+                        <outlet property="noticeLabel" destination="ruF-AA-VgW" id="AUB-Hv-YGu"/>
                         <outlet property="qrCodeFrameView" destination="BZM-aF-fZp" id="2uh-7y-1Pd"/>
                         <outlet property="qrImageView" destination="aYT-bX-tgS" id="7Zb-p8-1mP"/>
                     </connections>

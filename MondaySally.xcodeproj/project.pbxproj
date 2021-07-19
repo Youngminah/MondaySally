@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4E0E688E51A9206DF7A003D3 /* Pods_MondaySally.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */; };
 		BB233C3D26A5D98800A443B0 /* CommuteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB233C3C26A5D98800A443B0 /* CommuteViewModel.swift */; };
+		BB233C3F26A5E5F000A443B0 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB233C3E26A5E5F000A443B0 /* HomeResponse.swift */; };
+		BB233C4126A5E60400A443B0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB233C4026A5E60400A443B0 /* HomeViewModel.swift */; };
+		BB233C4326A5E67D00A443B0 /* HomeDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB233C4226A5E67D00A443B0 /* HomeDataService.swift */; };
 		BB2FA681269F548100F09B4A /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */; };
 		BB4CD4A926A07E1300BD1E91 /* GiftListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4A826A07E1300BD1E91 /* GiftListResponse.swift */; };
 		BB4CD4AB26A081D700BD1E91 /* GiftListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */; };
@@ -133,6 +136,9 @@
 		12056DD067E4AC28B679051F /* Pods-MondaySally.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MondaySally.debug.xcconfig"; path = "Target Support Files/Pods-MondaySally/Pods-MondaySally.debug.xcconfig"; sourceTree = "<group>"; };
 		4F5DECD00760518AB09407E4 /* Pods_MondaySally.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MondaySally.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB233C3C26A5D98800A443B0 /* CommuteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteViewModel.swift; sourceTree = "<group>"; };
+		BB233C3E26A5E5F000A443B0 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		BB233C4026A5E60400A443B0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BB233C4226A5E67D00A443B0 /* HomeDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataService.swift; sourceTree = "<group>"; };
 		BB2FA680269F548100F09B4A /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		BB4CD4A826A07E1300BD1E91 /* GiftListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListResponse.swift; sourceTree = "<group>"; };
 		BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListViewModel.swift; sourceTree = "<group>"; };
@@ -281,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */,
+				BB233C4226A5E67D00A443B0 /* HomeDataService.swift */,
 				BBEF261726A1F5F900893DD5 /* GiftDataService.swift */,
 				BB73507426A356A7004C955F /* CloverDataService.swift */,
 				BB73508B26A4AEC8004C955F /* TwinkleDataService.swift */,
@@ -368,6 +375,7 @@
 				BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */,
 				BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */,
 				BB5FE5D8269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift */,
+				BB233C4026A5E60400A443B0 /* HomeViewModel.swift */,
 				BB4CD4AA26A081D700BD1E91 /* GiftListViewModel.swift */,
 				BB4CD4AC26A081E800BD1E91 /* GiftDetailViewModel.swift */,
 				BB4CD4B426A087BF00BD1E91 /* GiftRequestViewModel.swift */,
@@ -395,6 +403,7 @@
 				BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */,
 				BBEF261526A1F4FF00893DD5 /* EditProfileResponse.swift */,
 				BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift */,
+				BB233C3E26A5E5F000A443B0 /* HomeResponse.swift */,
 				BB4CD4A826A07E1300BD1E91 /* GiftListResponse.swift */,
 				BB4CD4AE26A081F900BD1E91 /* GiftDetailResponse.swift */,
 				BB4CD4B026A0879E00BD1E91 /* GiftRequestInput.swift */,
@@ -729,6 +738,7 @@
 				BBA56F122691DD79000FDFC0 /* WorkingMemberPreViewController.swift in Sources */,
 				BB73507126A35666004C955F /* CloverHistoryResponse.swift in Sources */,
 				BBEB831B268B04EE00B9CA54 /* Date.swift in Sources */,
+				BB233C3F26A5E5F000A443B0 /* HomeResponse.swift in Sources */,
 				BB233C3D26A5D98800A443B0 /* CommuteViewModel.swift in Sources */,
 				BBA56F0E2691D3EC000FDFC0 /* GiftHistoryPreViewController.swift in Sources */,
 				BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */,
@@ -736,6 +746,7 @@
 				BBA56EFA268F6D26000FDFC0 /* HomeTabViewController.swift in Sources */,
 				BBA56EF1268F6A9D000FDFC0 /* MainTabBarViewController.swift in Sources */,
 				BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */,
+				BB233C4126A5E60400A443B0 /* HomeViewModel.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
 				BB4CD4B126A0879E00BD1E91 /* GiftRequestInput.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
@@ -810,6 +821,7 @@
 				BB4CD4B526A087BF00BD1E91 /* GiftRequestViewModel.swift in Sources */,
 				BB4CD4AD26A081E800BD1E91 /* GiftDetailViewModel.swift in Sources */,
 				BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */,
+				BB233C4326A5E67D00A443B0 /* HomeDataService.swift in Sources */,
 				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
 				BB5FE5D9269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift in Sources */,
 				BB4CD4AB26A081D700BD1E91 /* GiftListViewModel.swift in Sources */,
