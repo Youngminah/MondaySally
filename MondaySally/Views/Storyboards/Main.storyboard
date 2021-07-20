@@ -2954,6 +2954,9 @@
                                                 <state key="normal" title="등록">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="commentWriteButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="sWE-jL-QJD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

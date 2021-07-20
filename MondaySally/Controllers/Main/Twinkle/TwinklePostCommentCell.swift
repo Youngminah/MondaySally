@@ -46,7 +46,7 @@ class TwinklePostCommentCell: UITableViewCell {
         //self.commentTextView =
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(string: data.nickName, attributes: mediumAttributes))
-        attributedString.append(NSAttributedString(string: " " + data.content, attributes: regularAttributes))
+        attributedString.append(NSAttributedString(string: "  " + data.content, attributes: regularAttributes))
         self.commentTextView.attributedText = attributedString
         self.dateLabel.text = data.date
         self.setProfileImage(with: data.profileImage)
@@ -60,7 +60,7 @@ class TwinklePostCommentCell: UITableViewCell {
     }
     
     private func setButtonHidden(with isWriter: String){
-        if isWriter == "Y" {
+        if isWriter == "N" {
             self.deleteButton.isHidden = true
             self.editButton.isHidden = true
         }else {

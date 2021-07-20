@@ -26,19 +26,20 @@ class TwinklePostViewController: UIViewController {
     
     var index = Int()
     
-    private let ex:[String] = ["그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~!그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~!그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요!그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요!", "그동안 고생했", "그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! ", "그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요!그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! " ]
-    
-    private let viewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
+    private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
+    private let commentWriteViewModel = TwinkleCommentWriteViewModel(dataService: TwinkleDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.attemptFetchTwinkleDetail(with : index)
-        
-//        self.postTextView.text = "그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~! 그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~!그동안 열심히 일한 보람이 있네요! 드디어 쌓아왔던 포인트로 가족들에게 쐈습니다 ㅎㅎ 덕분에 가족들에게 좋은 소리들었네요! 다들 포인트 활용해보세요~!"
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.attemptFetchDetail(with : index)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(adjustInputView),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(adjustInputView),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
         
@@ -46,6 +47,17 @@ class TwinklePostViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    @IBAction func commentWriteButtonTap(_ sender: UIButton) {
+        guard let content = self.commentTextField.text else {
+            return
+        }
+        if content == ""{
+            self.showSallyNotationAlert(with: "댓글을 입력해 주세요.")
+        }
+        self.commentTextField.text = ""
+        self.attemptFetchCommentWrite(with: index, with: content)
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
@@ -98,7 +110,7 @@ extension TwinklePostViewController {
 extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let number = self.viewModel.numOfComment
+        let number = self.detailViewModel.numOfComment
         if number == 0 {
             self.tableView.setEmptyView(message: "등록된 댓글이 없어요.")
         } else {
@@ -111,7 +123,7 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TwinklePostCommentCell", for: indexPath) as? TwinklePostCommentCell else {
             return UITableViewCell()
         }
-        guard let data = self.viewModel.twinkleDetailInfo?.commentList?[indexPath.row] else {
+        guard let data = self.detailViewModel.twinkleDetailInfo?.commentList?[indexPath.row] else {
             return cell
         }
         cell.updateUI(with: data)
@@ -130,46 +142,84 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 
-// MARK: 트윙클 리스트 조회 API
+// MARK: 트윙클 네트워크 API
 extension TwinklePostViewController {
-    
-    private func attemptFetchTwinkleDetail(with index: Int) {
-        self.viewModel.updateLoadingStatus = {
+    // MARK: 트윙클 리스트 조회 API
+    private func attemptFetchDetail(with index: Int) {
+        self.detailViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.detailViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
-        self.viewModel.showAlertClosure = { [weak self] () in
+        self.detailViewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                if let error = strongSelf.viewModel.error {
+                if let error = strongSelf.detailViewModel.error {
                     print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
                     strongSelf.networkFailToExit()
                 }
-                if let message = strongSelf.viewModel.failMessage {
+                if let message = strongSelf.detailViewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
                 }
             }
         }
-        self.viewModel.codeAlertClosure = { [weak self] () in
+        self.detailViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 //Code
-                if strongSelf.viewModel.failCode == 353 {
+                if strongSelf.detailViewModel.failCode == 353 {
 
                 }
             }
         }
-        self.viewModel.didFinishFetch = { [weak self] () in
+        self.detailViewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
-                print("기프트 신청에 성공했습니다 !! ")
+                print("트윙클 디테일 조회에 성공했습니다 !! ")
                 strongSelf.updateNetworkUI()
                 strongSelf.tableView.reloadData()
             }
         }
-        self.viewModel.fetchTwinkleDetail(with: index)
+        self.detailViewModel.fetchTwinkleDetail(with: index)
+    }
+    // MARK: 트윙클 댓글 쓰기 API
+    private func attemptFetchCommentWrite(with index: Int, with content: String) {
+        self.commentWriteViewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                let _ = strongSelf.commentWriteViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        self.commentWriteViewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                if let error = strongSelf.commentWriteViewModel.error {
+                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
+                }
+                if let message = strongSelf.commentWriteViewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        self.commentWriteViewModel.codeAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                //Code
+                if strongSelf.commentWriteViewModel.failCode == 353 {
+
+                }
+            }
+        }
+        self.commentWriteViewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                print("댓글 작성이 성공했습니다 !! ")
+                strongSelf.attemptFetchDetail(with : index)
+            }
+        }
+        self.commentWriteViewModel.fetchTwinkleCommentWrite(with: index, with: content)
     }
 }
 
@@ -178,7 +228,7 @@ extension TwinklePostViewController {
 extension TwinklePostViewController {
     
     private func updateNetworkUI(){
-        guard let data = self.viewModel.twinkleDetailInfo else { return }
+        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
         self.title = "\(data.writerName)님의 트윙클"
         self.twinkleDateLabel.text = data.date
         self.giftNameLabel.text = data.giftName

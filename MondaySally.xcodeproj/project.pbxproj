@@ -27,6 +27,7 @@
 		BB5A320226A73E0500C814E4 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320126A73E0500C814E4 /* UITableView.swift */; };
 		BB5A320426A7517E00C814E4 /* TwinkleDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */; };
 		BB5A320626A7599D00C814E4 /* TwinkleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320526A7599D00C814E4 /* TwinkleDetailViewModel.swift */; };
+		BB5A320826A7680300C814E4 /* TwinkleCommentWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320726A7680300C814E4 /* TwinkleCommentWriteViewModel.swift */; };
 		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
 		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
@@ -158,6 +159,7 @@
 		BB5A320126A73E0500C814E4 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDetailResponse.swift; sourceTree = "<group>"; };
 		BB5A320526A7599D00C814E4 /* TwinkleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDetailViewModel.swift; sourceTree = "<group>"; };
+		BB5A320726A7680300C814E4 /* TwinkleCommentWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleCommentWriteViewModel.swift; sourceTree = "<group>"; };
 		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				BB73508026A4AB2D004C955F /* TwinkleProveViewModel.swift */,
 				BB73508726A4AD64004C955F /* TwinkleWriteViewModel.swift */,
 				BB73508926A4AD76004C955F /* TwinkleLikeViewModel.swift */,
+				BB5A320726A7680300C814E4 /* TwinkleCommentWriteViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */,
 				BB233C4126A5E60400A443B0 /* HomeViewModel.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
+				BB5A320826A7680300C814E4 /* TwinkleCommentWriteViewModel.swift in Sources */,
 				BB4CD4B126A0879E00BD1E91 /* GiftRequestInput.swift in Sources */,
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
 				BB5FE5972692EBC200F2A7A6 /* CloverRankingCell.swift in Sources */,

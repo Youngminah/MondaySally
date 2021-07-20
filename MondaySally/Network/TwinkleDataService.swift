@@ -11,8 +11,9 @@ struct TwinkleDataService {
     static let shared = TwinkleDataService()
     
     private var twinkleUrl = "\(Constant.BASE_URL)/twinkle"
-    private var twinkleProveUrl = "\(Constant.BASE_URL)/prove"
-    private var twinkleLikeUrl = "\(Constant.BASE_URL)/like"
+    private var proveUrl = "\(Constant.BASE_URL)/prove"
+    private var likeUrl = "\(Constant.BASE_URL)/like"
+    private var commentUrl = "\(Constant.BASE_URL)/comment"
     
     
     //MARK: 트윙클 관련 API
@@ -40,6 +41,7 @@ struct TwinkleDataService {
     //트윙클 상세 API
     func requestFetchTwinkleDetail(with index: Int, completion: @escaping (TwinkleDetailResponse?, Error?) -> ()) {
         let url = "\(twinkleUrl)/\(index)"
+        
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: TwinkleDetailResponse.self) { (response) in
@@ -59,7 +61,7 @@ struct TwinkleDataService {
     
     //내 트윙클 목록 조회 API
     func requestFetchTwinkleProve(completion: @escaping (TwinkleProveResponse?, Error?) -> ()) {
-        let url = "\(twinkleProveUrl)"
+        let url = "\(proveUrl)"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: TwinkleProveResponse.self) { (response) in
@@ -99,8 +101,29 @@ struct TwinkleDataService {
     
     //트윙클 좋아요 API
     func requestFetchTwinkleLike(with index: Int, completion: @escaping (NoDataResponse?, Error?) -> ()) {
-        let url = "\(twinkleLikeUrl)/\(index)"
-        AF.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+        let url = "\(likeUrl)/\(index)"
+        AF.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: NoDataResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    //트윙클 댓글 작성 API
+    func requestFetchTwinkleCommentWrite(with index: Int, with content: String, completion: @escaping (NoDataResponse?, Error?) -> ()) {
+        let url = "\(commentUrl)/\(index)"
+        let contentToDictionary: [String: String]  = ["content": content]
+        AF.request(url, method: .post, parameters: contentToDictionary, encoding: JSONEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: NoDataResponse.self) { (response) in
                 switch response.result {
