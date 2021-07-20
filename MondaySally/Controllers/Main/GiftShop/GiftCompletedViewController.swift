@@ -11,7 +11,12 @@ class GiftCompletedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "기프트 샵"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "홈으로", style: .plain, target: self, action: #selector(homeButtonPressed))
     }
     
+    
+    @objc private func homeButtonPressed(_ sender: Any) {
+        self.changeRootViewToMainTabBar()
+    }
 }

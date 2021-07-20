@@ -46,9 +46,8 @@ class GiftShopDetailViewController: UIViewController {
     }
     
     @IBAction func giftApplyButton(_ sender: UIButton) {
-        guard let clover = self.giftDetailViewModel.getOptionClover(at: self.selectOpionIndex) else {
-            return
-        }
+        guard let clover = self.giftDetailViewModel.getOptionClover(at: self.selectOpionIndex) else { return }
+        print(giftIndex)
         input = GiftRequestInput(giftIdx: giftIndex, usedClover: clover)
         guard let input = input else { return }
         attemptFetchGiftRequest(with :input)
@@ -76,7 +75,6 @@ extension GiftShopDetailViewController: TTGTextTagCollectionViewDelegate{
             print("ERROR: 옵션 태그로 변환 실패하다!!")
             return
         }
-        print(optionTagList)
         self.collectionView.add(optionTagList)
         self.collectionView.getTagAt(UInt(selectOpionIndex)).selected = true
         self.collectionView.reload()
@@ -214,6 +212,7 @@ extension GiftShopDetailViewController {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftCompletedView") as? GiftCompletedViewController else{
             return
         }
+        self.navigationItem.backButtonTitle = " "
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

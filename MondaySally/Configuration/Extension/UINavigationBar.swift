@@ -34,4 +34,9 @@ extension UINavigationBar {
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.white
     }
+    
+    func removeBackTitle() {
+        self.backItem?.backButtonTitle = " "
+        self.backItem?.backBarButtonItem?.title = ""
+    }
 }

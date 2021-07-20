@@ -33,6 +33,10 @@ class GiftHistoryViewModel {
         return myGiftLogInfo?.giftLogs?.count ?? 0
     }
     
+    var numOfTotalGiftLogInfo: Int {
+        return myGiftLogInfo?.totalCount ?? 0
+    }
+    
     //MARK: 특정 기프트 히스토리
     func myGiftLogInfo(at index: Int) -> MyGiftLogInfo? {
         return myGiftLogInfo?.giftLogs?[index]

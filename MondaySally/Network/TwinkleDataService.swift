@@ -18,7 +18,7 @@ struct TwinkleDataService {
     //MARK: 트윙클 관련 API
     //트윙클 히스토리 API
     func requestFetchTwinkleTotal(completion: @escaping (TwinkleResponse?, Error?) -> ()) {
-        let url = "\(twinkleUrl)"
+        let url = "\(twinkleUrl)?page=1"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: TwinkleResponse.self) { (response) in
@@ -59,7 +59,7 @@ struct TwinkleDataService {
     //트윙클 등록 API
     func requestFetchTwinkleWrite(with input: TwinkleWriteInput, completion: @escaping (NoDataResponse?, Error?) -> ()) {
         let url = "\(twinkleUrl)"
-        AF.request(url, method: .post, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
+        AF.request(url, method: .post, parameters: input.toDictionary, encoding: JSONEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: NoDataResponse.self) { (response) in
                 switch response.result {

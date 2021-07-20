@@ -29,8 +29,8 @@ class TwinkleViewModel {
     }
     
     //MARK: 전체 트윙클 총 갯수
-    var numOfTwinkle: Int? {
-        return twinkleInfo?.count
+    var numOfTwinkle: Int {
+        return twinkleInfo?.count ?? 0
     }
     
     //MARK: 트윙클 인덱스 조회
@@ -57,7 +57,7 @@ class TwinkleViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.twinkleInfo = response?.result
+            self?.twinkleInfo = response?.result?.twinkles
             self?.isLoading = false
             
         })

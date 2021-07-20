@@ -23,7 +23,13 @@ class GiftHistoryViewController: UIViewController {
 extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numOfGiftLogInfo
+        let number = self.viewModel.numOfGiftLogInfo
+        if number == 0 {
+            self.collectionView.setEmptyView(message: "아직 사용하신 히스토리가 없어요")
+        } else {
+            self.collectionView.restore()
+        }
+        return number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -103,6 +109,6 @@ extension GiftHistoryViewController {
     }
     
     private func updateAPIUI(){
-        self.totalHistoryLabel.text = "총 \(viewModel.numOfGiftLogInfo)건의 기프트"
+        self.totalHistoryLabel.text = "총 \(viewModel.numOfTotalGiftLogInfo)건의 기프트"
     }
 }

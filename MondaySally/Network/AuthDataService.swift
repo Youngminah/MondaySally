@@ -50,7 +50,7 @@ struct AuthDataService {
 
         let teamCodeDic: [String: String]  = [ "code": teamCode]
 
-        AF.request(url, method: .post, parameters: teamCodeDic, encoding: URLEncoding.default, headers: nil)
+        AF.request(url, method: .post, parameters: teamCodeDic, encoding: JSONEncoding.default, headers: nil)
             .validate()
             .responseDecodable(of: TeamCodeResponse.self) { (response) in
                 switch response.result {
@@ -111,7 +111,7 @@ struct AuthDataService {
     func requestFetchEditProfile(with input: EditProfileInput, completion: @escaping (EditProfileResponse?, Error?) -> ()) {
         let url = "\(profileEditUrl)"
 
-        AF.request(url, method: .patch, parameters: input.toDictionary, encoding: URLEncoding.default, headers: Constant.HEADERS)
+        AF.request(url, method: .patch, parameters: input.toDictionary, encoding: JSONEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: EditProfileResponse.self) { (response) in
                 switch response.result {

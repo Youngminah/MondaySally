@@ -6,20 +6,41 @@
 //
 
 
-
+// 탭바에서 트윙클 화면 조회 
 struct TwinkleResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: [TwinkleInfo]?
+    var result: Twinkles?
 }
 
-struct TwinkleInfo: Decodable {
-    var imgUrl: String?
-    var nickname: String?
-    var twinkleImg: String
-    var date: String
-    var content: String
-    var likenum: Int
-    var commentnum: Int
+struct Twinkles: Decodable {
+    var twinkles: [TwinkleInfo]?
+    
+}
+
+struct TwinkleInfo: Decodable{
+    let index: Int
+    let profileImage: String?
+    let nickName: String?
+    let giftName: String
+    let clover: Int
+    let thumbnailImage: String
+    let date: String
+    let content: String
+    let likeCount: Int
+    let commentCount: Int
+    
+    enum CodingKeys:  String, CodingKey {
+        case index = "idx"
+        case profileImage = "imgUrl"
+        case nickName = "nickname"
+        case giftName = "name"
+        case clover = "usedClover"
+        case thumbnailImage = "twinkleImg"
+        case date = "date"
+        case content = "content"
+        case likeCount = "likenum"
+        case commentCount = "commentnum"
+    }
 }
