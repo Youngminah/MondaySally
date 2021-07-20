@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class TwinklePostViewController: UIViewController {
 
     
@@ -28,6 +29,7 @@ class TwinklePostViewController: UIViewController {
     
     private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
     private let commentWriteViewModel = TwinkleCommentWriteViewModel(dataService: TwinkleDataService())
+    private let commentDeleteViewModel = TwinkleCommentDeleteViewModel(dataService: TwinkleDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +130,7 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         cell.updateUI(with: data)
+        cell.delegate = self
         return cell
     }
     
@@ -208,10 +211,18 @@ extension TwinklePostViewController {
     }
 }
 
+// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+extension TwinklePostViewController: CommentDelegate {
+    func didPressDeleteButton(with index: Int) {
+        self.attemptFetchCommentDelete(with :index)
+    }
+    
+}
+
 
 extension TwinklePostViewController {
 
-    // MARK: 트윙클 댓글 쓰기 API
+    // MARK: 트윙클 댓글 작성 API
     private func attemptFetchCommentWrite(with index: Int, with content: String) {
         self.commentWriteViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
@@ -250,5 +261,46 @@ extension TwinklePostViewController {
             }
         }
         self.commentWriteViewModel.fetchTwinkleCommentWrite(with: index, with: content)
+    }
+    
+    
+    
+    // MARK: 트윙클 댓글 삭제 API
+    private func attemptFetchCommentDelete(with index: Int) {
+        self.commentDeleteViewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                let _ = strongSelf.commentDeleteViewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        self.commentDeleteViewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                if let error = strongSelf.commentDeleteViewModel.error {
+                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
+                }
+                if let message = strongSelf.commentDeleteViewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        self.commentDeleteViewModel.codeAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                //Code
+                if strongSelf.commentDeleteViewModel.failCode == 353 {
+
+                }
+            }
+        }
+        self.commentDeleteViewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                print("댓글 작성이 성공했습니다 !! ")
+                strongSelf.attemptFetchDetail(with : strongSelf.index)
+            }
+        }
+        self.commentDeleteViewModel.fetchTwinkleCommentDelete(with: index)
     }
 }

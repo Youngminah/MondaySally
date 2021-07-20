@@ -13,6 +13,10 @@ class TwinkleTabViewController: UIViewController {
     private let viewModel = TwinkleViewModel(dataService: TwinkleDataService())
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.attemptFetchTwinkleTotal()
     }
 }

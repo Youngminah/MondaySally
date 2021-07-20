@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CommentDelegate{
+    func didPressDeleteButton(with index: Int)
+}
+
 class TwinklePostCommentCell: UITableViewCell {
 
     @IBOutlet weak var commentTextView: UITextView!
@@ -15,6 +19,8 @@ class TwinklePostCommentCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     
+    private var index = Int()
+    var delegate: CommentDelegate?
     
     private let regularAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.label,
@@ -34,6 +40,7 @@ class TwinklePostCommentCell: UITableViewCell {
         self.profileImageView.layer.borderWidth = 1
         self.profileImageView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.width/2
+        
 
     }
 
@@ -41,9 +48,13 @@ class TwinklePostCommentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    @IBAction func deleteButtonTap(_ sender: UIButton) {
+        delegate?.didPressDeleteButton(with: index)
+    }
     
     func updateUI(with data: TwinkleCommentInfo){
         //self.commentTextView =
+        index = data.index
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(string: data.nickName, attributes: mediumAttributes))
         attributedString.append(NSAttributedString(string: "  " + data.content, attributes: regularAttributes))

@@ -2891,6 +2891,9 @@
                                                                     <state key="normal" title="삭제">
                                                                         <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="deleteButtonTap:" destination="JuR-f3-MCe" eventType="touchUpInside" id="nww-0s-97E"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3U-AB-jSS">
                                                                     <rect key="frame" x="30" y="0.0" width="30" height="31"/>
