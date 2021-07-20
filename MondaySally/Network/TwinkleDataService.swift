@@ -36,6 +36,27 @@ struct TwinkleDataService {
             }
     }
     
+    
+    //트윙클 상세 API
+    func requestFetchTwinkleDetail(with index: Int, completion: @escaping (TwinkleDetailResponse?, Error?) -> ()) {
+        let url = "\(twinkleUrl)/\(index)"
+        AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: TwinkleDetailResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
     //내 트윙클 목록 조회 API
     func requestFetchTwinkleProve(completion: @escaping (TwinkleProveResponse?, Error?) -> ()) {
         let url = "\(twinkleProveUrl)"

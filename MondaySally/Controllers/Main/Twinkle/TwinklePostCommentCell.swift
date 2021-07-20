@@ -11,6 +11,20 @@ class TwinklePostCommentCell: UITableViewCell {
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    
+    
+    private let regularAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSansCJKkr-Regular", size: 14) as Any
+    ]
+    
+    private let mediumAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.label,
+        .font: UIFont(name: "NotoSansCJKkr-Medium", size: 14) as Any
+    ]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +41,31 @@ class TwinklePostCommentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    func updateUI(with data: TwinkleCommentInfo){
+        //self.commentTextView =
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(string: data.nickName, attributes: mediumAttributes))
+        attributedString.append(NSAttributedString(string: " " + data.content, attributes: regularAttributes))
+        self.commentTextView.attributedText = attributedString
+        self.dateLabel.text = data.date
+        self.setProfileImage(with: data.profileImage)
+        self.setButtonHidden(with: data.isWriter)
+    }
 
+    private func setProfileImage(with url: String?){
+        guard let url = url else { return }
+        let urlString = URL(string: url)
+        self.profileImageView.kf.setImage(with: urlString)
+    }
+    
+    private func setButtonHidden(with isWriter: String){
+        if isWriter == "Y" {
+            self.deleteButton.isHidden = true
+            self.editButton.isHidden = true
+        }else {
+            self.deleteButton.isHidden = false
+            self.editButton.isHidden = false
+        }
+    }
 }

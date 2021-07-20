@@ -25,6 +25,8 @@
 		BB5A31F826A6020A00C814E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A31F726A6020A00C814E4 /* ImageLoader.swift */; };
 		BB5A320026A6294400C814E4 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A31FF26A6294400C814E4 /* UICollectionView.swift */; };
 		BB5A320226A73E0500C814E4 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320126A73E0500C814E4 /* UITableView.swift */; };
+		BB5A320426A7517E00C814E4 /* TwinkleDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */; };
+		BB5A320626A7599D00C814E4 /* TwinkleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320526A7599D00C814E4 /* TwinkleDetailViewModel.swift */; };
 		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
 		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
@@ -154,6 +156,8 @@
 		BB5A31F726A6020A00C814E4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		BB5A31FF26A6294400C814E4 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		BB5A320126A73E0500C814E4 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDetailResponse.swift; sourceTree = "<group>"; };
+		BB5A320526A7599D00C814E4 /* TwinkleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDetailViewModel.swift; sourceTree = "<group>"; };
 		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +390,7 @@
 				BB73507626A356DD004C955F /* CloverHistoryViewModel.swift */,
 				BB73507826A356EC004C955F /* CloverRankingViewModel.swift */,
 				BB73507A26A4AA7D004C955F /* TwinkleViewModel.swift */,
+				BB5A320526A7599D00C814E4 /* TwinkleDetailViewModel.swift */,
 				BB73508026A4AB2D004C955F /* TwinkleProveViewModel.swift */,
 				BB73508726A4AD64004C955F /* TwinkleWriteViewModel.swift */,
 				BB73508926A4AD76004C955F /* TwinkleLikeViewModel.swift */,
@@ -414,8 +419,9 @@
 				BB4CD4B826A0881000BD1E91 /* GiftHistoryResponse.swift */,
 				BB73507026A35666004C955F /* CloverHistoryResponse.swift */,
 				BB73507226A3568D004C955F /* CloverRankingResponse.swift */,
-				BB73507E26A4AB12004C955F /* TwinkleProveResponse.swift */,
 				BB73507C26A4AA93004C955F /* TwinkleResponse.swift */,
+				BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */,
+				BB73507E26A4AB12004C955F /* TwinkleProveResponse.swift */,
 				BB73508226A4AB5A004C955F /* TwinkleWriteInput.swift */,
 			);
 			path = Models;
@@ -758,6 +764,7 @@
 				BBA56EF8268F6CEB000FDFC0 /* ResignationViewController.swift in Sources */,
 				BB5FE5972692EBC200F2A7A6 /* CloverRankingCell.swift in Sources */,
 				BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */,
+				BB5A320626A7599D00C814E4 /* TwinkleDetailViewModel.swift in Sources */,
 				BB73507D26A4AA93004C955F /* TwinkleResponse.swift in Sources */,
 				BBA56EF4268F6ACC000FDFC0 /* MyPageViewController.swift in Sources */,
 				BBE9FC9226A285BB0057FDAD /* SallyAlert.swift in Sources */,
@@ -809,6 +816,7 @@
 				BB5FE5A72695AF8A00F2A7A6 /* TwinkleWriteViewController.swift in Sources */,
 				BBA56EFC268F6D36000FDFC0 /* GiftTabViewController.swift in Sources */,
 				BBD09EC8268DC4AA00AF4A56 /* UIView.swift in Sources */,
+				BB5A320426A7517E00C814E4 /* TwinkleDetailResponse.swift in Sources */,
 				BBA56F102691D575000FDFC0 /* GiftHistoryPreViewCell.swift in Sources */,
 				BBA56F0C2691CAD3000FDFC0 /* TwinkleStatusCell.swift in Sources */,
 				BB5FE5B82696417F00F2A7A6 /* AuthDataService.swift in Sources */,

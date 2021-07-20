@@ -49,6 +49,10 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
             return
         }
+        guard let data = self.viewModel.twinkleList(at: indexPath.row)?.index else {
+            return
+        }
+        vc.index = data
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

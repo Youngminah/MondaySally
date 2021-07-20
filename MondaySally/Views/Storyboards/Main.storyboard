@@ -2918,6 +2918,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentTextView" destination="zwN-Wn-nKe" id="zI5-Rh-vsD"/>
+                                            <outlet property="dateLabel" destination="XER-Kv-Qmx" id="onf-ez-Mrt"/>
+                                            <outlet property="deleteButton" destination="MDu-HF-xIj" id="pa2-dS-tMN"/>
+                                            <outlet property="editButton" destination="p3U-AB-jSS" id="s0H-HI-UVd"/>
                                             <outlet property="profileImageView" destination="Ole-O0-kBs" id="e9v-Ig-Grr"/>
                                         </connections>
                                     </tableViewCell>
@@ -2978,12 +2981,19 @@
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="cloverLabel" destination="tCp-VH-lym" id="7Qo-ph-5Tt"/>
                         <outlet property="commentButton" destination="KHy-1a-1af" id="s5W-u2-VDL"/>
+                        <outlet property="commentCountLabel" destination="36Z-HI-3gD" id="tGM-wJ-F0h"/>
                         <outlet property="commentTableView" destination="bny-fW-i9h" id="YDM-Bq-2wQ"/>
                         <outlet property="commentTextField" destination="kVN-0G-piT" id="CST-BO-YGf"/>
                         <outlet property="commentTextFieldBottom" destination="Xbs-n4-LcA" id="LMG-qL-bnX"/>
+                        <outlet property="giftNameLabel" destination="uiP-fk-JbA" id="d5B-SK-Mqb"/>
+                        <outlet property="likeButton" destination="FqN-7W-31j" id="BBI-0t-fRt"/>
+                        <outlet property="likeCountLabel" destination="NCE-xw-kCY" id="wHz-GF-bz4"/>
                         <outlet property="postTextView" destination="lJR-Zn-whz" id="nld-lk-KNB"/>
                         <outlet property="tableHeaderView" destination="fJz-ui-8eg" id="O6n-Lr-qah"/>
+                        <outlet property="tableView" destination="bny-fW-i9h" id="Lr8-0l-9Fu"/>
+                        <outlet property="twinkleDateLabel" destination="qzW-gg-bPQ" id="H9C-9B-ZBR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuX-rR-ma4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
