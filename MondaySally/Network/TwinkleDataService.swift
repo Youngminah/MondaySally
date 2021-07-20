@@ -139,4 +139,24 @@ struct TwinkleDataService {
                 }
             }
     }
+    
+    //트윙클 댓글 삭제 API
+    func requestFetchTwinkleCommentDelete(with index: Int, completion: @escaping (NoDataResponse?, Error?) -> ()) {
+        let url = "\(commentUrl)/out/\(index)"
+        AF.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: NoDataResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
 }

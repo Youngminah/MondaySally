@@ -42,7 +42,6 @@ class TwinklePostViewController: UIViewController {
                                                object: nil)
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +57,7 @@ class TwinklePostViewController: UIViewController {
         }
         self.commentTextField.text = ""
         self.attemptFetchCommentWrite(with: index, with: content)
+        self.tableView.scrollToBottom()
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
@@ -116,6 +116,7 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             self.tableView.restore()
         }
+        print("a")
         return number
     }
     
@@ -145,7 +146,7 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
 // MARK: 트윙클 네트워크 API
 extension TwinklePostViewController {
     // MARK: 트윙클 리스트 조회 API
-    private func attemptFetchDetail(with index: Int) {
+    private func attemptFetchDetail(with index: Int, completion: (() -> Void)? = nil) {
         self.detailViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -179,16 +180,43 @@ extension TwinklePostViewController {
                 print("트윙클 디테일 조회에 성공했습니다 !! ")
                 strongSelf.updateNetworkUI()
                 strongSelf.tableView.reloadData()
+                if completion != nil {
+                    completion!()
+                }
             }
         }
         self.detailViewModel.fetchTwinkleDetail(with: index)
     }
+}
+
+
+// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+extension TwinklePostViewController {
+    private func updateNetworkUI(){
+        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
+        self.title = "\(data.writerName)님의 트윙클"
+        self.twinkleDateLabel.text = data.date
+        self.giftNameLabel.text = data.giftName
+        self.cloverLabel.text = "\(data.clover)"
+        self.postTextView.text = data.content
+        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
+        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
+        //self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 20
+        self.commentCountLabel.text = "댓글 \(data.commentCount)개"
+        self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
+        
+    }
+}
+
+
+extension TwinklePostViewController {
+
     // MARK: 트윙클 댓글 쓰기 API
     private func attemptFetchCommentWrite(with index: Int, with content: String) {
         self.commentWriteViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.commentWriteViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.commentWriteViewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
             }
         }
         self.commentWriteViewModel.showAlertClosure = { [weak self] () in
@@ -216,30 +244,11 @@ extension TwinklePostViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("댓글 작성이 성공했습니다 !! ")
-                strongSelf.attemptFetchDetail(with : index)
+                strongSelf.attemptFetchDetail(with : index) {
+                    strongSelf.tableView.scrollToBottom()
+                }
             }
         }
         self.commentWriteViewModel.fetchTwinkleCommentWrite(with: index, with: content)
     }
-}
-
-
-// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
-extension TwinklePostViewController {
-    
-    private func updateNetworkUI(){
-        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
-        self.title = "\(data.writerName)님의 트윙클"
-        self.twinkleDateLabel.text = data.date
-        self.giftNameLabel.text = data.giftName
-        self.cloverLabel.text = "\(data.clover)"
-        self.postTextView.text = data.content
-        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
-        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 35
-        self.commentCountLabel.text = "댓글 \(data.commentCount)개"
-        self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
-        
-    }
-    
 }
