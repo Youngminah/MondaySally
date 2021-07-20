@@ -14,6 +14,8 @@ class GiftCell: UICollectionViewCell {
     func updateUI(with giftInfo: GiftInfo){
         //MARK: 이미지값 넣어야됨.
         self.giftNameLabel.text = giftInfo.name
+        let urlString = URL(string: giftInfo.imgUrl)
+        self.giftImageView.kf.setImage(with: urlString)
     }
     
 }

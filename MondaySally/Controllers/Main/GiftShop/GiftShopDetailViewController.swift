@@ -16,6 +16,7 @@ class GiftShopDetailViewController: UIViewController {
     @IBOutlet weak var optionTitleLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var parentView: UIView!
+    @IBOutlet weak var giftImageView: UIImageView!
     
     private let collectionView = TTGTextTagCollectionView()
     private var selectOpionIndex = 0
@@ -142,8 +143,10 @@ extension GiftShopDetailViewController {
             return
         }
         self.giftNameLabel.text = data.name
-        //self.giftContentLabel.text = data.info
-        //self.giftRuleLabel.text = data.rule
+        self.giftContentLabel.text = data.info
+        self.giftRuleLabel.text = data.rule
+        let urlString = URL(string: data.thumnail)
+        self.giftImageView.kf.setImage(with: urlString)
     }
     
     private func updateAfterUI() {

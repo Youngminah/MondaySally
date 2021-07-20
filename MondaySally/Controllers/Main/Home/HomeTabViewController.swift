@@ -32,7 +32,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let viewModel = HomeViewModel(dataService: HomeDataService())
-    var giftHistoryPreViewController: GiftHistoryPreViewController!
+    private var giftHistoryPreViewController: GiftHistoryPreViewController!
     
     private let boldAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.label,
@@ -55,6 +55,7 @@ class HomeTabViewController: UIViewController {
         self.attemptFetchHome()
     }
     
+    //MARK: 컨테이너 뷰 연결
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "giftHistoryPreviewSegue" {
             let vc = segue.destination as? GiftHistoryPreViewController
@@ -72,13 +73,11 @@ class HomeTabViewController: UIViewController {
     }
 }
 
-
 // MARK: 네트워킹
 extension HomeTabViewController {
 
     //메인탭바 [홈]화면 API 호출 함수
     private func attemptFetchHome() {
-
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -130,55 +129,6 @@ extension HomeTabViewController {
         self.setFirstRankingImage(with :data)
         self.setSecondRankingImage(with :data)
         self.setThirdRankingImage(with :data)
-    }
-    
-    //MARK: 1등 랭킹 프로필화면 셋팅
-    private func setFirstRankingImage(with data: HomeInfo){
-        guard let data = data.twinkleRank else { return }
-        guard let url = data[0].imgUrl else {
-            return
-        }
-        let urlString = URL(string: url)
-        self.firstRankingImageButton.kf.setImage(with: urlString, for: .normal)
-    }
-    
-    //MARK: 2등 랭킹 프로필화면 셋팅
-    private func setSecondRankingImage(with data: HomeInfo){
-        guard let data = data.twinkleRank else { return }
-        guard let url = data[1].imgUrl else {
-            return
-        }
-        let urlString = URL(string: url)
-        self.secondRankingImageButton.kf.setImage(with: urlString, for: .normal)
-    }
-    
-    //MARK: 3등 랭킹 프로필화면 셋팅
-    private func setThirdRankingImage(with data: HomeInfo){
-        guard let data = data.twinkleRank else { return }
-        guard let url = data[2].imgUrl else {
-            return
-        }
-        let urlString = URL(string: url)
-        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
-    }
-    
-    //MARK: 기업로고 셋팅
-    private func setCompanyLogoImage(with data: HomeInfo){
-        guard let url = data.logoImgUrl else {
-            return
-        }
-        let urlString = URL(string: url)
-        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
-    }
-
-    //MARK: 기업로고 셋팅
-    private func setMainLabel(with data: HomeInfo){
-        let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(string: "\(data.nickname)님", attributes: boldAttributes))
-        attributedString.append(NSAttributedString(string: "의\n누적 근무 시간은\n", attributes: lightAttributes))
-        attributedString.append(NSAttributedString(string: "총 '\(data.totalWorkTime)시간'", attributes: mediumAttributes))
-        attributedString.append(NSAttributedString(string: "입니다.☀️", attributes: lightAttributes))
-        self.mainLabel.attributedText = attributedString
     }
 }
 
@@ -253,5 +203,54 @@ extension HomeTabViewController {
         self.firstRankingImageButton.layer.cornerRadius = self.firstRankingImageButton.bounds.width/2
         self.secondRankingImageButton.layer.cornerRadius = self.secondRankingImageButton.bounds.width/2
         self.thirdRankingImageButton.layer.cornerRadius = self.thirdRankingImageButton.bounds.width/2
+    }
+    
+    //MARK: 1등 랭킹 프로필화면 셋팅
+    private func setFirstRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[0].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.firstRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 2등 랭킹 프로필화면 셋팅
+    private func setSecondRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[1].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.secondRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 3등 랭킹 프로필화면 셋팅
+    private func setThirdRankingImage(with data: HomeInfo){
+        guard let data = data.twinkleRank else { return }
+        guard let url = data[2].imgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+    
+    //MARK: 기업로고 셋팅
+    private func setCompanyLogoImage(with data: HomeInfo){
+        guard let url = data.logoImgUrl else {
+            return
+        }
+        let urlString = URL(string: url)
+        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
+    }
+
+    //MARK: 메인 라벨 셋팅
+    private func setMainLabel(with data: HomeInfo){
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(string: "\(data.nickname)님", attributes: boldAttributes))
+        attributedString.append(NSAttributedString(string: "의\n누적 근무 시간은\n", attributes: lightAttributes))
+        attributedString.append(NSAttributedString(string: "총 '\(data.totalWorkTime)시간'", attributes: mediumAttributes))
+        attributedString.append(NSAttributedString(string: "입니다.☀️", attributes: lightAttributes))
+        self.mainLabel.attributedText = attributedString
     }
 }

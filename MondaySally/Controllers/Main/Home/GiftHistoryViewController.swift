@@ -18,7 +18,6 @@ class GiftHistoryViewController: UIViewController {
         super.viewDidLoad()
         self.attemptFetchGiftHistory()
     }
-
 }
 
 extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -47,7 +46,6 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
     
     // 헤더뷰 어떻게 표시할까?
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         switch kind { // kind의 종류는 크게 해더와 푸터가 있음
         case UICollectionView.elementKindSectionHeader:
             //해더, footer등등 를 deque할 땐 supplementaryView임.

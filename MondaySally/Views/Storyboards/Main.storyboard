@@ -263,6 +263,7 @@
                     <connections>
                         <outlet property="applyButton" destination="l0P-W3-lpx" id="R2U-FK-vkj"/>
                         <outlet property="giftContentLabel" destination="9T9-1h-ruS" id="Z7S-cs-wMQ"/>
+                        <outlet property="giftImageView" destination="Hpw-BR-3xz" id="qaQ-c1-Axh"/>
                         <outlet property="giftNameLabel" destination="u6E-l6-Fq5" id="ski-ao-lGy"/>
                         <outlet property="giftRuleLabel" destination="W9Q-Ev-CHR" id="iRq-7d-04I"/>
                         <outlet property="optionTitleLabel" destination="los-Mr-9ln" id="qlA-4U-ejk"/>
@@ -2118,6 +2119,9 @@
                                 <state key="normal" title="먼데이샐리">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="mainLogoButtonTap:" destination="Z4m-Ti-dyh" eventType="touchUpInside" id="r9x-h4-VAv"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <rightBarButtonItems>

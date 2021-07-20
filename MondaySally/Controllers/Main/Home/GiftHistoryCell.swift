@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GiftHistoryCell: UICollectionViewCell {
     
@@ -23,6 +24,8 @@ class GiftHistoryCell: UICollectionViewCell {
         self.updateStampUI(with: data.isAccepted ?? "U")
         self.updateStatus(with: data.isProved)
         self.giftNameLabel.text = data.name
+        let urlString = URL(string: data.imgUrl)
+        self.imageView.kf.setImage(with: urlString)
     }
     
     private func updateStampUI(with response: String){
