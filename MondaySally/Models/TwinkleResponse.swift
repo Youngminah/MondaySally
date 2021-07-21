@@ -26,9 +26,10 @@ struct TwinkleInfo: Decodable{
     let giftName: String
     let clover: Int
     let thumbnailImage: String
+    var isHearted: String
     let date: String
     let content: String
-    let likeCount: Int
+    var likeCount: Int
     let commentCount: Int
     
     enum CodingKeys:  String, CodingKey {
@@ -38,6 +39,7 @@ struct TwinkleInfo: Decodable{
         case giftName = "name"
         case clover = "usedClover"
         case thumbnailImage = "twinkleImg"
+        case isHearted = "isHearted"
         case date = "date"
         case content = "content"
         case likeCount = "likenum"

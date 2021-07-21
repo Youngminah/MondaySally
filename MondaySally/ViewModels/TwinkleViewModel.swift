@@ -9,7 +9,7 @@ class TwinkleViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: TwinkleDataService?
-    private var twinkleInfo: [TwinkleInfo]? { didSet { self.didFinishFetch?() } }
+    private var twinkleInfo: [TwinkleInfo]?
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -31,6 +31,19 @@ class TwinkleViewModel {
     //MARK: 전체 트윙클 총 갯수
     var numOfTwinkle: Int {
         return twinkleInfo?.count ?? 0
+    }
+    
+
+    func setLike(at index: Int, status: String) {
+        guard let count = self.twinkleInfo?[index].likeCount else {
+            return
+        }
+        self.twinkleInfo?[index].isHearted  = status
+        if status == "Y" {
+            self.twinkleInfo?[index].likeCount  = count + 1
+        }else {
+            self.twinkleInfo?[index].likeCount  = count - 1
+        }
     }
     
     //MARK: 트윙클 인덱스 조회
@@ -58,6 +71,7 @@ class TwinkleViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.twinkleInfo = response?.result?.twinkles
+            self?.didFinishFetch?()
             self?.isLoading = false
             
         })

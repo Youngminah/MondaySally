@@ -11,6 +11,7 @@ class TwinkleTabViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     private let viewModel = TwinkleViewModel(dataService: TwinkleDataService())
+    private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinkleStatusViewController: TwinkleStatusViewController!
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
         guard let data = self.viewModel.twinkleList(at: indexPath.row) else {
             return cell
         }
+        cell.tableViewIndex = indexPath.row
         cell.delegate = self
         cell.updateUI(with: data)
         return cell
@@ -121,48 +123,23 @@ extension TwinkleTabViewController {
 // MARK: 트윙클 좋아요 API
 extension TwinkleTabViewController {
     
-    private func attemptFetchTwinkleLike() {
-        self.viewModel.updateLoadingStatus = {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
-            }
-        }
-        self.viewModel.showAlertClosure = { [weak self] () in
-            guard let strongSelf = self else { return }
+    private func attemptFetchTwinkleLike(with index :Int) {
+        self.likeViewModel.didFinishFetch = { () in
             DispatchQueue.main.async {
-                if let error = strongSelf.viewModel.error {
-                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
-                    strongSelf.networkFailToExit()
-                }
-                if let message = strongSelf.viewModel.failMessage {
-                    print("서버에서 알려준 에러는 -> \(message)")
-                }
+                print("좋아요 요청에 성공했습니다 !! ")
             }
         }
-        self.viewModel.codeAlertClosure = { [weak self] () in
-            guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
-                //Code
-                if strongSelf.viewModel.failCode == 353 {
-
-                }
-            }
-        }
-        self.viewModel.didFinishFetch = { [weak self] () in
-            DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
-                print("트윙클 전체 조회에 성공했습니다 !! ")
-                strongSelf.tableView.reloadData()
-            }
-        }
-        self.viewModel.fetchTwinkleTotal()
+        self.likeViewModel.fetchTwinkleLike(with: index)
     }
 }
 
-// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+// MARK: 트윙클 좋아요 셸과 통신 프로토콜
 extension TwinkleTabViewController: LikeDelegate {
-    func didLikePressButton(with index: Int) {
+    
+    func didLikePressButton(with tableViewIndex: Int, status: String, likeIndex: Int) {
+        self.attemptFetchTwinkleLike(with: likeIndex)
+        self.viewModel.setLike(at: tableViewIndex, status: status)
+        self.tableView.reloadData()
     }
 }
 

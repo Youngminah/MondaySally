@@ -1565,6 +1565,7 @@
                                             <outlet property="contentLabel" destination="4Qe-qg-Kqp" id="oPX-rR-UiA"/>
                                             <outlet property="dateLabel" destination="q5i-Gj-ChI" id="ynf-eS-eOs"/>
                                             <outlet property="giftNameLabel" destination="8wl-9r-iMG" id="pkc-q9-IlP"/>
+                                            <outlet property="likeButton" destination="grb-s5-xFM" id="sT7-7E-pa2"/>
                                             <outlet property="likeLabel" destination="vD9-8V-1Ye" id="H3j-4N-lek"/>
                                             <outlet property="nickNameLabel" destination="tOZ-7t-9hJ" id="nto-fP-cfg"/>
                                             <outlet property="profileImageButton" destination="bmu-WI-3yU" id="qVT-0Y-hUe"/>
@@ -2628,7 +2629,7 @@
             <objects>
                 <viewController id="lxR-1M-h6Z" customClass="TwinkleStatusViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fml-Tt-IoL">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="84.666666666666671"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ts-yb-Dqa">

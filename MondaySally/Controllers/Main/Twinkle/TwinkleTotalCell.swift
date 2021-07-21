@@ -19,9 +19,12 @@ class TwinkleTotalCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     var delegate: LikeDelegate?
-    
+    var tableViewIndex:Int?
+    var likeIndex = Int()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -39,10 +42,18 @@ class TwinkleTotalCell: UITableViewCell {
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        guard let index = tableViewIndex else {return}
+        //sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            delegate?.didLikePressButton(with: index, status: "N", likeIndex: likeIndex)
+        }else{
+            delegate?.didLikePressButton(with: index, status: "Y", likeIndex: likeIndex)
+        }
     }
     
     func updateUI(with data: TwinkleInfo) {
+        self.likeIndex = data.index
+        self.setLikeButtonStatus(with : data.isHearted)
         self.nickNameLabel.text = data.nickName
         self.giftNameLabel.text = data.giftName
         self.cloverLabel.text = "\(data.clover)"
@@ -52,6 +63,14 @@ class TwinkleTotalCell: UITableViewCell {
         self.dateLabel.text = data.date
         self.setProfileImage(with :data.profileImage)
         self.setThumbnailImage(with :data.thumbnailImage)
+    }
+    
+    private func setLikeButtonStatus(with status: String){
+        if status == "Y"{
+            self.likeButton.isSelected = true
+        }else {
+            self.likeButton.isSelected = false
+        }
     }
     
     private func setProfileImage(with url: String?){
@@ -70,5 +89,5 @@ class TwinkleTotalCell: UITableViewCell {
 
 //MARK: 좋아요와 관련된 프로토콜 정의
 protocol LikeDelegate{
-    func didLikePressButton(with index: Int)
+    func didLikePressButton(with tableViewIndex: Int, status: String, likeIndex: Int)
 }
