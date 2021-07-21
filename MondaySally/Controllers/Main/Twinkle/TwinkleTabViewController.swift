@@ -126,7 +126,7 @@ extension TwinkleTabViewController {
     private func attemptFetchTwinkleLike(with index :Int) {
         self.likeViewModel.didFinishFetch = { () in
             DispatchQueue.main.async {
-                print("좋아요 요청에 성공했습니다 !! ")
+                print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
             }
         }
         self.likeViewModel.fetchTwinkleLike(with: index)

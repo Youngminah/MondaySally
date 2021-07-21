@@ -15,10 +15,18 @@ class CloverHistoryViewController: UIViewController {
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var containerView: UIView!
     
+    private let totalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TotalCloverView")
+    private let currentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CurrentCloverView")
+    private let usedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UsedCloverView")
+    private var viewControllers = [UIViewController]()
     var tabTag = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewControllers.append(self.totalVC)
+        viewControllers.append(self.currentVC)
+        viewControllers.append(self.usedVC)
         self.initailSetting()
         self.title = "클로버 히스토리"
     }
@@ -67,12 +75,10 @@ extension CloverHistoryViewController {
     
     // MARK: Custom TopTabBar 누적클로버 화면전환
     private func changeViewToTotalCloverView(){
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TotalCloverView") as? TotalCloverViewController else {
-            return
-        }
         for view in self.containerView.subviews{
             view.removeFromSuperview()
         }
+        let vc = viewControllers[0]
         vc.willMove(toParent: self)
         self.containerView.frame = vc.view.bounds
         self.containerView.addSubview(vc.view)
@@ -82,12 +88,10 @@ extension CloverHistoryViewController {
     
     // MARK: Custom TopTabBar 현재클로버 화면전환
     private func changeViewToCurrentCloverView(){
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CurrentCloverView") as? CurrentCloverViewController else {
-            return
-        }
         for view in self.containerView.subviews{
             view.removeFromSuperview()
         }
+        let vc = viewControllers[1]
         vc.willMove(toParent: self)
         self.containerView.frame = vc.view.bounds
         self.containerView.addSubview(vc.view)
@@ -97,12 +101,10 @@ extension CloverHistoryViewController {
     
     // MARK: Custom TopTabBar 사용클로버 화면전환
     private func changeViewToUsedCloverView(){
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "UsedCloverView") as? UsedCloverViewController else {
-            return
-        }
         for view in self.containerView.subviews{
             view.removeFromSuperview()
         }
+        let vc = viewControllers[2]
         vc.willMove(toParent: self)
         self.containerView.frame = vc.view.bounds
         self.containerView.addSubview(vc.view)

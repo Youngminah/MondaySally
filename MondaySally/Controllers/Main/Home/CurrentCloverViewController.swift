@@ -57,7 +57,7 @@ extension CurrentCloverViewController {
         self.viewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
-                print("누적 클로버 히스토리 조회에 성공했습니다 !! ")
+                print("현재 클로버 히스토리 조회에 성공했습니다 !! ")
                 strongSelf.updateUI()
             }
         }
