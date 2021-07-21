@@ -126,7 +126,7 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         cell.updateUI(with: data)
-        cell.delegate = self
+        cell.delegate = self //코멘트 관련 프로토콜
         return cell
     }
     

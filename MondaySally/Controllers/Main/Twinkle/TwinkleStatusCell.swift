@@ -32,5 +32,4 @@ class TwinkleStatusCell: UICollectionViewCell {
         let urlString = URL(string: url)
         self.statusImageView.kf.setImage(with: urlString)
     }
-    
 }

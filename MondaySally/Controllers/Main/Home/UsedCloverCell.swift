@@ -24,9 +24,9 @@ class UsedCloverCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateUI(with data: UsedCloverInfo){
+    func updateUI(with data: UsedCloverHistoryInfo){
         self.dateLabel.text = data.time
-        self.titleLabel.text = data.name
+        self.titleLabel.text = data.giftName
         self.cloverInfoLabel.text = "-\(data.clover) clover"
     }
 }

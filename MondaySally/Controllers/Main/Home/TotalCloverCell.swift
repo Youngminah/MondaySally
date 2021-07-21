@@ -22,7 +22,7 @@ class TotalCloverCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func updateUI(with data: TotalCloverInfo){
+    func updateUI(with data: AccumulateCloverHistoryInfo){
         self.dateLabel.text = data.time
         self.infoLabel.text = "\(data.worktime)시간 근무"
         self.cloverInfoLabel.text = "+\(data.clover) clover"

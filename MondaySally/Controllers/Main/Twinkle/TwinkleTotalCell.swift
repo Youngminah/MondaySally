@@ -20,6 +20,8 @@ class TwinkleTotalCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var delegate: LikeDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -63,4 +65,10 @@ class TwinkleTotalCell: UITableViewCell {
         self.thumbnailImageView.kf.setImage(with: urlString)
     }
     
+}
+
+
+//MARK: 좋아요와 관련된 프로토콜 정의
+protocol LikeDelegate{
+    func didLikePressButton(with index: Int)
 }

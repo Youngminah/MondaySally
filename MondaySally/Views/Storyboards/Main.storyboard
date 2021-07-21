@@ -147,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="cloverLabel" destination="aYF-6F-8l0" id="OMG-gb-2Mk"/>
+                        <outlet property="tableView" destination="GZd-xb-Xxx" id="VF3-bp-Ahw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWk-DI-tEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -559,6 +560,7 @@
                     </view>
                     <connections>
                         <outlet property="cloverLabel" destination="U6z-4g-WBx" id="ct8-DL-8WF"/>
+                        <outlet property="tableView" destination="CPy-V0-omk" id="jOr-Vq-kOX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pSz-QL-dmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

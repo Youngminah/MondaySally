@@ -1,15 +1,15 @@
 //
-//  CloverHistoryViewModel.swift
+//  CloverUsedViewModel.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/18.
+//  Created by meng on 2021/07/21.
 //
 
-class CloverHistoryViewModel {
+class CloverUsedViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: CloverDataService?
-    var cloverHistoryInfo: CloverHistoryInfo? { didSet { self.didFinishFetch?() } }
+    private var usedCloverInfo: UsedCloverInfo? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -28,41 +28,26 @@ class CloverHistoryViewModel {
         self.dataService = dataService
     }
     
-    //MARK: 누적 클로버 총 갯수
-    var numOfTotalCloverList: Int? {
-        return cloverHistoryInfo?.accumulatedCloverList?.count
+    //MARK: 사용 클로버 리스트 갯수
+    var numOfUsedCloverList: Int {
+        return usedCloverInfo?.cloverHistoryList?.count ?? 0
     }
     
-    //MARK: 사용 클로버 총 갯수
-    var numOfUsedCloverList: Int? {
-        return cloverHistoryInfo?.usedCloverList?.count
-    }
-    
-    //MARK: 누적 클로버 리스트
-    var totalCloverList: [TotalCloverInfo]? {
-        return cloverHistoryInfo?.accumulatedCloverList
-    }
-    
-    //MARK: 사용 클로버 리스트
-    var usedCloverList: [UsedCloverInfo]? {
-        return cloverHistoryInfo?.usedCloverList
-    }
-    
-    
-    //MARK: 누적 클로버 리스트 인덱스 조회
-    func totalClover(at index: Int) -> TotalCloverInfo? {
-        return cloverHistoryInfo?.accumulatedCloverList?[index]
+    //MARK: 사용 클로버
+    var usedClover: Int {
+        return usedCloverInfo?.cloverTotal ?? 0
     }
     
     //MARK: 사용 클로버 리스트 인덱스 조회
-    func usedClover(at index: Int) -> UsedCloverInfo? {
-        return cloverHistoryInfo?.usedCloverList?[index]
+    func usedCloverList(at index: Int) -> UsedCloverHistoryInfo? {
+        return usedCloverInfo?.cloverHistoryList?[index]
     }
     
-    // MARK: 클로버 히스토리 API 호출 함수
-    func fetchCloverHistory(){
+    
+    // MARK: 사용 클로버 API 호출 함수
+    func fetchCloverUsed(){
         self.isLoading = true
-        self.dataService?.requestFetchCloverHistory(completion: { [weak self] response, error in
+        self.dataService?.requestFetchCloverUsed(completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
@@ -78,7 +63,7 @@ class CloverHistoryViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.cloverHistoryInfo = response?.result
+            self?.usedCloverInfo = response?.result
             self?.isLoading = false
             
         })
