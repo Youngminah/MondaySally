@@ -15,7 +15,6 @@ class TwinklePostImageViewController: UIViewController {
         super.viewDidLoad()
         self.pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
     }
-
 }
 
 
@@ -46,5 +45,5 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
         let page = Int(targetContentOffset.pointee.x / self.view.frame.width)
         self.pageControl.currentPage = page
     }
-    
 }
+

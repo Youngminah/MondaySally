@@ -1430,7 +1430,7 @@
                                         <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0O-MR-5Wf">
                                             <rect key="frame" x="16" y="33.666666666666664" width="359" height="89.333333333333343"/>
                                             <connections>
-                                                <segue destination="lxR-1M-h6Z" kind="embed" id="5zh-Pg-rwN"/>
+                                                <segue destination="lxR-1M-h6Z" kind="embed" identifier="twinkleProveSegue" id="5zh-Pg-rwN"/>
                                             </connections>
                                         </containerView>
                                     </subviews>
@@ -2683,6 +2683,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="94" height="106"/>
                                         <connections>
+                                            <outlet property="starryBorderView" destination="Kae-0l-kjb" id="fLv-Wm-Zvl"/>
                                             <outlet property="statusBorderView" destination="fxt-48-r3x" id="j6h-HF-YlG"/>
                                             <outlet property="statusImageView" destination="jw7-KE-KIj" id="MVQ-m5-X3B"/>
                                         </connections>
@@ -2703,6 +2704,9 @@
                             <constraint firstItem="0ts-yb-Dqa" firstAttribute="leading" secondItem="Fml-Tt-IoL" secondAttribute="leading" id="Sed-6p-keg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="0ts-yb-Dqa" id="TbY-2n-a4c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zw2-ef-iUI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

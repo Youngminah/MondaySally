@@ -29,9 +29,21 @@ class TwinkleProveViewModel {
     }
     
     //MARK: 전체 트윙클 총 갯수
-    var numOfTwinkleProve: Int {
+    var numOfTwinkleProveTotal: Int {
         guard let data = twinkleIsProveInfo else { return 0 }
         return (data.notProvedList?.count ?? 0) + (data.provedList?.count ?? 0)
+    }
+    
+    //MARK: 미증빙 트윙클 총 갯수
+    var numOfTwinkleNotProve: Int {
+        guard let data = twinkleIsProveInfo else { return 0 }
+        return data.notProvedList?.count ?? 0
+    }
+    
+    //MARK: 증빙 트윙클 총 갯수
+    var numOfTwinkleProve: Int {
+        guard let data = twinkleIsProveInfo else { return 0 }
+        return data.provedList?.count ?? 0
     }
     
     //MARK: 트윙클 인덱스 조회

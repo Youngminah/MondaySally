@@ -11,6 +11,8 @@ class TwinkleTabViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     private let viewModel = TwinkleViewModel(dataService: TwinkleDataService())
+    
+    private var twinkleStatusViewController: TwinkleStatusViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,6 +20,15 @@ class TwinkleTabViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.attemptFetchTwinkleTotal()
+    }
+    
+    //MARK: 컨테이너 뷰 연결
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "twinkleProveSegue" {
+            let vc = segue.destination as? TwinkleStatusViewController
+            twinkleStatusViewController = vc
+            twinkleStatusViewController.attemptFetchProve()
+        }
     }
 }
 
@@ -97,7 +108,7 @@ extension TwinkleTabViewController {
         self.viewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
-                print("기프트 신청에 성공했습니다 !! ")
+                print("트윙클 전체 조회에 성공했습니다 !! ")
                 strongSelf.tableView.reloadData()
             }
         }

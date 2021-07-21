@@ -23,6 +23,6 @@ struct TwinkleProveInfo: Decodable {
     var idx: Int
     var imgUrl: String
     var name: String
-    //var isProve: String
+    var isProved: String
 }
 

@@ -10,7 +10,6 @@ import UIKit
 
 class TwinklePostViewController: UIViewController {
 
-    
     @IBOutlet weak var postTextView: UITextView!
     @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var commentTableView: UITableView!
@@ -42,9 +41,9 @@ class TwinklePostViewController: UIViewController {
                                                selector: #selector(adjustInputView),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-        self.hideKeyboardWhenTappedAround()
+        //self.hideKeyboardWhenTappedAround()
         self.updateUI()
-    }
+        }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -78,17 +77,17 @@ class TwinklePostViewController: UIViewController {
 }
 
 //키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기. && 글자수 제한.
-extension TwinklePostViewController {
+extension TwinklePostViewController : UITextFieldDelegate {
     
     //아무곳이나 클릭하면 키보드 내려가게 하기
     private func hideKeyboardWhenTappedAround() {
-      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-      tap.cancelsTouchesInView = false
-      view.addGestureRecognizer(tap)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
-    
+
     @objc override func dismissKeyboard() {
-      view.endEditing(true)
+        view.endEditing(true)
     }
     
     @objc private func adjustInputView(noti: Notification) {
@@ -107,10 +106,8 @@ extension TwinklePostViewController {
     }
 }
 
-
-
+// MARK: 트윙클 테이블 프로토콜
 extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let number = self.detailViewModel.numOfComment
         if number == 0 {
@@ -118,7 +115,6 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             self.tableView.restore()
         }
-        print("a")
         return number
     }
     
@@ -141,12 +137,10 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 112 // also UITableViewAutomaticDimension can be used
     }
-    
-    
 }
 
 
-// MARK: 트윙클 네트워크 API
+// MARK: 트윙클 리스트 API
 extension TwinklePostViewController {
     // MARK: 트윙클 리스트 조회 API
     private func attemptFetchDetail(with index: Int, completion: (() -> Void)? = nil) {
@@ -192,7 +186,6 @@ extension TwinklePostViewController {
     }
 }
 
-
 // MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
 extension TwinklePostViewController {
     private func updateNetworkUI(){
@@ -207,7 +200,6 @@ extension TwinklePostViewController {
         //self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 20
         self.commentCountLabel.text = "댓글 \(data.commentCount)개"
         self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
-        
     }
 }
 
@@ -216,10 +208,9 @@ extension TwinklePostViewController: CommentDelegate {
     func didPressDeleteButton(with index: Int) {
         self.attemptFetchCommentDelete(with :index)
     }
-    
 }
 
-
+// MARK: 트윙클 댓글 API
 extension TwinklePostViewController {
 
     // MARK: 트윙클 댓글 작성 API
