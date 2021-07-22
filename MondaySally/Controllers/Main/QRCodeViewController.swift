@@ -12,10 +12,15 @@ import AVFoundation
 
 class QRCodeViewController: UIViewController {
     
-    var captureSession = AVCaptureSession() //비디오에서 들어온 데이터 인풋을 아웃풋으로 조정하는데 쓰이는 객체
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    private let viewModel = CommuteViewModel(dataService: AuthDataService())
     @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var qrImageView: UIImageView!
+    @IBOutlet weak var qrCodeFrameView: UIView!
+    
+    private var captureSession = AVCaptureSession() //비디오에서 들어온 데이터 인풋을 아웃풋으로 조정하는데 쓰이는 객체
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private let viewModel = CommuteViewModel(dataService: AuthDataService())
+    private var companyIndex = UserDefaults.standard.integer(forKey: "companyIndex")
+    private var workingStatus = UserDefaults.standard.string(forKey: "workingStatus")
     
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
@@ -29,9 +34,6 @@ class QRCodeViewController: UIViewController {
                                       AVMetadataObject.ObjectType.dataMatrix,
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
-    
-    @IBOutlet weak var qrImageView: UIImageView!
-    @IBOutlet weak var qrCodeFrameView: UIView!
     
     private let lightdAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.label,
@@ -56,7 +58,11 @@ class QRCodeViewController: UIViewController {
     private func updateUI(){
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(string: "현재 퇴근 상태로\n하단에 QR 코드를 인식시키면\n‘", attributes: lightdAttributes))
-        attributedString.append(NSAttributedString(string: "퇴근", attributes: mediumAttributes))
+        if workingStatus == "W" {
+            attributedString.append(NSAttributedString(string: "퇴근", attributes: mediumAttributes))
+        }else {
+            attributedString.append(NSAttributedString(string: "출근", attributes: mediumAttributes))
+        }
         attributedString.append(NSAttributedString(string: "’이 됩니다.", attributes: lightdAttributes))
         self.noticeLabel.attributedText = attributedString
     }
@@ -85,8 +91,14 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 guard let data = metadataObj.stringValue else { return }
                 print("성공입니다 !! 숨겨진 메세지는?-> \(data)")
                 self.dismissAnimation()
-                self.attemptFetchCommute()
                 captureSession.stopRunning()
+                if "\(self.companyIndex)" == data {
+                    self.attemptFetchCommute()
+                }else {
+                    self.showSallyNotationAlert(with: "유효하지 않은\nQR코드입니다.") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
             }
         }
     }

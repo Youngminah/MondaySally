@@ -97,7 +97,7 @@ extension TwinkleWriteViewController{
             self.showSallyNotationAlert(with: "트윙클 내용을\n올려주세요.")
             return
         }
-        guard let receiptImage = receiptDeleteButton.currentImage else {
+        guard let receiptImage = receiptImageButton.currentImage else {
             print("이미지 뜯기 실패")
             return
         }
@@ -109,13 +109,13 @@ extension TwinkleWriteViewController{
         //let index = 0
         for index in 0..<imageList.count{
             let uuid = UUID.init()
-            self.storage.child("test/twinkle/\(uuid)").putData(imageList[index], metadata: nil, completion: { [weak self] _ , error in
+            self.storage.child("test/twinkle/\(uuid).png").putData(imageList[index], metadata: nil, completion: { [weak self] _ , error in
                 guard let strongSelf = self else { return }
                 guard error == nil else {
                     print("파이어베이스에 업로드하는데 실패하였습니다.")
                     return
                 }
-                strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+                strongSelf.storage.child("test/twinkle/\(uuid).png").downloadURL { url, error in
                     guard let url = url , error == nil else {
                         print(error?.localizedDescription ?? "")
                         return
@@ -137,13 +137,13 @@ extension TwinkleWriteViewController{
     
     private func uploadFirbaseImages(with data:Data){
         let uuid = UUID.init()
-        self.storage.child("test/twinkle/\(uuid)").putData(data, metadata: nil, completion: { [weak self] _ , error in
+        self.storage.child("test/receipt/\(uuid).png").putData(data, metadata: nil, completion: { [weak self] _ , error in
             guard let strongSelf = self else { return }
             guard error == nil else {
                 print("파이어베이스에 업로드하는데 실패하였습니다.")
                 return
             }
-            strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+            strongSelf.storage.child("test/receipt/\(uuid).png").downloadURL { url, error in
                 guard let url = url , error == nil else {
                     print(error?.localizedDescription ?? "")
                     return

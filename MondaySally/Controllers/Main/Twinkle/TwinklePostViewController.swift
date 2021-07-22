@@ -328,7 +328,7 @@ extension TwinklePostViewController {
         self.commentDeleteViewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
-                print("댓글 작성이 성공했습니다 !! ")
+                print("댓글 삭제에 성공했습니다 !! ")
                 strongSelf.attemptFetchDetail(with : strongSelf.index)
             }
         }

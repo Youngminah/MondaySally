@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>먼데이샐리</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,10 +22,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>사진첩 접근을 허용하시겠습니까?</string>
 	<key>NSCameraUsageDescription</key>
 	<string>QR코드 인식을 위해 카메라 접근을 허용해주십시요.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>사진첩 접근을 허용하시겠습니까?</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansKR-Light</string>

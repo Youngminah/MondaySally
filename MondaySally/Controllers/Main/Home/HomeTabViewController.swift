@@ -118,6 +118,8 @@ extension HomeTabViewController {
     
     private func updateAfterAPIUI(){
         guard let data = self.viewModel.homeInfo else { return }
+        UserDefaults.standard.setValue(data.companyIdx , forKey: "companyIndex")
+        UserDefaults.standard.setValue(data.status , forKey: "workingStatus")
         self.setMainLabel(with :data)
         self.setCompanyLogoImage(with :data)
         self.totalCloverLabel.text = "\(data.accumulatedClover)".insertComma

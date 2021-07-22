@@ -13,7 +13,6 @@ class TwinklePostCommentCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
     
     private var index = Int()
     var delegate: CommentDelegate?
@@ -66,10 +65,8 @@ class TwinklePostCommentCell: UITableViewCell {
     private func setButtonHidden(with isWriter: String){
         if isWriter == "N" {
             self.deleteButton.isHidden = true
-            self.editButton.isHidden = true
         }else {
             self.deleteButton.isHidden = false
-            self.editButton.isHidden = false
         }
     }
 }

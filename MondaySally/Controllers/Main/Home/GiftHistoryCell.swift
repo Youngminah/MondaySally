@@ -42,12 +42,11 @@ class GiftHistoryCell: UICollectionViewCell {
         if response == "N" {
             self.status = false
             self.statusLabel.text = "증빙대기"
+            self.coverView.isHidden = true
         }else {
             self.status = true
             self.statusLabel.text = "증빙완료"
-        }
-        
-        if status {
+            self.coverView.isHidden = false
             self.coverView.backgroundColor = .white
             self.coverView.layer.cornerRadius = 4
             self.coverView.alpha = 0.65

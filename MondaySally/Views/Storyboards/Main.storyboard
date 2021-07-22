@@ -2908,7 +2908,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="DHY-b3-q0J">
-                                                    <rect key="frame" x="59" y="70" width="132.33333333333334" height="31"/>
+                                                    <rect key="frame" x="58.999999999999993" y="70" width="102.33333333333331" height="31"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.07.04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XER-Kv-Qmx">
                                                             <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="31"/>
@@ -2917,7 +2917,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1t-yA-g1k">
-                                                            <rect key="frame" x="72.333333333333343" y="0.0" width="60" height="31"/>
+                                                            <rect key="frame" x="72.333333333333343" y="0.0" width="30" height="31"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDu-HF-xIj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="31"/>
@@ -2928,13 +2928,6 @@
                                                                     <connections>
                                                                         <action selector="deleteButtonTap:" destination="JuR-f3-MCe" eventType="touchUpInside" id="nww-0s-97E"/>
                                                                     </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3U-AB-jSS">
-                                                                    <rect key="frame" x="30" y="0.0" width="30" height="31"/>
-                                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
-                                                                    <state key="normal" title="수정">
-                                                                        <color key="titleColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    </state>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -2957,7 +2950,6 @@
                                             <outlet property="commentTextView" destination="zwN-Wn-nKe" id="zI5-Rh-vsD"/>
                                             <outlet property="dateLabel" destination="XER-Kv-Qmx" id="onf-ez-Mrt"/>
                                             <outlet property="deleteButton" destination="MDu-HF-xIj" id="pa2-dS-tMN"/>
-                                            <outlet property="editButton" destination="p3U-AB-jSS" id="s0H-HI-UVd"/>
                                             <outlet property="profileImageView" destination="Ole-O0-kBs" id="e9v-Ig-Grr"/>
                                         </connections>
                                     </tableViewCell>
