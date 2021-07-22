@@ -99,7 +99,27 @@ struct TwinkleDataService {
             }
     }
     
-    //트윙클 좋아요 API
+    //트윙클 삭제 API
+    func requestFetchTwinkleDelete(with index: Int, completion: @escaping (NoDataResponse?, Error?) -> ()) {
+        let url = "\(twinkleUrl)/out/\(index)"
+        AF.request(url, method: .patch, parameters: nil, encoding: JSONEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: NoDataResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
+    //트윙클 좋아요/취소 API
     func requestFetchTwinkleLike(with index: Int, completion: @escaping (NoDataResponse?, Error?) -> ()) {
         let url = "\(likeUrl)/\(index)"
         AF.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: Constant.HEADERS)

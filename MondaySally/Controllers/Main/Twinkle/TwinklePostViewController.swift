@@ -23,10 +23,13 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var cloverLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var index = Int()
     
     private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
+    private let deleteViewModel = TwinkleDeleteViewModel(dataService: TwinkleDataService())
     private let commentWriteViewModel = TwinkleCommentWriteViewModel(dataService: TwinkleDataService())
     private let commentDeleteViewModel = TwinkleCommentDeleteViewModel(dataService: TwinkleDataService())
     
@@ -43,7 +46,7 @@ class TwinklePostViewController: UIViewController {
                                                object: nil)
         //self.hideKeyboardWhenTappedAround()
         self.updateUI()
-        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -63,6 +66,16 @@ class TwinklePostViewController: UIViewController {
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+    }
+    
+    //MARK: 트윙클 수정 버튼 눌렀을 때
+    @IBAction func editButtonTap(_ sender: UIButton) {
+        
+    }
+    
+    //MARK: 트윙클 삭제 버튼 눌렀을 때
+    @IBAction func deleteButtonTap(_ sender: UIButton) {
+        self.attemptFetchDelete(with: index)
     }
     
     private func updateUI(){
@@ -140,9 +153,9 @@ extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 
-// MARK: 트윙클 리스트 API
+// MARK: 트윙클 상세 API
 extension TwinklePostViewController {
-    // MARK: 트윙클 리스트 조회 API
+    
     private func attemptFetchDetail(with index: Int, completion: (() -> Void)? = nil) {
         self.detailViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
@@ -186,24 +199,51 @@ extension TwinklePostViewController {
     }
 }
 
-// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+// MARK: 트윙클 삭제 API
 extension TwinklePostViewController {
-    private func updateNetworkUI(){
-        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
-        self.title = "\(data.writerName)님의 트윙클"
-        self.twinkleDateLabel.text = data.date
-        self.giftNameLabel.text = data.giftName
-        self.cloverLabel.text = "\(data.clover)"
-        self.postTextView.text = data.content
-        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
-        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        //self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 20
-        self.commentCountLabel.text = "댓글 \(data.commentCount)개"
-        self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
+
+    private func attemptFetchDelete(with index: Int, completion: (() -> Void)? = nil) {
+        self.deleteViewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                let _ = strongSelf.deleteViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+            }
+        }
+        self.deleteViewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                if let error = strongSelf.deleteViewModel.error {
+                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
+                }
+                if let message = strongSelf.deleteViewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        self.deleteViewModel.codeAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                //Code
+                if strongSelf.deleteViewModel.failCode == 353 {
+
+                }
+            }
+        }
+        self.deleteViewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                print("트윙클 삭제 요청이 성공했습니다 !! ")
+                strongSelf.showSallyNotationAlert(with: "트윙클이 삭제되었습니다."){
+                    strongSelf.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        self.deleteViewModel.fetchTwinkleDelete(with: index)
     }
 }
 
-// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+// MARK: 트윙클 댓글 프로토콜
 extension TwinklePostViewController: CommentDelegate {
     func didPressDeleteButton(with index: Int) {
         self.attemptFetchCommentDelete(with :index)
@@ -293,5 +333,33 @@ extension TwinklePostViewController {
             }
         }
         self.commentDeleteViewModel.fetchTwinkleCommentDelete(with: index)
+    }
+}
+
+// MARK: 트윙클 디테일 네크워크로부터 UI 업데이트
+extension TwinklePostViewController {
+    private func updateNetworkUI(){
+        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
+        self.showIfWriter(with :data.isWriter)
+        self.title = "\(data.writerName)님의 트윙클"
+        self.twinkleDateLabel.text = data.date
+        self.giftNameLabel.text = data.giftName
+        self.cloverLabel.text = "\(data.clover)"
+        self.postTextView.text = data.content
+        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
+        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
+        //self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 20
+        self.commentCountLabel.text = "댓글 \(data.commentCount)개"
+        self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
+    }
+    
+    private func showIfWriter(with isWriter: String){
+        if isWriter == "Y"{
+            self.deleteButton.isHidden = false
+            self.editButton.isHidden = false
+        }else{
+            self.deleteButton.isHidden = true
+            self.editButton.isHidden = true
+        }
     }
 }
