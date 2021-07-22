@@ -22,6 +22,7 @@ class GiftTabViewController: UIViewController {
                                                       for: .valueChanged)
     }
     
+    //MARK: 테이블뷰/컬렉션뷰 위로 스크롤시 리프레시
     @objc private func didPullToRefresh() {
         print("기프트샵 컬렉션뷰 리프레시 시작!!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){

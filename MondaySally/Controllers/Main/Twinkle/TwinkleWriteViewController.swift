@@ -35,6 +35,7 @@ class TwinkleWriteViewController: UIViewController {
     private var imageButtonList = [UIButton]()
     private var photoTag: Int = 0 //이미지 피커 때 사용할 버튼의 태그 번호
     var giftIndex = Int() // 트윙클 작성 서버 요청시 보낼 트윙클 인덱스
+    var delegate: TwinkleWriteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -270,6 +271,7 @@ extension TwinkleWriteViewController {
                 guard let strongSelf = self else { return }
                 print("트윙클 작성에 성공했습니다 !! ")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 작성되었습니다.") {
+                    strongSelf.delegate?.didTwinkleWrite()
                     strongSelf.navigationController?.popViewController(animated: true)
                 }
             }
@@ -372,4 +374,10 @@ extension TwinkleWriteViewController: UITextViewDelegate {
         self.receiptDeleteButton.isHidden = true
         placeholderSetting()
     }
+}
+
+
+//MARK: 좋아요와 관련된 프로토콜 정의
+protocol TwinkleWriteDelegate{
+    func didTwinkleWrite()
 }

@@ -56,6 +56,7 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         }else {
             vc.giftIndex = self.viewModel.twinkleProveList(at: indexPath.row - self.viewModel.numOfTwinkleNotProve)?.idx ?? 0
         }
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -109,3 +110,10 @@ extension TwinkleStatusViewController {
     }
 }
 
+
+// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+extension TwinkleStatusViewController: TwinkleWriteDelegate{
+    func didTwinkleWrite() {
+        self.viewModel.fetchTwinkleProve()
+    }
+}

@@ -129,6 +129,7 @@ extension TwinkleTabViewController {
                 guard let strongSelf = self else { return }
                 print("트윙클 전체 조회에 성공했습니다 !! ")
                 strongSelf.tableView.reloadData()
+                strongSelf.tableView.refreshControl?.endRefreshing()
             }
         }
         self.viewModel.fetchTwinkleTotal()
