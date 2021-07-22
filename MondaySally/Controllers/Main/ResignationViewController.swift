@@ -17,7 +17,8 @@ class ResignationViewController: UIViewController {
     }
     
     @IBAction func resignButtonTap(_ sender: UIButton) {
-        self.attemptFetchResignation()
+        self.showSallyNotationAlert(with: "정말로 퇴사하시겠습니까?", message: "퇴사 신청 철회는 불가능합니다.")
+        //self.attemptFetchResignation()
     }
     
 }

@@ -19,4 +19,16 @@ class GiftCompletedViewController: UIViewController {
     @objc private func homeButtonPressed(_ sender: Any) {
         self.changeRootViewToMainTabBar()
     }
+    
+    @IBAction func twinkleWriteButton(_ sender: UIButton) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
+            return
+        }
+//        vc.giftIndex = data.idx
+//        vc.giftName = data.name
+//        vc.clover = data.usedClover
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }

@@ -103,10 +103,21 @@ extension UIViewController {
         }
     }
     
+    // MARK: 커스텀 샐리 알림창 표시
+    func showSallyNotationAlert(with title: String , message: String ,complition: (() -> Void)? = nil) {
+        SallyNotificationAlert.shared.showQuestionAlert(with: title, message: message)
+        SallyNotificationAlert.shared.didDismiss = {
+            if complition != nil {
+                complition!()
+            }
+        }
+    }
+    
     // MARK: 커스텀 샐리 알림창 사라짐
     @objc func dismissAlert() {
         SallyNotificationAlert.shared.dismissAlert()
     }
+    
     
     // MARK: 취소와 확인이 뜨는 UIAlertController
     func presentAlert(title: String, message: String? = nil,

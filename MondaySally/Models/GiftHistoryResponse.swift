@@ -6,22 +6,23 @@
 //
 
 struct GiftHistoryResponse: Decodable{
-    var isSuccess: Bool
-    var code: Int
-    var message: String
-    var result: GiftHistoryPagination?
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: GiftHistoryPagination?
 }
 
 struct GiftHistoryPagination: Decodable {
-    var totalCount: Int
-    var giftLogs: [MyGiftLogInfo]?
+    let totalCount: Int
+    let giftLogs: [MyGiftLogInfo]?
 }
 
 struct MyGiftLogInfo: Decodable{
-    var imgUrl: String
-    var isAccepted: String?
-    var isProved: String
-    var name: String
-    var usedClover: Int
-    var money: Int
+    let giftLogIdx: Int
+    let imgUrl: String
+    let isAccepted: String?
+    let isProved: String
+    let name: String
+    let usedClover: Int
+    let money: Int
 }

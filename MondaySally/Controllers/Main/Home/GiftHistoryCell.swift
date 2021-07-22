@@ -18,9 +18,8 @@ class GiftHistoryCell: UICollectionViewCell {
     
     var status: Bool = false
     
-    func updateUI(with data: MyGiftLogInfo?){
+    func updateUI(with data: MyGiftLogInfo){
         self.badgeLabel.layer.cornerRadius = self.badgeLabel.bounds.width/2
-        guard let data = data else { return }
         self.updateStampUI(with: data.isAccepted ?? "U")
         self.updateStatus(with: data.isProved)
         self.giftNameLabel.text = data.name

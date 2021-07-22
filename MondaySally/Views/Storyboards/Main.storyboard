@@ -314,6 +314,9 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="twinkleWriteButton:" destination="XZR-qs-HwL" eventType="touchUpInside" id="TVb-CR-ad3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuf-WY-BQM"/>
@@ -1503,7 +1506,11 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grb-s5-xFM">
-                                                    <rect key="frame" x="340" y="30.666666666666671" width="19" height="22"/>
+                                                    <rect key="frame" x="328.66666666666669" y="24" width="30.333333333333314" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="grb-s5-xFM" secondAttribute="height" multiplier="19:22" id="71z-Fu-uP0"/>
+                                                        <constraint firstAttribute="height" constant="35" id="gog-d1-KdE"/>
+                                                    </constraints>
                                                     <state key="normal" image="icLikeOffGray"/>
                                                     <state key="selected" image="icLikeOnOrange"/>
                                                     <connections>
@@ -2801,10 +2808,10 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqN-7W-31j">
-                                            <rect key="frame" x="379" y="438" width="19" height="17"/>
+                                            <rect key="frame" x="363" y="438" width="35" height="31.333333333333314"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="Uqz-fZ-mEu"/>
-                                                <constraint firstAttribute="width" constant="19" id="qr2-bE-xD7"/>
+                                                <constraint firstAttribute="width" secondItem="FqN-7W-31j" secondAttribute="height" multiplier="19:17" id="Bzv-6r-tqZ"/>
+                                                <constraint firstAttribute="width" constant="35" id="qr2-bE-xD7"/>
                                             </constraints>
                                             <state key="normal" image="icLikeOffGray"/>
                                             <state key="selected" image="icLikeOnOrange"/>

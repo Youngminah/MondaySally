@@ -36,7 +36,7 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftHistoryCell", for: indexPath) as? GiftHistoryCell else {
             return UICollectionViewCell()
         }
-        let data = viewModel.myGiftLogInfo(at: indexPath.item)
+        guard let data = viewModel.myGiftLogInfo(at: indexPath.item) else { return cell }
         cell.updateUI(with : data)
         return cell
     }
@@ -61,6 +61,25 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
             return header
         default:
             return UICollectionReusableView()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = self.viewModel.myGiftLogInfo(at: indexPath.item) else { return }
+        if data.isProved == "Y" {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
+                return
+            }
+            vc.index = data.giftLogIdx
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
+                return
+            }
+            vc.giftIndex = data.giftLogIdx
+            vc.giftName = data.name
+            vc.clover = data.usedClover
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

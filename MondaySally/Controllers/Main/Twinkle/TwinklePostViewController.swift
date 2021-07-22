@@ -27,7 +27,7 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     
     var index = Int() //트윙클 고유인덱스
-    var isHearted = String() // 하트 표시 여부
+    //var isHearted = String() // 하트 표시 여부
     private var likeCount = Int()
     
     
@@ -48,7 +48,7 @@ class TwinklePostViewController: UIViewController {
                                                selector: #selector(adjustInputView),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-        //self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
         self.updateUI()
     }
     
@@ -83,11 +83,6 @@ class TwinklePostViewController: UIViewController {
     }
     
     private func updateUI(){
-        if isHearted == "Y"{
-            self.likeButton.isSelected = true
-        }else {
-            self.likeButton.isSelected = false
-        }
         self.postTextView.textContainer.lineFragmentPadding = 0;
         self.postTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
         self.commentTextField.layer.borderWidth = 1
