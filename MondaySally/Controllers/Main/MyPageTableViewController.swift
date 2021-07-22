@@ -85,11 +85,14 @@ extension MyPageTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2{ //로그아웃 버튼
-            self.removeAllUserInfos()
-            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
-                return
+            self.showSallyQuestionAlert(with: "로그아웃 하시겠습니까?") {[weak self] () in
+                guard let strongSelf = self else { return }
+                strongSelf.removeAllUserInfos()
+                guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
+                    return
+                }
+                strongSelf.changeRootViewController(vc)
             }
-            self.changeRootViewController(vc)
         }
     }
 }

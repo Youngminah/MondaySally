@@ -79,7 +79,10 @@ class TwinklePostViewController: UIViewController {
     
     //MARK: 트윙클 삭제 버튼 눌렀을 때
     @IBAction func deleteButtonTap(_ sender: UIButton) {
-        self.attemptFetchDelete(with: index)
+        self.showSallyQuestionAlert(with: "삭제하시겠습니까?", message: "삭제된 트윙클은 복구가 불가능합니다.") { [weak self] () in
+            guard let strongSelf = self else { return }
+            strongSelf.attemptFetchDelete(with: strongSelf.index)
+        }
     }
     
     private func updateUI(){

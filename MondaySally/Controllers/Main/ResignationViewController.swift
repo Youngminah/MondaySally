@@ -13,14 +13,14 @@ class ResignationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func resignButtonTap(_ sender: UIButton) {
-        self.showSallyNotationAlert(with: "정말로 퇴사하시겠습니까?", message: "퇴사 신청 철회는 불가능합니다.")
-        //self.attemptFetchResignation()
+        self.showSallyQuestionAlert(with: "정말로 퇴사하시겠습니까?", message: "퇴사 신청 철회는 불가능합니다.") {[weak self] () in
+            guard let strongSelf = self else { return }
+            strongSelf.attemptFetchResignation()
+        }
     }
-    
 }
 
 // MARK: - Networking

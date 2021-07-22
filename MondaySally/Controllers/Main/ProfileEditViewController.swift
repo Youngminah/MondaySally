@@ -196,13 +196,13 @@ extension ProfileEditViewController {
     
     //아무곳이나 클릭하면 키보드 내려가게 하기
     func hideKeyboardWhenTappedAround() {
-      let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-      tap.cancelsTouchesInView = false
-      view.addGestureRecognizer(tap)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     @objc override func dismissKeyboard() {
-      view.endEditing(true)
+        view.endEditing(true)
     }
     
     @objc private func adjustInputView(noti: Notification) {

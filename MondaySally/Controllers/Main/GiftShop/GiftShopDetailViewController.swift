@@ -46,11 +46,14 @@ class GiftShopDetailViewController: UIViewController {
     }
     
     @IBAction func giftApplyButton(_ sender: UIButton) {
-        guard let clover = self.giftDetailViewModel.getOptionClover(at: self.selectOpionIndex) else { return }
-        print(giftIndex)
-        input = GiftRequestInput(giftIdx: giftIndex, usedClover: clover)
-        guard let input = input else { return }
-        attemptFetchGiftRequest(with :input)
+        self.showSallyQuestionAlert(with: "해당 기프트 신청을\n하시겠습니까?") {[weak self] () in
+            guard let strongSelf = self else { return }
+            guard let clover = strongSelf.giftDetailViewModel.getOptionClover(at: strongSelf.selectOpionIndex) else { return }
+            print(strongSelf.giftIndex)
+            strongSelf.input = GiftRequestInput(giftIdx: strongSelf.giftIndex, usedClover: clover)
+            guard let input = strongSelf.input else { return }
+            strongSelf.attemptFetchGiftRequest(with :input)
+        }
     }
     
     private func updateUI(){

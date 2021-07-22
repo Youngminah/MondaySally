@@ -95,7 +95,7 @@ extension UIViewController {
     
     // MARK: 커스텀 샐리 알림창 표시
     func showSallyNotationAlert(with title: String , complition: (() -> Void)? = nil) {
-        SallyNotificationAlert.shared.showAlert(with: title, message: "")
+        SallyNotificationAlert.shared.showAlert(with: title)
         SallyNotificationAlert.shared.didDismiss = {
             if complition != nil {
                 complition!()
@@ -103,19 +103,42 @@ extension UIViewController {
         }
     }
     
-    // MARK: 커스텀 샐리 알림창 표시
-    func showSallyNotationAlert(with title: String , message: String ,complition: (() -> Void)? = nil) {
+    // MARK: 커스텀 샐리 물음 알림창 표시
+    func showSallyQuestionAlert(with title: String , complition: (() -> Void)? = nil) {
+        print("메세지 없는거 누름")
+        SallyNotificationAlert.shared.showQuestionAlert(with: title)
+        SallyNotificationAlert.shared.selectedYes = {
+            if complition != nil {
+                complition!()
+            }
+        }
+    }
+    
+    // MARK: 커스텀 샐리 물음 알림창 표시
+    func showSallyQuestionAlert(with title: String , message: String ,complition: (() -> Void)? = nil) {
+        print("메세지 있는거 누름")
         SallyNotificationAlert.shared.showQuestionAlert(with: title, message: message)
-        SallyNotificationAlert.shared.didDismiss = {
+        SallyNotificationAlert.shared.selectedYes = {
+            print("메세지 있는거 누름")
             if complition != nil {
                 complition!()
             }
         }
     }
     
-    // MARK: 커스텀 샐리 알림창 사라짐
+    // MARK: 커스텀 샐리 공지 알림창 사라짐
     @objc func dismissAlert() {
         SallyNotificationAlert.shared.dismissAlert()
+    }
+    
+    // MARK: 커스텀 샐리 확인 알림창 사라짐
+    @objc func yesAlert() {
+        SallyNotificationAlert.shared.yesAlert()
+    }
+    
+    // MARK: 커스텀 샐리 취소 알림창 사라짐
+    @objc func noAlert() {
+        SallyNotificationAlert.shared.noAlert()
     }
     
     

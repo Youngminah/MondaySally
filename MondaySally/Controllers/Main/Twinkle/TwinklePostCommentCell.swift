@@ -41,7 +41,10 @@ class TwinklePostCommentCell: UITableViewCell {
 
     }
     @IBAction func deleteButtonTap(_ sender: UIButton) {
-        delegate?.didPressDeleteButton(with: index)
+        self.showSallyQuestionAlert(with: "댓글을 삭제하시겠습니까?", message: "삭제된 댓글은 복구가 불가능합니다.") { [weak self] () in
+            guard let strongSelf = self else { return }
+            strongSelf.delegate?.didPressDeleteButton(with: strongSelf.index)
+        }
     }
     
     func updateUI(with data: TwinkleCommentInfo){
@@ -69,6 +72,31 @@ class TwinklePostCommentCell: UITableViewCell {
             self.deleteButton.isHidden = false
         }
     }
+}
+
+extension TwinklePostCommentCell {
+    
+    // MARK: 커스텀 샐리 알림창 표시
+    func showSallyQuestionAlert(with title: String , message: String ,complition: (() -> Void)? = nil) {
+        SallyNotificationAlert.shared.showQuestionAlert(with: title, message: message)
+        SallyNotificationAlert.shared.selectedYes = {
+            print("확인누름")
+            if complition != nil {
+                complition!()
+            }
+        }
+    }
+    
+    // MARK: 커스텀 샐리 확인 알림창 사라짐
+    @objc func yesAlert() {
+        SallyNotificationAlert.shared.yesAlert()
+    }
+    
+    // MARK: 커스텀 샐리 취소 알림창 사라짐
+    @objc func noAlert() {
+        SallyNotificationAlert.shared.noAlert()
+    }
+    
 }
 
 
