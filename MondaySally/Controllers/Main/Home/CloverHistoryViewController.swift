@@ -24,11 +24,7 @@ class CloverHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers.append(self.totalVC)
-        viewControllers.append(self.currentVC)
-        viewControllers.append(self.usedVC)
         self.initailSetting()
-        self.title = "클로버 히스토리"
     }
     
     @IBAction func topTabBarButtonTap(_ sender: UIButton) {
@@ -46,13 +42,17 @@ class CloverHistoryViewController: UIViewController {
     }
     
     private func initailSetting(){
-        if tabTag == 0 {
+        self.title = "클로버 히스토리"
+        self.viewControllers.append(self.totalVC)
+        self.viewControllers.append(self.currentVC)
+        self.viewControllers.append(self.usedVC)
+        if tabTag == 0 { //누적 클로버
             self.totalCloverSelected()
             self.changeViewToTotalCloverView()
-        }else if tabTag == 1{
+        }else if tabTag == 1{ //현재 클로버
             self.currentCloverSelected()
             self.changeViewToCurrentCloverView()
-        }else {
+        }else { //사용 클로버
             self.usedCloverSelected()
             self.changeViewToUsedCloverView()
         }

@@ -11,9 +11,11 @@ class UsedCloverViewController: UIViewController {
     
     @IBOutlet weak var cloverLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     private let viewModel = CloverUsedViewModel(dataService: CloverDataService())
-
+    private var nickName = UserDefaults.standard.string(forKey: "nickName")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class UsedCloverViewController: UIViewController {
     }
     
     private func updateUI() {
+        self.infoLabel.text = (nickName ?? "") + "님의 사용 클로버"
+        self.dateLabel.text = "\(Date().text) 기준"
         self.cloverLabel.text = "\(self.viewModel.usedClover)".insertComma
     }
 }

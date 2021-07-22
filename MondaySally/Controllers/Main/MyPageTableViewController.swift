@@ -43,10 +43,10 @@ class MyPageTableViewController: UITableViewController {
         guard let data = viewModel.getMyProfileInfo else {
             return
         }
-        self.nickNameLabel.text = UserDefaults.standard.string(forKey: "nickName")
+        self.nickNameLabel.text = data.nickname
         self.companyInfoLabel.text = (data.companyName)  + " | " +  (data.department ?? "개발부서")
         self.positionWorkInfoLabel.text = (data.position ?? "미정")  + " | " +  "\(data.workingYear ?? 0)"
-        self.emailLabel.text = UserDefaults.standard.string(forKey: "email")
+        self.emailLabel.text = data.email
         self.updateProfileImage()
     }
     
@@ -138,7 +138,6 @@ extension MyPageTableViewController {
     
     
     private func saveUserInfo(with data: MyProfileInfo){
-        UserDefaults.standard.setValue(data.nickname, forKey: "nickName")
         UserDefaults.standard.setValue(data.email, forKey: "email")
         UserDefaults.standard.setValue(data.imgUrl, forKey: "imageUrl")
         UserDefaults.standard.setValue(data.bankAccount, forKey: "account")
