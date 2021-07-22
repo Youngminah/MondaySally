@@ -19,6 +19,7 @@ class TwinkleStatusCell: UICollectionViewCell {
             self.statusBorderView.layer.borderWidth = 1
             self.statusBorderView.layer.borderColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
             self.starryBorderView.isHidden = true
+            self.statusBorderView.layer.cornerRadius = self.statusBorderView.bounds.width/2
         }else{
             self.starryBorderView.isHidden = false
             self.statusBorderView.layer.borderWidth = 1.5

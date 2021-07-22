@@ -14,6 +14,8 @@ class TwinkleWriteViewController: UIViewController {
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var giftNameLabel: UILabel!
+    @IBOutlet weak var cloverLabel: UILabel!
     
     //이미지 추가 버튼
     @IBOutlet weak var imageFirstButton: UIButton!
@@ -35,11 +37,14 @@ class TwinkleWriteViewController: UIViewController {
     private var imageButtonList = [UIButton]()
     private var photoTag: Int = 0 //이미지 피커 때 사용할 버튼의 태그 번호
     var giftIndex = Int() // 트윙클 작성 서버 요청시 보낼 트윙클 인덱스
+    var giftName = String() // 이전화면에서 받아와야하는 기프트 이름
+    var clover = Int() // 이전화면에서 받아와야하는 사용클로버 정보
     var delegate: TwinkleWriteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(postButtonTap))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(postButtonTap))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.label
         self.updateUI()
         self.imageButtonList = [self.imageFirstButton, self.imageSecondButton, self.imageThirdButton]
         //키보드보일때, 숨길때 일어나는 뷰위치 조정.
@@ -93,7 +98,7 @@ extension TwinkleWriteViewController{
             self.showSallyNotationAlert(with: "영수증 증명사진을\n올려주세요.")
             return
         }
-        if textView.text.count == 0 {
+        if textView.text.count == 0 || validate(textView: textView) {
             self.showSallyNotationAlert(with: "트윙클 내용을\n올려주세요.")
             return
         }
@@ -107,6 +112,7 @@ extension TwinkleWriteViewController{
         }
         self.showTransparentIndicator()
         //let index = 0
+        //트윙클 사진들 파이어베이스에 올리기
         for index in 0..<imageList.count{
             let uuid = UUID.init()
             self.storage.child("test/twinkle/\(uuid).png").putData(imageList[index], metadata: nil, completion: { [weak self] _ , error in
@@ -135,6 +141,16 @@ extension TwinkleWriteViewController{
         }
     }
     
+    func validate(textView textView: UITextView) -> Bool {
+        guard let text = textView.text,
+            !text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty else {
+            return false
+        }
+
+        return true
+    }
+    
+    //영수증 사진 파이어베이스에 올리기
     private func uploadFirbaseImages(with data:Data){
         let uuid = UUID.init()
         self.storage.child("test/receipt/\(uuid).png").putData(data, metadata: nil, completion: { [weak self] _ , error in
@@ -163,6 +179,7 @@ extension TwinkleWriteViewController{
         })
     }
     
+    //버튼에 있는 이미지들 pngData로 바꾸기
     private func willPostImageList() -> [Data] {
         var cloverImageList = [Data]()
         for button in imageButtonList {
@@ -358,6 +375,8 @@ extension TwinkleWriteViewController: UITextViewDelegate {
     //초기셋팅
     private func updateUI(){
         self.title = "내 트윙클 추가하기"
+        self.giftNameLabel.text = giftName
+        //self.cloverLabel.text = "\(clover)"
         self.textView.layer.borderWidth = 0.5
         self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         self.textView.layer.cornerRadius = 4
