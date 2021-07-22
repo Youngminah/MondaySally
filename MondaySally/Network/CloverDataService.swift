@@ -77,7 +77,7 @@ struct CloverDataService {
     
     //클로버 랭킹 조회 API
     func requestFetchCloverRanking(completion: @escaping (CloverRankingResponse?, Error?) -> ()) {
-        let url = "\(cloverRankingUrl)"
+        let url = "\(cloverRankingUrl)?page=1"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: CloverRankingResponse.self) { (response) in

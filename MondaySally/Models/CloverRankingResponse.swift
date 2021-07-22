@@ -6,15 +6,19 @@
 //
 
 struct CloverRankingResponse: Decodable{
-    var isSuccess: Bool
-    var code: Int
-    var message: String
-    var result: [CloverRankingInfo]?
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: Rank?
+}
+
+struct Rank: Decodable {
+    let ranks: [CloverRankingInfo]?
 }
 
 struct CloverRankingInfo: Decodable {
-    var ranking: Int
-    var imgUrl: String?
-    var nickname: String?
-    var currentClover: Int
+    let ranking: Int
+    let imgUrl: String?
+    let nickname: String?
+    let currentClover: Int
 }

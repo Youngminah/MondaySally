@@ -44,4 +44,5 @@ struct TwinkleRankingPreview: Decodable{
 struct WorkingMember: Decodable{
     var status: String
     var nickname: String
+    var position: String
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CloverRankingViewController: UIViewController {
 
@@ -13,6 +14,7 @@ class CloverRankingViewController: UIViewController {
     @IBOutlet weak var firstUserNameLabel: UILabel!
     @IBOutlet weak var firstUserCloverLabel: UILabel!
     @IBOutlet weak var firstUserImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     private let viewModel = CloverRankingViewModel(dataService: CloverDataService())
     override func viewDidLoad() {
@@ -23,6 +25,13 @@ class CloverRankingViewController: UIViewController {
     
     private func updateMainUI(){
         self.firstUserImageView.layer.cornerRadius = self.firstUserImageView.width / 2
+        self.dateLabel.text = "\(Date().text) 기준"
+    }
+    
+    private func setProfileImage(with url: String?){
+        guard let url = url else { return }
+        let urlString = URL(string: url)
+        self.firstUserImageView.kf.setImage(with: urlString)
     }
 }
 
@@ -97,6 +106,7 @@ extension CloverRankingViewController {
         guard let data = self.viewModel.cloverRankingList(at: 0) else {
             return
         }
+        self.setProfileImage(with : data.imgUrl)
         self.firstUserNameLabel.text = data.nickname
         self.firstUserCloverLabel.text = "\(data.currentClover)".insertComma
         //self.firstUserImageView.image =

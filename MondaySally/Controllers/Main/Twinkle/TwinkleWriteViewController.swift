@@ -376,7 +376,7 @@ extension TwinkleWriteViewController: UITextViewDelegate {
     private func updateUI(){
         self.title = "내 트윙클 추가하기"
         self.giftNameLabel.text = giftName
-        //self.cloverLabel.text = "\(clover)"
+        self.cloverLabel.text = "\(clover)"
         self.textView.layer.borderWidth = 0.5
         self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         self.textView.layer.cornerRadius = 4

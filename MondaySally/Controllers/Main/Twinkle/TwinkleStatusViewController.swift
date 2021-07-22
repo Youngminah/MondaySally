@@ -53,12 +53,16 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         }
         if indexPath.row < self.viewModel.numOfTwinkleNotProve {
             let index = indexPath.row
-            vc.giftIndex = self.viewModel.twinkleNotProveList(at: index)?.idx ?? 0
-            vc.giftName = self.viewModel.twinkleProveList(at: index)?.name ?? ""
+            guard let data = self.viewModel.twinkleNotProveList(at: index) else { return }
+            vc.giftIndex = data.idx
+            vc.giftName = data.name
+            vc.clover = data.usedClover
         }else {
             let index = indexPath.row - self.viewModel.numOfTwinkleNotProve
-            vc.giftIndex = self.viewModel.twinkleProveList(at: index)?.idx ?? 0
-            vc.giftName = self.viewModel.twinkleProveList(at: index)?.name ?? ""
+            guard let data = self.viewModel.twinkleNotProveList(at: index) else { return }
+            vc.giftIndex = data.idx
+            vc.giftName = data.name 
+            vc.clover = data.usedClover
         }
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)

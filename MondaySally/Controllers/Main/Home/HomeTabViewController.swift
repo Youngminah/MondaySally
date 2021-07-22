@@ -33,6 +33,7 @@ class HomeTabViewController: UIViewController {
     
     private let viewModel = HomeViewModel(dataService: HomeDataService())
     private var giftHistoryPreViewController: GiftHistoryPreViewController!
+    var delegate: GiftPreviewDelegate?
     
     private let boldAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.label,
@@ -60,7 +61,7 @@ class HomeTabViewController: UIViewController {
         if segue.identifier == "giftHistoryPreviewSegue" {
             let vc = segue.destination as? GiftHistoryPreViewController
             giftHistoryPreViewController = vc
-            giftHistoryPreViewController.attemptFetchGiftHistory()
+            self.delegate = vc
         }
     }
     
@@ -111,6 +112,7 @@ extension HomeTabViewController {
                 print("홈 조회에 성공했습니다 !! ")
                 strongSelf.updateAfterAPIUI()
                 strongSelf.collectionView.reloadData()
+                strongSelf.delegate?.showGiftPreview(with: strongSelf.viewModel.homeInfo?.giftHistory ?? [])
             }
         }
         self.viewModel.fetchHome()
@@ -256,4 +258,10 @@ extension HomeTabViewController {
         attributedString.append(NSAttributedString(string: "입니다.☀️", attributes: lightAttributes))
         self.mainLabel.attributedText = attributedString
     }
+}
+
+
+//MARK: 좋아요와 관련된 프로토콜 정의
+protocol GiftPreviewDelegate{
+    func showGiftPreview(with data: [GiftHistoryPreview])
 }

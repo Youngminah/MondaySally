@@ -57,7 +57,7 @@ class CloverRankingViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.cloverRankingInfo = response?.result
+            self?.cloverRankingInfo = response?.result?.ranks
             self?.isLoading = false
             
         })

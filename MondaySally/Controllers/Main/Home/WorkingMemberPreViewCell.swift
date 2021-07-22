@@ -13,7 +13,6 @@ class WorkingMemberPreViewCell: UICollectionViewCell {
     
     func updateUI(with data: WorkingMember){
         self.statusView.layer.cornerRadius = self.statusView.bounds.width/2
-        self.nickNameLabel.text = "\(data.nickname) / Server"
+        self.nickNameLabel.text = "\(data.nickname) / \(data.position)"
     }
-    
 }

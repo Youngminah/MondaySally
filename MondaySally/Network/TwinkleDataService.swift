@@ -61,7 +61,7 @@ struct TwinkleDataService {
     
     //증빙/미증빙 트윙클 목록 조회 API
     func requestFetchTwinkleProve(completion: @escaping (TwinkleProveResponse?, Error?) -> ()) {
-        let url = "\(proveUrl)"
+        let url = "\(proveUrl)?page=1"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: TwinkleProveResponse.self) { (response) in

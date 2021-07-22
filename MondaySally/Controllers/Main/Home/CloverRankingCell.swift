@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CloverRankingCell: UITableViewCell {
 
@@ -29,7 +30,12 @@ class CloverRankingCell: UITableViewCell {
         self.rankingNumberLabel.text = "\(data.ranking)등"
         self.userNameLabel.text = data.nickname
         self.cloverLabel.text = "\(data.currentClover) clover"
-        //self.userImageView.image = 
-        //self.rankingNumberLabel.text = "\(data.ranking)등"
+        self.setProfileImage(with: data.imgUrl)
+    }
+    
+    private func setProfileImage(with url: String?){
+        guard let url = url else { return }
+        let urlString = URL(string: url)
+        self.userImageView.kf.setImage(with: urlString)
     }
 }

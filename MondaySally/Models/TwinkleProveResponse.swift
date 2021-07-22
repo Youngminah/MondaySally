@@ -14,6 +14,7 @@ struct TwinkleProveResponse: Decodable{
 }
 
 
+
 struct TwinkleIsProveInfo: Decodable {
     var notProvedList: [TwinkleProveInfo]?
     var provedList: [TwinkleProveInfo]?
@@ -24,5 +25,6 @@ struct TwinkleProveInfo: Decodable {
     var imgUrl: String
     var name: String
     var isProved: String
+    var usedClover: Int
 }
 

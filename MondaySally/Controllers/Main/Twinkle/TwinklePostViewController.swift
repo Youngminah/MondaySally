@@ -26,12 +26,16 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
-    var index = Int()
+    var index = Int() //트윙클 고유인덱스
+    var isHearted = String() // 하트 표시 여부
+    private var likeCount = Int()
+    
     
     private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
     private let deleteViewModel = TwinkleDeleteViewModel(dataService: TwinkleDataService())
     private let commentWriteViewModel = TwinkleCommentWriteViewModel(dataService: TwinkleDataService())
     private let commentDeleteViewModel = TwinkleCommentDeleteViewModel(dataService: TwinkleDataService())
+    private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +69,7 @@ class TwinklePostViewController: UIViewController {
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        self.attemptFetchTwinkleLike(with :index)
     }
     
     //MARK: 트윙클 수정 버튼 눌렀을 때
@@ -79,6 +83,11 @@ class TwinklePostViewController: UIViewController {
     }
     
     private func updateUI(){
+        if isHearted == "Y"{
+            self.likeButton.isSelected = true
+        }else {
+            self.likeButton.isSelected = false
+        }
         self.postTextView.textContainer.lineFragmentPadding = 0;
         self.postTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
         self.commentTextField.layer.borderWidth = 1
@@ -243,6 +252,28 @@ extension TwinklePostViewController {
     }
 }
 
+// MARK: 트윙클 좋아요 API
+extension TwinklePostViewController {
+    
+    private func attemptFetchTwinkleLike(with index :Int) {
+        self.likeViewModel.didFinishFetch = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
+                strongSelf.likeButton.isSelected = !strongSelf.likeButton.isSelected
+                if strongSelf.likeButton.isSelected{
+                    strongSelf.likeCount = strongSelf.likeCount + 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }else{
+                    strongSelf.likeCount = strongSelf.likeCount - 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }
+            }
+        }
+        self.likeViewModel.fetchTwinkleLike(with: index)
+    }
+}
+
 // MARK: 트윙클 댓글 프로토콜
 extension TwinklePostViewController: CommentDelegate {
     func didPressDeleteButton(with index: Int) {
@@ -341,6 +372,7 @@ extension TwinklePostViewController {
     private func updateNetworkUI(){
         guard let data = self.detailViewModel.twinkleDetailInfo else { return }
         self.showIfWriter(with :data.isWriter)
+        self.updateHeartButton(with: data.isHearted)
         self.title = "\(data.writerName)님의 트윙클"
         self.twinkleDateLabel.text = data.date
         self.giftNameLabel.text = data.giftName
@@ -350,6 +382,7 @@ extension TwinklePostViewController {
         self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
         //self.tableHeaderView.frame.size.height = self.tableHeaderView.bounds.height + self.postTextView.contentSize.height - 20
         self.commentCountLabel.text = "댓글 \(data.commentCount)개"
+        self.likeCount = data.likeCount
         self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
     }
     
@@ -360,6 +393,14 @@ extension TwinklePostViewController {
         }else{
             self.deleteButton.isHidden = true
             self.editButton.isHidden = true
+        }
+    }
+    
+    private func updateHeartButton(with isHeart: String){
+        if isHeart == "Y"{
+            self.likeButton.isSelected = true
+        }else {
+            self.likeButton.isSelected = false
         }
     }
 }

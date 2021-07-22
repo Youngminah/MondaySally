@@ -83,6 +83,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         vc.index = data.index
+        vc.isHearted = data.isHearted
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

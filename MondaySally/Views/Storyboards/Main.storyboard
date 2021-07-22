@@ -2227,7 +2227,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage2" translatesAutoresizingMaskIntoConstraints="NO" id="Kmh-w1-W0B">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Kmh-w1-W0B">
                                                         <rect key="frame" x="48" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Kmh-w1-W0B" secondAttribute="height" multiplier="1:1" id="bQB-PY-M1c"/>
@@ -2331,7 +2331,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage2" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-gB-FkX">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-gB-FkX">
                                                     <rect key="frame" x="49" y="28.666666666666671" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="CAG-A3-myl"/>
@@ -2379,6 +2379,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="클로버 랭킹" id="Zee-sr-blO"/>
                     <connections>
+                        <outlet property="dateLabel" destination="9Rp-XI-8Xd" id="18E-ig-u3g"/>
                         <outlet property="firstUserCloverLabel" destination="Urk-Gj-rWF" id="BJG-cT-oeh"/>
                         <outlet property="firstUserImageView" destination="Kmh-w1-W0B" id="HhB-dz-CNk"/>
                         <outlet property="firstUserNameLabel" destination="b5d-YV-a0W" id="B5X-iZ-utt"/>
@@ -2584,6 +2585,15 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage1" translatesAutoresizingMaskIntoConstraints="NO" id="u4u-Rj-Iuf">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="108"/>
                                                 </imageView>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouj-Lf-v35">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="108"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ft-T5-ci5">
                                                     <rect key="frame" x="7" y="7" width="39" height="39"/>
                                                     <color key="backgroundColor" name="AccentColor"/>
@@ -2599,17 +2609,22 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ouj-Lf-v35" secondAttribute="bottom" id="5Bh-C8-D3r"/>
+                                                <constraint firstAttribute="trailing" secondItem="ouj-Lf-v35" secondAttribute="trailing" id="85Q-yC-hwB"/>
                                                 <constraint firstItem="u4u-Rj-Iuf" firstAttribute="leading" secondItem="1Gw-iu-Ut6" secondAttribute="leading" id="8lR-HH-6zu"/>
                                                 <constraint firstAttribute="bottom" secondItem="u4u-Rj-Iuf" secondAttribute="bottom" id="8pP-nX-paX"/>
+                                                <constraint firstItem="ouj-Lf-v35" firstAttribute="top" secondItem="1Gw-iu-Ut6" secondAttribute="top" id="A56-sJ-o8e"/>
                                                 <constraint firstItem="2ft-T5-ci5" firstAttribute="top" secondItem="u4u-Rj-Iuf" secondAttribute="top" constant="7" id="Dkg-um-PkH"/>
                                                 <constraint firstAttribute="trailing" secondItem="u4u-Rj-Iuf" secondAttribute="trailing" id="LHx-Eb-hwb"/>
                                                 <constraint firstItem="2ft-T5-ci5" firstAttribute="leading" secondItem="u4u-Rj-Iuf" secondAttribute="leading" constant="7" id="d5C-aD-QQk"/>
+                                                <constraint firstItem="ouj-Lf-v35" firstAttribute="leading" secondItem="1Gw-iu-Ut6" secondAttribute="leading" id="eMX-MF-dht"/>
                                                 <constraint firstItem="u4u-Rj-Iuf" firstAttribute="top" secondItem="1Gw-iu-Ut6" secondAttribute="top" id="yNC-Ow-WEA"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="128" height="108"/>
                                         <connections>
                                             <outlet property="approvementLabel" destination="2ft-T5-ci5" id="qcm-nt-UVL"/>
+                                            <outlet property="coverView" destination="ouj-Lf-v35" id="Xzw-PM-xJw"/>
                                             <outlet property="historyImageView" destination="u4u-Rj-Iuf" id="ccy-XZ-dxN"/>
                                         </connections>
                                     </collectionViewCell>
