@@ -62,6 +62,15 @@ class TermsOfServiceViewController: UIViewController {
         }
     }
     
+    //팀 코드가 유효할 경우 조인 페이지로 이동.
+    private func moveToJoinView(){
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "JoinView") as? JoinViewController else {
+            return
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     private func completedButtonEnable(){
         if serviceAgreeButton.isSelected && personalAgreeButton.isSelected {
             self.totalAgreeButton.isSelected = true
@@ -75,7 +84,7 @@ class TermsOfServiceViewController: UIViewController {
     }
     
     @IBAction func completedButtonTap(_ sender: UIButton) {
-        print("버튼누리기 성공!!")
+        self.moveToJoinView()
     }
     
 }

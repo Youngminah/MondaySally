@@ -1,28 +1,31 @@
 //
-//  MyPageViewController.swift
+//  MyPageTableViewController.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/03.
+//  Created by meng on 2021/07/22.
 //
 
 import UIKit
 import Kingfisher
 
-class MyPageViewController: UIViewController {
-    
+class MyPageTableViewController: UITableViewController {
+
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var companyInfoLabel: UILabel!
     @IBOutlet weak var positionWorkInfoLabel: UILabel!
     
+    
     private let viewModel = MyProfileViewModel(dataService: AuthDataService())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchMyProfile()
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,9 +40,12 @@ class MyPageViewController: UIViewController {
     
     private func updateProfileUI(){
         //strongSelf.profileImage.image =
-        self.nameLabel.text = UserDefaults.standard.string(forKey: "nickName")
-        self.companyInfoLabel.text = (UserDefaults.standard.string(forKey: "company") ?? "미정")  + " | " +  (UserDefaults.standard.string(forKey: "department") ?? "미정")
-        self.positionWorkInfoLabel.text = (UserDefaults.standard.string(forKey: "position") ?? "미정")  + " | " +  "\((UserDefaults.standard.integer(forKey: "workingPeriod") ))"
+        guard let data = viewModel.getMyProfileInfo else {
+            return
+        }
+        self.nickNameLabel.text = UserDefaults.standard.string(forKey: "nickName")
+        self.companyInfoLabel.text = (data.companyName)  + " | " +  (data.department ?? "개발부서")
+        self.positionWorkInfoLabel.text = (data.position ?? "미정")  + " | " +  "\(data.workingYear ?? 0)"
         self.emailLabel.text = UserDefaults.standard.string(forKey: "email")
         self.updateProfileImage()
     }
@@ -61,12 +67,36 @@ class MyPageViewController: UIViewController {
             }
         }
     }
+}
+
+// MARK: - Networking
+extension MyPageTableViewController  {
     
+    //테이블 뷰 헤더 섹션의 높이 설정
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        return 10.0
+    }
+
+    //테이블 뷰 해더 섹션 폰트, 폰트크기 정하기
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        let header = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = #colorLiteral(red: 0.9635811237, green: 0.9635811237, blue: 0.9635811237, alpha: 1)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2{ //로그아웃 버튼
+            self.removeAllUserInfos()
+            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
+                return
+            }
+            self.changeRootViewController(vc)
+        }
+    }
 }
 
 
 // MARK: - Networking
-extension MyPageViewController {
+extension MyPageTableViewController {
 
     //MARK: 내 프로필 조회 API 호출 함수
     private func attemptFetchMyProfile() {
@@ -111,12 +141,7 @@ extension MyPageViewController {
         UserDefaults.standard.setValue(data.nickname, forKey: "nickName")
         UserDefaults.standard.setValue(data.email, forKey: "email")
         UserDefaults.standard.setValue(data.imgUrl, forKey: "imageUrl")
-        UserDefaults.standard.setValue(data.department, forKey: "department")
-        UserDefaults.standard.setValue(data.position, forKey: "position")
-        UserDefaults.standard.setValue(data.gender, forKey: "gender")
         UserDefaults.standard.setValue(data.bankAccount, forKey: "account")
         UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
-        UserDefaults.standard.setValue("\(data.workingYear ?? 0)", forKey: "workingPeriod")
-        UserDefaults.standard.setValue(data.companyName, forKey: "company")
     }
 }

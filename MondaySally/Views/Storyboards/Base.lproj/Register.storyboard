@@ -390,7 +390,7 @@
         <!--Terms Of Service View Controller-->
         <scene sceneID="fkH-J5-10u">
             <objects>
-                <viewController id="328-2X-l95" customClass="TermsOfServiceViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsOfServiceView" id="328-2X-l95" customClass="TermsOfServiceViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RDI-iR-6ps">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

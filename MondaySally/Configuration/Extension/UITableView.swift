@@ -25,15 +25,18 @@ extension UITableView {
     }
     
     func scrollToBottom(){
-         DispatchQueue.main.async {
-             let indexPath = IndexPath(
-                 row: self.numberOfRows(inSection:  self.numberOfSections-1) - 1,
-                 section: self.numberOfSections - 1)
+        DispatchQueue.main.async {
+            if self.numberOfRows(inSection:  self.numberOfSections-1) == 0{
+                return
+            }
+            let indexPath = IndexPath(
+                row: self.numberOfRows(inSection:  self.numberOfSections-1) - 1,
+                section: self.numberOfSections - 1)
             if self.hasRowAtIndexPath(indexPath: indexPath) {
-                 self.scrollToRow(at: indexPath, at: .bottom, animated: true)
-             }
-         }
-     }
+                self.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+    }
 
      func scrollToTop() {
          DispatchQueue.main.async {

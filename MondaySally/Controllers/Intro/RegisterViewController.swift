@@ -48,15 +48,15 @@ class RegisterViewController: UIViewController {
     }
     
     //팀 코드가 유효할 경우 조인 페이지로 이동.
-    private func moveToJoinView(){
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "JoinView") as? JoinViewController else {
+    private func moveToTermsOfServiceView(){
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "TermsOfServiceView") as? TermsOfServiceViewController else {
             return
         }
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
     
-    //팀 코드가 유요하지 않을 경우 실패 페이지로 이동.
+    //팀 코드가 유효하지 않을 경우 실패 페이지로 이동.
     private func moveToFailView(){
         guard let vc = self.storyboard?.instantiateViewController(identifier: "FailView") as? FailViewController else {
             return
@@ -106,7 +106,7 @@ extension RegisterViewController {
                 print(Constant.HEADERS)
                 UserDefaults.standard.setValue(strongSelf.teamCodeViewModel.jwtToken, forKey: "JwtToken")
                 strongSelf.attemptFetchFCMTokenSend()
-                strongSelf.moveToJoinView()
+                strongSelf.moveToTermsOfServiceView()
             }
         }
         self.teamCodeViewModel.fetchJwt(with: teamCodeId)

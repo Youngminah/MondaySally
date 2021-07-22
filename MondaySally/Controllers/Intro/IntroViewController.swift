@@ -42,7 +42,7 @@ extension IntroViewController {
         
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
+                guard let strongSelf = self else { return } 
                 let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }

@@ -64,13 +64,8 @@ extension UIViewController {
         UserDefaults.standard.removeObject(forKey: "nickName")
         UserDefaults.standard.removeObject(forKey: "email")
         UserDefaults.standard.removeObject(forKey: "imageUrl")
-        UserDefaults.standard.removeObject(forKey: "department")
-        UserDefaults.standard.removeObject(forKey: "position")
-        UserDefaults.standard.removeObject(forKey: "gender")
         UserDefaults.standard.removeObject(forKey: "account")
         UserDefaults.standard.removeObject(forKey: "phoneNumber")
-        UserDefaults.standard.removeObject(forKey: "workingPeriod")
-        UserDefaults.standard.removeObject(forKey: "company")
     }
 }
 
