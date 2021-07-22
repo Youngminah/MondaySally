@@ -14,13 +14,25 @@ class TwinkleTabViewController: UIViewController {
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinkleStatusViewController: TwinkleStatusViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.attemptFetchTwinkleTotal()
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("기프트샵 컬렉션뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.attemptFetchTwinkleTotal()
+        }
     }
     
     //MARK: 컨테이너 뷰 연결
@@ -81,12 +93,16 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
 extension TwinkleTabViewController {
     
     private func attemptFetchTwinkleTotal() {
-        self.viewModel.updateLoadingStatus = {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+        
+        if tableView.refreshControl?.isRefreshing == false {
+            self.viewModel.updateLoadingStatus = {
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                }
             }
         }
+
         self.viewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {

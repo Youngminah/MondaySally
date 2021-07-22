@@ -46,19 +46,24 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    //UICollectionViewDelegateFlowLayout 프로토콜
-    //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width - 16)/5
-        let height: CGFloat = width
-        return CGSize(width: width, height: height)
-    }
-    
+    //MARK: cell 클릭했을때 트윙클 쓰러가기로 이동.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
             return
         }
+        if indexPath.row < self.viewModel.numOfTwinkleNotProve {
+            vc.giftIndex = self.viewModel.twinkleNotProveList(at: indexPath.row)?.idx ?? 0
+        }else {
+            vc.giftIndex = self.viewModel.twinkleProveList(at: indexPath.row - self.viewModel.numOfTwinkleNotProve)?.idx ?? 0
+        }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //UICollectionViewDelegateFlowLayout 프로토콜
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = (collectionView.bounds.width - 16)/5
+        let height: CGFloat = width
+        return CGSize(width: width, height: height)
     }
 }
 

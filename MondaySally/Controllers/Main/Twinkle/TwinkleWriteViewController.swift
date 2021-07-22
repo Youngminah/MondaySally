@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class TwinkleWriteViewController: UIViewController {
 
@@ -26,18 +27,29 @@ class TwinkleWriteViewController: UIViewController {
     @IBOutlet weak var deleteThirdButton: UIButton!
     @IBOutlet weak var receiptDeleteButton: UIButton!
     
+    
+    private let viewModel = TwinkleWriteViewModel(dataService: TwinkleDataService())
+    private let storage = Storage.storage().reference()
+    private var imageUrl = [String]()
+    private var receiptImageURL = String()
     private var imageButtonList = [UIButton]()
-    private var receiptImage = UIImage()
-    private var photoTag: Int = 0
+    private var photoTag: Int = 0 //이미지 피커 때 사용할 버튼의 태그 번호
+    var giftIndex = Int() // 트윙클 작성 서버 요청시 보낼 트윙클 인덱스
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(postButtonTap))
         self.updateUI()
-        imageButtonList = [self.imageFirstButton, self.imageSecondButton, self.imageThirdButton, self.receiptImageButton]
+        self.imageButtonList = [self.imageFirstButton, self.imageSecondButton, self.imageThirdButton]
         //키보드보일때, 숨길때 일어나는 뷰위치 조정.
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(adjustInputView),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(adjustInputView),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -60,125 +72,116 @@ class TwinkleWriteViewController: UIViewController {
         self.setDefaultImage(at: sender.tag)
     }
     
-    var isReceiptImagePost: Bool {
+    private var isReceiptImagePost: Bool {
         return self.receiptImageButton.isSelected
     }
     
+}
+
+//MARK: 파이어베이스 & 작성 관련
+extension TwinkleWriteViewController{
+    
+    //MARK: 트윙클 작성하기 버튼 눌렀을 때 : 파이어베이스 업로드 -> 서버 업로드
     @objc func postButtonTap() {
-        
         let imageList = self.willPostImageList()
         if  imageList.count == 0 {
             self.showSallyNotationAlert(with: "클로버 사용 증명사진을\n올려주세요.")
             return
         }
-        
         if !isReceiptImagePost {
             self.showSallyNotationAlert(with: "영수증 증명사진을\n올려주세요.")
             return
         }
-        
         if textView.text.count == 0 {
             self.showSallyNotationAlert(with: "트윙클 내용을\n올려주세요.")
             return
         }
-    }
-    
-    private func updateUI(){
-        self.title = "내 트윙클 추가하기"
-        self.textView.layer.borderWidth = 0.5
-        self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-        self.textView.layer.cornerRadius = 4
-        self.textView.textContainer.lineFragmentPadding = 17;
-        self.textView.textContainerInset = UIEdgeInsets(top: 17, left: 0, bottom: 0, right: 0);
-        self.textView.delegate = self
-        self.imageFirstButton.layer.cornerRadius = 4
-        self.imageSecondButton.layer.cornerRadius = 4
-        self.imageThirdButton.layer.cornerRadius = 4
-        self.receiptImageButton.layer.cornerRadius = 4
-        self.deleteFirstButton.isHidden = true
-        self.deleteSecondButton.isHidden = true
-        self.deleteThirdButton.isHidden = true
-        self.receiptDeleteButton.isHidden = true
-        placeholderSetting()
-    }
-}
-
-//키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기. && 글자수 제한.
-extension TwinkleWriteViewController {
-    
-    //아무곳이나 클릭하면 키보드 내려가게 하기
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
-    }
-    
-    @objc override func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-        // 키보드 높이에 따른 인풋뷰 위치 변경
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard let receiptImage = receiptDeleteButton.currentImage else {
+            print("이미지 뜯기 실패")
+            return
+        }
+        guard let receiptImagePng = receiptImage.pngData() else {
+            print("이미지 png화 실패")
+            return
+        }
+        self.showTransparentIndicator()
+        //let index = 0
+        for index in 0..<imageList.count{
+            let uuid = UUID.init()
+            self.storage.child("test/twinkle/\(uuid)").putData(imageList[index], metadata: nil, completion: { [weak self] _ , error in
+                guard let strongSelf = self else { return }
+                guard error == nil else {
+                    print("파이어베이스에 업로드하는데 실패하였습니다.")
+                    return
+                }
+                strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+                    guard let url = url , error == nil else {
+                        print(error?.localizedDescription ?? "")
+                        return
+                    }
+                    DispatchQueue.global().sync {
+                        let urlString = url.absoluteString
+                        print("파이어베이스에 등록된 트윙클 이미지 URL주소 : \(urlString)")
+                        strongSelf.imageUrl.append(urlString)
+                        if index + 1 == imageList.count {
+                            print(strongSelf.imageUrl)
+                            strongSelf.uploadFirbaseImages(with: receiptImagePng)
+                        }
+                    }
+                }
+            })
         
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            let adjustmentHeight = keyboardFrame.height
-            self.scrollViewBottom.constant = -adjustmentHeight
-        } else {
-            self.scrollViewBottom.constant = 0
         }
     }
     
-    func placeholderSetting() {
-        self.textView.text = "트윙클 내용을 입력해주세요."
-        self.textView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+    private func uploadFirbaseImages(with data:Data){
+        let uuid = UUID.init()
+        self.storage.child("test/twinkle/\(uuid)").putData(data, metadata: nil, completion: { [weak self] _ , error in
+            guard let strongSelf = self else { return }
+            guard error == nil else {
+                print("파이어베이스에 업로드하는데 실패하였습니다.")
+                return
+            }
+            strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+                guard let url = url , error == nil else {
+                    print(error?.localizedDescription ?? "")
+                    return
+                }
+                DispatchQueue.global().sync {
+                    let urlString = url.absoluteString
+                    print("파이어베이스에 등록된 영수증 이미지 URL주소 : \(urlString)")
+                    strongSelf.receiptImageURL = urlString
+                    let input = TwinkleWriteInput(giftIndex: strongSelf.giftIndex,
+                                                  content: strongSelf.textView.text!,
+                                                  receiptImageUrl: strongSelf.receiptImageURL,
+                                                  twinkleImaageList: strongSelf.imageUrl)
+                    strongSelf.attemptFetchTwinkleWrite(with: input)
+                    strongSelf.dismissIndicator()
+                }
+            }
+        })
     }
     
-    func updateCharacterCount() {
-        let reviewsCount = self.textView.text.count
-        self.countLabel.text = "(\(reviewsCount)/1000)"
+    private func willPostImageList() -> [Data] {
+        var cloverImageList = [Data]()
+        for button in imageButtonList {
+            if button.isSelected {
+                guard let image = button.currentImage else {
+                    print("이미지 뜯기 실패")
+                    return []
+                }
+                guard let imagePng = image.pngData() else {
+                    print("이미지 png화 실패")
+                    return []
+                }
+                cloverImageList.append(imagePng)
+            }
+        }
+        return cloverImageList
     }
 }
 
-extension TwinkleWriteViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.textView.layer.borderWidth = 1
-        self.textView.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
-        if textView.textColor == #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1) {
-            self.textView.text = nil
-            self.textView.textColor = UIColor.label
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.textView.layer.borderWidth = 0.5
-        self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-        if textView.text.isEmpty {
-            self.textView.text = "트윙클 내용을 입력해주세요."
-            self.textView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-        }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        self.updateCharacterCount()
-    }
-    
-    //텍스트뷰 글자수 제한
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        if newText.count > 0 {
-            self.countLabel.textColor = #colorLiteral(red: 0.992348969, green: 0.4946574569, blue: 0.004839691333, alpha: 1)
-        }else{
-            self.countLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        }
-        return newText.count <= 1000
-    }
-}
-
-
-//버튼 이미지 관련 함수
+//MARK: 이미지 선택시 배치하기
 extension TwinkleWriteViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -227,19 +230,146 @@ extension TwinkleWriteViewController: UIImagePickerControllerDelegate , UINaviga
             self.receiptImageButton.isSelected = false
         }
     }
+}
+
+// MARK: 트윙클 작성 API
+extension TwinkleWriteViewController {
     
-    private func willPostImageList() -> [UIImage] {
-        var cloverImageList = [UIImage]()
-        for button in imageButtonList {
-            if button.isSelected {
-                guard let image = button.currentImage else {
-                    print("이미지 뜯기 실패")
-                    return []
-                }
-                cloverImageList.append(image)
+    private func attemptFetchTwinkleWrite(with input :TwinkleWriteInput) {
+        
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
         }
-        return cloverImageList
+        
+        self.viewModel.showAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                if let error = strongSelf.viewModel.error {
+                    print("서버에서 통신 원활하지 않음 ->  +\(error.localizedDescription)")
+                    strongSelf.networkFailToExit()
+                }
+                if let message = strongSelf.viewModel.failMessage {
+                    print("서버에서 알려준 에러는 -> \(message)")
+                }
+            }
+        }
+        self.viewModel.codeAlertClosure = { [weak self] () in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                //Code
+                if strongSelf.viewModel.failCode == 353 {
+
+                }
+            }
+        }
+        self.viewModel.didFinishFetch = { [weak self] () in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                print("트윙클 작성에 성공했습니다 !! ")
+                strongSelf.showSallyNotationAlert(with: "트윙클이 작성되었습니다.") {
+                    strongSelf.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        self.viewModel.fetchTwinkleWrite(with: input)
+    }
+}
+
+
+//MARK: 키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기
+extension TwinkleWriteViewController {
+    
+    //아무곳이나 클릭하면 키보드 내려가게 하기
+    private func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
+    @objc override func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height
+            self.scrollViewBottom.constant = -adjustmentHeight
+        } else {
+            self.scrollViewBottom.constant = 0
+        }
+    }
+}
+
+//MARK: 텍스트뷰 관련
+extension TwinkleWriteViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.textView.layer.borderWidth = 1
+        self.textView.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
+        if textView.textColor == #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1) {
+            self.textView.text = nil
+            self.textView.textColor = UIColor.label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.textView.layer.borderWidth = 0.5
+        self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        if textView.text.isEmpty {
+            self.textView.text = "트윙클 내용을 입력해주세요."
+            self.textView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.updateCharacterCount()
+    }
+    
+    //텍스트뷰 글자수 제한
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        if newText.count > 0 {
+            self.countLabel.textColor = #colorLiteral(red: 0.992348969, green: 0.4946574569, blue: 0.004839691333, alpha: 1)
+        }else{
+            self.countLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        }
+        return newText.count <= 1000
+    }
+    
+    private func updateCharacterCount() {
+        let reviewsCount = self.textView.text.count
+        self.countLabel.text = "(\(reviewsCount)/1000)"
+    }
+    
+    private func placeholderSetting() {
+        self.textView.text = "트윙클 내용을 입력해주세요."
+        self.textView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+    }
+    
+    //초기셋팅
+    private func updateUI(){
+        self.title = "내 트윙클 추가하기"
+        self.textView.layer.borderWidth = 0.5
+        self.textView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        self.textView.layer.cornerRadius = 4
+        self.textView.textContainer.lineFragmentPadding = 17;
+        self.textView.textContainerInset = UIEdgeInsets(top: 17, left: 0, bottom: 0, right: 0);
+        self.textView.delegate = self
+        self.imageFirstButton.layer.cornerRadius = 4
+        self.imageSecondButton.layer.cornerRadius = 4
+        self.imageThirdButton.layer.cornerRadius = 4
+        self.receiptImageButton.layer.cornerRadius = 4
+        self.deleteFirstButton.isHidden = true
+        self.deleteSecondButton.isHidden = true
+        self.deleteThirdButton.isHidden = true
+        self.receiptDeleteButton.isHidden = true
+        placeholderSetting()
+    }
 }
