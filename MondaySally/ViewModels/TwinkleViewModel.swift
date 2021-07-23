@@ -62,7 +62,7 @@ class TwinkleViewModel {
         return twinkleInfo[index]
     }
     
-    // MARK: 전체 트윙클 API 호출 함수
+    // MARK: 전체 트윙클 페이징 적용 API 호출 함수
     func fetchTwinkleTotal(with pagination : Bool = false){
         if endOfPage{ return }
         if pagination {
@@ -82,11 +82,8 @@ class TwinkleViewModel {
                 if !isSuccess {
                     strongself.failMessage = response?.message
                     strongself.failCode = response?.code
-                    if strongself.failCode == 366 {
-                        strongself.endOfPage = true
-                    }
-                    strongself.isLoading = false
-                    strongself.setPaginationStatus(with: pagination)
+                    if strongself.failCode == 366 { strongself.endOfPage = true }
+                    strongself.didEndPagination(with: pagination)
                     return
                 }
             }
@@ -98,12 +95,12 @@ class TwinkleViewModel {
                 strongself.twinkleInfo = response?.result?.twinkles ?? []
             }
             strongself.didFinishFetch?()
-            strongself.setPaginationStatus(with: pagination)
+            strongself.didEndPagination(with: pagination)
         })
     }
     
     
-    private func setPaginationStatus(with pagination: Bool){
+    private func didEndPagination(with pagination: Bool){
         pagination ? (self.isPagination = false) : (self.isLoading = false)
     }
 }

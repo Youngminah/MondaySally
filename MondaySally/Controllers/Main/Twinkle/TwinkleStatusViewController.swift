@@ -60,10 +60,34 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
     }
 }
 
+//MARK: 페이징 API 호출
+extension TwinkleStatusViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfTwinkleTotal == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfTwinklePagination != 0 { return }
+        if self.viewModel.endOfPage { return }
+        let position = scrollView.contentOffset.x
+        if position >= (collectionView.contentSize.width - scrollView.frame.size.width) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.attemptFetchProve(with: true)
+        }
+    }
+    
+    //MARK: 페이징 중에 밑에 footer뷰 생성.
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
+    }
+}
+
 // MARK: 트윙클 미증빙/증빙 조회 API
 extension TwinkleStatusViewController {
     
-    func attemptFetchProve() {
+    func attemptFetchProve(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -95,10 +119,11 @@ extension TwinkleStatusViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 미증빙/증빙 조회에 성공했습니다 !! ")
+                print("가져온 미증빙/증빙 트윙클 갯수 -> \(strongSelf.viewModel.numOfTwinkleTotal) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.collectionView.reloadData()
             }
         }
-        self.viewModel.fetchTwinkleProve()
+        self.viewModel.fetchTwinkleProve(with: pagination)
     }
 }
 
@@ -106,6 +131,8 @@ extension TwinkleStatusViewController {
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
 extension TwinkleStatusViewController: TwinkleWriteDelegate{
     func didTwinkleWrite() {
-        self.viewModel.fetchTwinkleProve()
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.viewModel.fetchTwinkleProve(with: false)
     }
 }

@@ -41,7 +41,8 @@ class TwinkleTabViewController: UIViewController {
         if segue.identifier == "twinkleProveSegue" {
             let vc = segue.destination as? TwinkleStatusViewController
             twinkleStatusViewController = vc
-            twinkleStatusViewController.attemptFetchProve()
+            twinkleStatusViewController.attemptFetchProve(with: false)
+            //print("몇번?")
         }
     }
     
@@ -184,16 +185,13 @@ extension TwinkleTabViewController: LikeDelegate {
 
 // MARK: 트윙클 리스트 네크워크로부터 UI 업데이트
 extension TwinkleTabViewController {
-    
+    //MARK: 페이징 중에 밑에 footer뷰 생성.
     private func createSpinnerFooter() -> UIView {
-        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
         footerView.addSubview(spinner)
         spinner.startAnimating()
-        
         return footerView
     }
-    
 }
