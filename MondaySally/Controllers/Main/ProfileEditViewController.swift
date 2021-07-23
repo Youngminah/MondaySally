@@ -37,11 +37,7 @@ class ProfileEditViewController: UIViewController{
     }
     
     @IBAction func photoSelectButtonTabp(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true)
+        self.showActionsheet()
     }
     
     @IBAction func completeButtonTap(_ sender: UIButton) {
@@ -80,26 +76,10 @@ class ProfileEditViewController: UIViewController{
             }
         })
     }
-    
-    private func editSuccessSallyAlertPresent(){
-        self.showSallyNotationAlert(with: "프로필 수정이\n완료되었습니다.") {
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    private func editFailAlertPresent(with message: String){
-        let alert = UIAlertController(title: message, message: .none, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
-    private func editUserInfo(with input: EditProfileInput){
-        UserDefaults.standard.setValue(input.nickname, forKey: "nickName")
-        UserDefaults.standard.setValue(input.email, forKey: "email")
-        UserDefaults.standard.setValue(input.imgUrl, forKey: "imageUrl")
-        UserDefaults.standard.setValue(input.phoneNumber, forKey: "phoneNumber")
-        UserDefaults.standard.setValue(input.bankAccount, forKey: "account")
-    }
+}
+
+//MARK: 기본 알람창 또는 UI구성 함수
+extension ProfileEditViewController{
     
     private func updateUI(){
         self.photoSelectButton.layer.borderWidth = 1
@@ -127,6 +107,54 @@ class ProfileEditViewController: UIViewController{
         self.unselectedPhoneNumberTextFieldUI()
         self.unselectedAccountTextFieldUI()
         self.unselectedEmailTextFieldUI()
+    }
+    
+    private func editSuccessSallyAlertPresent(){
+        self.showSallyNotationAlert(with: "프로필 수정이\n완료되었습니다.") {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func editFailAlertPresent(with message: String){
+        let alert = UIAlertController(title: message, message: .none, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    private func editUserInfo(with input: EditProfileInput){
+        UserDefaults.standard.setValue(input.nickname, forKey: "nickName")
+        UserDefaults.standard.setValue(input.email, forKey: "email")
+        UserDefaults.standard.setValue(input.imgUrl, forKey: "imageUrl")
+        UserDefaults.standard.setValue(input.phoneNumber, forKey: "phoneNumber")
+        UserDefaults.standard.setValue(input.bankAccount, forKey: "account")
+    }
+    
+    private func showActionsheet(){
+        
+        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: {_ in
+            print("취소 버튼 누름")
+        })
+        actionsheet.addAction(cancel)
+        
+        let album = UIAlertAction(title: "앨범에서 사진 선택", style: .default, handler: { [weak self] _ in
+            guard let strongself = self else { return }
+            let vc = UIImagePickerController()
+            vc.sourceType = .photoLibrary
+            vc.delegate = self
+            vc.allowsEditing = true
+            strongself.present(vc, animated: true)
+        })
+        actionsheet.addAction(album)
+        
+        let basic = UIAlertAction(title: "기본 이미지로 변경", style: .default, handler: {_ in
+            self.photoSelectButton.setImage(#imageLiteral(resourceName: "icPhotoMid"), for: .normal)
+            self.photoSelectButton.isSelected = false
+        })
+        actionsheet.addAction(basic)
+        
+        present(actionsheet,animated: true)
     }
 }
 

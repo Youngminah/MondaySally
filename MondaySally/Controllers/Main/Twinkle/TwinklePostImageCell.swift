@@ -16,10 +16,10 @@ class TwinklePostImageCell: UICollectionViewCell {
         let urlString = URL(string: data)
         self.twinkleImageView.kf.setImage(with: urlString) { result in
             switch result {
-            case .success(let value):
+            case .success( _):
                 self.dismissViewndicator()
             case .failure(let error):
-                print(error)
+                print(error.errorDescription ?? "")
                 self.dismissViewndicator()
             }
         }

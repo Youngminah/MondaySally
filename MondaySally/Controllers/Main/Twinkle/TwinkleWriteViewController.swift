@@ -175,7 +175,7 @@ extension TwinkleWriteViewController{
         })
     }
     
-    //버튼에 있는 이미지들 pngData로 바꾸기
+    //MARK: 버튼에 있는 이미지들 pngData로 바꾸기
     private func willPostImageList() -> [Data] {
         var cloverImageList = [Data]()
         for button in imageButtonList {

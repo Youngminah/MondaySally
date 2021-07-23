@@ -64,6 +64,7 @@ class MyPageTableViewController: UITableViewController {
             case .failure( _):
                 print("프로필 이미지 URL의 이미지를 가져올 수 없음!!")
                 strongself.profileImage.image = #imageLiteral(resourceName: "illustSallyBlank")
+                strongself.profileImage.dismissViewndicator()
             }
         }
     }
