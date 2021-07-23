@@ -23,8 +23,7 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var cloverLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editOrDeleteButton: UIButton!
     
     var index = Int() //트윙클 고유인덱스
     private var likeCount = Int()
@@ -65,6 +64,10 @@ class TwinklePostViewController: UIViewController {
         }
     }
     
+    @IBAction func editOrDeleteButtonTap(_ sender: UIButton) {
+        self.showActionsheet()
+    }
+    
     @IBAction func commentWriteButtonTap(_ sender: UIButton) {
         guard let content = self.commentTextField.text else {
             return
@@ -81,19 +84,6 @@ class TwinklePostViewController: UIViewController {
         self.attemptFetchTwinkleLike(with :index)
     }
     
-    //MARK: 트윙클 수정 버튼 눌렀을 때
-    @IBAction func editButtonTap(_ sender: UIButton) {
-        
-    }
-    
-    //MARK: 트윙클 삭제 버튼 눌렀을 때
-    @IBAction func deleteButtonTap(_ sender: UIButton) {
-        self.showSallyQuestionAlert(with: "삭제하시겠습니까?", message: "삭제된 트윙클은 복구가 불가능합니다.") { [weak self] () in
-            guard let strongSelf = self else { return }
-            strongSelf.attemptFetchDelete(with: strongSelf.index)
-        }
-    }
-    
     private func updateUI(){
         self.postTextView.textContainer.lineFragmentPadding = 0;
         self.postTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
@@ -102,6 +92,32 @@ class TwinklePostViewController: UIViewController {
         self.commentTextField.layer.cornerRadius = self.commentTextField.bounds.height/2 - 3
         self.commentTextField.setLeftPaddingPoints(16)
         self.commentButton.layer.cornerRadius = self.commentButton.bounds.height/2 - 3
+    }
+    
+    private func showActionsheet(){
+        
+        let actionsheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: {_ in
+            print("취소 버튼 누름")
+        })
+        actionsheet.addAction(cancel)
+        
+        //MARK: 트윙클 삭제 버튼 눌렀을 때
+        let album = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            guard let strongself = self else { return }
+            strongself.showSallyQuestionAlert(with: "삭제하시겠습니까?", message: "삭제된 트윙클은 복구가 불가능합니다.") { [weak self] () in
+                guard let strongSelf = self else { return }
+                strongSelf.attemptFetchDelete(with: strongSelf.index)
+            }
+        })
+        actionsheet.addAction(album)
+        
+        //MARK: 트윙클 수정 버튼 눌렀을 때
+        let basic = UIAlertAction(title: "수정", style: .default, handler: {_ in
+        })
+        actionsheet.addAction(basic)
+        
+        present(actionsheet,animated: true)
     }
 }
 
@@ -373,16 +389,16 @@ extension TwinklePostViewController {
         self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
     }
     
+    //삼한연산자로 바꾸기
     private func showIfWriter(with isWriter: String){
         if isWriter == "Y"{
-            self.deleteButton.isHidden = false
-            self.editButton.isHidden = false
+            self.editOrDeleteButton.isHidden = false
         }else{
-            self.deleteButton.isHidden = true
-            self.editButton.isHidden = true
+            self.editOrDeleteButton.isHidden = true
         }
     }
     
+    //삼한연산자로 바꾸기
     private func updateHeartButton(with isHeart: String){
         if isHeart == "Y"{
             self.likeButton.isSelected = true

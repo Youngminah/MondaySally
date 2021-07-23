@@ -2939,31 +2939,13 @@
                                                 <constraint firstItem="36Z-HI-3gD" firstAttribute="leading" secondItem="cYq-hs-CuN" secondAttribute="leading" constant="16" id="ukO-Wt-vYK"/>
                                             </constraints>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xm2-ns-71Y">
-                                            <rect key="frame" x="318" y="494.66666666666669" width="80" height="28.000000000000057"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNd-q3-puJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
-                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
-                                                    <state key="normal" title="수정">
-                                                        <color key="titleColor" red="0.61176470588235299" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="editButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="9hu-OV-J8u"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aak-3q-EZt">
-                                                    <rect key="frame" x="50" y="0.0" width="30" height="28"/>
-                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
-                                                    <state key="normal" title="삭제">
-                                                        <color key="titleColor" red="0.61176470588235299" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="deleteButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="fI2-Tp-3TX"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biZ-JS-Nue">
+                                            <rect key="frame" x="328" y="442.66666666666669" width="19" height="22"/>
+                                            <state key="normal" image="icLikeOffGray"/>
+                                            <connections>
+                                                <action selector="editOrDeleteButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="WyB-sT-UQM"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -2974,18 +2956,18 @@
                                         <constraint firstAttribute="trailing" secondItem="2Vp-Tl-CER" secondAttribute="trailing" id="B2f-WG-de3"/>
                                         <constraint firstItem="2Vp-Tl-CER" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" id="EgW-WC-dWq"/>
                                         <constraint firstItem="cYq-hs-CuN" firstAttribute="top" secondItem="2Vp-Tl-CER" secondAttribute="bottom" id="KZW-bh-kOJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Xm2-ns-71Y" secondAttribute="trailing" constant="16" id="MN8-no-e2o"/>
                                         <constraint firstItem="cYq-hs-CuN" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" id="NuV-me-saK"/>
                                         <constraint firstItem="2Vp-Tl-CER" firstAttribute="top" secondItem="NCE-xw-kCY" secondAttribute="bottom" constant="16" id="Qhd-EY-eoB"/>
                                         <constraint firstItem="lJR-Zn-whz" firstAttribute="top" secondItem="TpB-rh-V9t" secondAttribute="bottom" constant="73" id="UeS-FA-tzA"/>
+                                        <constraint firstItem="FqN-7W-31j" firstAttribute="leading" secondItem="biZ-JS-Nue" secondAttribute="trailing" constant="16" id="VHX-mu-sAh"/>
                                         <constraint firstItem="NCE-xw-kCY" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" constant="16" id="c3p-b2-0nq"/>
+                                        <constraint firstItem="biZ-JS-Nue" firstAttribute="centerY" secondItem="FqN-7W-31j" secondAttribute="centerY" id="dTH-ze-bW6"/>
                                         <constraint firstAttribute="trailing" secondItem="lJR-Zn-whz" secondAttribute="trailing" constant="16" id="kGW-P3-nYL"/>
                                         <constraint firstAttribute="trailing" secondItem="TpB-rh-V9t" secondAttribute="trailing" id="mH0-Ch-f0P"/>
                                         <constraint firstItem="NCE-xw-kCY" firstAttribute="top" secondItem="lJR-Zn-whz" secondAttribute="bottom" id="nON-fz-v30"/>
                                         <constraint firstAttribute="trailing" secondItem="cYq-hs-CuN" secondAttribute="trailing" id="ovu-l7-Oh9"/>
                                         <constraint firstItem="A74-ke-fCE" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" constant="16" id="p0T-MW-Cb1"/>
                                         <constraint firstItem="A74-ke-fCE" firstAttribute="top" secondItem="TpB-rh-V9t" secondAttribute="bottom" constant="21" id="q2i-WI-SbM"/>
-                                        <constraint firstItem="Xm2-ns-71Y" firstAttribute="centerY" secondItem="NCE-xw-kCY" secondAttribute="centerY" id="qoG-uB-gGn"/>
                                         <constraint firstItem="TpB-rh-V9t" firstAttribute="top" secondItem="fJz-ui-8eg" secondAttribute="top" id="scM-fr-dvT"/>
                                         <constraint firstItem="TpB-rh-V9t" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" id="vux-WB-ujC"/>
                                     </constraints>
@@ -2998,7 +2980,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage2" translatesAutoresizingMaskIntoConstraints="NO" id="Ole-O0-kBs">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Ole-O0-kBs">
                                                     <rect key="frame" x="16" y="15" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="10u-Fr-LeL"/>
@@ -3124,8 +3106,7 @@
                         <outlet property="commentTableView" destination="bny-fW-i9h" id="YDM-Bq-2wQ"/>
                         <outlet property="commentTextField" destination="kVN-0G-piT" id="CST-BO-YGf"/>
                         <outlet property="commentTextFieldBottom" destination="Xbs-n4-LcA" id="LMG-qL-bnX"/>
-                        <outlet property="deleteButton" destination="Aak-3q-EZt" id="sQb-yC-Hp3"/>
-                        <outlet property="editButton" destination="lNd-q3-puJ" id="D5v-lQ-bBT"/>
+                        <outlet property="editOrDeleteButton" destination="biZ-JS-Nue" id="rns-BR-wji"/>
                         <outlet property="giftNameLabel" destination="uiP-fk-JbA" id="d5B-SK-Mqb"/>
                         <outlet property="likeButton" destination="FqN-7W-31j" id="BBI-0t-fRt"/>
                         <outlet property="likeCountLabel" destination="NCE-xw-kCY" id="wHz-GF-bz4"/>

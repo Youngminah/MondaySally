@@ -32,7 +32,7 @@ struct AccumulateCloverHistoryInfo: Decodable{
         case index = "idx"
         case time = "time"
         case worktime = "worktime"
-        case clover = "point"
+        case clover = "clover"
     }
 }
 

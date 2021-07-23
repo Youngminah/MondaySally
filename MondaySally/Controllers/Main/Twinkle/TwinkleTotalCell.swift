@@ -77,7 +77,7 @@ class TwinkleTotalCell: UITableViewCell {
         guard let url = url else { return }
         self.showViewIndicator()
         let urlString = URL(string: url)
-        self.profileImageButton.kf.setImage(with: urlString, for: .normal) { result in
+        self.profileImageButton.kf.setImage(with: urlString, for: .normal, completionHandler:  { result in
             switch result {
             case .success(_):
                 self.dismissViewndicator()
@@ -85,7 +85,7 @@ class TwinkleTotalCell: UITableViewCell {
                 print(error)
                 self.dismissViewndicator()
             }
-        }
+        })
     }
     
     private func setThumbnailImage(with url: String){

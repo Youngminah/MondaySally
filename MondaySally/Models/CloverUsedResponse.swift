@@ -32,6 +32,6 @@ struct UsedCloverHistoryInfo: Decodable{
         case index = "idx"
         case time = "time"
         case giftName = "name"
-        case clover = "point"
+        case clover = "clover"
     }
 }
