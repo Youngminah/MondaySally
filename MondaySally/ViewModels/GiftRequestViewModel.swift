@@ -9,7 +9,7 @@ class GiftRequestViewModel {
     
     // MARK: - Properties
     private var dataService: GiftDataService?
-    private var giftRequestResponse: GiftRequestResponse? { didSet { self.didFinishFetch?() } }
+    var giftInfo: GiftProveInfo? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -48,7 +48,7 @@ class GiftRequestViewModel {
             self?.error = nil
             self?.failMessage = nil
             self?.isLoading = false
-            self?.giftRequestResponse = response
+            self?.giftInfo = response?.result
         })
     }
 }

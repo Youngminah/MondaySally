@@ -27,15 +27,15 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     
     var index = Int() //트윙클 고유인덱스
-    //var isHearted = String() // 하트 표시 여부
     private var likeCount = Int()
-    
-    
     private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
     private let deleteViewModel = TwinkleDeleteViewModel(dataService: TwinkleDataService())
     private let commentWriteViewModel = TwinkleCommentWriteViewModel(dataService: TwinkleDataService())
     private let commentDeleteViewModel = TwinkleCommentDeleteViewModel(dataService: TwinkleDataService())
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
+    
+    private var twinklePostImageViewController : TwinklePostImageViewController!
+    var delegate: TwinkleImagePreviewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,15 @@ class TwinklePostViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    //MARK: 컨테이너 뷰 연결
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TwinkleImageSegue" {
+            let vc = segue.destination as? TwinklePostImageViewController
+            twinklePostImageViewController = vc
+            self.delegate = vc
+        }
     }
     
     @IBAction func commentWriteButtonTap(_ sender: UIButton) {
@@ -96,34 +105,10 @@ class TwinklePostViewController: UIViewController {
     }
 }
 
-//키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기. && 글자수 제한.
-extension TwinklePostViewController : UITextFieldDelegate {
-    
-    //아무곳이나 클릭하면 키보드 내려가게 하기
-    private func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
 
-    @objc override func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-        // 키보드 높이에 따른 인풋뷰 위치 변경
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            print(commentTextFieldBottom.constant)
-            print(adjustmentHeight)
-            commentTextFieldBottom.constant = adjustmentHeight
-        } else {
-            commentTextFieldBottom.constant = 0
-        }
-    }
+//MARK: 트윙클 이미지와 관련된 프로토콜 정의
+protocol TwinkleImagePreviewDelegate{
+    func showImage(with data: [TwinkleImageInfo])
 }
 
 // MARK: 트윙클 테이블 프로토콜
@@ -185,9 +170,11 @@ extension TwinklePostViewController {
         self.detailViewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                //Code
-                if strongSelf.detailViewModel.failCode == 353 {
-
+                //트윙클 삭제된 경우
+                if strongSelf.detailViewModel.failCode == 367 {
+                    self?.showSallyNotationAlert(with: "해당 트윙클은 삭제되었습니다.") {
+                        self?.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
         }
@@ -196,6 +183,8 @@ extension TwinklePostViewController {
                 guard let strongSelf = self else { return }
                 print("트윙클 디테일 조회에 성공했습니다 !! ")
                 strongSelf.updateNetworkUI()
+                guard let data = strongSelf.detailViewModel.twinkleImageList else { return }
+                strongSelf.delegate?.showImage(with: data)
                 strongSelf.tableView.reloadData()
                 if completion != nil {
                     completion!()
@@ -399,6 +388,37 @@ extension TwinklePostViewController {
             self.likeButton.isSelected = true
         }else {
             self.likeButton.isSelected = false
+        }
+    }
+}
+
+
+//키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기. && 글자수 제한.
+extension TwinklePostViewController : UITextFieldDelegate {
+    
+    //아무곳이나 클릭하면 키보드 내려가게 하기
+    private func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            print(commentTextFieldBottom.constant)
+            print(adjustmentHeight)
+            commentTextFieldBottom.constant = adjustmentHeight
+        } else {
+            commentTextFieldBottom.constant = 0
         }
     }
 }

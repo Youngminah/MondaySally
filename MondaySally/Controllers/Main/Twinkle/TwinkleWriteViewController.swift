@@ -39,11 +39,12 @@ class TwinkleWriteViewController: UIViewController {
     var giftIndex = Int() // 트윙클 작성 서버 요청시 보낼 트윙클 인덱스
     var giftName = String() // 이전화면에서 받아와야하는 기프트 이름
     var clover = Int() // 이전화면에서 받아와야하는 사용클로버 정보
+    var reviewsCount = 0 //텍스트뷰 카운트
     var delegate: TwinkleWriteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(postButtonTap))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "게시", style: .plain, target: self, action: #selector(postButtonTap))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.label
         self.updateUI()
         self.imageButtonList = [self.imageFirstButton, self.imageSecondButton, self.imageThirdButton]
@@ -98,7 +99,7 @@ extension TwinkleWriteViewController{
             self.showSallyNotationAlert(with: "영수증 증명사진을\n올려주세요.")
             return
         }
-        if textView.text.count == 0 || validate(textView: textView) {
+        if self.reviewsCount == 0  {
             self.showSallyNotationAlert(with: "트윙클 내용을\n올려주세요.")
             return
         }
@@ -141,14 +142,6 @@ extension TwinkleWriteViewController{
         }
     }
     
-    func validate(textView textView: UITextView) -> Bool {
-        guard let text = textView.text,
-            !text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty else {
-            return false
-        }
-
-        return true
-    }
     
     //영수증 사진 파이어베이스에 올리기
     private func uploadFirbaseImages(with data:Data){
@@ -363,8 +356,8 @@ extension TwinkleWriteViewController: UITextViewDelegate {
     }
     
     private func updateCharacterCount() {
-        let reviewsCount = self.textView.text.count
-        self.countLabel.text = "(\(reviewsCount)/1000)"
+        self.reviewsCount = self.textView.text.count
+        self.countLabel.text = "(\(self.reviewsCount)/1000)"
     }
     
     private func placeholderSetting() {

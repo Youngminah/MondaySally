@@ -15,10 +15,15 @@ class CurrentCloverViewController: UIViewController {
     
     private let viewModel = CloverCurrentViewModel(dataService: CloverDataService())
     private var nickName = UserDefaults.standard.string(forKey: "nickName")
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.attemptFetchCloverCurrent()
+    }
+    
+    @IBAction func showDetailButtonTap(_ sender: UIButton) {
+        self.tabBarController?.selectedViewController = self.tabBarController?.children[0]
     }
     
     private func updateUI() {
@@ -26,6 +31,38 @@ class CurrentCloverViewController: UIViewController {
         self.dateLabel.text = "\(Date().text) 기준"
         self.cloverLabel.text = "\(self.viewModel.currentClover)".insertComma
     }
+}
+
+extension CurrentCloverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let number = self.viewModel.numOfAvailableGift
+        if number == 0 {
+            self.collectionView.setEmptyView(message: "현재 클로버로 이용 가능한 기프트가 없어요.")
+        } else {
+            self.collectionView.restore()
+        }
+        return number
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AvailableGiftCell", for: indexPath) as? AvailableGiftCell else {
+            return UICollectionViewCell()
+        }
+        guard let data = self.viewModel.availableGiftList(at: indexPath.item) else {
+            return cell
+        }
+        cell.updateUI(with :data)
+        return cell
+    }
+    
+    //UICollectionViewDelegateFlowLayout 프로토콜
+    //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = (collectionView.bounds.width - 18)/2.5
+        let height: CGFloat = collectionView.bounds.height
+        return CGSize(width: width, height: height)
+    }
+    
 }
 
 
@@ -64,6 +101,7 @@ extension CurrentCloverViewController {
                 guard let strongSelf = self else { return }
                 print("현재 클로버 히스토리 조회에 성공했습니다 !! ")
                 strongSelf.updateUI()
+                strongSelf.collectionView.reloadData()
             }
         }
         self.viewModel.fetchCloverCurrent()

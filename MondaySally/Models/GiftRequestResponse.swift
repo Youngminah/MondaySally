@@ -14,4 +14,6 @@ struct GiftRequestResponse: Decodable{
 
 struct GiftProveInfo: Decodable{
     var idx: Int
+    var name: String
+    var clover: Int
 }

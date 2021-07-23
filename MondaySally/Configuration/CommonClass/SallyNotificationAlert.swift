@@ -120,6 +120,7 @@ open class SallyNotificationAlert {
             self.imageView.transform = CGAffineTransform.identity
             self.didDismiss?()
             self.imageView.removeFromSuperview()
+            self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
             for view in self.alertView.subviews{
                 view.removeFromSuperview()
             }
@@ -230,6 +231,8 @@ open class SallyNotificationAlert {
             self.alertView.transform = CGAffineTransform.identity
             self.imageView.transform = CGAffineTransform.identity
             self.selectedYes?()
+            self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
+            self.noButton.removeTarget(nil, action: nil, for: .allEvents)
             self.imageView.removeFromSuperview()
             for view in self.alertView.subviews{
                 view.removeFromSuperview()
@@ -253,6 +256,8 @@ open class SallyNotificationAlert {
             self.alertView.transform = CGAffineTransform.identity
             self.imageView.transform = CGAffineTransform.identity
             self.imageView.removeFromSuperview()
+            self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
+            self.noButton.removeTarget(nil, action: nil, for: .allEvents)
             for view in self.alertView.subviews{
                 view.removeFromSuperview()
             }

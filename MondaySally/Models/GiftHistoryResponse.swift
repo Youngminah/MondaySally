@@ -22,6 +22,7 @@ struct MyGiftLogInfo: Decodable{
     let imgUrl: String
     let isAccepted: String?
     let isProved: String
+    let twinkleIdx: Int?
     let name: String
     let usedClover: Int
     let money: Int

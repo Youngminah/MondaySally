@@ -41,7 +41,6 @@
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
 		BB5FE587269247B600F2A7A6 /* TotalCloverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE586269247B600F2A7A6 /* TotalCloverCell.swift */; };
 		BB5FE589269247D600F2A7A6 /* UsedCloverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */; };
-		BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */; };
 		BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */; };
 		BB5FE58F2692DED600F2A7A6 /* GiftHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE58E2692DED600F2A7A6 /* GiftHistoryViewController.swift */; };
 		BB5FE5912692E00700F2A7A6 /* GiftHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5902692E00700F2A7A6 /* GiftHistoryCell.swift */; };
@@ -180,7 +179,6 @@
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE586269247B600F2A7A6 /* TotalCloverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverCell.swift; sourceTree = "<group>"; };
 		BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverCell.swift; sourceTree = "<group>"; };
-		BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGiftViewController.swift; sourceTree = "<group>"; };
 		BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGiftCell.swift; sourceTree = "<group>"; };
 		BB5FE58E2692DED600F2A7A6 /* GiftHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryViewController.swift; sourceTree = "<group>"; };
 		BB5FE5902692E00700F2A7A6 /* GiftHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryCell.swift; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 				BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */,
 				BB5FE588269247D600F2A7A6 /* UsedCloverCell.swift */,
 				BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */,
-				BB5FE58A26924AFC00F2A7A6 /* AvailableGiftViewController.swift */,
 				BB5FE58C26924B2100F2A7A6 /* AvailableGiftCell.swift */,
 			);
 			path = Home;
@@ -782,7 +779,6 @@
 				BB5FE5AD2696374F00F2A7A6 /* AutoLoginResponse.swift in Sources */,
 				BBA56EFA268F6D26000FDFC0 /* HomeTabViewController.swift in Sources */,
 				BBA56EF1268F6A9D000FDFC0 /* MainTabBarViewController.swift in Sources */,
-				BB5FE58B26924AFC00F2A7A6 /* AvailableGiftViewController.swift in Sources */,
 				BB233C4126A5E60400A443B0 /* HomeViewModel.swift in Sources */,
 				BBEB8325268B05CC00B9CA54 /* UINavigationBar.swift in Sources */,
 				BB5A320826A7680300C814E4 /* TwinkleCommentWriteViewModel.swift in Sources */,

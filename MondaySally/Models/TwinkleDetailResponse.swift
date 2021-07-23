@@ -47,11 +47,11 @@ struct TwinkleDetailInfo: Decodable{
 
 struct TwinkleImageInfo: Decodable{
     let index: Int
-    let image: String
+    let imageUrl: String
 
     enum CodingKeys:  String, CodingKey {
         case index = "idx"
-        case image = "imgUrl"
+        case imageUrl = "imgUrl"
     }
 }
 

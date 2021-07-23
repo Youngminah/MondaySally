@@ -19,7 +19,7 @@ class TwinkleStatusViewController: UIViewController {
 
 extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let number = self.viewModel.numOfTwinkleProveTotal
+        let number = self.viewModel.numOfTwinkleTotal
         if number == 0 {
             self.collectionView.setEmptyView(message: "쓰러갈 내 트윙클 목록이 없어요.")
         } else {
@@ -32,17 +32,10 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwinkleStatusCell", for: indexPath) as? TwinkleStatusCell else {
             return UICollectionViewCell()
         }
-        if indexPath.row < self.viewModel.numOfTwinkleNotProve {
-            guard let notProveData = self.viewModel.twinkleNotProveList(at: indexPath.row) else {
-                return cell
-            }
-            cell.updateUI(with :notProveData)
-        }else {
-            guard let proveData = self.viewModel.twinkleProveList(at: indexPath.row - self.viewModel.numOfTwinkleNotProve) else {
-                return cell
-            }
-            cell.updateUI(with :proveData)
+        guard let data = self.viewModel.twinkleProveList(at: indexPath.row) else {
+            return cell
         }
+        cell.updateUI(with :data)
         return cell
     }
     
@@ -51,19 +44,10 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
             return
         }
-        if indexPath.row < self.viewModel.numOfTwinkleNotProve {
-            let index = indexPath.row
-            guard let data = self.viewModel.twinkleNotProveList(at: index) else { return }
-            vc.giftIndex = data.idx
-            vc.giftName = data.name
-            vc.clover = data.usedClover
-        }else {
-            let index = indexPath.row - self.viewModel.numOfTwinkleNotProve
-            guard let data = self.viewModel.twinkleNotProveList(at: index) else { return }
-            vc.giftIndex = data.idx
-            vc.giftName = data.name 
-            vc.clover = data.usedClover
-        }
+        guard let data = self.viewModel.twinkleProveList(at: indexPath.row) else { return }
+        vc.giftIndex = data.idx
+        vc.giftName = data.name
+        vc.clover = data.usedClover
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }

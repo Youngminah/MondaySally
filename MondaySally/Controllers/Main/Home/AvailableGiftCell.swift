@@ -8,5 +8,16 @@
 import UIKit
 
 class AvailableGiftCell: UICollectionViewCell {
+    @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var giftNameLabel: UILabel!
     
+    func updateUI(with data: AvailableGiftInfo){
+        self.setThumbnailImage(with: data.imageUrl)
+        self.giftNameLabel.text = data.giftName
+    }
+    
+    private func setThumbnailImage(with url: String){
+        let urlString = URL(string: url)
+        self.thumbnailImage.kf.setImage(with: urlString)
+    }
 }

@@ -10,24 +10,40 @@ import UIKit
 class TwinklePostImageViewController: UIViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    private var imageList =  [TwinkleImageInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
     }
 }
 
+extension TwinklePostImageViewController: TwinkleImagePreviewDelegate{
+    func showImage(with data: [TwinkleImageInfo]) {
+        self.imageList = data
+        self.collectionView.reloadData()
+    }
+
+}
+
 
 extension TwinklePostImageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        let number = self.imageList.count
+        if number == 0 {
+            self.collectionView.setEmptyView(message: "등록한 트윙클이 없어요.")
+        } else {
+            self.collectionView.restore()
+        }
+        return number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwinklePostImageCell", for: indexPath) as? TwinklePostImageCell else {
             return UICollectionViewCell()
         }
-        //self.setPageControlSelectedPage(currentPage: indexPath.item)
+        cell.updateUI(with: imageList[indexPath.item].imageUrl)
         return cell
     }
     

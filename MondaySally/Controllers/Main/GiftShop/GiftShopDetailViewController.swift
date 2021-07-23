@@ -212,10 +212,14 @@ extension GiftShopDetailViewController {
     }
     
     private func moveToCompletedView(){
+        guard let data = self.giftRequestViewModel.giftInfo else { return }
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftCompletedView") as? GiftCompletedViewController else{
             return
         }
+        vc.giftInfo = GiftWriteInfo(idx: data.idx , name: data.name, clover: data.clover)
         self.navigationItem.backButtonTitle = " "
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+

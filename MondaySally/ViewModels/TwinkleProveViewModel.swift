@@ -9,7 +9,7 @@ class TwinkleProveViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: TwinkleDataService?
-    private var twinkleIsProveInfo: TwinkleIsProveInfo? { didSet { self.didFinishFetch?() } }
+    private var twinkleProveInfo: [TwinkleProveInfo]? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -29,32 +29,17 @@ class TwinkleProveViewModel {
     }
     
     //MARK: 전체 트윙클 총 갯수
-    var numOfTwinkleProveTotal: Int {
-        guard let data = twinkleIsProveInfo else { return 0 }
-        return (data.notProvedList?.count ?? 0) + (data.provedList?.count ?? 0)
+    var numOfTwinkleTotal: Int {
+        guard let data = twinkleProveInfo else { return 0 }
+        return data.count
     }
     
-    //MARK: 미증빙 트윙클 총 갯수
-    var numOfTwinkleNotProve: Int {
-        guard let data = twinkleIsProveInfo else { return 0 }
-        return data.notProvedList?.count ?? 0
-    }
-    
-    //MARK: 증빙 트윙클 총 갯수
-    var numOfTwinkleProve: Int {
-        guard let data = twinkleIsProveInfo else { return 0 }
-        return data.provedList?.count ?? 0
-    }
-    
-    //MARK: 트윙클 인덱스 조회
-    func twinkleNotProveList(at index: Int) -> TwinkleProveInfo? {
-        return twinkleIsProveInfo?.notProvedList?[index]
-    }
     
     //MARK: 트윙클 인덱스 조회
     func twinkleProveList(at index: Int) -> TwinkleProveInfo? {
-        return twinkleIsProveInfo?.provedList?[index]
+        return twinkleProveInfo?[index]
     }
+    
     
     // MARK: 전체 트윙클 API 호출 함수
     func fetchTwinkleProve(){
@@ -75,7 +60,7 @@ class TwinkleProveViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.twinkleIsProveInfo = response?.result
+            self?.twinkleProveInfo = response?.result?.giftLogs
             self?.isLoading = false
             
         })

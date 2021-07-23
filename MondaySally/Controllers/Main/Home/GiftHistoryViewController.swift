@@ -16,6 +16,10 @@ class GiftHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.attemptFetchGiftHistory()
     }
 }
@@ -70,7 +74,8 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
                 return
             }
-            vc.index = data.giftLogIdx
+            guard let twinkleIndex = data.twinkleIdx else { return }
+            vc.index = twinkleIndex
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{

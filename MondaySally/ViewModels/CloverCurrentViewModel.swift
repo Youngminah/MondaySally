@@ -29,7 +29,7 @@ class CloverCurrentViewModel {
     }
     
     //MARK: 현재 클로버로 신청가능한 기프트 갯수
-    var numOfTotalCloverList: Int {
+    var numOfAvailableGift: Int {
         return currentCloverInfo?.availableGiftList?.count ?? 0
     }
     

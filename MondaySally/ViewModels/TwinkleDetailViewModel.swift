@@ -39,8 +39,8 @@ class TwinkleDetailViewModel {
     }
     
     //MARK: 트윙클 인덱스 조회
-    func twinkleImageList(at index: Int) -> TwinkleImageInfo? {
-        return twinkleDetailInfo?.twinkleImageList[index]
+    var twinkleImageList: [TwinkleImageInfo]? {
+        return twinkleDetailInfo?.twinkleImageList
     }
     
     // MARK: 트윙클 상세 API 호출 함수

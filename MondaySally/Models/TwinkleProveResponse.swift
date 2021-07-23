@@ -10,14 +10,13 @@ struct TwinkleProveResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: TwinkleIsProveInfo?
+    var result: TwinkleTotalProveInfo?
 }
 
 
 
-struct TwinkleIsProveInfo: Decodable {
-    var notProvedList: [TwinkleProveInfo]?
-    var provedList: [TwinkleProveInfo]?
+struct TwinkleTotalProveInfo: Decodable {
+    var giftLogs: [TwinkleProveInfo]?
 }
 
 struct TwinkleProveInfo: Decodable {
