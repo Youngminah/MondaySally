@@ -23,7 +23,7 @@ class CurrentCloverViewController: UIViewController {
     }
     
     @IBAction func showDetailButtonTap(_ sender: UIButton) {
-        self.tabBarController?.selectedViewController = self.tabBarController?.children[0]
+        
     }
     
     private func updateUI() {

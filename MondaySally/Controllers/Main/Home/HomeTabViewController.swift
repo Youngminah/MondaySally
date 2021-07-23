@@ -54,6 +54,7 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchHome()
+        
     }
     
     //MARK: 컨테이너 뷰 연결

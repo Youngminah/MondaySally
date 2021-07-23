@@ -22,6 +22,11 @@ class TwinklePostImageViewController: UIViewController {
 extension TwinklePostImageViewController: TwinkleImagePreviewDelegate{
     func showImage(with data: [TwinkleImageInfo]) {
         self.imageList = data
+        if imageList.count == 1{
+            self.pageControl.isHidden = true
+        }else {
+            self.pageControl.numberOfPages = imageList.count
+        }
         self.collectionView.reloadData()
     }
 

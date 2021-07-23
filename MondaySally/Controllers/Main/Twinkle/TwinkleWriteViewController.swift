@@ -113,46 +113,49 @@ extension TwinkleWriteViewController{
         }
         self.showTransparentIndicator()
         //let index = 0
-        //트윙클 사진들 파이어베이스에 올리기
-        for index in 0..<imageList.count{
-            let uuid = UUID.init()
-            self.storage.child("test/twinkle/\(uuid).png").putData(imageList[index], metadata: nil, completion: { [weak self] _ , error in
-                guard let strongSelf = self else { return }
-                guard error == nil else {
-                    print("파이어베이스에 업로드하는데 실패하였습니다.")
-                    return
-                }
-                strongSelf.storage.child("test/twinkle/\(uuid).png").downloadURL { url, error in
-                    guard let url = url , error == nil else {
-                        print(error?.localizedDescription ?? "")
-                        return
-                    }
-                    DispatchQueue.global().sync {
-                        let urlString = url.absoluteString
-                        print("파이어베이스에 등록된 트윙클 이미지 URL주소 : \(urlString)")
-                        strongSelf.imageUrl.append(urlString)
-                        if index + 1 == imageList.count {
-                            print(strongSelf.imageUrl)
-                            strongSelf.uploadFirbaseImages(with: receiptImagePng)
-                        }
-                    }
-                }
-            })
-        
-        }
+        //트윙클 사진들 파이어베이스에 올리기 재귀함수로 연결 -> 영수증 올리기 까지
+        self.uploadTwinkleImages(with :imageList , index: 0, receipt: receiptImagePng)
     }
     
-    
-    //영수증 사진 파이어베이스에 올리기
-    private func uploadFirbaseImages(with data:Data){
+    //MARK: 트윙클 사진 파이어베이스에 올리기
+    private func uploadTwinkleImages(with data: [Data] ,index count: Int, receipt receiptDate: Data){
+        //마지막에 영수증 올리기
+        if count == data.count {
+            self.uploadReciptImage(with: receiptDate)
+            return
+        }
         let uuid = UUID.init()
-        self.storage.child("test/receipt/\(uuid).png").putData(data, metadata: nil, completion: { [weak self] _ , error in
+        self.storage.child("test/twinkle/\(uuid)").putData(data[count], metadata: nil, completion: { [weak self] _ , error in
             guard let strongSelf = self else { return }
             guard error == nil else {
                 print("파이어베이스에 업로드하는데 실패하였습니다.")
                 return
             }
-            strongSelf.storage.child("test/receipt/\(uuid).png").downloadURL { url, error in
+            strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+                guard let url = url , error == nil else {
+                    print(error?.localizedDescription ?? "")
+                    return
+                }
+                DispatchQueue.global().sync {
+                    let urlString = url.absoluteString
+                    print("파이어베이스에 등록된 트윙클 이미지 URL주소 : \(urlString) 인덱스 : \(count)")
+                    strongSelf.imageUrl.append(urlString)
+                    strongSelf.uploadTwinkleImages(with: data, index: count + 1, receipt: receiptDate)
+                }
+            }
+        })
+    }
+    
+    //MARK: 영수증 사진 파이어베이스에 올리기
+    private func uploadReciptImage(with data:Data){
+        let uuid = UUID.init()
+        self.storage.child("test/receipt/\(uuid)").putData(data, metadata: nil, completion: { [weak self] _ , error in
+            guard let strongSelf = self else { return }
+            guard error == nil else {
+                print("파이어베이스에 업로드하는데 실패하였습니다.")
+                return
+            }
+            strongSelf.storage.child("test/receipt/\(uuid)").downloadURL { url, error in
                 guard let url = url , error == nil else {
                     print(error?.localizedDescription ?? "")
                     return
@@ -251,7 +254,7 @@ extension TwinkleWriteViewController {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
             }
         }
         

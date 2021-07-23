@@ -2939,24 +2939,24 @@
                                                 <constraint firstItem="36Z-HI-3gD" firstAttribute="leading" secondItem="cYq-hs-CuN" secondAttribute="leading" constant="16" id="ukO-Wt-vYK"/>
                                             </constraints>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Xm2-ns-71Y">
-                                            <rect key="frame" x="313" y="493.66666666666669" width="85" height="30.000000000000057"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xm2-ns-71Y">
+                                            <rect key="frame" x="318" y="494.66666666666669" width="80" height="28.000000000000057"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNd-q3-puJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="15"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                                     <state key="normal" title="수정">
-                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                        <color key="titleColor" red="0.61176470588235299" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="editButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="9hu-OV-J8u"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aak-3q-EZt">
-                                                    <rect key="frame" x="55" y="0.0" width="30" height="30"/>
-                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="15"/>
+                                                    <rect key="frame" x="50" y="0.0" width="30" height="28"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                                     <state key="normal" title="삭제">
-                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                        <color key="titleColor" red="0.61176470588235299" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="deleteButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="fI2-Tp-3TX"/>
