@@ -62,7 +62,7 @@ class TwinkleViewModel {
         return twinkleInfo[index]
     }
     
-    // MARK: 전체 트윙클 페이징 적용 API 호출 함수
+    // MARK: 전체 트윙클 페이징 적용API 호출 함수
     func fetchTwinkleTotal(with pagination : Bool = false){
         if endOfPage{ return }
         if pagination {

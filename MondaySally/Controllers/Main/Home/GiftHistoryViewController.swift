@@ -20,7 +20,8 @@ class GiftHistoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.attemptFetchGiftHistory()
+        self.viewModel.pageIndex = 1
+        self.attemptFetchGiftHistory(with: false)
     }
 }
 
@@ -39,6 +40,9 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftHistoryCell", for: indexPath) as? GiftHistoryCell else {
             return UICollectionViewCell()
+        }
+        if indexPath.item == self.viewModel.numOfGiftLogInfo {
+            self.viewModel.isPagination ? cell.contentView.showViewIndicator() : cell.contentView.dismissViewndicator()
         }
         guard let data = viewModel.myGiftLogInfo(at: indexPath.item) else { return cell }
         cell.updateUI(with : data)
@@ -89,10 +93,23 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
+//MARK: 기프트 히스토리 조회 페이징 적용
+extension GiftHistoryViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfGiftLogInfo == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfGiftPagination != 0 { return }
+        let position = scrollView.contentOffset.y
+        if position >= (collectionView.contentSize.height - 10 - scrollView.frame.size.height) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.attemptFetchGiftHistory(with: true)
+        }
+    }
+}
+
 // MARK: 기프트 히스토리 조회 API
 extension GiftHistoryViewController {
     
-    private func attemptFetchGiftHistory() {
+    private func attemptFetchGiftHistory(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -124,12 +141,14 @@ extension GiftHistoryViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("기프트 히스토리 조회에 성공했습니다 !! ")
-                strongSelf.updateAPIUI()
+                if !pagination {
+                    strongSelf.updateAPIUI()
+                }
+                print("총 기프트 히스토리 갯수 -> \(strongSelf.viewModel.numOfGiftLogInfo) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.collectionView.reloadData()
             }
         }
-
-        self.viewModel.fetchMyGiftLog()
+        self.viewModel.fetchMyGiftLog(with: pagination)
     }
     
     private func updateAPIUI(){

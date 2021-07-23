@@ -10,6 +10,7 @@ class GiftHistoryViewModel {
     //MARK: - Properties
     private var dataService: GiftDataService?
     private var myGiftLogInfo: GiftHistoryPagination? { didSet { self.didFinishFetch?() } }
+    private var giftHistoryList = [MyGiftLogInfo]()
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -23,6 +24,11 @@ class GiftHistoryViewModel {
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
 
+    //MARK: 페이징을 위한 변수
+    var pageIndex = 1
+    var isPagination = false
+    
+    
     //MARK: 생성자
     init(dataService: GiftDataService) {
         self.dataService = dataService
@@ -30,39 +36,63 @@ class GiftHistoryViewModel {
     
     //MARK: 기프트 히스토리 전체 갯수
     var numOfGiftLogInfo: Int {
-        return myGiftLogInfo?.giftLogs?.count ?? 0
+        return giftHistoryList.count
     }
     
     var numOfTotalGiftLogInfo: Int {
         return myGiftLogInfo?.totalCount ?? 0
     }
     
+    var remainderOfGiftPagination: Int {
+        if giftHistoryList.count == 0{
+            return 0
+        }
+        return giftHistoryList.count % 20
+    }
+    
     //MARK: 특정 기프트 히스토리
     func myGiftLogInfo(at index: Int) -> MyGiftLogInfo? {
-        return myGiftLogInfo?.giftLogs?[index]
+        return giftHistoryList[index]
     }
     
     //MARK: 기프트 히스토리 API 호출 함수
-    func fetchMyGiftLog(){
-        self.isLoading = true
-        self.dataService?.requestFetchMyGiftLog(completion: { [weak self] response, error in
+    func fetchMyGiftLog(with pagination : Bool = false){
+        if pagination && self.giftHistoryList.count == self.numOfTotalGiftLogInfo { return } // 마지막 페이지임.
+        if pagination {
+            self.isPagination = true
+            self.pageIndex = self.pageIndex + 1
+        } else {
+            self.isLoading = true
+        }
+        self.dataService?.requestFetchMyGiftLog(page: self.pageIndex, completion: { [weak self] response, error in
+            guard let strongself = self else { return }
             if let error = error {
-                self?.error = error
-                self?.isLoading = false
+                strongself.error = error
+                strongself.isLoading = false
                 return
             }
             if let isSuccess = response?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = response?.message
-                    self?.failCode = response?.code
-                    self?.isLoading = false
+                    strongself.failMessage = response?.message
+                    strongself.failCode = response?.code
+                    strongself.didEndPagination(with: pagination)
                     return
                 }
             }
-            self?.error = nil
-            self?.failMessage = nil
-            self?.isLoading = false
-            self?.myGiftLogInfo = response?.result
+            strongself.error = nil
+            strongself.failMessage = nil
+            if strongself.isPagination{
+                strongself.giftHistoryList.append(contentsOf: response?.result?.giftLogs ?? [])
+            }else {
+                strongself.myGiftLogInfo = response?.result
+                strongself.giftHistoryList = strongself.myGiftLogInfo?.giftLogs ?? []
+            }
+            strongself.myGiftLogInfo = response?.result
+            strongself.didEndPagination(with: pagination)
         })
+    }
+    
+    private func didEndPagination(with pagination: Bool){
+        pagination ? (self.isPagination = false) : (self.isLoading = false)
     }
 }
