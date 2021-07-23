@@ -36,6 +36,7 @@
 		BB5A321226A86CE500C814E4 /* CloverCurrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A321126A86CE500C814E4 /* CloverCurrentViewModel.swift */; };
 		BB5A321426A86CF400C814E4 /* CloverUsedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A321326A86CF400C814E4 /* CloverUsedViewModel.swift */; };
 		BB5D340926A96A170069BAD9 /* MyPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D340826A96A170069BAD9 /* MyPageTableViewController.swift */; };
+		BB5D340B26AB87D30069BAD9 /* VersionCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D340A26AB87D30069BAD9 /* VersionCheckViewController.swift */; };
 		BB5FE581269243A100F2A7A6 /* TotalCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */; };
 		BB5FE583269243E200F2A7A6 /* UsedCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */; };
 		BB5FE5852692440400F2A7A6 /* CurrentCloverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */; };
@@ -64,7 +65,6 @@
 		BB5FE5B526963D0600F2A7A6 /* ResignationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */; };
 		BB5FE5B82696417F00F2A7A6 /* AuthDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */; };
 		BB5FE5BA269705C300F2A7A6 /* AppVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5B9269705C300F2A7A6 /* AppVersionResponse.swift */; };
-		BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */; };
 		BB5FE5BE269709D100F2A7A6 /* MyProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BD269709D100F2A7A6 /* MyProfileResponse.swift */; };
 		BB5FE5C026970F9200F2A7A6 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */; };
 		BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */; };
@@ -174,6 +174,7 @@
 		BB5A321126A86CE500C814E4 /* CloverCurrentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverCurrentViewModel.swift; sourceTree = "<group>"; };
 		BB5A321326A86CF400C814E4 /* CloverUsedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloverUsedViewModel.swift; sourceTree = "<group>"; };
 		BB5D340826A96A170069BAD9 /* MyPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewController.swift; sourceTree = "<group>"; };
+		BB5D340A26AB87D30069BAD9 /* VersionCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckViewController.swift; sourceTree = "<group>"; };
 		BB5FE580269243A100F2A7A6 /* TotalCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE582269243E200F2A7A6 /* UsedCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedCloverViewController.swift; sourceTree = "<group>"; };
 		BB5FE5842692440400F2A7A6 /* CurrentCloverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCloverViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		BB5FE5B426963D0600F2A7A6 /* ResignationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignationViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5B72696417F00F2A7A6 /* AuthDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataService.swift; sourceTree = "<group>"; };
 		BB5FE5B9269705C300F2A7A6 /* AppVersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionResponse.swift; sourceTree = "<group>"; };
-		BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		BB5FE5BD269709D100F2A7A6 /* MyProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResponse.swift; sourceTree = "<group>"; };
 		BB5FE5BF26970F9200F2A7A6 /* EditProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		BB5FE5C126972B5400F2A7A6 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
@@ -326,6 +326,7 @@
 				BBA56EF5268F6CAA000FDFC0 /* ProfileEditViewController.swift */,
 				BBA56EF7268F6CEB000FDFC0 /* ResignationViewController.swift */,
 				BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */,
+				BB5D340A26AB87D30069BAD9 /* VersionCheckViewController.swift */,
 				BBA56F042691C7EA000FDFC0 /* Home */,
 				BBA56F052691C7F0000FDFC0 /* GiftShop */,
 				BBA56F062691C7F6000FDFC0 /* Twinkle */,
@@ -579,7 +580,6 @@
 			isa = PBXGroup;
 			children = (
 				BBEB8328268B0D6100B9CA54 /* JwtToken.swift */,
-				BB5FE5BB269705F900F2A7A6 /* AppVersion.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -863,7 +863,6 @@
 				BBEB831F268B053900B9CA54 /* Color.swift in Sources */,
 				BB4CD4B526A087BF00BD1E91 /* GiftRequestViewModel.swift in Sources */,
 				BB4CD4AD26A081E800BD1E91 /* GiftDetailViewModel.swift in Sources */,
-				BB5FE5BC269705F900F2A7A6 /* AppVersion.swift in Sources */,
 				BB233C4326A5E67D00A443B0 /* HomeDataService.swift in Sources */,
 				BBD09ECE268E079600AF4A56 /* JoinViewController.swift in Sources */,
 				BB5FE5D9269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift in Sources */,
@@ -871,6 +870,7 @@
 				BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */,
 				BB73507326A3568D004C955F /* CloverRankingResponse.swift in Sources */,
 				BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */,
+				BB5D340B26AB87D30069BAD9 /* VersionCheckViewController.swift in Sources */,
 				BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */,
 				BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */,
 				BB73507B26A4AA7D004C955F /* TwinkleViewModel.swift in Sources */,
@@ -1034,6 +1034,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.by.sallyoflaw.mondaysally;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1056,6 +1057,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.by.sallyoflaw.mondaysally;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

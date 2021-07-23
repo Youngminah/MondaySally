@@ -12,3 +12,10 @@ struct AppVersionResponse: Decodable{
     var result: AppVersion
 }
 
+struct AppVersion: Decodable {
+    let version: String
+    
+    enum CodingKeys:  String, CodingKey {
+        case version = "version"
+    }
+}

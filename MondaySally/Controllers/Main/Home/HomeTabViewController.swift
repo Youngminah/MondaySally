@@ -54,6 +54,10 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchHome()
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        if let version = version{
+                print("version: \(version)")
+        }
         
     }
     

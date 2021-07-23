@@ -13,7 +13,6 @@ struct AuthDataService {
     
     
     // MARK: - URL
-    private var appVersionUrl = "\(Constant.BASE_URL)/app"
     private var deviceTokenSaveUrl = "\(Constant.BASE_URL)/firebase"
     private var teamCodeUrl = "\(Constant.BASE_URL)/code"
     private var autoLoginUrl = "\(Constant.BASE_URL)/auto-login"
@@ -24,26 +23,6 @@ struct AuthDataService {
     
     
     // MARK: - 프로필이나 로그인 관련 API
-    //앱 버전확인
-    func requestFetchAppVersion(with teamCode: String, completion: @escaping (AppVersion?, Error?) -> ()) {
-        let url = "\(appVersionUrl)/ios"
-
-        AF.request(url, method: .get, parameters: nil,encoding: URLEncoding.default, headers: nil)
-            .validate()
-            .responseDecodable(of: AppVersionResponse.self) { (response) in
-                switch response.result {
-                case .success(let response):
-                    if response.isSuccess{
-                        completion(response.result, nil)
-                    }else{
-                        completion(response.result, nil)
-                    }
-                case .failure(let error):
-                    completion(nil, error)
-                }
-            }
-    }
-    
     //팀코드로 jwt발급
     func requestFetchTeamCode(with teamCode: String, completion: @escaping (TeamCodeResponse?, Error?) -> ()) {
         let url = "\(teamCodeUrl)"

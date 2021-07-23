@@ -85,7 +85,7 @@ extension MyPageTableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2{ //로그아웃 버튼
+        if indexPath.row == 4{ //로그아웃 버튼
             self.showSallyQuestionAlert(with: "로그아웃 하시겠습니까?") {[weak self] () in
                 guard let strongSelf = self else { return }
                 strongSelf.removeAllUserInfos()
