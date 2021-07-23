@@ -21,17 +21,18 @@ class TwinkleTabViewController: UIViewController {
         self.tableView.refreshControl?.addTarget(self,
                                                       action: #selector(didPullToRefresh),
                                                       for: .valueChanged)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.attemptFetchTwinkleTotal()
+        self.refreshOfTwinkleTotal()
     }
     
     @objc private func didPullToRefresh() {
         print("기프트샵 컬렉션뷰 리프레시 시작!!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.attemptFetchTwinkleTotal()
+            self.refreshOfTwinkleTotal()
         }
     }
     
@@ -43,9 +44,15 @@ class TwinkleTabViewController: UIViewController {
             twinkleStatusViewController.attemptFetchProve()
         }
     }
+    
+    private func refreshOfTwinkleTotal(){
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.attemptFetchTwinkleTotal(with: false)
+    }
 }
 
-extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
+extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let number = self.viewModel.numOfTwinkle
@@ -85,6 +92,18 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
         vc.index = data.index
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfTwinkle == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfTwinklePagination != 0 { return }
+        if self.viewModel.endOfPage { return }
+        let position = scrollView.contentOffset.y
+        if position >= (tableView.contentSize.height - scrollView.frame.size.height) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.tableView.tableFooterView = createSpinnerFooter()
+            self.attemptFetchTwinkleTotal(with: true)
+        }
+    }
 }
 
 
@@ -92,7 +111,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: 트윙클 리스트 조회 API
 extension TwinkleTabViewController {
     
-    private func attemptFetchTwinkleTotal() {
+    private func attemptFetchTwinkleTotal(with pagination: Bool) {
         
         if tableView.refreshControl?.isRefreshing == false {
             self.viewModel.updateLoadingStatus = {
@@ -112,6 +131,7 @@ extension TwinkleTabViewController {
                 }
                 if let message = strongSelf.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
+                    strongSelf.tableView.tableFooterView = nil
                 }
             }
         }
@@ -128,11 +148,13 @@ extension TwinkleTabViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 전체 조회에 성공했습니다 !! ")
+                print("가져온 전체 트윙클 갯수 -> \(strongSelf.viewModel.numOfTwinkle)")
                 strongSelf.tableView.reloadData()
+                strongSelf.tableView.tableFooterView = nil
                 strongSelf.tableView.refreshControl?.endRefreshing()
             }
         }
-        self.viewModel.fetchTwinkleTotal()
+        self.viewModel.fetchTwinkleTotal(with: pagination)
     }
 }
 
@@ -162,5 +184,16 @@ extension TwinkleTabViewController: LikeDelegate {
 
 // MARK: 트윙클 리스트 네크워크로부터 UI 업데이트
 extension TwinkleTabViewController {
+    
+    private func createSpinnerFooter() -> UIView {
+        
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
+    }
     
 }

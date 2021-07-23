@@ -15,11 +15,10 @@ struct TwinkleDataService {
     private var likeUrl = "\(Constant.BASE_URL)/like"
     private var commentUrl = "\(Constant.BASE_URL)/comment"
     
-    
     //MARK: 트윙클 관련 API
     //트윙클 히스토리 API
-    func requestFetchTwinkleTotal(completion: @escaping (TwinkleResponse?, Error?) -> ()) {
-        let url = "\(twinkleUrl)?page=1"
+    func requestFetchTwinkleTotal(page index: Int,completion: @escaping (TwinkleResponse?, Error?) -> ()) {
+        let url = "\(twinkleUrl)?page=\(index)"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: Constant.HEADERS)
             .validate()
             .responseDecodable(of: TwinkleResponse.self) { (response) in
