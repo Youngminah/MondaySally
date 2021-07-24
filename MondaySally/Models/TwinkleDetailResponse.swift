@@ -18,11 +18,12 @@ struct TwinkleDetailInfo: Decodable{
     let isWriter: String
     let writerName: String
     let date: String
-    let twinkleImageList: [TwinkleImageInfo]
+    let twinkleImageList: [String]
     let content: String
     let giftName: String
     let clover: Int
     let isAccepted: String?
+    let receiptImageUrl: String
     let likeCount: Int
     let isHearted: String
     let commentCount: Int
@@ -37,21 +38,11 @@ struct TwinkleDetailInfo: Decodable{
         case giftName = "giftName"
         case clover = "option"
         case isAccepted = "isAccepted"
+        case receiptImageUrl = "receiptImgUrl"
         case likeCount = "likeNum"
         case isHearted = "isHearted"
         case commentCount = "commentNum"
         case commentList = "commentLists"
-    }
-}
-
-
-struct TwinkleImageInfo: Decodable{
-    let index: Int
-    let imageUrl: String
-
-    enum CodingKeys:  String, CodingKey {
-        case index = "idx"
-        case imageUrl = "imgUrl"
     }
 }
 

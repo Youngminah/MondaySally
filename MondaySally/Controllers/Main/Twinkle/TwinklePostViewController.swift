@@ -34,7 +34,7 @@ class TwinklePostViewController: UIViewController {
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinklePostImageViewController : TwinklePostImageViewController!
-    var delegate: TwinkleImagePreviewDelegate?
+    var imageDelegate: TwinkleImagePreviewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class TwinklePostViewController: UIViewController {
         if segue.identifier == "TwinkleImageSegue" {
             let vc = segue.destination as? TwinklePostImageViewController
             twinklePostImageViewController = vc
-            self.delegate = vc
+            self.imageDelegate = vc
         }
     }
     
@@ -105,27 +105,59 @@ class TwinklePostViewController: UIViewController {
         //MARK: 트윙클 삭제 버튼 눌렀을 때
         let album = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
             guard let strongself = self else { return }
-            strongself.showSallyQuestionAlert(with: "삭제하시겠습니까?", message: "삭제된 트윙클은 복구가 불가능합니다.") { [weak self] () in
-                guard let strongSelf = self else { return }
-                strongSelf.attemptFetchDelete(with: strongSelf.index)
-            }
+            strongself.deleteTwinkleButtonTap()
         })
         actionsheet.addAction(album)
         
         //MARK: 트윙클 수정 버튼 눌렀을 때
-        let basic = UIAlertAction(title: "수정", style: .default, handler: {_ in
+        let basic = UIAlertAction(title: "수정", style: .default, handler: { [weak self] _ in
+            guard let strongself = self else { return }
+            strongself.editTwinkleButtonTap()
         })
         actionsheet.addAction(basic)
         
         present(actionsheet,animated: true)
     }
+    
+    private func deleteTwinkleButtonTap(){
+        self.showSallyQuestionAlert(with: "삭제하시겠습니까?", message: "삭제된 트윙클은 복구가 불가능합니다.") { [weak self] () in
+            guard let strongSelf = self else { return }
+            strongSelf.attemptFetchDelete(with: strongSelf.index)
+        }
+    }
+    
+    private func editTwinkleButtonTap(){
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
+            return
+        }
+        guard let imageList = self.detailViewModel.twinkleImageList else { return }
+        guard let data = self.detailViewModel.twinkleDetailInfo else { return }
+        vc.editFlag = true
+        vc.editImageList = imageList
+        vc.editContent = data.content
+        vc.editReceipt = data.receiptImageUrl
+        vc.editTwinkleIndex = index
+        vc.giftName = data.giftName
+        vc.clover = data.clover
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 
-//MARK: 트윙클 이미지와 관련된 프로토콜 정의
+//MARK: 트윙클 이미지 뷰컨트롤러와 연결된 프로토콜 정의
 protocol TwinkleImagePreviewDelegate{
-    func showImage(with data: [TwinkleImageInfo])
+    func showImage(with data: [String])
 }
+
+//// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+//extension TwinkleStatusViewController: TwinkleWriteDelegate{
+//    func didTwinkleWrite() {
+//        self.viewModel.pageIndex = 1
+//        self.viewModel.endOfPage = false
+//        self.viewModel.fetchTwinkleProve(with: false)
+//    }
+//}
+
 
 // MARK: 트윙클 테이블 프로토콜
 extension TwinklePostViewController: UITableViewDelegate, UITableViewDataSource {
@@ -200,7 +232,7 @@ extension TwinklePostViewController {
                 print("트윙클 디테일 조회에 성공했습니다 !! ")
                 strongSelf.updateNetworkUI()
                 guard let data = strongSelf.detailViewModel.twinkleImageList else { return }
-                strongSelf.delegate?.showImage(with: data)
+                strongSelf.imageDelegate?.showImage(with: data)
                 strongSelf.tableView.reloadData()
                 if completion != nil {
                     completion!()

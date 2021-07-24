@@ -12,7 +12,7 @@ class TwinklePostImageViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var imageList =  [TwinkleImageInfo]()
+    private var imageList =  [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pageControl.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -20,7 +20,7 @@ class TwinklePostImageViewController: UIViewController {
 }
 
 extension TwinklePostImageViewController: TwinkleImagePreviewDelegate{
-    func showImage(with data: [TwinkleImageInfo]) {
+    func showImage(with data: [String]) {
         self.imageList = data
         if imageList.count == 1{
             self.pageControl.isHidden = true
@@ -48,7 +48,7 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwinklePostImageCell", for: indexPath) as? TwinklePostImageCell else {
             return UICollectionViewCell()
         }
-        cell.updateUI(with: imageList[indexPath.item].imageUrl)
+        cell.updateUI(with: imageList[indexPath.item])
         return cell
     }
     

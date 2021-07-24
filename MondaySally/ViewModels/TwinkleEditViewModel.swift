@@ -1,15 +1,16 @@
 //
-//  TwinkleDetailViewModel.swift
+//  TwinkleEditViewModel.swift
 //  MondaySally
 //
-//  Created by meng on 2021/07/21.
+//  Created by meng on 2021/07/24.
 //
 
-class TwinkleDetailViewModel {
+
+class TwinkleEditViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: TwinkleDataService?
-    var twinkleDetailInfo: TwinkleDetailInfo? { didSet { self.didFinishFetch?() } }
+    private var response: NoDataResponse? { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -28,25 +29,10 @@ class TwinkleDetailViewModel {
         self.dataService = dataService
     }
     
-    //MARK: 전체 트윙클 총 갯수
-    var numOfTwinkleImage: Int {
-        return twinkleDetailInfo?.twinkleImageList.count ?? 0
-    }
-    
-    //MARK: 전체 트윙클 총 갯수
-    var numOfComment: Int {
-        return twinkleDetailInfo?.commentCount ?? 0
-    }
-    
-    //MARK: 트윙클 인덱스 조회
-    var twinkleImageList: [String]? {
-        return twinkleDetailInfo?.twinkleImageList
-    }
-    
-    // MARK: 트윙클 상세 API 호출 함수
-    func fetchTwinkleDetail(with index: Int){
+    // MARK: 전체 트윙클 API 호출 함수
+    func fetchTwinkleEdit(twinkleIndex index: Int, with input: TwinkleEditInput){
         self.isLoading = true
-        self.dataService?.requestFetchTwinkleDetail(with: index, completion: { [weak self] response, error in
+        self.dataService?.requestFetchTwinkleEdit(at: index, with: input, completion: { [weak self] response, error in
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
@@ -62,7 +48,7 @@ class TwinkleDetailViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.twinkleDetailInfo = response?.result
+            self?.response = response
             self?.isLoading = false
             
         })

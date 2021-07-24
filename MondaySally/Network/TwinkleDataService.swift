@@ -98,6 +98,26 @@ struct TwinkleDataService {
             }
     }
     
+    //트윙클 수정 API
+    func requestFetchTwinkleEdit(at index: Int, with input: TwinkleEditInput, completion: @escaping (NoDataResponse?, Error?) -> ()) {
+        let url = "\(twinkleUrl)/\(index)"
+        AF.request(url, method: .patch, parameters: input.toDictionary, encoding: JSONEncoding.default, headers: Constant.HEADERS)
+            .validate()
+            .responseDecodable(of: NoDataResponse.self) { (response) in
+                switch response.result {
+                case .success(let response):
+                    if response.isSuccess{
+                        completion(response, nil)
+                    }else{
+                        completion(response, nil)
+                        
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
+    
     //트윙클 삭제 API
     func requestFetchTwinkleDelete(with index: Int, completion: @escaping (NoDataResponse?, Error?) -> ()) {
         let url = "\(twinkleUrl)/out/\(index)"

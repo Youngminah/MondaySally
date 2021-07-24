@@ -45,6 +45,7 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
             return
         }
         guard let data = self.viewModel.twinkleProveList(at: indexPath.row) else { return }
+        vc.editFlag = false
         vc.giftIndex = data.idx
         vc.giftName = data.name
         vc.clover = data.usedClover
