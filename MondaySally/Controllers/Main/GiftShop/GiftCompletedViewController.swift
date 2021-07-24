@@ -9,8 +9,10 @@ import UIKit
 
 class GiftCompletedViewController: UIViewController {
 
-    
     var giftInfo : GiftWriteInfo?
+    
+    @IBOutlet weak var twinkleWriteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "기프트 샵"
@@ -30,10 +32,20 @@ class GiftCompletedViewController: UIViewController {
         vc.giftIndex = data.idx
         vc.giftName = data.name
         vc.clover = data.clover
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
+}
+
+// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+extension GiftCompletedViewController: TwinkleWriteDelegate{
+    func didTwinkleWrite() {
+        self.twinkleWriteButton.isEnabled = false
+        self.twinkleWriteButton.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
+        self.twinkleWriteButton.setTitle("트윙클이 작성되었습니다.", for: .normal)
+    }
 }
 
 
