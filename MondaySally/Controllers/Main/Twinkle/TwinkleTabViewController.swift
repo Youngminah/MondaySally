@@ -33,6 +33,7 @@ class TwinkleTabViewController: UIViewController {
         print("기프트샵 컬렉션뷰 리프레시 시작!!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.refreshOfTwinkleTotal()
+            self.twinkleStatusViewController.attemptFetchProve(with: false)
         }
     }
     
@@ -42,7 +43,6 @@ class TwinkleTabViewController: UIViewController {
             let vc = segue.destination as? TwinkleStatusViewController
             twinkleStatusViewController = vc
             twinkleStatusViewController.attemptFetchProve(with: false)
-            //print("몇번?")
         }
     }
     
@@ -113,7 +113,6 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
 extension TwinkleTabViewController {
     
     private func attemptFetchTwinkleTotal(with pagination: Bool) {
-        
         if tableView.refreshControl?.isRefreshing == false {
             self.viewModel.updateLoadingStatus = {
                 DispatchQueue.main.async { [weak self] in
@@ -175,7 +174,6 @@ extension TwinkleTabViewController {
 
 // MARK: 트윙클 좋아요 셸과 통신 프로토콜
 extension TwinkleTabViewController: LikeDelegate {
-    
     func didLikePressButton(with tableViewIndex: Int, status: String, likeIndex: Int) {
         self.attemptFetchTwinkleLike(with: likeIndex)
         self.viewModel.setLike(at: tableViewIndex, status: status)
