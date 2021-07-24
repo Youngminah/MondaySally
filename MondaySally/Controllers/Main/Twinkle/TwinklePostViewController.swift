@@ -31,6 +31,7 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var editOrDeleteButton: UIButton!
     
     var index = Int() //트윙클 고유인덱스
+    var tableViewIndex = Int() //테이블뷰 인덱스
     private var likeCount = Int()
     private let detailViewModel = TwinkleDetailViewModel(dataService: TwinkleDataService())
     private let deleteViewModel = TwinkleDeleteViewModel(dataService: TwinkleDataService())
@@ -40,6 +41,7 @@ class TwinklePostViewController: UIViewController {
     
     private var twinklePostImageViewController : TwinklePostImageViewController!
     var imageDelegate: TwinkleImagePreviewDelegate?
+    var likeDelegate: LikeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +77,7 @@ class TwinklePostViewController: UIViewController {
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        self.attemptFetchTwinkleLike(with :index)
+        self.attemptFetchTwinkleLike(with: index)
     }
 }
 
@@ -134,8 +136,8 @@ extension TwinklePostViewController{
 
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
-extension TwinklePostViewController: TwinkleWriteDelegate{
-    func didTwinkleWrite() {
+extension TwinklePostViewController: RefreshDelegate{
+    func doRefresh() {
         self.attemptFetchDetail(with : index)
     }
 }

@@ -10,8 +10,8 @@ import FirebaseStorage
 import Kingfisher
 
 //MARK: 좋아요와 관련된, 이전화면으로 돌아갔을 때 reFresh하는 프로토콜 정의
-protocol TwinkleWriteDelegate{
-    func didTwinkleWrite()
+protocol RefreshDelegate{
+    func doRefresh()
 }
 
 class TwinkleWriteViewController: UIViewController {
@@ -43,7 +43,7 @@ class TwinkleWriteViewController: UIViewController {
     var giftName = String() // 이전화면에서 받아와야하는 기프트 이름
     var clover = Int() // 이전화면에서 받아와야하는 사용클로버 정보
     var reviewsCount = 0 //텍스트뷰 카운트
-    var delegate: TwinkleWriteDelegate?
+    var delegate: RefreshDelegate?
     
     //처음 작성시 API로 보낼 미증빙/ 증빙기프트 인덱스
     var giftIndex = Int() // 트윙클 작성 서버 요청시 쿼리로 보낼 트윙클 인덱스
@@ -395,7 +395,7 @@ extension TwinkleWriteViewController {
                 guard let strongSelf = self else { return }
                 print("트윙클 작성에 성공했습니다 !! ")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 작성되었습니다.") {
-                    strongSelf.delegate?.didTwinkleWrite()
+                    strongSelf.delegate?.doRefresh()
                     strongSelf.navigationController?.popViewController(animated: true)
                 }
             }
@@ -519,7 +519,7 @@ extension TwinkleWriteViewController {
                 guard let strongSelf = self else { return }
                 print("트윙클 수정에 성공했습니다 !! ")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 수정되었습니다.") {
-                    strongSelf.delegate?.didTwinkleWrite()
+                    strongSelf.delegate?.doRefresh()
                     strongSelf.navigationController?.popViewController(animated: true)
                 }
             }

@@ -38,8 +38,8 @@ class GiftCompletedViewController: UIViewController {
 }
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
-extension GiftCompletedViewController: TwinkleWriteDelegate{
-    func didTwinkleWrite() {
+extension GiftCompletedViewController: RefreshDelegate{
+    func doRefresh() {
         self.twinkleWriteButton.isEnabled = false
         self.twinkleWriteButton.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.twinkleWriteButton.setTitle("트윙클이 작성되었습니다.", for: .normal)

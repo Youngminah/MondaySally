@@ -29,7 +29,7 @@ class TwinkleTotalCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.profileImageButton.layer.cornerRadius = self.profileImageButton.bounds.width/2
-        addContentScrollView()
+        self.addContentScrollView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

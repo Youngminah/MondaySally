@@ -23,8 +23,8 @@ class GiftHistoryViewController: UIViewController {
 }
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
-extension GiftHistoryViewController: TwinkleWriteDelegate{
-    func didTwinkleWrite() {
+extension GiftHistoryViewController: RefreshDelegate{
+    func doRefresh() {
         self.viewModel.pageIndex = 1
         self.attemptFetchGiftHistory(with: false)
     }

@@ -21,7 +21,6 @@ class TwinkleTabViewController: UIViewController {
         self.tableView.refreshControl?.addTarget(self,
                                                       action: #selector(didPullToRefresh),
                                                       for: .valueChanged)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +89,9 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
         guard let data = self.viewModel.twinkleList(at: indexPath.row) else {
             return
         }
+        vc.tableViewIndex = indexPath.row
         vc.index = data.index
+        vc.likeDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

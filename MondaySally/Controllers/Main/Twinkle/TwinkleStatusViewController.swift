@@ -45,12 +45,16 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
             return
         }
         guard let data = self.viewModel.twinkleProveList(at: indexPath.row) else { return }
-        vc.editFlag = false
-        vc.giftIndex = data.idx
-        vc.giftName = data.name
-        vc.clover = data.usedClover
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        if data.isProved == "Y"{
+            return
+        }else {
+            vc.editFlag = false
+            vc.giftIndex = data.idx
+            vc.giftName = data.name
+            vc.clover = data.usedClover
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     //UICollectionViewDelegateFlowLayout 프로토콜
@@ -130,8 +134,8 @@ extension TwinkleStatusViewController {
 
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
-extension TwinkleStatusViewController: TwinkleWriteDelegate{
-    func didTwinkleWrite() {
+extension TwinkleStatusViewController: RefreshDelegate{
+    func doRefresh() {
         self.viewModel.pageIndex = 1
         self.viewModel.endOfPage = false
         self.viewModel.fetchTwinkleProve(with: false)
