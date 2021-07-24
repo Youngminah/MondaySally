@@ -34,9 +34,7 @@ class GiftCompletedViewController: UIViewController {
         vc.clover = data.clover
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
-    
 }
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청

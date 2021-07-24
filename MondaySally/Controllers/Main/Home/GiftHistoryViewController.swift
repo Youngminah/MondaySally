@@ -15,6 +15,7 @@ class GiftHistoryViewController: UIViewController {
     private let viewModel = GiftHistoryViewModel(dataService: GiftDataService())
     
     override func viewDidLoad() {
+        self.navigationItem.backButtonTitle = " "
         super.viewDidLoad()
     }
     
