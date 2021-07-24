@@ -17,14 +17,19 @@ class GiftHistoryViewController: UIViewController {
     override func viewDidLoad() {
         self.navigationItem.backButtonTitle = " "
         super.viewDidLoad()
+        self.attemptFetchGiftHistory(with: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+}
+
+// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+extension GiftHistoryViewController: TwinkleWriteDelegate{
+    func didTwinkleWrite() {
         self.viewModel.pageIndex = 1
         self.attemptFetchGiftHistory(with: false)
     }
 }
+
 
 extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -89,6 +94,7 @@ extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewD
             vc.giftIndex = data.giftLogIdx
             vc.giftName = data.name
             vc.clover = data.usedClover
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
