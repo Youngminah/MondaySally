@@ -17,6 +17,7 @@ class GiftShopDetailViewController: UIViewController {
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var giftImageView: UIImageView!
+    @IBOutlet weak var tagContentView: UIView!
     
     private let collectionView = TTGTextTagCollectionView()
     private var selectOpionIndex = 0
@@ -38,11 +39,13 @@ class GiftShopDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.collectionView.frame = CGRect(x: optionTitleLabel.left,
-                                           y: optionTitleLabel.bottom + 16,
-                                           width: view.frame.size.width - 32,
-                                           height: applyButton.top - optionTitleLabel.bottom - 32)
+        self.tagContentView.addSubview(self.collectionView)
+        self.collectionView.frame = CGRect(x: 0,
+                                           y: 0,
+                                           width: self.tagContentView.frame.width,
+                                           height: self.tagContentView.frame.height)
         //print("x: \(optionTitleLabel.left) y:\(optionTitleLabel.bottom + 20) width: \(view.frame.size.width - 32) height: \(applyButton.top - optionTitleLabel.bottom)")
+        //self.collectionView.center = self.tagContentView.center
     }
     
     @IBAction func giftApplyButton(_ sender: UIButton) {
