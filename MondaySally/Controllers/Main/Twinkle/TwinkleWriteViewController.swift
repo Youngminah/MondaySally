@@ -123,7 +123,7 @@ class TwinkleWriteViewController: UIViewController {
     }
     
     private func notEditWillLoad(){
-        self.title = "내 트윙클 수정하기"
+        self.title = "내 트윙클 추가하기"
     }
 }
 
@@ -148,7 +148,6 @@ extension TwinkleWriteViewController{
                 }
             })
         }
-        
     }
     
     private func originReceiptImageBeforEdit(){
