@@ -45,6 +45,26 @@ class ProfileEditViewController: UIViewController{
         guard let phoneNumber = phoneNumberTextField.text else { return }
         guard let account = accountTextField.text else { return }
         guard let email = emailTextField.text else { return }
+        if !nickName.isValidNickname() {
+            self.showSallyNotationAlert(with: "닉네임은 특수문자와\n숫자는 불가능합니다.")
+            return
+        }
+        if !phoneNumber.isValidNumber() {
+            self.showSallyNotationAlert(with: "전화번호를 숫자로만\n입력해주세요.")
+            return
+        }
+        if phoneNumber.count != 11 {
+            self.showSallyNotationAlert(with: "전화번호를 11자리로\n입력해주세요.")
+            return
+        }
+        if !account.isValidNumber() {
+            self.showSallyNotationAlert(with: "계좌번호를 숫자로만\n입력해주세요.")
+            return
+        }
+        if !email.isValidEmail() {
+            self.showSallyNotationAlert(with: "정확한 이메일 형식을\n입력해주세요.")
+            return
+        }
         if !photoSelectButton.isSelected {
             let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
             self.attemptFetchEditProfile(with: input)
@@ -248,11 +268,7 @@ extension ProfileEditViewController {
     }
 }
 
-extension ProfileEditViewController : UITextFieldDelegate{
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
-    }
+extension ProfileEditViewController : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 0 {
@@ -282,6 +298,33 @@ extension ProfileEditViewController : UITextFieldDelegate{
         else if textField.tag == 3{
             self.unselectedEmailTextFieldUI()
         }
+    }
+    
+    
+    //텍스트뷰 글자수 제한
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        guard let text = textField.text else {return true}
+        // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
+        if textField.tag == 0 {
+            if text.count > 9 {
+                return false
+            }
+        }else if textField.tag == 1 {
+            if text.count > 10 {
+                return false
+            }
+        }else if textField.tag == 2 {
+            if text.count > 19 {
+                return false
+            }
+        }
+        return true
     }
     
     

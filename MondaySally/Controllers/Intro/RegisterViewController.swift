@@ -23,13 +23,15 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func completeButtonTab(_ sender: UIButton) {
-        
-        guard let teamCodeId = self.codeTextField.text else {
-            print("텍스트 필드에 유저가 입력한 값이 없어서 API 호출 함수가 실행되지 않습니다.")
+        guard let teamCodeId = self.codeTextField.text else { return }
+        if teamCodeId.count != 8 {
+            self.showSallyNotationAlert(with: "팀코드는 8자리입니다.")
             return
         }
-        
-        
+        if !teamCodeId.isValidTeamcode() {
+            self.showSallyNotationAlert(with: "팀코드는 숫자또는 알파벳으로 이루어져야합니다.")
+            return
+        }
         self.attemptFetchTeamCode(withId :teamCodeId)
     }
 

@@ -48,6 +48,7 @@ class TwinklePostViewController: UIViewController {
         self.setInitialSet()
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
+        self.commentTextField.delegate = self
         self.attemptFetchDetail(with : index)
     }
     
@@ -450,6 +451,15 @@ extension TwinklePostViewController : UITextFieldDelegate {
                                                object: nil)
     }
 
+    //텍스트뷰 글자수 제한
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return false}
+        // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
+        if text.count > 100 {
+            return false
+        }
+        return true
+    }
     
     //아무곳이나 클릭하면 키보드 내려가게 하기
     private func hideKeyboardWhenTappedAround() {

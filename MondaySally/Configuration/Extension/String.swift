@@ -94,6 +94,31 @@ extension String {
         return self
     }
     
+
+    
+    func isValidTeamcode() -> Bool {
+          let teamRegEx = "^[A-Za-z0-9]{0,}$"
+          let teamTest = NSPredicate(format:"SELF MATCHES %@", teamRegEx)
+          return teamTest.evaluate(with: self)
+    }
+    
+    func isValidEmail() -> Bool {
+          let emailRegEx = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+          let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+          return emailTest.evaluate(with: self)
+    }
+    
+    func isValidNumber() -> Bool {
+        let stringRegEx = "^[0-9]{0,}$"
+        let pred = NSPredicate(format:"SELF MATCHES %@", stringRegEx)
+        return pred.evaluate(with: self)
+    }
+    
+    func isValidNickname() -> Bool {
+        let nicknameRegEx = "^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z]{0,}$"
+        let pred = NSPredicate(format:"SELF MATCHES %@", nicknameRegEx)
+        return pred.evaluate(with: self)
+    }
 }
 
 
