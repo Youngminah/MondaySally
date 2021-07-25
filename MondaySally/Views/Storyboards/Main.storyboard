@@ -168,7 +168,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-Cg-iNt">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="799.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="827"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyImage1" translatesAutoresizingMaskIntoConstraints="NO" id="Hpw-BR-3xz">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="390"/>
@@ -206,14 +206,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6b-T9-uxV">
-                                                <rect key="frame" x="16" y="559" width="358" height="100"/>
+                                                <rect key="frame" x="16" y="559" width="358" height="90"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="3xN-yU-9g2"/>
+                                                    <constraint firstAttribute="height" constant="90" id="3xN-yU-9g2"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0P-W3-lpx">
-                                                <rect key="frame" x="16" y="677.33333333333337" width="358" height="62"/>
+                                                <rect key="frame" x="16" y="667.33333333333337" width="358" height="62"/>
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="62" id="VQM-l0-gRv"/>
@@ -243,9 +243,9 @@
                                             <constraint firstItem="l0P-W3-lpx" firstAttribute="top" secondItem="W6b-T9-uxV" secondAttribute="bottom" constant="18.329999999999998" id="SUQ-hL-Njx"/>
                                             <constraint firstItem="W6b-T9-uxV" firstAttribute="top" secondItem="los-Mr-9ln" secondAttribute="bottom" constant="16" id="eIy-B1-ii5"/>
                                             <constraint firstAttribute="trailing" secondItem="q44-9R-C4G" secondAttribute="trailing" constant="16" id="eJ6-q4-51S"/>
+                                            <constraint firstAttribute="bottom" secondItem="l0P-W3-lpx" secondAttribute="bottom" constant="97.666666666666629" id="f20-kn-MnM"/>
                                             <constraint firstItem="W6b-T9-uxV" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="pKf-zg-a3F"/>
                                             <constraint firstItem="q44-9R-C4G" firstAttribute="top" secondItem="Hpw-BR-3xz" secondAttribute="bottom" constant="16" id="phY-Ea-GjU"/>
-                                            <constraint firstAttribute="bottom" secondItem="l0P-W3-lpx" secondAttribute="bottom" constant="60" id="qSX-Wc-cWi"/>
                                             <constraint firstItem="q44-9R-C4G" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="tJe-hd-Ovg"/>
                                             <constraint firstAttribute="trailing" secondItem="Hpw-BR-3xz" secondAttribute="trailing" id="ufS-uw-6l7"/>
                                             <constraint firstItem="Hpw-BR-3xz" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" id="yTV-xp-bLo"/>

@@ -71,6 +71,7 @@ class TwinklePostViewController: UIViewController {
         }
         if content == ""{
             self.showSallyNotationAlert(with: "댓글을 입력해 주세요.")
+            return
         }
         self.commentTextField.text = ""
         self.attemptFetchCommentWrite(with: index, with: content)
@@ -186,7 +187,7 @@ extension TwinklePostViewController {
         self.detailViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.detailViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.detailViewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
             }
         }
         self.detailViewModel.showAlertClosure = { [weak self] () in
@@ -236,7 +237,7 @@ extension TwinklePostViewController {
         self.deleteViewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.deleteViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.deleteViewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
             }
         }
         self.deleteViewModel.showAlertClosure = { [weak self] () in
