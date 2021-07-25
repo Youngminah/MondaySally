@@ -1758,7 +1758,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* QR코드를 인식시켜주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="62I-4d-Tzj" userLabel="먼데이샐리를 통해 보다 더  즐거운 회사생활을 경험해보세요.">
-                                <rect key="frame" x="113" y="616.66666666666663" width="164" height="20.333333333333371"/>
+                                <rect key="frame" x="113.00000000000001" y="616.66666666666663" width="164.33333333333337" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2135,9 +2135,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZS-b1-q50">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="724"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5W-JP-hzr">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5W-JP-hzr">
                                                 <rect key="frame" x="134" y="25" width="122" height="122"/>
-                                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="R5W-JP-hzr" secondAttribute="height" multiplier="1:1" id="IxJ-ef-1XR"/>
                                                     <constraint firstAttribute="width" constant="122" id="Ylo-xj-l22"/>
@@ -3601,7 +3600,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bsb-Hs-fk3"/>
+        <segue reference="u5m-rk-Y52"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="buttonPhotoAdd" width="105" height="105"/>

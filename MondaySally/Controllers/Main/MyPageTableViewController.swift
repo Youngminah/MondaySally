@@ -53,7 +53,16 @@ class MyPageTableViewController: UITableViewController {
     //MARK: Kingfisher로 프로필 이미지 가져오고 , 예외 처리
     private func updateProfileImage(){
         self.profileImage.showViewIndicator()
-        guard let urlImage = UserDefaults.standard.string(forKey: "imageUrl") else { return }
+        guard let urlImage = UserDefaults.standard.string(forKey: "imageUrl") else {
+            self.profileImage.image = #imageLiteral(resourceName: "illustSallyBlank")
+            self.profileImage.dismissViewndicator()
+            return
+        }
+        if urlImage == "" {
+            self.profileImage.image = #imageLiteral(resourceName: "illustSallyBlank")
+            self.profileImage.dismissViewndicator()
+            return
+        }
         let url = URL(string: urlImage)
         self.profileImage.kf.setImage(with: url) { [weak self] result in
             guard let strongself = self else { return }

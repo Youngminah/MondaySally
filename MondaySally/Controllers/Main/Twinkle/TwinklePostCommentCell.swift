@@ -60,7 +60,10 @@ class TwinklePostCommentCell: UITableViewCell {
     }
 
     private func setProfileImage(with url: String?){
-        guard let url = url else { return }
+        guard let url = url else {
+            self.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
+            return
+        }
         let urlString = URL(string: url)
         self.profileImageView.kf.setImage(with: urlString)
     }

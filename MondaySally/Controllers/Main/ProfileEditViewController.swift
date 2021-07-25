@@ -22,6 +22,7 @@ class ProfileEditViewController: UIViewController{
     private let viewModel = EditProfileViewModel(dataService: AuthDataService())
     
     private let storage = Storage.storage().reference()
+    private var imageURL = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,60 +42,64 @@ class ProfileEditViewController: UIViewController{
     }
     
     @IBAction func completeButtonTap(_ sender: UIButton) {
-        guard let nickName = nickNameTextField.text else { return }
-        guard let phoneNumber = phoneNumberTextField.text else { return }
-        guard let account = accountTextField.text else { return }
-        guard let email = emailTextField.text else { return }
-        if !nickName.isValidNickname() {
-            self.showSallyNotationAlert(with: "닉네임은 특수문자와\n숫자는 불가능합니다.")
-            return
-        }
-        if !phoneNumber.isValidNumber() {
-            self.showSallyNotationAlert(with: "전화번호를 숫자로만\n입력해주세요.")
-            return
-        }
-        if phoneNumber.count != 11 {
-            self.showSallyNotationAlert(with: "전화번호를 11자리로\n입력해주세요.")
-            return
-        }
-        if !account.isValidNumber() {
-            self.showSallyNotationAlert(with: "계좌번호를 숫자로만\n입력해주세요.")
-            return
-        }
-        if !email.isValidEmail() {
-            self.showSallyNotationAlert(with: "정확한 이메일 형식을\n입력해주세요.")
-            return
-        }
-        if !photoSelectButton.isSelected {
-            let input = EditProfileInput(nickname: nickName, imgUrl: "", phoneNumber: phoneNumber, bankAccount: account, email: email)
-            self.attemptFetchEditProfile(with: input)
-            return
-        }
-        guard let photo = photoSelectButton.imageView?.image else {
-            return
-        }
-        guard let imageData = photo.pngData() else {
-            print("이미지를 png로 만들 수 없습니다.")
-            return
-        }
-        self.showIndicator()
-        let uuid = UUID.init()
-        self.storage.child("test/profile/\(uuid)").putData(imageData, metadata: nil, completion: { [weak self] _ , error in
+        self.showSallyQuestionAlert(with: "프로필을 수정하시겠습니까?") {[weak self] () in
             guard let strongSelf = self else { return }
-            guard error == nil else {
-                print("파이어베이스에 업로드하는데 실패하였습니다.")
+            guard let nickName = strongSelf.nickNameTextField.text else { return }
+            guard let phoneNumber = strongSelf.phoneNumberTextField.text else { return }
+            guard let account = strongSelf.accountTextField.text else { return }
+            guard let email = strongSelf.emailTextField.text else { return }
+            if !nickName.isValidNickname() {
+                strongSelf.showSallyNotationAlert(with: "닉네임은 특수문자와\n숫자는 불가능합니다.")
                 return
             }
-            strongSelf.storage.child("test/profile/\(uuid)").downloadURL { url, error in
-                guard let url = url , error == nil else {
+            if !phoneNumber.isValidNumber() {
+                strongSelf.showSallyNotationAlert(with: "전화번호를 숫자로만\n입력해주세요.")
+                return
+            }
+            if phoneNumber.count != 11 {
+                strongSelf.showSallyNotationAlert(with: "전화번호를 11자리로\n입력해주세요.")
+                return
+            }
+            if !account.isValidNumber() {
+                strongSelf.showSallyNotationAlert(with: "계좌번호를 숫자로만\n입력해주세요.")
+                return
+            }
+            if !email.isValidEmail() {
+                strongSelf.showSallyNotationAlert(with: "정확한 이메일 형식을\n입력해주세요.")
+                return
+            }
+            if !strongSelf.photoSelectButton.isSelected {
+                let input = EditProfileInput(nickname: nickName, imgUrl: strongSelf.imageURL, phoneNumber: phoneNumber, bankAccount: account, email: email)
+                strongSelf.attemptFetchEditProfile(with: input)
+                return
+            }
+            guard let photo = strongSelf.photoSelectButton.imageView?.image else {
+                return
+            }
+            guard let imageData = photo.pngData() else {
+                print("이미지를 png로 만들 수 없습니다.")
+                return
+            }
+            strongSelf.showTransparentIndicator()
+            let uuid = UUID.init()
+            strongSelf.storage.child("test/profile/\(uuid)").putData(imageData, metadata: nil, completion: { [weak self] _ , error in
+                guard let strongSelf = self else { return }
+                guard error == nil else {
+                    print("파이어베이스에 업로드하는데 실패하였습니다.")
                     return
                 }
-                let urlString = url.absoluteString
-                print("파이어베이스에 등록된 프로필 이미지 URL주소 : \(urlString)")
-                let input = EditProfileInput(nickname: nickName, imgUrl: urlString, phoneNumber: phoneNumber, bankAccount: account, email: email)
-                strongSelf.attemptFetchEditProfile(with: input)
-            }
-        })
+                strongSelf.storage.child("test/profile/\(uuid)").downloadURL { url, error in
+                    guard let url = url , error == nil else {
+                        return
+                    }
+                    let urlString = url.absoluteString
+                    print("파이어베이스에 등록된 프로필 이미지 URL주소 : \(urlString)")
+                    let input = EditProfileInput(nickname: nickName, imgUrl: urlString, phoneNumber: phoneNumber, bankAccount: account, email: email)
+                    strongSelf.attemptFetchEditProfile(with: input)
+                }
+            })
+        }
+       
     }
 }
 
@@ -119,6 +124,7 @@ extension ProfileEditViewController{
         self.emailTextField.layer.cornerRadius = 4
         self.emailTextField.clipsToBounds = true
         self.emailTextField.setLeftPaddingPoints(16)
+        self.imageURL = UserDefaults.standard.string(forKey: "imageUrl") ?? ""
         self.nickNameTextField.text = UserDefaults.standard.string(forKey: "nickName")
         self.phoneNumberTextField.text = UserDefaults.standard.string(forKey: "phoneNumber")
         self.accountTextField.text = UserDefaults.standard.string(forKey: "account")
@@ -170,6 +176,7 @@ extension ProfileEditViewController{
         
         let basic = UIAlertAction(title: "기본 이미지로 변경", style: .default, handler: {_ in
             self.photoSelectButton.setImage(#imageLiteral(resourceName: "icPhotoMid"), for: .normal)
+            self.imageURL = ""
             self.photoSelectButton.isSelected = false
         })
         actionsheet.addAction(basic)
@@ -199,14 +206,12 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigat
 
 // MARK: - Networking
 extension ProfileEditViewController {
-    
     //프로필 수정 API 호출 함수
     private func attemptFetchEditProfile(with input: EditProfileInput) {
-        
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
             }
         }
         
@@ -217,7 +222,6 @@ extension ProfileEditViewController {
                     print("서버에서 통신 원활하지 않음 -> \(error.localizedDescription)")
                     self?.networkFailToExit()
                 }
-                
                 if let message = strongSelf.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
                     strongSelf.editFailAlertPresent(with: message)
@@ -367,5 +371,4 @@ extension ProfileEditViewController : UITextFieldDelegate {
         self.emailTextField.layer.borderWidth = 0.5
         self.emailTextField.layer.borderColor = #colorLiteral(red: 0.6862745098, green: 0.6862745098, blue: 0.6862745098, alpha: 1)
     }
-
 }

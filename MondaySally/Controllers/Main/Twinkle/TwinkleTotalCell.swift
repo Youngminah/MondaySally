@@ -74,9 +74,12 @@ class TwinkleTotalCell: UITableViewCell {
     }
     
     private func setProfileImage(with url: String?){
-        guard let url = url else { return }
+        guard let imageUrl = url, url != "" else {
+            self.profileImageButton.setImage(#imageLiteral(resourceName: "illustSallyBlank"), for: .normal)
+            return
+        }
         self.showViewIndicator()
-        let urlString = URL(string: url)
+        let urlString = URL(string: imageUrl)
         self.profileImageButton.kf.setImage(with: urlString, for: .normal, completionHandler:  { result in
             switch result {
             case .success(_):
