@@ -40,11 +40,11 @@ class GiftHistoryCell: UICollectionViewCell {
     private func updateStatus(with response: String){
         if response == "N" {
             self.status = false
-            self.statusLabel.text = "증빙대기"
+            self.statusLabel.text = "트윙클 대기"
             self.coverView.isHidden = true
         }else {
             self.status = true
-            self.statusLabel.text = "증빙완료"
+            self.statusLabel.text = "트윙클 완료"
             self.coverView.isHidden = false
             self.coverView.backgroundColor = .white
             self.coverView.layer.cornerRadius = 4

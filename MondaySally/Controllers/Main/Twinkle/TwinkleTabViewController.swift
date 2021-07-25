@@ -32,7 +32,7 @@ class TwinkleTabViewController: UIViewController {
         print("기프트샵 컬렉션뷰 리프레시 시작!!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.refreshOfTwinkleTotal()
-            self.twinkleStatusViewController.attemptFetchProve(with: false)
+            self.twinkleStatusViewController.refreshCollectionview()
         }
     }
     

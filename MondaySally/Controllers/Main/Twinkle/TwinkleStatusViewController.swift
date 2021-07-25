@@ -130,6 +130,13 @@ extension TwinkleStatusViewController {
         }
         self.viewModel.fetchTwinkleProve(with: pagination)
     }
+    
+    func refreshCollectionview(){
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.attemptFetchProve(with: false)
+        self.collectionView.scrollToleft()
+    }
 }
 
 
