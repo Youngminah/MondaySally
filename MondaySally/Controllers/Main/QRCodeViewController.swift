@@ -95,7 +95,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 if "\(self.companyIndex)" == data {
                     self.attemptFetchCommute()
                 }else {
-                    self.showSallyNotationAlert(with: "귀하가 소속된\n기업이 아닙니다.") {
+                    self.showSallyNotationAlert(with: "유효하지 않은\nQR코드입니다.") {
                         self.navigationController?.popViewController(animated: true)
                     }
                 }

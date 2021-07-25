@@ -52,7 +52,7 @@ open class SallyNotificationAlert {
     
     private let yesButton: UIButton = {
         let button = UIButton()
-        button.setTitle("확인", for: .normal)
+        button.setTitle("예", for: .normal)
         button.titleLabel?.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
@@ -61,7 +61,7 @@ open class SallyNotificationAlert {
     
     private let noButton: UIButton = {
         let button = UIButton()
-        button.setTitle("취소", for: .normal)
+        button.setTitle("아니요", for: .normal)
         button.titleLabel?.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
         button.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
