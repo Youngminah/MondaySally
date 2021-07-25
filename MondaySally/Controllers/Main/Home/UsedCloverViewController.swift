@@ -84,7 +84,13 @@ extension UsedCloverViewController {
         self.viewModel.codeAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-
+                strongSelf.showSallyNotationAlert(with: "로그아웃합니다."){
+                    strongSelf.removeAllUserInfos()
+                    guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
+                        return
+                    }
+                    strongSelf.changeRootViewController(vc)
+                }
             }
         }
 

@@ -196,12 +196,12 @@ extension QRCodeViewController {
             }
         }
         
-        self.viewModel.codeAlertClosure = { [weak self] () in
-            guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
-
-            }
-        }
+//        self.viewModel.codeAlertClosure = { [weak self] () in
+//            guard let strongSelf = self else { return }
+//            DispatchQueue.main.async {
+//
+//            }
+//        }
 
         self.viewModel.didFinishFetch = { [weak self] () in
             DispatchQueue.main.async {

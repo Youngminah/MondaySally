@@ -140,11 +140,9 @@ extension RegisterViewController {
             }
         }
         
-        self.fCMTokenViewModel.didFinishFetch = { [weak self] () in
+        self.fCMTokenViewModel.didFinishFetch = { () in
             DispatchQueue.main.async {
-                guard let strongSelf = self else {
-                    return
-                }
+                //guard let strongSelf = self else { return}
                 print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
             }
         }

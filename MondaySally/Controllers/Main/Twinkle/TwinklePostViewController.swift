@@ -454,9 +454,15 @@ extension TwinklePostViewController : UITextFieldDelegate {
 
     //텍스트뷰 글자수 제한
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
         guard let text = textField.text else {return false}
         // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
-        if text.count > 100 {
+        if text.count > 100 { 
             return false
         }
         return true

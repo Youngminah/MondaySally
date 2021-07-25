@@ -96,8 +96,8 @@ extension IntroViewController {
             }
         }
         
-        self.fCMTokenViewModel.didFinishFetch = { [weak self] () in
-            guard let strongSelf = self else { return }
+        self.fCMTokenViewModel.didFinishFetch = { () in
+            //guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
                 //strongSelf.moveToMainTabBar()
