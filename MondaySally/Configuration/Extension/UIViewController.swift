@@ -66,6 +66,7 @@ extension UIViewController {
         UserDefaults.standard.removeObject(forKey: "imageUrl")
         UserDefaults.standard.removeObject(forKey: "account")
         UserDefaults.standard.removeObject(forKey: "phoneNumber")
+        UserDefaults.standard.removeObject(forKey: "userFirstFlag")
     }
 }
 

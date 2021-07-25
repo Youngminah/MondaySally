@@ -9,7 +9,7 @@ struct GiftRequestResponse: Decodable{
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: GiftProveInfo
+    var result: GiftProveInfo?
 }
 
 struct GiftProveInfo: Decodable{
