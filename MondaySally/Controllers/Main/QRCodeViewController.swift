@@ -57,10 +57,11 @@ class QRCodeViewController: UIViewController {
     
     private func updateUI(){
         let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(string: "현재 퇴근 상태로\n하단에 QR 코드를 인식시키면\n‘", attributes: lightdAttributes))
         if workingStatus == "W" {
+            attributedString.append(NSAttributedString(string: "현재 출근 상태로\n하단에 QR 코드를 인식시키면\n‘", attributes: lightdAttributes))
             attributedString.append(NSAttributedString(string: "퇴근", attributes: mediumAttributes))
         }else {
+            attributedString.append(NSAttributedString(string: "현재 퇴근 상태로\n하단에 QR 코드를 인식시키면\n‘", attributes: lightdAttributes))
             attributedString.append(NSAttributedString(string: "출근", attributes: mediumAttributes))
         }
         attributedString.append(NSAttributedString(string: "’이 됩니다.", attributes: lightdAttributes))

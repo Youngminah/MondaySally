@@ -17,6 +17,7 @@ class OnBoardingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.setValue("yes", forKey: "userFirstFlag")
         self.scrollView.delegate = self
         self.addContentScrollView()
         self.startButton.layer.cornerRadius = 4

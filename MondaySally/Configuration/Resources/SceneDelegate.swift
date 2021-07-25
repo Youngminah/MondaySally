@@ -16,7 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        if UserDefaults.standard.string(forKey: "JwtToken") != nil { //토큰이 있으면 자동로그인 홈탭바로 가기
+            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "IntroView") as? IntroViewController else{ return }
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            vc.checkAutoLogin()
+            return
+        }
+        if UserDefaults.standard.string(forKey: "userFirstFlag") == "yes" {  //한번도 접근한적 없으면 그대로
+            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{ return }
+            print("토큰은 없지만 처음 방문은 아니다.")
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+        } else{
+            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "IntroView") as? IntroViewController else{ return }
+            print("토큰도없고 방문도 처음이다.")
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

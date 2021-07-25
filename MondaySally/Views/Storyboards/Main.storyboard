@@ -1864,7 +1864,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Xli-iR-PhL">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Xli-iR-PhL">
                                     <rect key="frame" x="16" y="27.666666666666671" width="95" height="95"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="95" id="tWt-Nm-IIn"/>
@@ -2522,7 +2522,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-gB-FkX">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-gB-FkX">
                                                     <rect key="frame" x="49" y="28.666666666666671" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="CAG-A3-myl"/>
@@ -3094,7 +3094,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Ole-O0-kBs">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustSallyBlank" translatesAutoresizingMaskIntoConstraints="NO" id="Ole-O0-kBs">
                                                     <rect key="frame" x="16" y="15" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="10u-Fr-LeL"/>

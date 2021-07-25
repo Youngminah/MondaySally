@@ -112,7 +112,6 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
 
 // MARK: 트윙클 리스트 조회 API
 extension TwinkleTabViewController {
-    
     private func attemptFetchTwinkleTotal(with pagination: Bool) {
         if tableView.refreshControl?.isRefreshing == false {
             self.viewModel.updateLoadingStatus = {
@@ -122,7 +121,6 @@ extension TwinkleTabViewController {
                 }
             }
         }
-
         self.viewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {

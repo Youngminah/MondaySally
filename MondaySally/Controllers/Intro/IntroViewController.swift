@@ -14,7 +14,10 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.checkAutoLogin()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     @IBAction func directStartButtonTap(_ sender: UIButton) {
@@ -26,10 +29,9 @@ class IntroViewController: UIViewController {
     }
     
     //JWT있는지 확인
-    private func checkAutoLogin(){
+    func checkAutoLogin(){
         print("기계에 저장된 JWT토큰 값 \(JwtToken.jwt)")
-        if JwtToken.jwt == "" { return } //토큰이 없으면 화면 그대로
-        self.attemptFetchAutoLogin() //토큰이 있으면 자동로그인 API 호출
+        self.attemptFetchAutoLogin()
     }
 }
 
