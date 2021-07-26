@@ -156,6 +156,14 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    private func setWorkingStatus(){
+        if workingStatus == "W"{
+            UserDefaults.standard.setValue("L" , forKey: "workingStatus")
+        } else {
+            UserDefaults.standard.setValue("W" , forKey: "workingStatus")
+        }
+    }
+    
     private func showAnimation(){
         UIView.animate(withDuration: 0.4, delay: 0.3,animations: { [weak self] in
             guard let self = self else { return }
@@ -207,7 +215,14 @@ extension QRCodeViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("출퇴근 신청에 성공했습니다 !! ")
-                strongSelf.showSallyNotationAlert(with: "성공적으로\n출근 되었습니다.") {
+                var status = ""
+                if strongSelf.workingStatus == "W"{
+                    status = "퇴근"
+                } else {
+                    status = "출근"
+                }
+                strongSelf.showSallyNotationAlert(with: "성공적으로\n" + status + " 되었습니다.") {
+                    strongSelf.setWorkingStatus()
                     strongSelf.navigationController?.popViewController(animated: true)
                 }
 
