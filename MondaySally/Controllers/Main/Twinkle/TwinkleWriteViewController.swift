@@ -196,6 +196,7 @@ extension TwinkleWriteViewController{
     
     //MARK: 트윙클 작성하기 버튼 눌렀을 때 : 파이어베이스 업로드 -> 서버 업로드
     @objc func postButtonTap() {
+        self.view.endEditing(true)
         let imageList = self.willPostImageList()
         if  imageList.count == 0 {
             self.showSallyNotationAlert(with: "클로버 사용 증명사진을\n올려주세요.")
@@ -428,10 +429,6 @@ extension TwinkleWriteViewController {
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height
             self.scrollViewBottom.constant = -adjustmentHeight
-            let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom + adjustmentHeight)
-            if(bottomOffset.y > -1) {
-                scrollView.setContentOffset(bottomOffset, animated: true)
-            }
         } else {
             self.scrollViewBottom.constant = 0
             self.scrollView.scrollViewToTop(animated: true)
