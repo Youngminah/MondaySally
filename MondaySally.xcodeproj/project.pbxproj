@@ -122,6 +122,9 @@
 		BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ECF268E07B100AF4A56 /* FailViewController.swift */; };
 		BBD09ED4268E0B3300AF4A56 /* RegisterNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */; };
 		BBD09ED6268E14D300AF4A56 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD09ED5268E14D300AF4A56 /* UITextField.swift */; };
+		BBD620A026AE4833003EDC63 /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6209F26AE4833003EDC63 /* OpenSourceViewController.swift */; };
+		BBD620A226AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD620A126AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift */; };
+		BBD620A426AE4894003EDC63 /* MyPageOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD620A326AE4894003EDC63 /* MyPageOnBoardingViewController.swift */; };
 		BBE9FC9026A22E630057FDAD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9FC8F26A22E630057FDAD /* Int.swift */; };
 		BBE9FC9226A285BB0057FDAD /* SallyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9FC9126A285BB0057FDAD /* SallyAlert.swift */; };
 		BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F6268B008600B9CA54 /* AppDelegate.swift */; };
@@ -263,6 +266,9 @@
 		BBD09ECF268E07B100AF4A56 /* FailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailViewController.swift; sourceTree = "<group>"; };
 		BBD09ED3268E0B3300AF4A56 /* RegisterNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNavigationViewController.swift; sourceTree = "<group>"; };
 		BBD09ED5268E14D300AF4A56 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		BBD6209F26AE4833003EDC63 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
+		BBD620A126AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTermsOfServiceViewController.swift; sourceTree = "<group>"; };
+		BBD620A326AE4894003EDC63 /* MyPageOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOnBoardingViewController.swift; sourceTree = "<group>"; };
 		BBE9FC8F26A22E630057FDAD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		BBE9FC9126A285BB0057FDAD /* SallyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyAlert.swift; sourceTree = "<group>"; };
 		BBEB82F3268B008600B9CA54 /* MondaySally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MondaySally.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +337,9 @@
 				BBA56EF7268F6CEB000FDFC0 /* ResignationViewController.swift */,
 				BBA56F00268F6D95000FDFC0 /* QRCodeViewController.swift */,
 				BB5D340A26AB87D30069BAD9 /* VersionCheckViewController.swift */,
+				BBD6209F26AE4833003EDC63 /* OpenSourceViewController.swift */,
+				BBD620A126AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift */,
+				BBD620A326AE4894003EDC63 /* MyPageOnBoardingViewController.swift */,
 				BBA56F042691C7EA000FDFC0 /* Home */,
 				BBA56F052691C7F0000FDFC0 /* GiftShop */,
 				BBA56F062691C7F6000FDFC0 /* Twinkle */,
@@ -858,6 +867,7 @@
 				BB5D340F26AC56480069BAD9 /* TwinkleEditViewModel.swift in Sources */,
 				BB4CD4A926A07E1300BD1E91 /* GiftListResponse.swift in Sources */,
 				BB5FE5A526938FC200F2A7A6 /* TwinklePostCommentCell.swift in Sources */,
+				BBD620A226AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift in Sources */,
 				BBD09ECA268DCB0400AF4A56 /* OnBoardingInfo.swift in Sources */,
 				BB5FE5BA269705C300F2A7A6 /* AppVersionResponse.swift in Sources */,
 				BB5FE5AB269636D100F2A7A6 /* TeamCodeIResponse.swift in Sources */,
@@ -877,9 +887,11 @@
 				BB4CD4AB26A081D700BD1E91 /* GiftListViewModel.swift in Sources */,
 				BB5FE5C226972B5400F2A7A6 /* MyProfileViewModel.swift in Sources */,
 				BB73507326A3568D004C955F /* CloverRankingResponse.swift in Sources */,
+				BBD620A026AE4833003EDC63 /* OpenSourceViewController.swift in Sources */,
 				BBA56F142691DFC0000FDFC0 /* WorkingMemberPreViewCell.swift in Sources */,
 				BB5D340B26AB87D30069BAD9 /* VersionCheckViewController.swift in Sources */,
 				BB5FE58D26924B2100F2A7A6 /* AvailableGiftCell.swift in Sources */,
+				BBD620A426AE4894003EDC63 /* MyPageOnBoardingViewController.swift in Sources */,
 				BBA56EFE268F6D41000FDFC0 /* TwinkleTabViewController.swift in Sources */,
 				BB73507B26A4AA7D004C955F /* TwinkleViewModel.swift in Sources */,
 				BBD09ECC268DCD7A00AF4A56 /* OnBoardingViewModel.swift in Sources */,
