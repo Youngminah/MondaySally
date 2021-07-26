@@ -32,6 +32,7 @@ class TwinkleWriteViewController: UIViewController {
     @IBOutlet weak var deleteSecondButton: UIButton!
     @IBOutlet weak var deleteThirdButton: UIButton!
     @IBOutlet weak var receiptDeleteButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private let writeViewModel = TwinkleWriteViewModel(dataService: TwinkleDataService())
     private let editViewModel = TwinkleEditViewModel(dataService: TwinkleDataService())
@@ -427,8 +428,13 @@ extension TwinkleWriteViewController {
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height
             self.scrollViewBottom.constant = -adjustmentHeight
+            let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom + adjustmentHeight)
+            if(bottomOffset.y > -1) {
+                scrollView.setContentOffset(bottomOffset, animated: true)
+            }
         } else {
             self.scrollViewBottom.constant = 0
+            self.scrollView.scrollViewToTop(animated: true)
         }
     }
 }

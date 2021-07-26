@@ -30,6 +30,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var secondRankingImageButton: UIButton!
     @IBOutlet weak var thirdRankingImageButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private let viewModel = HomeViewModel(dataService: HomeDataService())
     private var giftHistoryPreViewController: GiftHistoryPreViewController!
@@ -54,6 +55,18 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchHome()
+        self.scrollView.refreshControl = UIRefreshControl()
+        self.scrollView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+    }
+    
+    //MARK: 테이블뷰/컬렉션뷰 위로 스크롤시 리프레시
+    @objc private func didPullToRefresh() {
+        print("홈뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.attemptFetchHome()
+        }
     }
     
     //MARK: 컨테이너 뷰 연결
@@ -79,10 +92,12 @@ extension HomeTabViewController {
 
     //메인탭바 [홈]화면 API 호출 함수
     private func attemptFetchHome() {
-        self.viewModel.updateLoadingStatus = {
-            DispatchQueue.main.async { [weak self] in
-                guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+        if scrollView.refreshControl?.isRefreshing == false {
+            self.viewModel.updateLoadingStatus = {
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                }
             }
         }
         
@@ -119,6 +134,7 @@ extension HomeTabViewController {
                 strongSelf.updateAfterAPIUI()
                 strongSelf.collectionView.reloadData()
                 strongSelf.delegate?.showGiftPreview(with: strongSelf.viewModel.homeInfo?.giftHistory ?? [])
+                strongSelf.scrollView.refreshControl?.endRefreshing()
             }
         }
         self.viewModel.fetchHome()

@@ -8,18 +8,18 @@ import UIKit
 
 extension UIScrollView {
 
-//    // Bonus: Scroll to top
-//    func scrollToTop(animated: Bool) {
-//        let topOffset = CGPoint(x: 0, y: -contentInset.top)
-//        setContentOffset(topOffset, animated: animated)
-//    }
-//
-//    // Bonus: Scroll to bottom
-//    func scrollToBottom() {
-//        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
-//        if(bottomOffset.y > -1) {
-//            setContentOffset(bottomOffset, animated: true)
-//        }
-//    }
+    // Bonus: Scroll to top
+    func scrollViewToTop(animated: Bool) {
+        let topOffset = CGPoint(x: 0, y: -contentInset.top)
+        setContentOffset(topOffset, animated: animated)
+    }
+
+    // Bonus: Scroll to bottom
+    func scrollViewToBottom() {
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
+        if(bottomOffset.y > -1) {
+            setContentOffset(bottomOffset, animated: true)
+        }
+    }
 
 }

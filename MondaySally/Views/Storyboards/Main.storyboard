@@ -1341,6 +1341,7 @@
                         <outlet property="firstRankingLabel" destination="n0I-7r-Ghl" id="Rjw-DE-Stt"/>
                         <outlet property="firstRankingNameLabel" destination="aG8-Zy-iU5" id="ah6-TX-EPx"/>
                         <outlet property="mainLabel" destination="T0H-pr-BRU" id="g78-B6-whP"/>
+                        <outlet property="scrollView" destination="aT2-3V-IrL" id="Oqz-Gc-iEp"/>
                         <outlet property="secondRankingImageBorderView" destination="5zy-oq-OBN" id="ykQ-sj-Gaa"/>
                         <outlet property="secondRankingImageButton" destination="8m5-AP-gbo" id="tbH-sF-J4d"/>
                         <outlet property="secondRankingLabel" destination="3TT-EG-yfL" id="ys8-PN-K7b"/>
@@ -2325,13 +2326,13 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Copyright 2021 AgileBits Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-2M-jtM">
-                                                        <rect key="frame" x="0.0" y="31.333333333333314" width="329" height="14"/>
+                                                        <rect key="frame" x="0.0" y="31.333333333333343" width="329" height="14"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="51.333333333333314" width="329" height="14"/>
+                                                        <rect key="frame" x="0.0" y="51.333333333333343" width="329" height="14"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3265,7 +3266,7 @@ The following sets forth attribution notions for third party software that may b
                                             </connections>
                                         </containerView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A74-ke-fCE">
-                                            <rect key="frame" x="16" y="435" width="88.333333333333329" height="43.666666666666686"/>
+                                            <rect key="frame" x="16" y="428" width="88.333333333333329" height="43.666666666666686"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000.00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzW-gg-bPQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="88.333333333333329" height="25.666666666666668"/>
@@ -3303,7 +3304,7 @@ The following sets forth attribution notions for third party software that may b
                                             </constraints>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqN-7W-31j">
-                                            <rect key="frame" x="363" y="438" width="35" height="31.333333333333314"/>
+                                            <rect key="frame" x="363" y="431" width="35" height="31.333333333333314"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="FqN-7W-31j" secondAttribute="height" multiplier="19:17" id="Bzv-6r-tqZ"/>
                                                 <constraint firstAttribute="width" constant="35" id="qr2-bE-xD7"/>
@@ -3315,7 +3316,7 @@ The following sets forth attribution notions for third party software that may b
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biZ-JS-Nue">
-                                            <rect key="frame" x="335" y="442.66666666666669" width="18" height="22"/>
+                                            <rect key="frame" x="335" y="435.66666666666669" width="18" height="22"/>
                                             <state key="normal" image="group131"/>
                                             <connections>
                                                 <action selector="editOrDeleteButtonTap:" destination="V0K-Uh-kQV" eventType="touchUpInside" id="WyB-sT-UQM"/>
@@ -3392,7 +3393,7 @@ The following sets forth attribution notions for third party software that may b
                                         <constraint firstAttribute="trailing" secondItem="TpB-rh-V9t" secondAttribute="trailing" id="mH0-Ch-f0P"/>
                                         <constraint firstAttribute="trailing" secondItem="cYq-hs-CuN" secondAttribute="trailing" id="ovu-l7-Oh9"/>
                                         <constraint firstItem="A74-ke-fCE" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" constant="16" id="p0T-MW-Cb1"/>
-                                        <constraint firstItem="A74-ke-fCE" firstAttribute="top" secondItem="TpB-rh-V9t" secondAttribute="bottom" constant="21" id="q2i-WI-SbM"/>
+                                        <constraint firstItem="A74-ke-fCE" firstAttribute="top" secondItem="TpB-rh-V9t" secondAttribute="bottom" constant="14" id="q2i-WI-SbM"/>
                                         <constraint firstItem="TpB-rh-V9t" firstAttribute="top" secondItem="fJz-ui-8eg" secondAttribute="top" id="scM-fr-dvT"/>
                                         <constraint firstItem="TpB-rh-V9t" firstAttribute="leading" secondItem="fJz-ui-8eg" secondAttribute="leading" id="vux-WB-ujC"/>
                                     </constraints>
@@ -3827,6 +3828,7 @@ The following sets forth attribution notions for third party software that may b
                         <outlet property="imageThirdButton" destination="ec4-61-47M" id="B6q-2E-3lR"/>
                         <outlet property="receiptDeleteButton" destination="B0p-6I-BSj" id="daf-lu-EHa"/>
                         <outlet property="receiptImageButton" destination="JJ3-3P-EBg" id="Dna-LP-jnI"/>
+                        <outlet property="scrollView" destination="FJc-EU-hYH" id="Cdl-1z-ywN"/>
                         <outlet property="scrollViewBottom" destination="pJC-lu-BNZ" id="8rM-ff-LuB"/>
                         <outlet property="textView" destination="5Jf-yf-2Ll" id="2Bs-l0-o3y"/>
                     </connections>
@@ -3912,7 +3914,7 @@ The following sets forth attribution notions for third party software that may b
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="u5m-rk-Y52"/>
+        <segue reference="bsb-Hs-fk3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="buttonPhotoAdd" width="105" height="105"/>
