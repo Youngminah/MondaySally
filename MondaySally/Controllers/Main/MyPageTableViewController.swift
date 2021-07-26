@@ -79,7 +79,7 @@ class MyPageTableViewController: UITableViewController {
     }
 }
 
-// MARK: - Networking
+// MARK: 테이블 뷰 관한 내용
 extension MyPageTableViewController  {
     
     //테이블 뷰 헤더 섹션의 높이 설정
@@ -94,15 +94,30 @@ extension MyPageTableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 7{ //로그아웃 버튼
-            self.showSallyQuestionAlert(with: "로그아웃 하시겠습니까?") {[weak self] () in
-                guard let strongSelf = self else { return }
-                strongSelf.removeAllUserInfos()
-                guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
-                    return
-                }
-                strongSelf.changeRootViewController(vc)
+        if indexPath.row == 2{ //로그아웃 버튼
+            self.showOnBoarding()
+        }
+        else if indexPath.row == 7{ //로그아웃 버튼
+            self.logout()
+        }
+    }
+    
+    private func showOnBoarding(){
+        guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "OnBoardingViewController") as? OnBoardingViewController else{
+            return
+        }
+        vc.isFromMyPage = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func logout(){
+        self.showSallyQuestionAlert(with: "로그아웃 하시겠습니까?") {[weak self] () in
+            guard let strongSelf = self else { return }
+            strongSelf.removeAllUserInfos()
+            guard let vc = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{
+                return
             }
+            strongSelf.changeRootViewController(vc)
         }
     }
 }

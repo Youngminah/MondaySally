@@ -14,19 +14,39 @@ class OnBoardingViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
     private let infoViewModel = OnBoardingViewModel()
+    var isFromMyPage: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.setValue("yes", forKey: "userFirstFlag")
         self.scrollView.delegate = self
         self.addContentScrollView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.startButton.layer.cornerRadius = 4
+        self.checkFromMyPage()
     }
     
     @IBAction func startButtonTab(_ sender: UIButton) {
         guard let registerVC = self.storyboard?.instantiateViewController(identifier: "RegisterNavigationView") as? RegisterNavigationViewController else{ return }
         registerVC.modalPresentationStyle = .overFullScreen
         self.present(registerVC, animated: true, completion: nil)
+    }
+    
+    private func checkFromMyPage(){
+        self.title = "온보딩"
+        self.isFromMyPage ? (self.startButton.isHidden = true) : (self.startButton.isHidden = false)
+    }
+    
+    private func ratioOfHeight() -> Int{
+        let navHidden = navigationController?.isNavigationBarHidden ?? true
+        var valueOfRatioHeight = 5
+        if navHidden {
+            valueOfRatioHeight = 4
+        }
+        return valueOfRatioHeight
     }
     
     //스크롤 뷰안에 이미지 슬라이딩 코드로 작성한 것
@@ -42,8 +62,9 @@ class OnBoardingViewController: UIViewController {
             let imageView = UIImageView()
             //상위뷰에 대한 상대적 위치라서 x는 0 이됨.
             let size = self.view.bounds.width/3
+            let value  = ratioOfHeight()
             imageView.frame = CGRect(x: view.bounds.width/2 - size,
-                                     y: self.view.bounds.height/4,
+                                     y: self.view.bounds.height/CGFloat(value),
                                      width: size * 2 ,
                                      height: size * 460 / 265 )
             imageView.image = infoViewModel.onBoardingInfo(at: i).image
