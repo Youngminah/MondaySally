@@ -72,11 +72,13 @@ class GiftShopDetailViewController: UIViewController {
 extension GiftShopDetailViewController: TTGTextTagCollectionViewDelegate{
     func textTagCollectionView(_ textTagCollectionView: TTGTextTagCollectionView!, didTap tag: TTGTextTag!, at index: UInt) {
         if self.selectOpionIndex == index {
-            return
+            textTagCollectionView.getTagAt(UInt(self.selectOpionIndex)).selected = true
+            textTagCollectionView.reload()
+        } else {
+            textTagCollectionView.getTagAt(UInt(self.selectOpionIndex)).selected = false
+            textTagCollectionView.reload()
+            self.selectOpionIndex = Int(index)
         }
-        textTagCollectionView.getTagAt(UInt(self.selectOpionIndex)).selected = false
-        textTagCollectionView.reload()
-        self.selectOpionIndex = Int(index)
     }
     
     private func setTag(){
