@@ -116,9 +116,9 @@ extension UIViewController {
     }
     
     // MARK: 커스텀 샐리 물음 알림창 표시
-    func showSallyQuestionAlert(with title: String , message: String ,complition: (() -> Void)? = nil) {
+    func showSallyQuestionAlert(with title: String , message: String , messageLine: Int = 1 , complition: (() -> Void)? = nil) {
         print("메세지 있는거 누름")
-        SallyNotificationAlert.shared.showQuestionAlert(with: title, message: message)
+        SallyNotificationAlert.shared.showQuestionAlert(with: title, message: message, messageLine: messageLine)
         SallyNotificationAlert.shared.selectedYes = {
             print("메세지 있는거 누름")
             if complition != nil {

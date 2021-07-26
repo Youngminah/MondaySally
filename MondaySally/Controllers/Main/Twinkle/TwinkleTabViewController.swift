@@ -21,11 +21,11 @@ class TwinkleTabViewController: UIViewController {
         self.tableView.refreshControl?.addTarget(self,
                                                       action: #selector(didPullToRefresh),
                                                       for: .valueChanged)
+        self.refreshOfTwinkleTotal()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.refreshOfTwinkleTotal()
     }
     
     @objc private func didPullToRefresh() {
@@ -92,6 +92,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
         vc.tableViewIndex = indexPath.row
         vc.index = data.index
         vc.likeDelegate = self
+        vc.refreshDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -105,6 +106,12 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
             self.tableView.tableFooterView = createSpinnerFooter()
             self.attemptFetchTwinkleTotal(with: true)
         }
+    }
+}
+
+extension TwinkleTabViewController: RefreshDelegate{
+    func doRefresh() {
+        self.refreshOfTwinkleTotal()
     }
 }
 

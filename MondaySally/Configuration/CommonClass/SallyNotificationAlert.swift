@@ -130,7 +130,7 @@ open class SallyNotificationAlert {
     }
     
     //타이틀, 메세지가 있는 Yes , No 알람창
-    func showQuestionAlert(with title: String, message: String) {
+    func showQuestionAlert(with title: String, message: String, messageLine: Int = 1) {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.backgroundView.frame = window.frame
         self.backgroundView.center = window.center
@@ -142,14 +142,22 @@ open class SallyNotificationAlert {
         UIApplication.shared.windows.first?.addSubview(self.imageView)
         UIApplication.shared.windows.first?.addSubview(self.alertView)
         
-        self.imageView.frame = CGRect(x: (window.frame.size.width - 100)/2, y: window.frame.midY - 125, width: 100, height: 50)
-        self.alertView.frame = CGRect(x: 30, y: 0, width: window.frame.size.width - 120, height: 150)
-        self.alertView.center = backgroundView.center
+    
+        if messageLine == 1{
+            self.imageView.frame = CGRect(x: (window.frame.size.width - 100)/2, y: window.frame.midY - 125, width: 100, height: 50)
+            self.alertView.frame = CGRect(x: 30, y: 0, width: window.frame.size.width - 120, height: 150)
+            self.alertView.center = backgroundView.center
+            self.titleLabel.frame = CGRect(x:0, y:20, width: alertView.frame.size.width, height: 40)
+            self.messageLabel.frame = CGRect(x:0, y:45, width: alertView.frame.size.width, height: 40)
+        }else{
+            self.imageView.frame = CGRect(x: (window.frame.size.width - 100)/2, y: window.frame.midY - 140, width: 100, height: 50)
+            self.alertView.frame = CGRect(x: 30, y: 0, width: window.frame.size.width - 120, height: 180)
+            self.alertView.center = backgroundView.center
+            self.titleLabel.frame = CGRect(x:0, y:25, width: alertView.frame.size.width, height: 40)
+            self.messageLabel.frame = CGRect(x:0, y:45, width: alertView.frame.size.width, height: 80)
+        }
 
-        self.titleLabel.frame = CGRect(x:0, y:20, width: alertView.frame.size.width, height: 40)
         self.titleLabel.text = title
-        
-        self.messageLabel.frame = CGRect(x:0, y:45, width: alertView.frame.size.width, height: 40)
         self.messageLabel.text = message
         
         yesButton.frame = CGRect(x:alertView.frame.size.width/2 , y:alertView.frame.size.height - 50, width: alertView.frame.size.width/2, height: 50)

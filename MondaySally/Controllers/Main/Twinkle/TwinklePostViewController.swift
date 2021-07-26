@@ -42,6 +42,7 @@ class TwinklePostViewController: UIViewController {
     private var twinklePostImageViewController : TwinklePostImageViewController!
     var imageDelegate: TwinkleImagePreviewDelegate?
     var likeDelegate: LikeDelegate?
+    var refreshDelegate: RefreshDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,6 +266,7 @@ extension TwinklePostViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 삭제 요청이 성공했습니다 !! ")
+                strongSelf.refreshDelegate?.doRefresh()
                 strongSelf.showSallyNotationAlert(with: "트윙클이 삭제되었습니다."){
                     strongSelf.navigationController?.popViewController(animated: true)
                 }
@@ -282,6 +284,7 @@ extension TwinklePostViewController {
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
+                strongSelf.refreshDelegate?.doRefresh()
                 strongSelf.likeButton.isSelected = !strongSelf.likeButton.isSelected
                 if strongSelf.likeButton.isSelected{
                     strongSelf.likeCount = strongSelf.likeCount + 1
@@ -339,6 +342,7 @@ extension TwinklePostViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("댓글 작성이 성공했습니다 !! ")
+                strongSelf.refreshDelegate?.doRefresh()
                 strongSelf.attemptFetchDetail(with : index) {
                     strongSelf.tableView.scrollToBottom()
                 }
@@ -382,6 +386,7 @@ extension TwinklePostViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("댓글 삭제에 성공했습니다 !! ")
+                strongSelf.refreshDelegate?.doRefresh()
                 strongSelf.attemptFetchDetail(with : strongSelf.index)
             }
         }

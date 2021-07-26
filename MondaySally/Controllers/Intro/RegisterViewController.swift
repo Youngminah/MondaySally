@@ -169,6 +169,11 @@ extension RegisterViewController : UITextFieldDelegate{
         return true
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTextFieldUI()
     }

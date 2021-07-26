@@ -85,7 +85,7 @@ class MyPageTableViewController: UITableViewController {
     }
 }
 
-// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+// MARK: 프로필 수정 완료시 네트워크 다시 요청
 extension MyPageTableViewController: RefreshDelegate{
     func doRefresh() {
         self.attemptFetchMyProfile()
