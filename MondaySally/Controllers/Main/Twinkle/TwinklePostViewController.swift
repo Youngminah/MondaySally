@@ -43,6 +43,7 @@ class TwinklePostViewController: UIViewController {
     var imageDelegate: TwinkleImagePreviewDelegate?
     var likeDelegate: LikeDelegate?
     var refreshDelegate: RefreshDelegate?
+    private var originHeartStatus = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,15 @@ class TwinklePostViewController: UIViewController {
         self.updateUI()
         self.commentTextField.delegate = self
         self.attemptFetchDetail(with : index)
+        self.originHeartStatus = self.likeButton.isSelected
+    }
+     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        if originHeartStatus != self.likeButton.isSelected{
+            self.attemptFetchTwinkleLike(with: index)
+
+        }
     }
     
     //MARK: 컨테이너 뷰 연결
@@ -80,7 +90,14 @@ class TwinklePostViewController: UIViewController {
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        self.attemptFetchTwinkleLike(with: index)
+        self.likeButton.isSelected = !self.likeButton.isSelected
+        if self.likeButton.isSelected{
+            self.likeCount = self.likeCount + 1
+            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
+        }else{
+            self.likeCount = self.likeCount - 1
+            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
+        }
     }
 }
 
@@ -285,14 +302,6 @@ extension TwinklePostViewController {
             DispatchQueue.main.async {
                 print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
                 strongSelf.refreshDelegate?.doRefresh()
-                strongSelf.likeButton.isSelected = !strongSelf.likeButton.isSelected
-                if strongSelf.likeButton.isSelected{
-                    strongSelf.likeCount = strongSelf.likeCount + 1
-                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
-                }else{
-                    strongSelf.likeCount = strongSelf.likeCount - 1
-                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
-                }
             }
         }
         self.likeViewModel.fetchTwinkleLike(with: index)

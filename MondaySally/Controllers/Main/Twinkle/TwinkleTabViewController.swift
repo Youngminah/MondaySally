@@ -14,6 +14,7 @@ class TwinkleTabViewController: UIViewController {
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinkleStatusViewController: TwinkleStatusViewController!
+    private var refreshFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +112,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
 
 extension TwinkleTabViewController: RefreshDelegate{
     func doRefresh() {
+        self.refreshFlag = true
         self.refreshOfTwinkleTotal()
     }
 }
@@ -120,14 +122,16 @@ extension TwinkleTabViewController: RefreshDelegate{
 // MARK: 트윙클 리스트 조회 API
 extension TwinkleTabViewController {
     private func attemptFetchTwinkleTotal(with pagination: Bool) {
-        if tableView.refreshControl?.isRefreshing == false {
+        if tableView.refreshControl?.isRefreshing == false && refreshFlag == false{
             self.viewModel.updateLoadingStatus = {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
-                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
                 }
             }
         }
+        
+        
         self.viewModel.showAlertClosure = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
