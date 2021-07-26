@@ -57,6 +57,7 @@ class TwinkleWriteViewController: UIViewController {
     var editContent = String()
     var imageEditFlag : [Int] = [0,0,0]
     var receiptEditFlag = 0
+    var keyboardValue = CGFloat()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -425,14 +426,18 @@ extension TwinkleWriteViewController {
         guard let userInfo = noti.userInfo else { return }
         // 키보드 높이에 따른 인풋뷰 위치 변경
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height
             self.scrollViewBottom.constant = -adjustmentHeight
+            let bottomOffset = CGPoint(x: 0, y: 50 + adjustmentHeight)
+            if (bottomOffset.y > -1) {
+                self.scrollView.setContentOffset(bottomOffset, animated: true)
+            }
         } else {
             self.scrollViewBottom.constant = 0
             self.scrollView.scrollViewToTop(animated: true)
         }
+
     }
 }
 
