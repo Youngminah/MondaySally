@@ -197,3 +197,4 @@ extension RegisterViewController : UITextFieldDelegate{
         self.codeTextField.layer.borderColor = #colorLiteral(red: 0.6862745098, green: 0.6862745098, blue: 0.6862745098, alpha: 1)
     }
 }
+

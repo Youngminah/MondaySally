@@ -26,10 +26,16 @@ class MyPageTableViewController: UITableViewController {
         self.attemptFetchMyProfile()
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateProfileUI()
+    }
+    
+    @IBAction func profileEditButtonTap(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(identifier: "ProfileEditView") as? ProfileEditViewController else{
+            return
+        }
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func updateUI(){
@@ -76,6 +82,13 @@ class MyPageTableViewController: UITableViewController {
                 strongself.profileImage.dismissViewndicator()
             }
         }
+    }
+}
+
+// MARK: 트윙클 작성 완료시 네트워크 다시 요청
+extension MyPageTableViewController: RefreshDelegate{
+    func doRefresh() {
+        self.attemptFetchMyProfile()
     }
 }
 
@@ -172,3 +185,5 @@ extension MyPageTableViewController {
         UserDefaults.standard.setValue(data.phoneNumber, forKey: "phoneNumber")
     }
 }
+
+

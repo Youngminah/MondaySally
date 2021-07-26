@@ -58,7 +58,6 @@ class GiftListViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.failCode = nil
             self?.giftList = response?.result
             self?.isLoading = false
             
@@ -87,7 +86,6 @@ class GiftListViewModel {
             }
             self?.error = nil
             self?.failMessage = nil
-            self?.failCode = nil
             self?.giftList = response?.result 
             self?.isLoading = false
         })

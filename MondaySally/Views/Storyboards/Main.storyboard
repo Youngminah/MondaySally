@@ -1961,7 +1961,7 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="thin"/>
                                     </state>
                                     <connections>
-                                        <segue destination="28S-d2-ND1" kind="show" id="pSI-Mb-RyP"/>
+                                        <action selector="profileEditButtonTap:" destination="ZVz-t4-ELd" eventType="touchUpInside" id="1i2-c7-Lgx"/>
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-El-56F">
@@ -2325,13 +2325,13 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Copyright 2021 AgileBits Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-2M-jtM">
-                                                        <rect key="frame" x="0.0" y="31.333333333333343" width="329" height="14"/>
+                                                        <rect key="frame" x="0.0" y="31.333333333333314" width="329" height="14"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="51.333333333333343" width="329" height="14"/>
+                                                        <rect key="frame" x="0.0" y="51.333333333333314" width="329" height="14"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2428,13 +2428,13 @@ The following sets forth attribution notions for third party software that may b
         <!--프로필 수정-->
         <scene sceneID="LIL-Zh-Gpn">
             <objects>
-                <viewController id="28S-d2-ND1" customClass="ProfileEditViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileEditView" id="28S-d2-ND1" customClass="ProfileEditViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xIW-PP-UHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="l0T-8Q-8H6">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZS-b1-q50">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
@@ -2458,7 +2458,7 @@ The following sets forth attribution notions for third party software that may b
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cr3-Km-rGK">
-                                                <rect key="frame" x="16" y="197.66666666666669" width="343" height="427.00000000000006"/>
+                                                <rect key="frame" x="16" y="197.66666666666663" width="343" height="427"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Qw8-yq-TUL">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="103"/>
@@ -2470,7 +2470,7 @@ The following sets forth attribution notions for third party software that may b
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2I-JY-rq3">
-                                                                <rect key="frame" x="0.0" y="48" width="343" height="55"/>
+                                                                <rect key="frame" x="0.0" y="48.000000000000028" width="343" height="55"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="55" id="WPz-fh-LTi"/>
                                                                 </constraints>
@@ -2483,7 +2483,7 @@ The following sets forth attribution notions for third party software that may b
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cMc-gf-YIo">
-                                                        <rect key="frame" x="0.0" y="108" width="343" height="103"/>
+                                                        <rect key="frame" x="0.0" y="108.00000000000003" width="343" height="103"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ib-bJ-3F3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>
@@ -2511,7 +2511,7 @@ The following sets forth attribution notions for third party software that may b
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(은행) 계좌번호를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUM-A5-Yj7">
-                                                                <rect key="frame" x="0.0" y="47.999999999999943" width="343" height="55"/>
+                                                                <rect key="frame" x="0.0" y="48" width="343" height="55"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="55" id="ow1-dX-qxY"/>
                                                                 </constraints>
@@ -2521,7 +2521,7 @@ The following sets forth attribution notions for third party software that may b
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dNX-6X-aLb">
-                                                        <rect key="frame" x="0.0" y="323.99999999999994" width="343" height="103"/>
+                                                        <rect key="frame" x="0.0" y="324" width="343" height="103"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc6-sT-Xq1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="46"/>

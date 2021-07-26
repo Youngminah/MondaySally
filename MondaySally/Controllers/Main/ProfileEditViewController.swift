@@ -23,6 +23,7 @@ class ProfileEditViewController: UIViewController{
     
     private let storage = Storage.storage().reference()
     private var imageURL = String()
+    var delegate: RefreshDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,7 @@ class ProfileEditViewController: UIViewController{
         self.hideKeyboardWhenTappedAround()
     }
     
-    @IBAction func photoSelectButtonTabp(_ sender: Any) {
-        self.showActionsheet()
-    }
-    
-    @IBAction func completeButtonTap(_ sender: UIButton) {
+    @objc func editButtonTap() {
         self.showSallyQuestionAlert(with: "프로필을 수정하시겠습니까?") {[weak self] () in
             guard let strongSelf = self else { return }
             guard let nickName = strongSelf.nickNameTextField.text else { return }
@@ -99,7 +96,10 @@ class ProfileEditViewController: UIViewController{
                 }
             })
         }
-       
+    }
+    
+    @IBAction func photoSelectButtonTabp(_ sender: Any) {
+        self.showActionsheet()
     }
 }
 
@@ -107,6 +107,9 @@ class ProfileEditViewController: UIViewController{
 extension ProfileEditViewController{
     
     private func updateUI(){
+        self.title = "프로필 수정"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(editButtonTap))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.label
         self.photoSelectButton.layer.borderWidth = 1
         self.photoSelectButton.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.photoSelectButton.clipsToBounds = true
@@ -234,6 +237,7 @@ extension ProfileEditViewController {
             DispatchQueue.main.async {
                 print("프로필 수정이 성공했습니다 !! ->")
                 strongSelf.editUserInfo(with :input)
+                strongSelf.delegate?.doRefresh()
                 strongSelf.editSuccessSallyAlertPresent()
             }
         }
