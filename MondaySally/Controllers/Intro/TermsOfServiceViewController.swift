@@ -29,6 +29,7 @@ class TermsOfServiceViewController: UIViewController {
     
     private func updateUI(){
         self.completedButton.isEnabled = false
+        self.completedButton.layer.cornerRadius = 4
         self.serviceTextView.layer.borderWidth = 1
         self.serviceTextView.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.serviceTextView.layer.cornerRadius = 4

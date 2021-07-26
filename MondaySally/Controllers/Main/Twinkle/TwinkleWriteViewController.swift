@@ -437,7 +437,6 @@ extension TwinkleWriteViewController {
             self.scrollViewBottom.constant = 0
             self.scrollView.scrollViewToTop(animated: true)
         }
-
     }
 }
 

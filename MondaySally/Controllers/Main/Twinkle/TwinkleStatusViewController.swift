@@ -21,7 +21,7 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let number = self.viewModel.numOfTwinkleTotal
         if number == 0 {
-            self.collectionView.setEmptyView(message: "쓰러갈 내 트윙클 목록이 없어요.")
+            self.collectionView.setEmptyView(message: "아직 등록된 내 트윙클 목록이 없어요.")
         } else {
             self.collectionView.restore()
         }
