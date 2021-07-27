@@ -1319,7 +1319,7 @@
                             <constraint firstItem="VVP-Nr-4cg" firstAttribute="trailing" secondItem="aT2-3V-IrL" secondAttribute="trailing" id="x3X-U7-1pc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="홈" image="icTabHomeOnOrange" id="pfq-LC-ibS"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="icTabHomeOffGray" selectedImage="icTabHomeOnOrange" id="pfq-LC-ibS"/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="xhv-DF-gj9">
                         <barButtonItem key="leftBarButtonItem" id="O0a-U4-4mx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="yDd-5J-24s">
@@ -3938,6 +3938,7 @@ The following sets forth attribution notions for third party software that may b
         <image name="icPhotoMid" width="23" height="18"/>
         <image name="icTabGiftshopOffGray" width="27" height="27"/>
         <image name="icTabGiftshopOnOrange" width="27" height="27"/>
+        <image name="icTabHomeOffGray" width="26" height="26"/>
         <image name="icTabHomeOnOrange" width="26" height="26"/>
         <image name="icTabTwinkleOffGray" width="29" height="28"/>
         <image name="icTabTwinkleOnOrange" width="29" height="28"/>
