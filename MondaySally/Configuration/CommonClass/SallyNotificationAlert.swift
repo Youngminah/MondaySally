@@ -88,36 +88,23 @@ open class SallyNotificationAlert {
         yesButton.frame = CGRect(x:0, y:alertView.frame.size.height - 50, width: alertView.frame.size.width, height: 50)
         yesButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         
-        
-        let multipleValue = CGFloat(0.7)
-        alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-        imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
         alertView.alpha = 0
         imageView.alpha = 0
-        
-        
-        
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.alertView.alpha = 1
             self.imageView.alpha = 1
         })
     }
     
     @objc open func dismissAlert(){
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            let multipleValue = CGFloat(0.7)
-            self.alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-            self.imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
             self.alertView.alpha = 0
             self.imageView.alpha = 0
         }, completion: { [weak self] _ in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.didDismiss?()
             self.imageView.removeFromSuperview()
             self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -142,7 +129,6 @@ open class SallyNotificationAlert {
         UIApplication.shared.windows.first?.addSubview(self.imageView)
         UIApplication.shared.windows.first?.addSubview(self.alertView)
         
-    
         if messageLine == 1{
             self.imageView.frame = CGRect(x: (window.frame.size.width - 100)/2, y: window.frame.midY - 125, width: 100, height: 50)
             self.alertView.frame = CGRect(x: 30, y: 0, width: window.frame.size.width - 120, height: 150)
@@ -165,18 +151,12 @@ open class SallyNotificationAlert {
         
         noButton.frame = CGRect(x: 0 , y:alertView.frame.size.height - 50, width: alertView.frame.size.width/2, height: 50)
         noButton.addTarget(self, action: #selector(noAlert), for: .touchUpInside)
-        
-        let multipleValue = CGFloat(0.7)
-        alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-        imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
+
         alertView.alpha = 0
         imageView.alpha = 0
-        
-        
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.alertView.alpha = 1
             self.imageView.alpha = 1
         })
@@ -208,17 +188,11 @@ open class SallyNotificationAlert {
         noButton.frame = CGRect(x: 0 , y:alertView.frame.size.height - 50, width: alertView.frame.size.width/2, height: 50)
         noButton.addTarget(self, action: #selector(noAlert), for: .touchUpInside)
         
-        let multipleValue = CGFloat(0.7)
-        alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-        imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
         alertView.alpha = 0
         imageView.alpha = 0
         
-        
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.alertView.alpha = 1
             self.imageView.alpha = 1
         })
@@ -227,17 +201,12 @@ open class SallyNotificationAlert {
     
     //확인 눌렀을 때
     @objc open func yesAlert(){
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            let multipleValue = CGFloat(0.7)
-            self.alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-            self.imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
             self.alertView.alpha = 0
             self.imageView.alpha = 0
         }, completion: { [weak self] _ in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.selectedYes?()
             self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
             self.noButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -252,17 +221,12 @@ open class SallyNotificationAlert {
     
     //취소 눌렀을 때
     @objc open func noAlert(){
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
-            let multipleValue = CGFloat(0.7)
-            self.alertView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
-            self.imageView.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: multipleValue, y: 1.0)
             self.alertView.alpha = 0
             self.imageView.alpha = 0
         }, completion: { [weak self] _ in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.alertView.transform = CGAffineTransform.identity
-            self.imageView.transform = CGAffineTransform.identity
             self.imageView.removeFromSuperview()
             self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
             self.noButton.removeTarget(nil, action: nil, for: .allEvents)
@@ -272,6 +236,7 @@ open class SallyNotificationAlert {
             self.alertView.removeFromSuperview()
             self.backgroundView.removeFromSuperview()
         })
+
     }
     
     

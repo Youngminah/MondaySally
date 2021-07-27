@@ -126,7 +126,6 @@
 		BBD620A226AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD620A126AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift */; };
 		BBD620A426AE4894003EDC63 /* MyPageOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD620A326AE4894003EDC63 /* MyPageOnBoardingViewController.swift */; };
 		BBE9FC9026A22E630057FDAD /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9FC8F26A22E630057FDAD /* Int.swift */; };
-		BBE9FC9226A285BB0057FDAD /* SallyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9FC9126A285BB0057FDAD /* SallyAlert.swift */; };
 		BBEB82F7268B008600B9CA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F6268B008600B9CA54 /* AppDelegate.swift */; };
 		BBEB82F9268B008600B9CA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */; };
 		BBEB82FB268B008600B9CA54 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB82FA268B008600B9CA54 /* IntroViewController.swift */; };
@@ -270,7 +269,6 @@
 		BBD620A126AE4870003EDC63 /* MyPageTermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		BBD620A326AE4894003EDC63 /* MyPageOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageOnBoardingViewController.swift; sourceTree = "<group>"; };
 		BBE9FC8F26A22E630057FDAD /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
-		BBE9FC9126A285BB0057FDAD /* SallyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyAlert.swift; sourceTree = "<group>"; };
 		BBEB82F3268B008600B9CA54 /* MondaySally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MondaySally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEB82F6268B008600B9CA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -626,7 +624,6 @@
 				BBEB8316268B049D00B9CA54 /* Device.swift */,
 				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
 				BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */,
-				BBE9FC9126A285BB0057FDAD /* SallyAlert.swift */,
 				BB5A31F726A6020A00C814E4 /* ImageLoader.swift */,
 			);
 			path = CommonClass;
@@ -804,7 +801,6 @@
 				BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */,
 				BB5A320626A7599D00C814E4 /* TwinkleDetailViewModel.swift in Sources */,
 				BB73507D26A4AA93004C955F /* TwinkleResponse.swift in Sources */,
-				BBE9FC9226A285BB0057FDAD /* SallyAlert.swift in Sources */,
 				BB5D340926A96A170069BAD9 /* MyPageTableViewController.swift in Sources */,
 				BB5FE5A92695EBF300F2A7A6 /* UITabBar.swift in Sources */,
 				BB5A320226A73E0500C814E4 /* UITableView.swift in Sources */,
