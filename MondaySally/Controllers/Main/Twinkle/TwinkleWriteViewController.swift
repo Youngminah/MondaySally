@@ -111,6 +111,7 @@ class TwinkleWriteViewController: UIViewController {
         self.deleteSecondButton.isHidden = true
         self.deleteThirdButton.isHidden = true
         self.receiptDeleteButton.isHidden = true
+        self.countLabel.text = "(\(self.editContent.count)/1000)"
         //키보드보일때, 숨길때 일어나는 뷰위치 조정.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(adjustInputView),
