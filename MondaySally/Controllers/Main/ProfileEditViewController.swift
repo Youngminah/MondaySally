@@ -39,6 +39,7 @@ class ProfileEditViewController: UIViewController{
     }
     
     @objc func editButtonTap() {
+        self.view.endEditing(true)
         self.showSallyQuestionAlert(with: "프로필을 수정하시겠습니까?") {[weak self] () in
             guard let strongSelf = self else { return }
             guard let nickName = strongSelf.nickNameTextField.text else { return }
