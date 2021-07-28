@@ -30,8 +30,8 @@ class GiftListViewModel {
     }
     
     //MARK: 기프트의 총 갯수
-    var numOfGiftList: Int? {
-        return giftList?.gifts?.count
+    var numOfGiftList: Int {
+        return giftList?.gifts?.count ?? 0
     }
     
     //MARK: 기프트 인덱스로 접근 함수

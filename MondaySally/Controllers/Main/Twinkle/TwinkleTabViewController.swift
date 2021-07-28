@@ -126,7 +126,7 @@ extension TwinkleTabViewController {
             self.viewModel.updateLoadingStatus = {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
-                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.tableView.showTableViewIndicator() : strongSelf.tableView.dismissTableViewIndicator()
                 }
             }
         }

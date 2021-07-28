@@ -151,12 +151,35 @@ extension HomeTabViewController {
         self.totalCloverLabel.text = "\(data.accumulatedClover)".insertComma
         self.currentCloverLabel.text = "\(data.currentClover)".insertComma
         self.usedCloverLabel.text = "\(data.usedClover)".insertComma
-        self.firstRankingNameLabel.text = data.twinkleRank?[0].nickname
-        self.secondRankingNameLabel.text = data.twinkleRank?[1].nickname
-        self.thirdRankingNameLabel.text = data.twinkleRank?[2].nickname
-        self.setFirstRankingImage(with :data)
-        self.setSecondRankingImage(with :data)
-        self.setThirdRankingImage(with :data)
+        if self.viewModel.numOfTwinkleRank == 1 {
+            self.setFirstRankingImage(with :data)
+            self.firstRankingNameLabel.text = data.twinkleRank?[0].nickname
+            self.secondRankingLabel.isHidden = true
+            self.thirdRankingLabel.isHidden = true
+            self.secondRankingNameLabel.isHidden = true
+            self.thirdRankingNameLabel.isHidden = true
+            self.secondRankingImageButton.isHidden = true
+            self.thirdRankingImageButton.isHidden = true
+            self.secondRankingImageBorderView.isHidden = true
+            self.thridRankingImageBorderView.isHidden = true
+        }
+        else if self.viewModel.numOfTwinkleRank == 2 {
+            self.setFirstRankingImage(with :data)
+            self.setSecondRankingImage(with :data)
+            self.firstRankingNameLabel.text = data.twinkleRank?[0].nickname
+            self.secondRankingNameLabel.text = data.twinkleRank?[1].nickname
+            self.thirdRankingLabel.isHidden = true
+            self.thirdRankingNameLabel.isHidden = true
+            self.thirdRankingImageButton.isHidden = true
+            self.thridRankingImageBorderView.isHidden = true
+        } else {
+            self.setFirstRankingImage(with :data)
+            self.setSecondRankingImage(with :data)
+            self.setThirdRankingImage(with :data)
+            self.firstRankingNameLabel.text = data.twinkleRank?[0].nickname
+            self.secondRankingNameLabel.text = data.twinkleRank?[1].nickname
+            self.thirdRankingNameLabel.text = data.twinkleRank?[2].nickname
+        }
     }
 }
 

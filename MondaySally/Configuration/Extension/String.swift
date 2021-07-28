@@ -109,13 +109,13 @@ extension String {
     }
     
     func isValidNumber() -> Bool {
-        let stringRegEx = "^[0-9]{0,}$"
+        let stringRegEx = "^[0-9]{1,}$"
         let pred = NSPredicate(format:"SELF MATCHES %@", stringRegEx)
         return pred.evaluate(with: self)
     }
     
     func isValidNickname() -> Bool {
-        let nicknameRegEx = "^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z]{0,}$"
+        let nicknameRegEx = "^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z]{1,}$"
         let pred = NSPredicate(format:"SELF MATCHES %@", nicknameRegEx)
         return pred.evaluate(with: self)
     }

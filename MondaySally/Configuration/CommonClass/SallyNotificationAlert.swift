@@ -90,9 +90,9 @@ open class SallyNotificationAlert {
         
         alertView.alpha = 0
         imageView.alpha = 0
-
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             guard let self = self else { return print("self 뜯기 문제!") }
+            print("????")
             self.alertView.alpha = 1
             self.imageView.alpha = 1
         })
@@ -105,7 +105,6 @@ open class SallyNotificationAlert {
             self.imageView.alpha = 0
         }, completion: { [weak self] _ in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.didDismiss?()
             self.imageView.removeFromSuperview()
             self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
             for view in self.alertView.subviews{
@@ -113,6 +112,7 @@ open class SallyNotificationAlert {
             }
             self.alertView.removeFromSuperview()
             self.backgroundView.removeFromSuperview()
+            self.didDismiss?()
         })
     }
     
@@ -207,7 +207,6 @@ open class SallyNotificationAlert {
             self.imageView.alpha = 0
         }, completion: { [weak self] _ in
             guard let self = self else { return print("self 뜯기 문제!") }
-            self.selectedYes?()
             self.yesButton.removeTarget(nil, action: nil, for: .allEvents)
             self.noButton.removeTarget(nil, action: nil, for: .allEvents)
             self.imageView.removeFromSuperview()
@@ -216,6 +215,7 @@ open class SallyNotificationAlert {
             }
             self.alertView.removeFromSuperview()
             self.backgroundView.removeFromSuperview()
+            self.selectedYes?()
         })
     }
     
@@ -236,8 +236,5 @@ open class SallyNotificationAlert {
             self.alertView.removeFromSuperview()
             self.backgroundView.removeFromSuperview()
         })
-
     }
-    
-    
 }

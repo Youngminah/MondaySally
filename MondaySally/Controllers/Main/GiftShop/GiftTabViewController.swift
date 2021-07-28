@@ -36,7 +36,13 @@ class GiftTabViewController: UIViewController {
 extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numOfGiftList ?? 0
+        let number = self.viewModel.numOfGiftList
+        if number == 0 {
+            self.collectionView.setEmptyView(message: "아직 사용하신 히스토리가 없어요")
+        } else {
+            self.collectionView.restore()
+        }
+        return number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,7 +84,7 @@ extension GiftTabViewController: UICollectionViewDelegate, UICollectionViewDataS
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GiftHistoryHeader", for: indexPath) as? GiftHistoryHeader else {
                 return UICollectionReusableView()
             }
-            header.totalGiftCountLabel.text = "총 \(self.viewModel.numOfGiftList ?? 0)건"
+            header.totalGiftCountLabel.text = "총 \(self.viewModel.numOfGiftList)건"
             return header
         default:
             return UICollectionReusableView()

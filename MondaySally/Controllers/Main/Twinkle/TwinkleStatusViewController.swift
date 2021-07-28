@@ -96,7 +96,7 @@ extension TwinkleStatusViewController {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.collectionView.showViewIndicator() : strongSelf.collectionView.dismissViewndicator()
+                let _ = strongSelf.viewModel.isLoading ? strongSelf.collectionView.showCollectionViewIndicator() : strongSelf.collectionView.dismissCollectionViewIndicator()
             }
         }
         self.viewModel.showAlertClosure = { [weak self] () in

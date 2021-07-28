@@ -46,20 +46,37 @@ class ProfileEditViewController: UIViewController{
             guard let phoneNumber = strongSelf.phoneNumberTextField.text else { return }
             guard let account = strongSelf.accountTextField.text else { return }
             guard let email = strongSelf.emailTextField.text else { return }
+            print("되니?")
+            if nickName.count == 0 {
+                strongSelf.showSallyNotationAlert(with: "닉네임을 입력해주세요.")
+                return
+            }
             if !nickName.isValidNickname() {
                 strongSelf.showSallyNotationAlert(with: "닉네임은 특수문자와\n숫자는 불가능합니다.")
+                return
+            }
+            if phoneNumber.count == 0 {
+                strongSelf.showSallyNotationAlert(with: "전화번호를 입력해주세요.")
                 return
             }
             if !phoneNumber.isValidNumber() {
                 strongSelf.showSallyNotationAlert(with: "전화번호를 숫자로만\n입력해주세요.")
                 return
             }
-            if phoneNumber.count != 11 {
+            if phoneNumber.count != 11{
                 strongSelf.showSallyNotationAlert(with: "전화번호를 11자리로\n입력해주세요.")
+                return
+            }
+            if account.count == 0 {
+                strongSelf.showSallyNotationAlert(with: "계좌번호를 입력해주세요.")
                 return
             }
             if !account.isValidNumber() {
                 strongSelf.showSallyNotationAlert(with: "계좌번호를 숫자로만\n입력해주세요.")
+                return
+            }
+            if email.count == 0 {
+                strongSelf.showSallyNotationAlert(with: "이메일을 입력해주세요.")
                 return
             }
             if !email.isValidEmail() {

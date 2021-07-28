@@ -37,8 +37,8 @@ class HomeViewModel {
     }
     
     //MARK: 현재 근무자 총 인원 수
-    var numOfTwinkleRank: Int? {
-        return homeInfo?.twinkleRank?.count
+    var numOfTwinkleRank: Int {
+        return homeInfo?.twinkleRank?.count ?? 0
     }
     
     //MARK: 현재 근무자 총 인원 수
