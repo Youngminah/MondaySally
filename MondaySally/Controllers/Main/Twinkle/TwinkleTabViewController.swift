@@ -112,7 +112,6 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
 
 extension TwinkleTabViewController: RefreshDelegate{
     func doRefresh() {
-        self.refreshFlag = true
         self.refreshOfTwinkleTotal()
     }
 }
@@ -122,14 +121,16 @@ extension TwinkleTabViewController: RefreshDelegate{
 // MARK: 트윙클 리스트 조회 API
 extension TwinkleTabViewController {
     private func attemptFetchTwinkleTotal(with pagination: Bool) {
-        if tableView.refreshControl?.isRefreshing == false && refreshFlag == false{
-            self.viewModel.updateLoadingStatus = {
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else { return }
+        
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.tableView.refreshControl?.isRefreshing == false {
                     let _ = strongSelf.viewModel.isLoading ? strongSelf.tableView.showTableViewIndicator() : strongSelf.tableView.dismissTableViewIndicator()
                 }
             }
         }
+        
         
         
         self.viewModel.showAlertClosure = { [weak self] () in

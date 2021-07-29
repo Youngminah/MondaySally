@@ -97,13 +97,13 @@ class ProfileEditViewController: UIViewController{
             }
             strongSelf.showTransparentIndicator()
             let uuid = UUID.init()
-            strongSelf.storage.child("test/profile/\(uuid)").putData(imageData, metadata: nil, completion: { [weak self] _ , error in
+            strongSelf.storage.child("\(Constant.FIREBASE_URL)/profile/\(uuid)").putData(imageData, metadata: nil, completion: { [weak self] _ , error in
                 guard let strongSelf = self else { return }
                 guard error == nil else {
                     print("파이어베이스에 업로드하는데 실패하였습니다.")
                     return
                 }
-                strongSelf.storage.child("test/profile/\(uuid)").downloadURL { url, error in
+                strongSelf.storage.child("\(Constant.FIREBASE_URL)/profile/\(uuid)").downloadURL { url, error in
                     guard let url = url , error == nil else {
                         return
                     }

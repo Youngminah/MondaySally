@@ -552,7 +552,6 @@
 		BBEB830A268B028400B9CA54 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				BBEB8314268B045000B9CA54 /* Constant.swift */,
 				BBEB830D268B03C300B9CA54 /* Certificate */,
 				BBEB830E268B03CC00B9CA54 /* Secret */,
 				BBD09EBC268B9A9D00AF4A56 /* Font */,
@@ -592,6 +591,7 @@
 		BBEB830E268B03CC00B9CA54 /* Secret */ = {
 			isa = PBXGroup;
 			children = (
+				BBEB8314268B045000B9CA54 /* Constant.swift */,
 				BBEB8328268B0D6100B9CA54 /* JwtToken.swift */,
 			);
 			path = Secret;

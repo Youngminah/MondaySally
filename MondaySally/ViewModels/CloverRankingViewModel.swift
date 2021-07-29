@@ -42,7 +42,7 @@ class CloverRankingViewModel {
         return cloverRankingInfo[index]
     }
     
-    var remainderOfCloverCurrentPagination: Int {
+    var remainderOfCloverRankingPagination: Int {
         if cloverRankingInfo.count == 0{
             return 0
         }

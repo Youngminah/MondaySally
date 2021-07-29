@@ -45,7 +45,7 @@ open class IndicatorView {
     }
     
     open func showTransparentIndicator() {
-        self.containerView.backgroundColor = UIColor(hex: 0xFFFFFF, alpha: 0.5)
+        self.containerView.backgroundColor = UIColor(hex: 0xFFFFFF, alpha: 0.3)
         self.viewForActivityIndicator.layer.cornerRadius = 10
         self.viewForActivityIndicator.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         self.viewForActivityIndicator.alpha = 0.8

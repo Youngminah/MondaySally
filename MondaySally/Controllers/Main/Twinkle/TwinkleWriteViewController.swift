@@ -233,13 +233,13 @@ extension TwinkleWriteViewController{
             }
         }
         let uuid = UUID.init()
-        self.storage.child("test/twinkle/\(uuid)").putData(data[count], metadata: nil, completion: { [weak self] _ , error in
+        self.storage.child("\(Constant.FIREBASE_URL)/twinkle/\(uuid)").putData(data[count], metadata: nil, completion: { [weak self] _ , error in
             guard let strongSelf = self else { return }
             guard error == nil else {
                 print("파이어베이스에 업로드하는데 실패하였습니다.")
                 return
             }
-            strongSelf.storage.child("test/twinkle/\(uuid)").downloadURL { url, error in
+            strongSelf.storage.child("\(Constant.FIREBASE_URL)/twinkle/\(uuid)").downloadURL { url, error in
                 guard let url = url , error == nil else {
                     print(error?.localizedDescription ?? "")
                     return
@@ -264,13 +264,13 @@ extension TwinkleWriteViewController{
             }
         }
         let uuid = UUID.init()
-        self.storage.child("test/receipt/\(uuid)").putData(data, metadata: nil, completion: { [weak self] _ , error in
+        self.storage.child("\(Constant.FIREBASE_URL)/receipt/\(uuid)").putData(data, metadata: nil, completion: { [weak self] _ , error in
             guard let strongSelf = self else { return }
             guard error == nil else {
                 print("파이어베이스에 업로드하는데 실패하였습니다.")
                 return
             }
-            strongSelf.storage.child("test/receipt/\(uuid)").downloadURL { url, error in
+            strongSelf.storage.child("\(Constant.FIREBASE_URL)/receipt/\(uuid)").downloadURL { url, error in
                 guard let url = url , error == nil else {
                     print(error?.localizedDescription ?? "")
                     return

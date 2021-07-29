@@ -17,9 +17,24 @@ class GiftHistoryViewController: UIViewController {
     override func viewDidLoad() {
         self.navigationItem.backButtonTitle = " "
         super.viewDidLoad()
+        self.collectionView.refreshControl = UIRefreshControl()
+        self.collectionView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
         self.attemptFetchGiftHistory(with: false)
     }
     
+    @objc private func didPullToRefresh() {
+        print("기프트샵 컬렉션뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.refreshOfGiftHistory()
+        }
+    }
+    
+    private func refreshOfGiftHistory(){
+        self.viewModel.pageIndex = 1
+        self.attemptFetchGiftHistory(with: false)
+    }
 }
 
 // MARK: 트윙클 작성 완료시 네트워크 다시 요청
@@ -120,7 +135,9 @@ extension GiftHistoryViewController {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                if strongSelf.collectionView.refreshControl?.isRefreshing == false {
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                }
             }
         }
 
@@ -133,6 +150,7 @@ extension GiftHistoryViewController {
                 }
                 if let message = strongSelf.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
+                    strongSelf.collectionView.refreshControl?.endRefreshing()
                 }
             }
         }
@@ -159,6 +177,7 @@ extension GiftHistoryViewController {
                 }
                 print("총 기프트 히스토리 갯수 -> \(strongSelf.viewModel.numOfGiftLogInfo) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.collectionView.reloadData()
+                strongSelf.collectionView.refreshControl?.endRefreshing()
             }
         }
         self.viewModel.fetchMyGiftLog(with: pagination)

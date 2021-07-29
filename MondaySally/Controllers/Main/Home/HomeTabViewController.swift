@@ -93,14 +93,16 @@ extension HomeTabViewController {
 
     //메인탭바 [홈]화면 API 호출 함수
     private func attemptFetchHome() {
-        if scrollView.refreshControl?.isRefreshing == false {
-            self.viewModel.updateLoadingStatus = {
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else { return }
+        
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.scrollView.refreshControl?.isRefreshing == false {
                     let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
                 }
             }
         }
+        
         
         self.viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {

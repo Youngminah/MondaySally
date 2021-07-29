@@ -99,17 +99,16 @@ extension GiftTabViewController {
 
     //메인탭바 [기프트샵]화면 API 호출 함수
     private func attemptFetchGiftList() {
-        if collectionView.refreshControl?.isRefreshing == false {
-            self.viewModel.updateLoadingStatus = {
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else {
-                        return
-                    }
+        self.viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.collectionView.refreshControl?.isRefreshing == false {
                     let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
                 }
             }
-            
         }
+        
+        
 
         self.viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {

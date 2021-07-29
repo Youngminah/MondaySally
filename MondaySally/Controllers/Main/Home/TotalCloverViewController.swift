@@ -39,7 +39,7 @@ class TotalCloverViewController: UIViewController {
         self.cloverLabel.text = "\(self.viewModel.accumulateClover)".insertComma
     }
     
-    private func refreshOfAccumulated(){
+    func refreshOfAccumulated(){
         self.viewModel.pageIndex = 1
         self.viewModel.endOfPage = false
         self.attemptFetchCloverAccumulate(with: false)
@@ -91,7 +91,9 @@ extension TotalCloverViewController {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                if strongSelf.tableView.refreshControl?.isRefreshing == false {
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
+                }
             }
         }
 

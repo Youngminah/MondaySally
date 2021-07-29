@@ -68,7 +68,7 @@ extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CloverRankingCell", for: indexPath) as? CloverRankingCell else {
             return UITableViewCell()
         }
-        guard let data = self.viewModel.cloverRankingList(at: indexPath.row + 1) else { return cell }
+        guard let data = self.viewModel.cloverRankingList(at: indexPath.row ) else { return cell }
         cell.updateUI(with: data)
         return cell
     }
@@ -79,7 +79,7 @@ extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSourc
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.viewModel.numOfCloverRankingList == 0 { return } //맨처음이라면 실행 x
-        if self.viewModel.remainderOfCloverCurrentPagination != 0 { return }
+        if self.viewModel.remainderOfCloverRankingPagination != 0 { return }
         if self.viewModel.endOfPage { return }
         let position = scrollView.contentOffset.y
         if position >= (tableView.contentSize.height - scrollView.frame.size.height) {
@@ -93,10 +93,13 @@ extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSourc
 extension CloverRankingViewController {
     
     private func attemptFetchCloverRanking(with pagination: Bool) {
+        
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                if strongSelf.tableView.refreshControl?.isRefreshing == false {
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
+                }
             }
         }
 
@@ -109,6 +112,7 @@ extension CloverRankingViewController {
                 }
                 if let message = strongSelf.viewModel.failMessage {
                     print("서버에서 알려준 에러는 -> \(message)")
+                    strongSelf.tableView.refreshControl?.endRefreshing()
                 }
             }
         }
