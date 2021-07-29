@@ -2,13 +2,11 @@
 
 ![Generic badge](https://img.shields.io/badge/Xcode-12.5.1-blue.svg)![Generic badge](https://img.shields.io/badge/iOS-13.0-yellow.svg)![Generic badge](https://img.shields.io/badge/Swift-5-green.svg)![Generic badge](https://img.shields.io/badge/Alamofire-5.4-red.svg)![Generic badge](https://img.shields.io/badge/Kingfisher-6.0-orange.svg)
 
-
+<br></br>
 
 <img src="https://user-images.githubusercontent.com/42762236/127543561-b5dfe739-a771-4b20-90e8-cf8f594d29fc.png" />
 
 
-
-<br></br>
 
 <br></br>
 
@@ -22,9 +20,7 @@
 
 <br></br>
 
-## 🏷 개발 기간 미리보기 
-
-<br></br>
+## 개발 기간 미리보기 
 
 | 주제                               | 진행기간                    | 담당                           | 세부사항                       |
 | ---------------------------------- | --------------------------- | ------------------------------ | ------------------------------ |
@@ -36,11 +32,15 @@
 
 <br></br>
 
-## 🏷 목차 
-
 <br></br>
 
-### 프레임워크 & 아키텍처 & 기술 스택
+
+
+------
+
+
+
+### 🏷 프레임워크 & 아키텍처 & 기술 스택
 
 - **UIKit**
 
@@ -64,7 +64,11 @@
 
 <br></br>
 
-### 기획 및 개발 설계
+------
+
+
+
+### 🏷 기획 및 개발 설계
 
 <details><summary>기획</summary>
 <img src="https://user-images.githubusercontent.com/42762236/127539006-14d12f7b-268b-410a-8d1c-5e873e350eec.png" />
@@ -83,13 +87,21 @@
 
 <br></br>
 
-### 개발 이슈
+------
+
+
+
+### 🏷 개발 이슈
 
 <br></br>
 
 <br></br>
 
-### 느낀점
+------
+
+
+
+### 🏷 느낀점
 
 <br></br>
 
@@ -97,9 +109,11 @@
 
 
 
+------
 
 
-### 커뮤니케이션
+
+### 🏷 커뮤니케이션
 
 - **Jeplin**
   디자이너와의 협업은 제플린에 코멘트를 달아 세세한 부분까지 확인. 슬랙에 연동하여 알람 설정. 예전에 피그마도 디자이너와의 협업 툴로 사용해보았지만, 피그마는 iOS 이미지 에셋부분 형식이 맞지 않는다. 제플린은 iOS에 이미지 추출에 있어 최적화되어있어 훨씬 편했고, UI도 훨씬 편했다.
@@ -117,19 +131,25 @@
 
   
 
+<br></br>
+
+<br></br>
+
+------
+
+
+
+### 🏷 앞으로의 먼데이샐리
+
 
 
 <br></br>
 
 <br></br>
 
-### 앞으로의 먼데이샐리
+------
 
 
-
-<br></br>
-
-<br></br>
 
 ## :memo: Commit Convention
 
