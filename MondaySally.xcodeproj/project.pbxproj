@@ -552,7 +552,6 @@
 		BBEB830A268B028400B9CA54 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				BBEB830D268B03C300B9CA54 /* Certificate */,
 				BBEB830E268B03CC00B9CA54 /* Secret */,
 				BBD09EBC268B9A9D00AF4A56 /* Font */,
 				BBEB8310268B03D600B9CA54 /* Extension */,
@@ -579,13 +578,6 @@
 			children = (
 			);
 			path = Splash;
-			sourceTree = "<group>";
-		};
-		BBEB830D268B03C300B9CA54 /* Certificate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Certificate;
 			sourceTree = "<group>";
 		};
 		BBEB830E268B03CC00B9CA54 /* Secret */ = {
