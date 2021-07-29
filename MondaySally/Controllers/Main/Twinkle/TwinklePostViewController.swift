@@ -52,11 +52,11 @@ class TwinklePostViewController: UIViewController {
         self.updateUI()
         self.commentTextField.delegate = self
         self.attemptFetchDetail(with : index)
-        self.originHeartStatus = self.likeButton.isSelected
+
     }
      
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
         if originHeartStatus != self.likeButton.isSelected{
             self.attemptFetchTwinkleLike(with: index)
 
@@ -420,6 +420,7 @@ extension TwinklePostViewController {
         self.commentCountLabel.text = "댓글 \(data.commentCount)개"
         self.likeCount = data.likeCount
         self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
+        self.originHeartStatus = self.likeButton.isSelected
     }
     
     //삼한연산자로 바꾸기

@@ -71,7 +71,7 @@ class TwinkleViewModel {
         } else {
             self.isLoading = true
         }
-        self.dataService?.requestFetchTwinkleTotal(page: self.pageIndex,completion: { [weak self] response, error in
+        self.dataService?.requestFetchTwinkleTotal(page: self.pageIndex, completion: { [weak self] response, error in
             guard let strongself = self else { return }
             if let error = error {
                 strongself.error = error

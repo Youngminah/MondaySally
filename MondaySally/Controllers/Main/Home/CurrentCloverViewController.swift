@@ -19,7 +19,7 @@ class CurrentCloverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.attemptFetchCloverCurrent()
+        self.refreshOfCurrent()
     }
     
     @IBAction func showDetailButtonTap(_ sender: UIButton) {
@@ -30,6 +30,12 @@ class CurrentCloverViewController: UIViewController {
         self.infoLabel.text = (nickName ?? "") + "님의 현재 클로버"
         self.dateLabel.text = "\(Date().text) 기준"
         self.cloverLabel.text = "\(self.viewModel.currentClover)".insertComma
+    }
+    
+    private func refreshOfCurrent(){
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.attemptFetchCloverCurrent(with: false)
     }
 }
 
@@ -63,12 +69,23 @@ extension CurrentCloverViewController: UICollectionViewDelegate, UICollectionVie
         return CGSize(width: width, height: height)
     }
     
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfAvailableGift == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfCloverCurrentPagination != 0 { return }
+        if self.viewModel.endOfPage { return }
+        let position = scrollView.contentOffset.y
+        if position >= (collectionView.contentSize.height - scrollView.frame.size.height) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.attemptFetchCloverCurrent(with: true)
+        }
+    }
 }
 
 
 // MARK: 클로버 히스토리 조회 API
 extension CurrentCloverViewController {
-    private func attemptFetchCloverCurrent() {
+    private func attemptFetchCloverCurrent(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -100,10 +117,14 @@ extension CurrentCloverViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("현재 클로버 히스토리 조회에 성공했습니다 !! ")
+                print("가져온 현재 클로버 갯수 -> \(strongSelf.viewModel.numOfAvailableGift) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.updateUI()
                 strongSelf.collectionView.reloadData()
             }
         }
-        self.viewModel.fetchCloverCurrent()
+        self.viewModel.fetchCloverCurrent(with: pagination)
     }
 }
+
+
+

@@ -20,7 +20,18 @@ class CloverRankingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateMainUI()
-        self.attemptFetchCloverRanking()
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+        self.refreshOfRanking()
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("기프트샵 컬렉션뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.refreshOfRanking()
+        }
     }
     
     private func updateMainUI(){
@@ -33,17 +44,24 @@ class CloverRankingViewController: UIViewController {
         let urlString = URL(string: url)
         self.firstUserImageView.kf.setImage(with: urlString)
     }
+    
+    private func refreshOfRanking(){
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.attemptFetchCloverRanking(with: false)
+    }
 }
 
 extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = self.viewModel.numOfCloverRankingList else { return 0 }
-        var num = 0
-        if count != 0 {
-            num = count - 1
+        let number = self.viewModel.numOfCloverRankingList
+        if number == 0 {
+            self.tableView.setEmptyView(message: "트윙클 랭킹이 아직 없어요.")
+        } else {
+            self.tableView.restore()
         }
-        return num
+        return number
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,12 +76,23 @@ extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 71
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfCloverRankingList == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfCloverCurrentPagination != 0 { return }
+        if self.viewModel.endOfPage { return }
+        let position = scrollView.contentOffset.y
+        if position >= (tableView.contentSize.height - scrollView.frame.size.height) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.attemptFetchCloverRanking(with: true)
+        }
+    }
 }
 
 // MARK: 클로버 랭킹 조회 API
 extension CloverRankingViewController {
     
-    private func attemptFetchCloverRanking() {
+    private func attemptFetchCloverRanking(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -101,11 +130,14 @@ extension CloverRankingViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("클로버 랭킹 조회에 성공했습니다 !! ")
+                print("가져온 랭킹 갯수 -> \(strongSelf.viewModel.numOfCloverRankingList) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.updateFirstRankingUI()
                 strongSelf.tableView.reloadData()
+                strongSelf.tableView.tableFooterView = nil
+                strongSelf.tableView.refreshControl?.endRefreshing()
             }
         }
-        self.viewModel.fetchCloverRanking()
+        self.viewModel.fetchCloverRanking(with: pagination)
     }
     
     private func updateFirstRankingUI(){
@@ -116,5 +148,18 @@ extension CloverRankingViewController {
         self.firstUserNameLabel.text = data.nickname
         self.firstUserCloverLabel.text = "\(data.currentClover)".insertComma
         //self.firstUserImageView.image =
+    }
+}
+
+// MARK: 페이징중 footer뷰 생성
+extension CloverRankingViewController {
+    //MARK: 페이징 중에 밑에 footer뷰 생성.
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
     }
 }

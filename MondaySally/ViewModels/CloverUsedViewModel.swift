@@ -10,6 +10,7 @@ class CloverUsedViewModel {
     // MARK: 기본 프로퍼티
     private var dataService: CloverDataService?
     private var usedCloverInfo: UsedCloverInfo? { didSet { self.didFinishFetch?() } }
+    private var usedCloverList = [UsedCloverHistoryInfo]()
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -23,6 +24,10 @@ class CloverUsedViewModel {
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
     
+    var pageIndex = 1
+    var endOfPage = false
+    var isPagination = false
+    
     //MARK: 생성자
     init(dataService: CloverDataService) {
         self.dataService = dataService
@@ -30,7 +35,7 @@ class CloverUsedViewModel {
     
     //MARK: 사용 클로버 리스트 갯수
     var numOfUsedCloverList: Int {
-        return usedCloverInfo?.cloverHistoryList?.count ?? 0
+        return usedCloverList.count
     }
     
     //MARK: 사용 클로버
@@ -43,11 +48,29 @@ class CloverUsedViewModel {
         return usedCloverInfo?.cloverHistoryList?[index]
     }
     
+    var remainderOfCloverUsedPagination: Int {
+        if usedCloverList.count == 0{
+            return 0
+        }
+        return usedCloverList.count % 20
+    }
+    
+    private func didEndPagination(with pagination: Bool){
+        pagination ? (self.isPagination = false) : (self.isLoading = false)
+    }
+    
     
     // MARK: 사용 클로버 API 호출 함수
-    func fetchCloverUsed(){
-        self.isLoading = true
-        self.dataService?.requestFetchCloverUsed(completion: { [weak self] response, error in
+    func fetchCloverUsed(with pagination : Bool = false){
+        if endOfPage{ return }
+        if pagination {
+            self.isPagination = true
+            self.pageIndex = self.pageIndex + 1
+        } else {
+            self.isLoading = true
+        }
+        self.dataService?.requestFetchCloverUsed(page: self.pageIndex, completion: { [weak self] response, error in
+            guard let strongself = self else { return }
             if let error = error {
                 self?.error = error
                 self?.isLoading = false
@@ -57,15 +80,21 @@ class CloverUsedViewModel {
                 if !isSuccess {
                     self?.failMessage = response?.message
                     self?.failCode = response?.code
-                    self?.isLoading = false
+                    if strongself.failCode == 366 { strongself.endOfPage = true }
+                    strongself.didEndPagination(with: pagination)
                     return
                 }
             }
             self?.error = nil
             self?.failMessage = nil
             self?.usedCloverInfo = response?.result
-            self?.isLoading = false
-            
+            if strongself.isPagination{
+                strongself.usedCloverList.append(contentsOf: response?.result?.cloverHistoryList ?? [])
+            }else {
+                strongself.usedCloverInfo = response?.result
+                strongself.usedCloverList = strongself.usedCloverInfo?.cloverHistoryList ?? []
+            }
+            strongself.didEndPagination(with: pagination)
         })
     }
 }

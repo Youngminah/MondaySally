@@ -19,13 +19,30 @@ class UsedCloverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.attemptFetchCloverUsed()
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+        self.refreshOfUsed()
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("기프트샵 컬렉션뷰 리프레시 시작!!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.refreshOfUsed()
+        }
     }
     
     private func updateUI() {
         self.infoLabel.text = (nickName ?? "") + "님의 사용 클로버"
         self.dateLabel.text = "\(Date().text) 기준"
         self.cloverLabel.text = "\(self.viewModel.usedClover)".insertComma
+    }
+    
+    private func refreshOfUsed(){
+        self.viewModel.pageIndex = 1
+        self.viewModel.endOfPage = false
+        self.attemptFetchCloverUsed(with: false)
     }
 }
 
@@ -56,11 +73,21 @@ extension UsedCloverViewController: UITableViewDelegate, UITableViewDataSource {
         return 63
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.viewModel.numOfUsedCloverList == 0 { return } //맨처음이라면 실행 x
+        if self.viewModel.remainderOfCloverUsedPagination != 0 { return }
+        if self.viewModel.endOfPage { return }
+        let position = scrollView.contentOffset.y
+        if position >= (tableView.contentSize.height - scrollView.frame.size.height) {
+            guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
+            self.attemptFetchCloverUsed(with: true)
+        }
+    }
 }
 
 // MARK: 클로버 히스토리 조회 API
 extension UsedCloverViewController {
-    private func attemptFetchCloverUsed() {
+    private func attemptFetchCloverUsed(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
@@ -98,10 +125,26 @@ extension UsedCloverViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("사용 클로버 히스토리 조회에 성공했습니다 !! ")
+                print("가져온 사용 클로버 갯수 -> \(strongSelf.viewModel.numOfUsedCloverList) 페이지 넘버 -> \(strongSelf.viewModel.pageIndex)")
                 strongSelf.updateUI()
                 strongSelf.tableView.reloadData()
+                strongSelf.tableView.tableFooterView = nil
+                strongSelf.tableView.refreshControl?.endRefreshing()
             }
         }
-        self.viewModel.fetchCloverUsed()
+        self.viewModel.fetchCloverUsed(with: pagination)
+    }
+}
+
+// MARK: 페이징중 footer뷰 생성
+extension UsedCloverViewController {
+    //MARK: 페이징 중에 밑에 footer뷰 생성.
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
     }
 }
