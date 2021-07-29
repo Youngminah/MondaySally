@@ -45,7 +45,6 @@ extension GiftHistoryViewController: RefreshDelegate{
     }
 }
 
-
 extension GiftHistoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -130,8 +129,7 @@ extension GiftHistoryViewController: UIScrollViewDelegate {
 
 // MARK: 기프트 히스토리 조회 API
 extension GiftHistoryViewController {
-    
-    
+
     private func attemptFetchGiftHistory(with pagination: Bool) {
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
