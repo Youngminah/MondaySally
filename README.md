@@ -55,7 +55,7 @@
   네트워크 통신에서는 Alamofire 라이브러리를 이용.
 
 - **Kingfisher**
-  이미지 처리는 Kingfisher를 이용하여 이미지 캐시처리부분
+  이미지 처리는 Kingfisher를 이용하여 이미지 캐시처리하였고, error 핸들링.
 
 - **Firebase**
   이미지 저장을 위해 Firebase Storage를 이용. APNs 기능을 위해 Firebase Cloud Messaging 이용.
