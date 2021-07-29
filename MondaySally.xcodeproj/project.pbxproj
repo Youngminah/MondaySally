@@ -23,7 +23,6 @@
 		BB4CD4B726A087E600BD1E91 /* GiftHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B626A087E600BD1E91 /* GiftHistoryViewModel.swift */; };
 		BB4CD4B926A0881000BD1E91 /* GiftHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4CD4B826A0881000BD1E91 /* GiftHistoryResponse.swift */; };
 		BB508C7826A92EB6002F5A19 /* TwinkleDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB508C7726A92EB6002F5A19 /* TwinkleDeleteViewModel.swift */; };
-		BB5A31F826A6020A00C814E4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A31F726A6020A00C814E4 /* ImageLoader.swift */; };
 		BB5A320026A6294400C814E4 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A31FF26A6294400C814E4 /* UICollectionView.swift */; };
 		BB5A320226A73E0500C814E4 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320126A73E0500C814E4 /* UITableView.swift */; };
 		BB5A320426A7517E00C814E4 /* TwinkleDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */; };
@@ -165,7 +164,6 @@
 		BB4CD4B626A087E600BD1E91 /* GiftHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryViewModel.swift; sourceTree = "<group>"; };
 		BB4CD4B826A0881000BD1E91 /* GiftHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftHistoryResponse.swift; sourceTree = "<group>"; };
 		BB508C7726A92EB6002F5A19 /* TwinkleDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDeleteViewModel.swift; sourceTree = "<group>"; };
-		BB5A31F726A6020A00C814E4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		BB5A31FF26A6294400C814E4 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		BB5A320126A73E0500C814E4 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		BB5A320326A7517E00C814E4 /* TwinkleDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDetailResponse.swift; sourceTree = "<group>"; };
@@ -616,7 +614,6 @@
 				BBEB8316268B049D00B9CA54 /* Device.swift */,
 				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
 				BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */,
-				BB5A31F726A6020A00C814E4 /* ImageLoader.swift */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -836,7 +833,6 @@
 				BB5A321226A86CE500C814E4 /* CloverCurrentViewModel.swift in Sources */,
 				BB5FE5B326963CF200F2A7A6 /* AutoLoginViewModel.swift in Sources */,
 				BB4CD4B726A087E600BD1E91 /* GiftHistoryViewModel.swift in Sources */,
-				BB5A31F826A6020A00C814E4 /* ImageLoader.swift in Sources */,
 				BBD09ED0268E07B100AF4A56 /* FailViewController.swift in Sources */,
 				BB5FE5992692F0D200F2A7A6 /* GiftShopDetailViewController.swift in Sources */,
 				BBA56F082691C993000FDFC0 /* TwinkleTotalCell.swift in Sources */,
