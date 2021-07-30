@@ -1,6 +1,6 @@
 ## 먼데이샐리 - 회사 커뮤니티, 네트워킹, 복지 시스템 iOS앱
 
-![Generic badge](https://img.shields.io/badge/Xcode-12.5.1-blue.svg)![Generic badge](https://img.shields.io/badge/iOS-13.0-yellow.svg)![Generic badge](https://img.shields.io/badge/Swift-5-green.svg)![Generic badge](https://img.shields.io/badge/Alamofire-5.4-red.svg)![Generic badge](https://img.shields.io/badge/Kingfisher-6.0-orange.svg)
+![Generic badge](https://img.shields.io/badge/Xcode-12.5.1-blue.svg)  ![Generic badge](https://img.shields.io/badge/iOS-13.0-yellow.svg)  ![Generic badge](https://img.shields.io/badge/Swift-5-green.svg)  ![Generic badge](https://img.shields.io/badge/Alamofire-5.4-red.svg)  ![Generic badge](https://img.shields.io/badge/Kingfisher-6.0-orange.svg)
 
 <br></br>
 
@@ -40,7 +40,7 @@
 
 
 
-### 🏷 프레임워크 & 아키텍처 & 기술 스택
+### 🏷 프레임워크 & 디자인패턴 & 기술 스택
 
 - **UIKit**
 
@@ -86,6 +86,86 @@
 <br></br>
 
 <br></br>
+
+------
+
+
+
+### 🏷 아키텍처
+
+#### 폴더
+
+<img src="https://user-images.githubusercontent.com/42762236/127616653-99f4d65e-04db-4eff-b9ab-0605d2d89aed.png" align="left">
+
+이전 개발에는 Controller 폴더안에서 ViewModel , Model 폴더를 Controller마다 넣어 구성해보았는데, 폴더가 너무 많아지는것 같아 
+이번 개발 폴더는 아예 가장 상위 폴더들을 ViewModel, Model, View, Controller로 나누었다. 
+
+참고로 Storyboard 방식 개발이라서 View폴더에는 Stroyboard가 들어간다. 
+
+Network 폴더에는 Network통신에 필요한 DataService 가 싱글톤 패턴으로 들어가 있다. 
+
+Configuration폴더는 개발을 하다보면 필요한 extension 이나 커스텀 Alert, 폰트, 등등이 들어가있다.
+
+
+
+#### View & Controller
+
+```swift
+class CommuteViewModel {
+    //MARK: 기본 프로퍼티
+    private var dataService: AuthDataService?
+    private var noDataResponse: NoDataResponse? { didSet { self.didFinishFetch?() } }
+    
+    //MARK: 프로퍼티 DidSet
+    var error: Error? { didSet { self.showAlertClosure?() } }
+    var failMessage: String? { didSet { self.showAlertClosure?() } }
+    var failCode: Int? { didSet { self.codeAlertClosure?() } }
+    var isLoading: Bool = false { didSet { self.updateLoadingStatus?() } }
+    
+    //MARK: 클로져
+    var showAlertClosure: (() -> ())?
+    var codeAlertClosure: (() -> ())?
+    var updateLoadingStatus: (() -> ())?
+    var didFinishFetch: (() -> ())?
+    
+    // MARK: 생성자
+    init(dataService: AuthDataService) {
+        self.dataService = dataService
+    }
+    
+    func fetchCommute(){
+        self.isLoading = true
+        self.dataService?.requestFetchCommute(completion: { [weak self] response, error in
+            if let error = error {
+                self?.error = error
+                self?.isLoading = false
+                return
+            }
+            if let isSuccess = response?.isSuccess {
+                if !isSuccess {
+                    self?.failMessage = response?.message
+                    self?.failCode = response?.code
+                    self?.isLoading = false
+                    return
+                }
+            }
+            self?.error = nil
+            self?.isLoading = false
+            self?.failMessage = nil
+            self?.noDataResponse = response
+        })
+    }
+}
+
+```
+
+
+
+#### ViewModel
+
+
+
+#### Model
 
 ------
 

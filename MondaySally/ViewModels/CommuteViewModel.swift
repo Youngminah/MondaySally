@@ -6,7 +6,6 @@
 //
 
 class CommuteViewModel {
-    
     //MARK: 기본 프로퍼티
     private var dataService: AuthDataService?
     private var noDataResponse: NoDataResponse? { didSet { self.didFinishFetch?() } }
@@ -22,7 +21,6 @@ class CommuteViewModel {
     var codeAlertClosure: (() -> ())?
     var updateLoadingStatus: (() -> ())?
     var didFinishFetch: (() -> ())?
-
     
     // MARK: 생성자
     init(dataService: AuthDataService) {
