@@ -2,13 +2,13 @@
 
 ![Generic badge](https://img.shields.io/badge/Xcode-12.5.1-blue.svg)  ![Generic badge](https://img.shields.io/badge/iOS-13.0-yellow.svg)  ![Generic badge](https://img.shields.io/badge/Swift-5-green.svg)  ![Generic badge](https://img.shields.io/badge/Alamofire-5.4-red.svg)  ![Generic badge](https://img.shields.io/badge/Kingfisher-6.0-orange.svg)
 
-<br></br>
+</br>
 
 <img src="https://user-images.githubusercontent.com/42762236/127543561-b5dfe739-a771-4b20-90e8-cf8f594d29fc.png" />
 
 
 
-<br></br>
+</br>
 
 **앱스토어 바로가기 현재 version 1.0.0**
 
@@ -16,9 +16,9 @@
 
 
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 ## 개발 기간 미리보기 
 
@@ -30,9 +30,9 @@
 | **디자인 완성, 개발 설계 완성**    | **2021.06.07 ~ 2021.06.28** | PM, 디자이너                   | 개발자 매칭, 디자이너 네트워킹 |
 | **개발 시작 & 완성 , 디자인 보완** | **2021.06.28 ~ 2021.08.07** | PM, 디자이너, 클라이언트, 서버 | 출시점검, 데모데이             |
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 
 
@@ -60,9 +60,9 @@
 - **Firebase**
   이미지 저장을 위해 Firebase Storage를 이용. APNs 기능을 위해 Firebase Cloud Messaging 이용.
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 ------
 
@@ -82,10 +82,9 @@
 <details><summary>와이어프레임</summary>
 <img src="https://user-images.githubusercontent.com/42762236/127539340-818250f9-67b6-4505-b57d-fe86ea3592a8.png" />
 </details>
+</br>
 
-<br></br>
-
-<br></br>
+</br>
 
 ------
 
@@ -95,9 +94,9 @@
 
 #### 폴더
 
-<img src="https://user-images.githubusercontent.com/42762236/127616653-99f4d65e-04db-4eff-b9ab-0605d2d89aed.png" align="left">
+<img src="https://user-images.githubusercontent.com/42762236/127616653-99f4d65e-04db-4eff-b9ab-0605d2d89aed.png">
 
-<br></br>
+</br>
 
 이전 개발에서 폴더구성은 Controller폴더 안에서 ViewModel , Model 폴더를 알맞는 ViewController마다 넣어 구성해보았는데, 폴더가 너무 많아지는것 같아,
 이번 개발 폴더는 아예 가장 상위 폴더들을 ViewModel, Model, View, Controller로 나누었다. 
@@ -108,9 +107,9 @@ Network 폴더에는 Network통신에 필요한 DataService 가 싱글톤 패턴
 
 Configuration폴더는 개발을 하다보면 필요한 extension 이나 커스텀 Alert, 폰트, 등등이 들어가있다.
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 #### ViewModel
 
@@ -170,9 +169,9 @@ class CommuteViewModel {
 - **Property Observer** : MVVM 패턴에서 ViewModel은 View를 전혀 모른다. View만 ViewModel을 인스턴스로 가지고 있기 때문에 둘의 일관성을 맞추어 주어야한다. ViewModel에서 언제 어디서 요청이 오는지 알기 위해 프로퍼티 DidSet을 두어 감지하였다. 
   변화 이벤트가 일어날 시 적절한 처리를 할 객체가 필요한데 이것에는 다양한 방법을 사용할 수 있지만, 클로저로 처리 하였다. 
 
-</br>
+위의 코드에 덧붙여, 필요시 데이터를 가공할 작업이 있다면, ViewModel에서 Computed Property를 이용하거나 함수를 이용하여 데이터를 가공 처리하였다.
 
-위의 코드에서 덧붙여 필요시 데이터를 가공할 작업이 있다면, ViewModel에서 Computed Property를 이용하거나 함수를 이용하여 데이터를 가공 처리하였다.
+</br>
 
 ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌는데, MVVM을 써보면 써볼수록 이해도가 높아져서 코드가 발전하는 것 같다.
 
@@ -184,15 +183,15 @@ ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌
 
 
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 #### Model
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 ------
 
@@ -200,9 +199,9 @@ ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌
 
 ### 🏷 개발 이슈
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 ▶︎
 
@@ -212,9 +211,9 @@ ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌
 
 ### 🏷 느낀점
 
-<br></br>
+</br>
 
-<br></br>
+</br>
 
 
 
