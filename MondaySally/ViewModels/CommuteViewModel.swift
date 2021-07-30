@@ -30,23 +30,24 @@ class CommuteViewModel {
     func fetchCommute(){
         self.isLoading = true
         self.dataService?.requestFetchCommute(completion: { [weak self] response, error in
+            guard let strongself = self else { return }
             if let error = error {
-                self?.error = error
-                self?.isLoading = false
+                strongself.error = error
+                strongself.isLoading = false
                 return
             }
             if let isSuccess = response?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = response?.message
-                    self?.failCode = response?.code
-                    self?.isLoading = false
+                    strongself.failMessage = response?.message
+                    strongself.failCode = response?.code
+                    strongself.isLoading = false
                     return
                 }
             }
-            self?.error = nil
-            self?.isLoading = false
-            self?.failMessage = nil
-            self?.noDataResponse = response
+            strongself.error = nil
+            strongself.isLoading = false
+            strongself.failMessage = nil
+            strongself.noDataResponse = response
         })
     }
 }
