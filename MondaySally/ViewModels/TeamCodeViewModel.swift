@@ -39,23 +39,24 @@ class TeamCodeViewModel {
     func fetchJwt(with teamCodeId: String){
         self.isLoading = true
         self.dataService?.requestFetchTeamCode(with: teamCodeId, completion: { [weak self] (teamCodeResponse, error) in
+            guard let strongself = self else { return }
             if let error = error {
-                self?.error = error
-                self?.isLoading = false
+                strongself.error = error
+                strongself.isLoading = false
                 return
             }
             if let isSuccess = teamCodeResponse?.isSuccess {
                 if !isSuccess {
-                    self?.failMessage = teamCodeResponse?.message
-                    self?.failCode = teamCodeResponse?.code
-                    self?.isLoading = false
+                    strongself.failMessage = teamCodeResponse?.message
+                    strongself.failCode = teamCodeResponse?.code
+                    strongself.isLoading = false
                     return
                 }
             }
-            self?.error = nil
-            self?.failMessage = nil
-            self?.isLoading = false
-            self?.teamCodeInfo = teamCodeResponse?.result
+            strongself.error = nil
+            strongself.failMessage = nil
+            strongself.isLoading = false
+            strongself.teamCodeInfo = teamCodeResponse?.result
         })
     }
 }
