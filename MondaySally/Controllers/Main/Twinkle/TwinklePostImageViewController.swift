@@ -37,7 +37,7 @@ extension TwinklePostImageViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let number = self.imageList.count
         if number == 0 {
-            self.collectionView.setEmptyView(message: "등록한 트윙클이 없어요.")
+            self.collectionView.setEmptyView(message: "등록한 트윙클이 없어요")
         } else {
             self.collectionView.restore()
         }

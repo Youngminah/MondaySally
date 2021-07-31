@@ -50,7 +50,7 @@ extension TotalCloverViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let number = self.viewModel.numOfTotalClover
         if number == 0 {
-            self.tableView.setEmptyView(message: "클로버 히스토리가 없어요.")
+            self.tableView.setEmptyView(message: "누적 클로버 히스토리가 없어요")
         } else {
             self.tableView.restore()
         }
