@@ -58,7 +58,7 @@ extension TwinkleTabViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let number = self.viewModel.numOfTwinkle
         if number == 0 {
-            self.tableView.setEmptyView(message: "아직 등록된 트윙클이 없어요.")
+            self.tableView.setEmptyView(message: "아직 등록된 트윙클이 없어요")
         } else {
             self.tableView.restore()
         }

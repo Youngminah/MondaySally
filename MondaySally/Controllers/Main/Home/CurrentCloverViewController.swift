@@ -43,7 +43,7 @@ extension CurrentCloverViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let number = self.viewModel.numOfAvailableGift
         if number == 0 {
-            self.collectionView.setEmptyView(message: "현재 클로버로 이용 가능한 기프트가 없어요.")
+            self.collectionView.setEmptyView(message: "현재 클로버로 이용 가능한 기프트가 없어요")
         } else {
             self.collectionView.restore()
         }
