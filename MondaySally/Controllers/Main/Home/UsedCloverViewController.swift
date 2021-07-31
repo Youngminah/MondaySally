@@ -92,7 +92,7 @@ extension UsedCloverViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 if strongSelf.tableView.refreshControl?.isRefreshing == false {
-                    let _ = strongSelf.viewModel.isLoading ? strongSelf.showTransparentIndicator() : strongSelf.dismissIndicator()
+                    let _ = strongSelf.viewModel.isLoading ? strongSelf.tableView.showTableViewIndicator() : strongSelf.tableView.dismissTableViewIndicator()
                 }
             }
         }
