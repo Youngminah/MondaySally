@@ -792,7 +792,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummylogo" translatesAutoresizingMaskIntoConstraints="NO" id="SbZ-Kf-lOD">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummylogo" translatesAutoresizingMaskIntoConstraints="NO" id="SbZ-Kf-lOD">
                                                                 <rect key="frame" x="345" y="15" width="53" height="53"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="SbZ-Kf-lOD" secondAttribute="height" multiplier="1:1" id="9v7-u1-57i"/>
@@ -1340,6 +1340,7 @@
                         <outlet property="firstRankingImageButton" destination="mCO-xx-v3V" id="uCn-TZ-VgC"/>
                         <outlet property="firstRankingLabel" destination="n0I-7r-Ghl" id="Rjw-DE-Stt"/>
                         <outlet property="firstRankingNameLabel" destination="aG8-Zy-iU5" id="ah6-TX-EPx"/>
+                        <outlet property="logoImageView" destination="SbZ-Kf-lOD" id="LLU-uX-DSY"/>
                         <outlet property="mainLabel" destination="T0H-pr-BRU" id="g78-B6-whP"/>
                         <outlet property="scrollView" destination="aT2-3V-IrL" id="Oqz-Gc-iEp"/>
                         <outlet property="secondRankingImageBorderView" destination="5zy-oq-OBN" id="ykQ-sj-Gaa"/>

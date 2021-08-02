@@ -76,8 +76,8 @@ extension TotalCloverViewController: UITableViewDelegate, UITableViewDataSource 
         if self.viewModel.numOfTotalClover == 0 { return } //맨처음이라면 실행 x
         if self.viewModel.remainderOfCloverAccumulatePagination != 0 { return }
         if self.viewModel.endOfPage { return }
-        let position = scrollView.contentOffset.y
-        if position >= (tableView.contentSize.height - scrollView.frame.size.height) {
+        let position = scrollView.contentOffset.y 
+        if position >= (tableView.contentSize.height - scrollView.frame.size.height - 20) {
             guard !self.viewModel.isPagination else { return } // 이미 페이징 중이라면 실행 x
             self.attemptFetchCloverAccumulate(with: true)
         }

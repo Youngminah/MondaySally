@@ -23,8 +23,21 @@ class GiftHistoryCell: UICollectionViewCell {
         self.updateStampUI(with: data.isAccepted ?? "U")
         self.updateStatus(with: data.isProved)
         self.giftNameLabel.text = data.name
-        let urlString = URL(string: data.imgUrl)
-        self.imageView.kf.setImage(with: urlString)
+        self.updateThumbnail(imageUrl: data.imgUrl)
+    }
+    
+    func updateThumbnail(imageUrl : String){
+        self.showViewIndicator()
+        let urlString = URL(string: imageUrl)
+        self.imageView.kf.setImage(with: urlString) { result in
+            switch result {
+            case .success(_):
+                self.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.dismissViewndicator()
+            }
+        }
     }
     
     private func updateStampUI(with response: String){

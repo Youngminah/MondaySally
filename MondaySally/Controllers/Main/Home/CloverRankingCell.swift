@@ -34,6 +34,7 @@ class CloverRankingCell: UITableViewCell {
     }
     
     private func setProfileImage(with url: String?){
+        self.showViewIndicator()
         guard let url = url else {
             self.userImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
             self.userImageView.dismissViewndicator()
@@ -45,6 +46,14 @@ class CloverRankingCell: UITableViewCell {
             return
         }
         let urlString = URL(string: url)
-        self.userImageView.kf.setImage(with: urlString)
+        self.userImageView.kf.setImage(with: urlString){ result in
+            switch result {
+            case .success(_):
+                self.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.dismissViewndicator()
+            }
+        }
     }
 }

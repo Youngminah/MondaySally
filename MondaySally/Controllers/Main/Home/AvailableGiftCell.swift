@@ -12,6 +12,7 @@ class AvailableGiftCell: UICollectionViewCell {
     @IBOutlet weak var giftNameLabel: UILabel!
     
     func updateUI(with data: AvailableGiftInfo){
+        self.thumbnailImage.layer.cornerRadius = 4
         self.setThumbnailImage(with: data.imageUrl)
         self.giftNameLabel.text = data.giftName
     }

@@ -9,8 +9,8 @@ class GiftHistoryViewModel {
     
     //MARK: - Properties
     private var dataService: GiftDataService?
-    private var myGiftLogInfo: GiftHistoryPagination? { didSet { self.didFinishFetch?() } }
-    private var giftHistoryList = [MyGiftLogInfo]()
+    private var myGiftLogInfo: GiftHistoryPagination?
+    private var giftHistoryList = [MyGiftLogInfo]() { didSet { self.didFinishFetch?() } } 
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -87,7 +87,6 @@ class GiftHistoryViewModel {
                 strongself.myGiftLogInfo = response?.result
                 strongself.giftHistoryList = strongself.myGiftLogInfo?.giftLogs ?? []
             }
-            strongself.myGiftLogInfo = response?.result
             strongself.didEndPagination(with: pagination)
         })
     }
