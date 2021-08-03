@@ -16,6 +16,7 @@ class GiftCompletedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "기프트 샵"
+        self.navigationItem.backButtonTitle = " "
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "홈으로", style: .plain, target: self, action: #selector(homeButtonPressed))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.label
     }

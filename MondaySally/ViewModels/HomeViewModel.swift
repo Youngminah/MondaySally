@@ -47,7 +47,7 @@ class HomeViewModel {
     }
     
     //MARK: 기프트 히스토리 미리보기 인덱스 접근 조회 함수
-    func giftHistoryList(at index: Int) -> GiftHistoryPreview? {
+    func giftHistoryList(at index: Int) -> MyGiftLogInfo? {
         return homeInfo?.giftHistory?[index]
     }
     

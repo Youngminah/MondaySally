@@ -313,5 +313,5 @@ extension HomeTabViewController {
 
 //MARK: 좋아요와 관련된 프로토콜 정의
 protocol GiftPreviewDelegate{
-    func showGiftPreview(with data: [GiftHistoryPreview])
+    func showGiftPreview(with data: [MyGiftLogInfo])
 }
