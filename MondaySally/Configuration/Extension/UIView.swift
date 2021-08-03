@@ -11,11 +11,11 @@ import UIKit
 extension UIView {
     
     func showViewIndicator() {
+        print("실행되니?")
         let indicator = UIActivityIndicatorView()
-//        let buttonHeight = self.bounds.size.height
-//        let buttonWidth = self.bounds.size.width
-//        indicator.center = CGPoint(x: buttonWidth / 2, y: buttonHeight / 2)
-        indicator.center = self.center
+        let buttonHeight = self.bounds.size.height
+        let buttonWidth = self.bounds.size.width
+        indicator.center = CGPoint(x: buttonWidth / 2, y: buttonHeight / 2)
         self.addSubview(indicator)
         indicator.startAnimating()
     }
