@@ -146,14 +146,15 @@
 
 <img src="https://user-images.githubusercontent.com/42762236/127616653-99f4d65e-04db-4eff-b9ab-0605d2d89aed.png">
 
-이전 개발에서 폴더구성은 Controller폴더 안에서 ViewModel , Model 폴더를 알맞는 ViewController마다 넣어 구성해보았는데, 폴더가 너무 많아지는것 같아,
-이번 개발 폴더는 아예 가장 상위 폴더들을 ViewModel, Model, View, Controller로 나누었다. 
+- 이전 개발에서 폴더구성은 Controller폴더 안에서 ViewModel , 
+- Model 폴더를 알맞는 ViewController마다 넣어 구성해보았는데, 폴더가 너무 많아지는것 같아,
+- 이번 개발 폴더는 아예 가장 상위 폴더들을 ViewModel, Model, View, Controller로 나누었다. 
 
-참고로 Storyboard 방식 개발이라서 View폴더에는 Stroyboard가 들어간다. 
+- 참고로 Storyboard 방식 개발이라서 View폴더에는 Stroyboard가 들어간다. 
 
-Network 폴더에는 Network통신에 필요한 DataService 가 싱글톤 패턴으로 들어가 있다. 
+- Network 폴더에는 Network통신에 필요한 DataService 가 싱글톤 패턴으로 들어가 있다. 
 
-Configuration폴더는 개발을 하다보면 필요한 extension 이나 커스텀 Alert, 폰트, 등등이 들어가있다.
+- Configuration폴더는 개발을 하다보면 필요한 extension 이나 커스텀 Alert, 폰트, 등등이 들어가있다.
 
 </br>
 
@@ -210,17 +211,23 @@ class CommuteViewModel {
 }
 ```
 
-먼데이샐리에서 구성한 가장 기본적인 ViewModel의 틀. 
+- 먼데이샐리에서 구성한 가장 기본적인 ViewModel의 틀. 
 
 </br>
 
-**Property Observer** : MVVM 패턴에서 ViewModel은 View를 전혀 모른다. View만 ViewModel을 인스턴스로 가지고 있기 때문에 둘의 일관성을 맞추어 주어야한다. ViewModel에서 언제 어디서 요청이 오는지 알기 위해 프로퍼티 DidSet을 두어 감지하였다. 변화 이벤트가 일어날 시 적절한 처리를 할 객체가 필요한데 이것에는 다양한 방법을 사용할 수 있지만, 클로저로 처리 하였다. 
+- **Property Observer**   
+  - ViewModel에서 언제 어디서 요청이 오는지 알기 위해 프로퍼티 DidSet을 두어 감지하였다. 
+  - 변화 이벤트가 일어날 시 적절한 처리를 할 객체가 필요한데 이것에는 다양한 방법을 사용할 수 있지만, 클로저로 처리 하였다. 
+  - 
+</br>
 
-위의 코드에 덧붙여, 필요시 데이터를 가공할 작업이 있다면, ViewModel에서 Computed Property를 이용하거나 함수를 이용하여 데이터를 가공 처리하였다.
+- 위의 코드에 덧붙여, 필요시 데이터를 가공할 작업이 있다면, 
+- ViewModel에서 Computed Property를 이용하거나 함수를 이용하여 데이터를 가공 처리하였다.
 
 </br>
 
-ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌는데, MVVM을 써보면 써볼수록 이해도가 높아져서 코드가 발전하는 것 같다.
+- ViewModel의 구성은 맨처음 MVVM을 접할 때에는 어렵게만 느껴졌는데, 
+- MVVM을 써보면 써볼수록 이해도가 높아져서 코드가 발전하는 것 같다.
 
 </br>
 
@@ -269,7 +276,8 @@ struct AvailableGiftInfo: Decodable{
 }
 ```
 
-Json타입의 변환을 위해 코더블을 사용하였다. CodingKey를 활용하여 상황에 맞는 이름으로 Rename해주었다.
+- Json타입의 변환을 위해 코더블을 사용하였다. 
+- CodingKey를 활용하여 상황에 맞는 이름으로 Rename해주었다.
 
 
 
@@ -290,7 +298,8 @@ struct TwinkleWriteInput: Encodable {
 
 ```
 
-마찬가지로 코더블을 이용하였고, Computed property로 딕셔너리 형태로 바꾸어 주어 JsonInput으로 첨가하였다.
+- 마찬가지로 코더블을 이용하였고, 
+- Computed property로 딕셔너리 형태로 바꾸어 주어 JsonInput으로 첨가하였다.
 
 </br>
 
