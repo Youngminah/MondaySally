@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UserDefaults.standard.setValue( token, forKey: "FCMToken")
           }
         }
+        sleep(2)
         return true
     }
     
