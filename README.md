@@ -14,7 +14,7 @@
 <a href="https://apps.apple.com/kr/app/%EB%A8%BC%EB%8D%B0%EC%9D%B4%EC%83%90%EB%A6%AC/id1576353006" target="_blank"><img src="https://user-images.githubusercontent.com/42762236/127537585-a07753d1-d0af-4cdc-8f53-24fbfae72be8.png" width="200px" /></a>
 
 
-구성 서버1명, 클라이언트1명, PM1명, 
+구성 서버1명, 클라이언트1명, PM1명, 디자이너1 
 </br>
 
 </br>
