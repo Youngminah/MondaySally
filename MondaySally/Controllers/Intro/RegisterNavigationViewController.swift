@@ -12,7 +12,7 @@ class RegisterNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.applyFontAndSize()
-        self.setupStyle()
+        //self.setupStyle()
         self.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationBar.layoutIfNeeded()
 

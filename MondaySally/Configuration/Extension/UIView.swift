@@ -11,7 +11,6 @@ import UIKit
 extension UIView {
     
     func showViewIndicator() {
-        print("실행되니?")
         let indicator = UIActivityIndicatorView()
         let buttonHeight = self.bounds.size.height
         let buttonWidth = self.bounds.size.width

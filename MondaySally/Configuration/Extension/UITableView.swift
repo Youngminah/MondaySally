@@ -11,6 +11,7 @@ import UIKit
 extension UITableView {
     
     func showTableViewIndicator() {
+        print("??")
         let indicator = UIActivityIndicatorView()
 //        let buttonHeight = self.bounds.size.height
 //        let buttonWidth = self.bounds.size.width
