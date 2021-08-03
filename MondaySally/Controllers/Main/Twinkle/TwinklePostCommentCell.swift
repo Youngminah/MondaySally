@@ -64,8 +64,17 @@ class TwinklePostCommentCell: UITableViewCell {
             self.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
             return
         }
+        self.profileImageView.showViewIndicator()
         let urlString = URL(string: url)
-        self.profileImageView.kf.setImage(with: urlString)
+        self.profileImageView.kf.setImage(with: urlString){ result in
+            switch result {
+            case .success(_):
+                self.profileImageView.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.profileImageView.dismissViewndicator()
+            }
+        }
     }
     
     private func setButtonHidden(with isWriter: String){

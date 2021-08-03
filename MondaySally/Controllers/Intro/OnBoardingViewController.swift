@@ -73,7 +73,7 @@ class OnBoardingViewController: UIViewController {
             titleLabel.frame = CGRect(x: imageView.frame.origin.x,
                                       y: imageView.bottom + 20,
                                       width: imageView.bounds.width,
-                                      height: 27)
+                                      height: 21)
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 18)
             titleLabel.text = infoViewModel.onBoardingInfo(at: i).titleLabel
@@ -82,9 +82,9 @@ class OnBoardingViewController: UIViewController {
 
             let contentLabel = UILabel()
             contentLabel.frame = CGRect(x: titleLabel.frame.origin.x,
-                                      y: titleLabel.bottom + 20,
+                                      y: titleLabel.bottom + 17,
                                       width: titleLabel.bounds.width,
-                                      height: 52)
+                                      height: 37)
             contentLabel.textAlignment = .center
             contentLabel.font = UIFont(name: "NotoSansKR-Light", size: 15)
             contentLabel.numberOfLines = 2

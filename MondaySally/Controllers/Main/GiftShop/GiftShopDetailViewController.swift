@@ -154,8 +154,21 @@ extension GiftShopDetailViewController {
         self.giftNameLabel.text = data.name
         self.giftContentLabel.text = data.info
         self.giftRuleLabel.text = data.rule
-        let urlString = URL(string: data.thumnail)
-        self.giftImageView.kf.setImage(with: urlString)
+        self.setGiftThumbnailImage(with :data.thumnail)
+    }
+    
+    private func setGiftThumbnailImage(with url: String){
+        self.giftImageView.showViewIndicator()
+        let urlString = URL(string: url)
+        self.giftImageView.kf.setImage(with: urlString){ result in
+            switch result {
+            case .success(_):
+                self.giftImageView.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.giftImageView.dismissViewndicator()
+            }
+        }
     }
     
     private func updateAfterUI() {

@@ -18,7 +18,16 @@ class AvailableGiftCell: UICollectionViewCell {
     }
     
     private func setThumbnailImage(with url: String){
+        self.thumbnailImage.showViewIndicator()
         let urlString = URL(string: url)
-        self.thumbnailImage.kf.setImage(with: urlString)
+        self.thumbnailImage.kf.setImage(with: urlString) { result in
+            switch result {
+            case .success(_):
+                self.thumbnailImage.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.thumbnailImage.dismissViewndicator()
+            }
+        }
     }
 }

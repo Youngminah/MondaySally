@@ -421,7 +421,7 @@ extension TwinklePostViewController {
         self.postTextView.text = data.content
         let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
         self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        self.tableHeaderView.frame.size.height = self.view.width + 160 + self.postTextView.contentSize.height
+        self.tableHeaderView.frame.size.height = self.view.width + 165 + self.postTextView.contentSize.height
     }
     
     //삼한연산자로 바꾸기
@@ -450,6 +450,7 @@ extension TwinklePostViewController {
         self.commentTextField.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
         self.commentTextField.layer.cornerRadius = self.commentTextField.bounds.height/2 - 3
         self.commentTextField.setLeftPaddingPoints(16)
+        self.commentTextField.setRightPaddingPoints(16)
         self.commentButton.layer.cornerRadius = self.commentButton.bounds.height/2 - 3
     }
 }

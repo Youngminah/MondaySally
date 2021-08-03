@@ -59,7 +59,7 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
     
     //UICollectionViewDelegateFlowLayout 프로토콜
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width - 16)/5
+        let width: CGFloat = (collectionView.bounds.width - 80)/4.6
         let height: CGFloat = width
         return CGSize(width: width, height: height)
     }

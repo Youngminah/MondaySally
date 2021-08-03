@@ -70,7 +70,7 @@ extension GiftHistoryPreViewController: UICollectionViewDelegate, UICollectionVi
     //UICollectionViewDelegateFlowLayout 프로토콜
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = (collectionView.bounds.width - 18)/2.7
+        let width: CGFloat = (collectionView.bounds.width - 34)/2.7
         let height: CGFloat = width
         return CGSize(width: width, height: height)
     }

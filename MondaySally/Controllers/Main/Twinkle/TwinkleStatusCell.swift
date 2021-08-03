@@ -30,7 +30,16 @@ class TwinkleStatusCell: UICollectionViewCell {
     }
     
     private func setGiftImage(with url: String){
+        self.statusImageView.showViewIndicator()
         let urlString = URL(string: url)
-        self.statusImageView.kf.setImage(with: urlString)
+        self.statusImageView.kf.setImage(with: urlString){ result in
+            switch result {
+            case .success(_):
+                self.statusImageView.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.statusImageView.dismissViewndicator()
+            }
+        }
     }
 }

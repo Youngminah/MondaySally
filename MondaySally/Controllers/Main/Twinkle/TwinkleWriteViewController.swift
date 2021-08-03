@@ -103,10 +103,10 @@ class TwinkleWriteViewController: UIViewController {
         self.textView.textContainer.lineFragmentPadding = 17;
         self.textView.textContainerInset = UIEdgeInsets(top: 17, left: 0, bottom: 0, right: 0);
         self.textView.delegate = self
-        self.imageFirstButton.layer.cornerRadius = 4
-        self.imageSecondButton.layer.cornerRadius = 4
-        self.imageThirdButton.layer.cornerRadius = 4
-        self.receiptImageButton.layer.cornerRadius = 4
+        self.imageFirstButton.layer.cornerRadius = 3
+        self.imageSecondButton.layer.cornerRadius = 3
+        self.imageThirdButton.layer.cornerRadius = 3
+        self.receiptImageButton.layer.cornerRadius = 3
         self.deleteFirstButton.isHidden = true
         self.deleteSecondButton.isHidden = true
         self.deleteThirdButton.isHidden = true

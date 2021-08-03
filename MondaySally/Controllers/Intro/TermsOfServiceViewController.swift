@@ -40,8 +40,8 @@ class TermsOfServiceViewController: UIViewController {
         self.personalTextView.layer.borderWidth = 1
         self.personalTextView.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.personalTextView.layer.cornerRadius = 4
-        self.serviceTextView.textContainerInset = UIEdgeInsets(top: 14, left: 16, bottom: 7, right: 16);
-        self.personalTextView.textContainerInset = UIEdgeInsets(top: 14, left: 16, bottom: 7, right: 16);
+        self.serviceTextView.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 7, right: 14);
+        self.personalTextView.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 7, right: 14);
     }
     
     @IBAction func agreeButtonTap(_ sender: UIButton) {
