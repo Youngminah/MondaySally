@@ -47,6 +47,7 @@ class TwinklePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.setInitialSet()
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
@@ -413,14 +414,14 @@ extension TwinklePostViewController {
         self.twinkleDateLabel.text = data.date
         self.giftNameLabel.text = data.giftName
         self.cloverLabel.text = "\(data.clover)"
-        self.postTextView.text = data.content
-        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
-        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        self.tableHeaderView.frame.size.height = self.view.width + 160 + self.postTextView.contentSize.height
         self.commentCountLabel.text = "댓글 \(data.commentCount)개"
         self.likeCount = data.likeCount
         self.likeCountLabel.text = "좋아요 \(data.likeCount)개"
         self.originHeartStatus = self.likeButton.isSelected
+        self.postTextView.text = data.content
+        let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
+        self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
+        self.tableHeaderView.frame.size.height = self.view.width + 160 + self.postTextView.contentSize.height
     }
     
     //삼한연산자로 바꾸기
