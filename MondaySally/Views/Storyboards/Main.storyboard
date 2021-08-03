@@ -972,10 +972,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ave-Hx-4ax">
-                                                                        <rect key="frame" x="356" y="16" width="42" height="16"/>
+                                                                        <rect key="frame" x="353.66666666666669" y="16" width="44.333333333333314" height="16"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="13"/>
                                                                         <color key="tintColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="더보기" image="chevron.right" catalog="system">
+                                                                        <state key="normal" title="더보기 " image="icChevronRightGray">
                                                                             <color key="titleColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="11" weight="light"/>
                                                                         </state>
@@ -1013,10 +1013,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gle-rZ-0Ye">
-                                                                        <rect key="frame" x="356" y="12.666666666666742" width="42" height="16"/>
+                                                                        <rect key="frame" x="353.66666666666669" y="12.666666666666742" width="44.333333333333314" height="16"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="13"/>
                                                                         <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="더보기" image="chevron.right" catalog="system">
+                                                                        <state key="normal" title="더보기 " image="icChevronRightGray">
                                                                             <color key="titleColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="11" weight="light"/>
                                                                         </state>
@@ -1955,10 +1955,10 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJe-kK-jgZ">
-                                    <rect key="frame" x="286.33333333333331" y="16" width="72.666666666666686" height="19"/>
+                                    <rect key="frame" x="285.66666666666669" y="16" width="73.333333333333314" height="19"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="13"/>
                                     <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="프로필 수정" image="chevron.right" catalog="system">
+                                    <state key="normal" title="프로필 수정 " image="icChevronRightGray">
                                         <color key="titleColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="thin"/>
                                     </state>
@@ -2333,7 +2333,7 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="47.666666666666657" width="329" height="17.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="47.666666666666686" width="329" height="17.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2614,7 +2614,7 @@ The following sets forth attribution notions for third party software that may b
         <scene sceneID="sCo-W4-HyZ">
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationView" id="NWg-9E-41e" customClass="MainNavigationViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="dropShadow" backIndicatorImage="icChevronLeftGray" backIndicatorTransitionMaskImage="icChevronLeftGray" id="RCK-bv-3qC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="dropShadow" id="RCK-bv-3qC">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -3926,7 +3926,7 @@ The following sets forth attribution notions for third party software that may b
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bsb-Hs-fk3"/>
+        <segue reference="u5m-rk-Y52"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="buttonPhotoAdd" width="105" height="105"/>
@@ -3936,7 +3936,7 @@ The following sets forth attribution notions for third party software that may b
         <image name="dummylogo" width="500" height="500"/>
         <image name="gridQr" width="301" height="301"/>
         <image name="group131" width="18" height="4"/>
-        <image name="icChevronLeftGray" width="9.3333330154418945" height="15.333333015441895"/>
+        <image name="icChevronRightGray" width="6.3333334922790527" height="9.3333330154418945"/>
         <image name="icCloverBlue" width="25" height="25"/>
         <image name="icCloverDarkGray" width="11" height="11"/>
         <image name="icCloverGray" width="11" height="11"/>
