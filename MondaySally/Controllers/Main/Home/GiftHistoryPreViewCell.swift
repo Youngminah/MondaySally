@@ -13,7 +13,7 @@ class GiftHistoryPreViewCell: UICollectionViewCell {
     @IBOutlet weak var historyImageView: UIImageView!
     @IBOutlet weak var coverView: UIView!
     
-    func updateUI(with data: GiftHistoryPreview){
+    func updateUI(with data: MyGiftLogInfo){
         //self.historyImageView.image  = data.imgUrl.convertProfileImage
         self.updateAccptedStatus(with: data.isAccepted)
         self.updateStatus(with: data.isProved)

@@ -15,6 +15,10 @@ class TermsOfServiceViewController: UIViewController {
     @IBOutlet weak var serviceAgreeButton: UIButton!
     @IBOutlet weak var personalAgreeButton: UIButton!
     @IBOutlet weak var completedButton: UIButton!
+    @IBOutlet weak var totalAgreeTextButton: UIButton!
+    @IBOutlet weak var serviceAgreeTextButton: UIButton!
+    @IBOutlet weak var personalAgreeTextButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +49,52 @@ class TermsOfServiceViewController: UIViewController {
         if sender.tag == 0 {
             self.serviceAgreeButton.isSelected = sender.isSelected
             self.personalAgreeButton.isSelected = sender.isSelected
+            self.serviceAgreeTextButton.isSelected = sender.isSelected
+            self.personalAgreeTextButton.isSelected = sender.isSelected
             self.changeTextViewBorderColor(sender, self.serviceTextView)
             self.changeTextViewBorderColor(sender, self.personalTextView)
         }else if sender.tag == 1 {
+            self.serviceAgreeTextButton.isSelected = sender.isSelected
             self.changeTextViewBorderColor(sender, self.serviceTextView)
         }else {
+            self.personalAgreeTextButton.isSelected = sender.isSelected
             self.changeTextViewBorderColor(sender, self.personalTextView)
         }
         self.completedButtonEnable()
+    }
+    
+    @IBAction func agreeTextButtonTap(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        switch sender.tag {
+        case 0:
+            self.serviceAgreeTextButton.isSelected = sender.isSelected
+            self.personalAgreeTextButton.isSelected = sender.isSelected
+            self.serviceAgreeButton.isSelected = sender.isSelected
+            self.personalAgreeButton.isSelected = sender.isSelected
+            self.changeTextViewBorderColor(sender, self.serviceTextView)
+            self.changeTextViewBorderColor(sender, self.personalTextView)
+        case 1:
+            self.serviceAgreeButton.isSelected = sender.isSelected
+            self.changeTextViewBorderColor(sender, self.serviceTextView)
+        default:
+            self.personalAgreeButton.isSelected = sender.isSelected
+            self.changeTextViewBorderColor(sender, self.personalTextView)
+        }
+        self.completedButtonEnable()
+    }
+    
+    private func completedButtonEnable(){
+        if serviceAgreeButton.isSelected && personalAgreeButton.isSelected {
+            self.totalAgreeButton.isSelected = true
+            self.totalAgreeTextButton.isSelected = true
+            self.completedButton.isEnabled = true
+            self.completedButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4284791946, blue: 0.2459045947, alpha: 1)
+        } else {
+            self.totalAgreeButton.isSelected = false
+            self.totalAgreeTextButton.isSelected = false
+            self.completedButton.isEnabled = false
+            self.completedButton.layer.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
+        }
     }
     
     private func changeTextViewBorderColor(_ sender: UIButton, _ textView: UITextView){
@@ -72,17 +114,6 @@ class TermsOfServiceViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    private func completedButtonEnable(){
-        if serviceAgreeButton.isSelected && personalAgreeButton.isSelected {
-            self.totalAgreeButton.isSelected = true
-            self.completedButton.isEnabled = true
-            self.completedButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4284791946, blue: 0.2459045947, alpha: 1)
-        } else {
-            self.totalAgreeButton.isSelected = false
-            self.completedButton.isEnabled = false
-            self.completedButton.layer.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
-        }
-    }
     
     @IBAction func completedButtonTap(_ sender: UIButton) {
         self.moveToJoinView()

@@ -163,6 +163,9 @@ extension RegisterViewController : UITextFieldDelegate{
         let newText = (codeTextField.text! as NSString).replacingCharacters(in: range, with: string)
         if newText.count > 0 {
             self.enableButtonSetting()
+            if newText.count > 8 {
+                return false
+            }
         } else {
             self.disableButtonSetting()
         }

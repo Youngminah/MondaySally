@@ -61,6 +61,17 @@ extension CurrentCloverViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GiftShopDetailView") as? GiftShopDetailViewController else{
+            return
+        }
+        guard let data = self.viewModel.availableGiftList(at: indexPath.item) else {
+            return
+        }
+        vc.giftIndex = data.index
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //UICollectionViewDelegateFlowLayout 프로토콜
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -29,6 +29,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var firstRankingImageButton: UIButton!
     @IBOutlet weak var secondRankingImageButton: UIButton!
     @IBOutlet weak var thirdRankingImageButton: UIButton!
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -256,6 +257,7 @@ extension HomeTabViewController {
         self.firstRankingImageButton.layer.cornerRadius = self.firstRankingImageButton.bounds.width/2
         self.secondRankingImageButton.layer.cornerRadius = self.secondRankingImageButton.bounds.width/2
         self.thirdRankingImageButton.layer.cornerRadius = self.thirdRankingImageButton.bounds.width/2
+        self.logoImageView.layer.cornerRadius = self.logoImageView.bounds.width/2
     }
     
     //MARK: 1등 랭킹 프로필화면 셋팅
@@ -294,7 +296,7 @@ extension HomeTabViewController {
             return
         }
         let urlString = URL(string: url)
-        self.thirdRankingImageButton.kf.setImage(with: urlString, for: .normal)
+        self.logoImageView.kf.setImage(with: urlString)
     }
 
     //MARK: 메인 라벨 셋팅
@@ -311,5 +313,5 @@ extension HomeTabViewController {
 
 //MARK: 좋아요와 관련된 프로토콜 정의
 protocol GiftPreviewDelegate{
-    func showGiftPreview(with data: [GiftHistoryPreview])
+    func showGiftPreview(with data: [MyGiftLogInfo])
 }

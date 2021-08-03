@@ -17,6 +17,8 @@ class MainNavigationViewController: UINavigationController {
         self.navigationBar.backIndicatorImage = UIImage(named: "icChevronLeftGray")
         self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icChevronLeftGray")
         self.navigationItem.backBarButtonItem?.title = " "
+        self.navigationItem.backButtonTitle = " "
+        self.navigationBar.backItem?.backButtonTitle = " "
         self.navigationBar.layoutIfNeeded()
     }
 }

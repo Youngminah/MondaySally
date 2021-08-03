@@ -16,22 +16,22 @@ struct HomeInfo: Decodable{
     var nickname: String
     var companyIdx: Int
     var logoImgUrl: String?
-    var totalWorkTime: String
+    var totalWorkTime: Int
     var status: String
     var accumulatedClover: Int
     var currentClover: Int
     var usedClover: Int
-    var giftHistory: [GiftHistoryPreview]?
+    var giftHistory: [MyGiftLogInfo]?
     var twinkleRank: [TwinkleRankingPreview]?
     var workingMemberlist: [WorkingMember]?
 }
 
-struct GiftHistoryPreview: Decodable{
-    var imgUrl: String
-    var isAccepted: String?
-    var isProved: String
-    var name: String
-}
+//struct GiftHistoryPreview: Decodable{
+//    var imgUrl: String
+//    var isAccepted: String?
+//    var isProved: String
+//    var name: String
+//}
 
 struct TwinkleRankingPreview: Decodable{
     var ranking: Int

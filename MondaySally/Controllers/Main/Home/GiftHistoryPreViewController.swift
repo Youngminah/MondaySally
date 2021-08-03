@@ -12,7 +12,7 @@ class GiftHistoryPreViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var giftHistoryPreviewList = [GiftHistoryPreview]()
+    private var giftHistoryPreviewList = [MyGiftLogInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,7 +20,7 @@ class GiftHistoryPreViewController: UIViewController {
 }
 
 extension GiftHistoryPreViewController: GiftPreviewDelegate{
-    func showGiftPreview(with data: [GiftHistoryPreview]) {
+    func showGiftPreview(with data: [MyGiftLogInfo]) {
         self.giftHistoryPreviewList = data
         self.collectionView.reloadData()
     }
@@ -46,6 +46,27 @@ extension GiftHistoryPreViewController: UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = self.giftHistoryPreviewList[indexPath.row]
+        if data.isProved == "Y" {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
+                return
+            }
+            guard let twinkleIndex = data.twinkleIdx else { return }
+            vc.index = twinkleIndex
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinkleWriteView") as? TwinkleWriteViewController else{
+                return
+            }
+            vc.giftIndex = data.giftLogIdx
+            vc.giftName = data.name
+            vc.clover = data.usedClover
+            //vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     //UICollectionViewDelegateFlowLayout 프로토콜
     //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -55,5 +76,6 @@ extension GiftHistoryPreViewController: UICollectionViewDelegate, UICollectionVi
     }
     
 }
+
 
 

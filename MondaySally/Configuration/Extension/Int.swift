@@ -7,7 +7,7 @@
 
 extension Int {
     var toCloverMoney: String {
-        let money = Double(self / 10000)
+        let money = Double(self) / Double(10000)
         return String(format: "%.1f", money)
     }
 }

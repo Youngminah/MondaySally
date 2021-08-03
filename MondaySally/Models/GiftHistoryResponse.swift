@@ -25,5 +25,4 @@ struct MyGiftLogInfo: Decodable{
     let twinkleIdx: Int?
     let name: String
     let usedClover: Int
-    let money: Int
 }

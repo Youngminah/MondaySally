@@ -43,6 +43,7 @@ class CloverHistoryViewController: UIViewController {
     
     private func initailSetting(){
         self.title = "클로버 히스토리"
+        self.navigationItem.backButtonTitle = " "
         self.viewControllers.append(self.totalVC)
         self.viewControllers.append(self.currentVC)
         self.viewControllers.append(self.usedVC)

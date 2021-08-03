@@ -9,8 +9,8 @@ class CloverAccumulateViewModel {
     
     // MARK: 기본 프로퍼티
     private var dataService: CloverDataService?
-    private var accumulateCloverInfo: AccumulateCloverInfo? { didSet { self.didFinishFetch?() } }
-    private var accumulateCloverList = [AccumulateCloverHistoryInfo]()
+    private var accumulateCloverInfo: AccumulateCloverInfo?
+    private var accumulateCloverList = [AccumulateCloverHistoryInfo]() { didSet { self.didFinishFetch?() } }
     
     //MARK: 프로퍼티 DidSet
     var error: Error? { didSet { self.showAlertClosure?() } }
@@ -45,7 +45,7 @@ class CloverAccumulateViewModel {
     
     //MARK: 누적 클로버 리스트 인덱스 조회
     func accumulateCloverList(at index: Int) -> AccumulateCloverHistoryInfo? {
-        return accumulateCloverInfo?.cloverHistoryList?[index]
+        return accumulateCloverList[index]
     }
     
     var remainderOfCloverAccumulatePagination: Int {
@@ -86,8 +86,10 @@ class CloverAccumulateViewModel {
             }
             strongself.error = nil
             strongself.failMessage = nil
+            print("\(strongself.pageIndex)")
             if strongself.isPagination{
-                strongself.accumulateCloverList.append(contentsOf: response?.result?.cloverHistoryList ?? [])
+                guard let data = response?.result?.cloverHistoryList else { return }
+                strongself.accumulateCloverList.append(contentsOf: data)
             }else {
                 strongself.accumulateCloverInfo = response?.result
                 strongself.accumulateCloverList = strongself.accumulateCloverInfo?.cloverHistoryList ?? []
