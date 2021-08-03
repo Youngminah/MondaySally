@@ -55,8 +55,9 @@ class CloverRankingViewController: UIViewController {
 extension CloverRankingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let number = self.viewModel.numOfCloverRankingList - 1
+        var number = self.viewModel.numOfCloverRankingList - 1
         if number <= 0 {
+            number = 0
             self.tableView.setEmptyView(message: "트윙클 랭킹이 아직 없어요")
         } else {
             self.tableView.restore()

@@ -26,16 +26,16 @@ class GiftHistoryCell: UICollectionViewCell {
         self.updateThumbnail(imageUrl: data.imgUrl)
     }
     
-    func updateThumbnail(imageUrl : String){
-        self.showViewIndicator()
+    private func updateThumbnail(imageUrl : String){
+        self.imageView.showViewIndicator()
         let urlString = URL(string: imageUrl)
         self.imageView.kf.setImage(with: urlString) { result in
             switch result {
             case .success(_):
-                self.dismissViewndicator()
+                self.imageView.dismissViewndicator()
             case .failure(let error):
                 print(error)
-                self.dismissViewndicator()
+                self.imageView.dismissViewndicator()
             }
         }
     }

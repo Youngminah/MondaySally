@@ -78,29 +78,29 @@ class TwinkleTotalCell: UITableViewCell {
             self.profileImageButton.setImage(#imageLiteral(resourceName: "illustSallyBlank"), for: .normal)
             return
         }
-        self.showViewIndicator()
+        self.profileImageButton.showViewIndicator()
         let urlString = URL(string: imageUrl)
         self.profileImageButton.kf.setImage(with: urlString, for: .normal, completionHandler:  { result in
             switch result {
             case .success(_):
-                self.dismissViewndicator()
+                self.profileImageButton.dismissViewndicator()
             case .failure(let error):
                 print(error)
-                self.dismissViewndicator()
+                self.profileImageButton.dismissViewndicator()
             }
         })
     }
     
     private func setThumbnailImage(with url: String){
-        self.showViewIndicator()
+        self.thumbnailImageView.showViewIndicator()
         let urlString = URL(string: url)
         self.thumbnailImageView.kf.setImage(with: urlString){ result in
             switch result {
             case .success(_):
-                self.dismissViewndicator()
+                self.thumbnailImageView.dismissViewndicator()
             case .failure(let error):
                 print(error)
-                self.dismissViewndicator()
+                self.thumbnailImageView.dismissViewndicator()
             }
         }
     }

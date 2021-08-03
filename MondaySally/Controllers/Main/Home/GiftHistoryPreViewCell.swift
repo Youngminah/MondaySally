@@ -21,8 +21,21 @@ class GiftHistoryPreViewCell: UICollectionViewCell {
         self.approvementLabel.layer.cornerRadius = self.approvementLabel.bounds.width/2
         self.historyImageView.clipsToBounds = true
         self.historyImageView.layer.cornerRadius = 8
-        let url = URL(string: data.imgUrl)
-        self.historyImageView.kf.setImage(with: url)
+        self.updateThumbnail(imageUrl : data.imgUrl)
+    }
+    
+    private func updateThumbnail(imageUrl : String){
+        self.historyImageView.showViewIndicator()
+        let urlString = URL(string: imageUrl)
+        self.historyImageView.kf.setImage(with: urlString) { result in
+            switch result {
+            case .success(_):
+                self.historyImageView.dismissViewndicator()
+            case .failure(let error):
+                print(error)
+                self.historyImageView.dismissViewndicator()
+            }
+        }
     }
     
     private func updateAccptedStatus(with data: String?) {
@@ -46,6 +59,4 @@ class GiftHistoryPreViewCell: UICollectionViewCell {
             self.coverView.alpha = 0.65
         }
     }
-    
-    
 }

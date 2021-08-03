@@ -18,15 +18,15 @@ class GiftCell: UICollectionViewCell {
     }
     
     func updateThumbnail(imageUrl : String){
-        self.showViewIndicator()
+        self.giftImageView.showViewIndicator()
         let urlString = URL(string: imageUrl)
         self.giftImageView.kf.setImage(with: urlString) { result in
             switch result {
             case .success(_):
-                self.dismissViewndicator()
+                self.giftImageView.dismissViewndicator()
             case .failure(let error):
                 print(error)
-                self.dismissViewndicator()
+                self.giftImageView.dismissViewndicator()
             }
         }
     }
