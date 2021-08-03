@@ -399,7 +399,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-Ux-QkH">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="764"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ost-UG-VQw">
                                                 <rect key="frame" x="16" y="50" width="201.33333333333334" height="59.333333333333343"/>
@@ -418,52 +418,68 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Bjg-4r-j4Q">
-                                                <rect key="frame" x="16" y="129.33333333333334" width="75.666666666666671" height="22"/>
+                                                <rect key="frame" x="16" y="129.33333333333334" width="76" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H31-9q-LWl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="32"/>
                                                         <state key="normal" image="checkBoxOffGray"/>
                                                         <state key="selected" image="checkBoxOnOrange"/>
                                                         <connections>
                                                             <action selector="agreeButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="M1E-Me-Pnq"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya4-LY-TtI">
-                                                        <rect key="frame" x="23.999999999999996" y="0.0" width="51.666666666666657" height="22"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dm-3g-aF7">
+                                                        <rect key="frame" x="24" y="0.0" width="52" height="32"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="전체 동의">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <state key="selected">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="agreeTextButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="zqx-L0-xqI"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAc-3q-KXT">
-                                                <rect key="frame" x="16" y="171.33333333333334" width="343" height="0.66666666666665719"/>
+                                                <rect key="frame" x="16" y="181.33333333333334" width="343" height="0.66666666666665719"/>
                                                 <color key="backgroundColor" name="pageControlColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.80000000000000004" id="Qkb-Ra-lNt"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pAb-MN-zhW">
-                                                <rect key="frame" x="16" y="192" width="139" height="22"/>
+                                                <rect key="frame" x="16" y="202" width="139" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpL-rb-CoP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="32"/>
                                                         <state key="normal" image="checkBoxOffGray"/>
                                                         <state key="selected" image="checkBoxOnOrange"/>
                                                         <connections>
                                                             <action selector="agreeButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="J7y-HP-fQl"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9U-M6-NNi">
-                                                        <rect key="frame" x="24" y="0.0" width="115" height="22"/>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nB3-Fc-PSM">
+                                                        <rect key="frame" x="24" y="0.0" width="115" height="32"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="서비스 이용약관 동의">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <state key="selected">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="agreeTextButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="uNp-Ia-1Je"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i8v-Xj-W1K">
-                                                <rect key="frame" x="16" y="234" width="343" height="128"/>
+                                                <rect key="frame" x="16" y="254" width="343" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="QQt-dG-G7N"/>
@@ -478,26 +494,35 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZeP-qj-2z1">
-                                                <rect key="frame" x="16" y="382" width="170.33333333333334" height="22"/>
+                                                <rect key="frame" x="16" y="402" width="171" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rd-eF-s2F">
-                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="17" height="32"/>
                                                         <state key="normal" image="checkBoxOffGray"/>
                                                         <state key="selected" image="checkBoxOnOrange"/>
                                                         <connections>
                                                             <action selector="agreeButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="9Yi-mC-dJd"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보 수집 및 이용 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-2B-ebg">
-                                                        <rect key="frame" x="24" y="0.0" width="146.33333333333334" height="22"/>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5D-dZ-wCZ">
+                                                        <rect key="frame" x="24" y="0.0" width="147" height="32"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="개인정보 수집 및 이용 동의">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <state key="selected">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="agreeTextButtonTap:" destination="328-2X-l95" eventType="touchUpInside" id="gse-E4-2eQ"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jmG-rI-6KR">
-                                                <rect key="frame" x="16" y="424" width="343" height="128"/>
+                                                <rect key="frame" x="16" y="454" width="343" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="9IU-0i-bsG"/>
@@ -512,7 +537,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4y-yN-hWd">
-                                                <rect key="frame" x="16" y="618.33333333333337" width="343" height="55.666666666666629"/>
+                                                <rect key="frame" x="16" y="648.33333333333337" width="343" height="55.666666666666629"/>
                                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="D4y-yN-hWd" secondAttribute="height" multiplier="191:31" id="8bC-3z-nzI"/>
@@ -575,10 +600,13 @@
                     <connections>
                         <outlet property="completedButton" destination="D4y-yN-hWd" id="AdB-8m-8XD"/>
                         <outlet property="personalAgreeButton" destination="8rd-eF-s2F" id="yHK-9l-TAb"/>
+                        <outlet property="personalAgreeTextButton" destination="X5D-dZ-wCZ" id="ern-K4-Ggm"/>
                         <outlet property="personalTextView" destination="jmG-rI-6KR" id="pyT-ob-Qpe"/>
                         <outlet property="serviceAgreeButton" destination="wpL-rb-CoP" id="Ojn-Cc-lfW"/>
+                        <outlet property="serviceAgreeTextButton" destination="nB3-Fc-PSM" id="4Ql-Wc-L5e"/>
                         <outlet property="serviceTextView" destination="i8v-Xj-W1K" id="m6P-g8-ReZ"/>
                         <outlet property="totalAgreeButton" destination="H31-9q-LWl" id="KZ0-sp-38w"/>
+                        <outlet property="totalAgreeTextButton" destination="8dm-3g-aF7" id="mzX-Az-Lo1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iO9-rO-AJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -599,6 +627,9 @@
         <namedColor name="pageControlColor">
             <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
