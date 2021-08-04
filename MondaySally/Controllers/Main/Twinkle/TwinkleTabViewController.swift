@@ -14,7 +14,7 @@ class TwinkleTabViewController: UIViewController {
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinkleStatusViewController: TwinkleStatusViewController!
-    private var refreshFlag = false
+    //private var refreshFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,9 @@ class TwinkleTabViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if UserDefaults.standard.bool(forKey: "twinkleRefreshFlag") {
+            self.refreshOfTwinkleTotal()
+        }
     }
     
     @objc private func didPullToRefresh() {

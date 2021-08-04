@@ -526,6 +526,7 @@ extension TwinkleWriteViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 수정에 성공했습니다 !! ")
+                UserDefaults.standard.setValue(true, forKey: "twinkleRefreshFlag")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 수정되었습니다.") {
                     strongSelf.delegate?.doRefresh()
                     strongSelf.navigationController?.popViewController(animated: true)
