@@ -793,7 +793,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummylogo" translatesAutoresizingMaskIntoConstraints="NO" id="SbZ-Kf-lOD">
-                                                                <rect key="frame" x="345" y="15" width="53" height="53"/>
+                                                                <rect key="frame" x="345" y="19" width="53" height="53"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="SbZ-Kf-lOD" secondAttribute="height" multiplier="1:1" id="9v7-u1-57i"/>
                                                                     <constraint firstAttribute="height" constant="53" id="n4e-7G-yzV"/>
@@ -948,7 +948,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="iCs-bo-uqR" secondAttribute="trailing" constant="16" id="DRp-Sy-vX0"/>
                                                             <constraint firstItem="Sfi-6Y-eFw" firstAttribute="top" secondItem="iCs-bo-uqR" secondAttribute="bottom" constant="11" id="DWh-qx-HPc"/>
                                                             <constraint firstAttribute="trailing" secondItem="fT0-F0-Ywg" secondAttribute="trailing" constant="16" id="Wpy-Kh-vXl"/>
-                                                            <constraint firstItem="SbZ-Kf-lOD" firstAttribute="top" secondItem="T0H-pr-BRU" secondAttribute="top" id="YYa-9u-3P6"/>
+                                                            <constraint firstItem="SbZ-Kf-lOD" firstAttribute="top" secondItem="T0H-pr-BRU" secondAttribute="top" constant="4" id="YYa-9u-3P6"/>
                                                             <constraint firstItem="fT0-F0-Ywg" firstAttribute="top" secondItem="B7N-jL-oW4" secondAttribute="bottom" constant="18" id="Zyw-dn-H7m"/>
                                                             <constraint firstItem="T0H-pr-BRU" firstAttribute="leading" secondItem="Qmg-hC-Y5H" secondAttribute="leading" constant="16" id="akT-sG-HKQ"/>
                                                             <constraint firstItem="iCs-bo-uqR" firstAttribute="leading" secondItem="Qmg-hC-Y5H" secondAttribute="leading" constant="16" id="ay7-G3-vt4"/>
@@ -1955,7 +1955,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJe-kK-jgZ">
-                                    <rect key="frame" x="285.66666666666669" y="27" width="73.333333333333314" height="19"/>
+                                    <rect key="frame" x="285.66666666666669" y="29" width="73.333333333333314" height="19"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="13"/>
                                     <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="프로필 수정 " image="icChevronRightGray">
@@ -2003,7 +2003,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Xli-iR-PhL" firstAttribute="centerY" secondItem="EKW-7d-Qfi" secondAttribute="centerY" id="3ZK-lB-mmH"/>
-                                <constraint firstItem="LJe-kK-jgZ" firstAttribute="top" secondItem="EKW-7d-Qfi" secondAttribute="top" constant="27" id="Nmx-Ss-bzc"/>
+                                <constraint firstItem="LJe-kK-jgZ" firstAttribute="top" secondItem="EKW-7d-Qfi" secondAttribute="top" constant="29" id="Nmx-Ss-bzc"/>
                                 <constraint firstAttribute="trailing" secondItem="LJe-kK-jgZ" secondAttribute="trailing" constant="16" id="RuO-SC-eak"/>
                                 <constraint firstItem="Xli-iR-PhL" firstAttribute="leading" secondItem="EKW-7d-Qfi" secondAttribute="leading" constant="16" id="Tso-kE-4dm"/>
                                 <constraint firstItem="Ixb-El-56F" firstAttribute="centerY" secondItem="EKW-7d-Qfi" secondAttribute="centerY" id="cbx-yZ-bMt"/>
@@ -2333,7 +2333,7 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="47.666666666666686" width="329" height="17.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="47.666666666666657" width="329" height="17.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
