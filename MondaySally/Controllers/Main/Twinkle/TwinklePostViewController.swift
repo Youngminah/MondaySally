@@ -47,21 +47,12 @@ class TwinklePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setInitialSet()
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
         self.commentTextField.delegate = self
         self.attemptFetchDetail(with : index)
 
-    }
-     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        if originHeartStatus != self.likeButton.isSelected{
-            self.attemptFetchTwinkleLike(with: index)
-
-        }
     }
     
     //MARK: 컨테이너 뷰 연결
@@ -91,14 +82,7 @@ class TwinklePostViewController: UIViewController {
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        self.likeButton.isSelected = !self.likeButton.isSelected
-        if self.likeButton.isSelected{
-            self.likeCount = self.likeCount + 1
-            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
-        }else{
-            self.likeCount = self.likeCount - 1
-            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
-        }
+        self.attemptFetchTwinkleLike(with: index)
     }
 }
 
@@ -296,12 +280,19 @@ extension TwinklePostViewController {
 
 // MARK: 트윙클 좋아요 API
 extension TwinklePostViewController {
-    
     private func attemptFetchTwinkleLike(with index :Int) {
         self.likeViewModel.didFinishFetch = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
+                strongSelf.likeButton.isSelected = !strongSelf.likeButton.isSelected
+                if strongSelf.likeButton.isSelected{
+                    strongSelf.likeCount = strongSelf.likeCount + 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }else{
+                    strongSelf.likeCount = strongSelf.likeCount - 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }
                 strongSelf.refreshDelegate?.doRefresh()
             }
         }
@@ -360,8 +351,6 @@ extension TwinklePostViewController {
         }
         self.commentWriteViewModel.fetchTwinkleCommentWrite(with: index, with: content)
     }
-    
-    
     
     // MARK: 트윙클 댓글 삭제 API
     private func attemptFetchCommentDelete(with index: Int) {

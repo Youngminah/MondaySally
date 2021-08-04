@@ -11,6 +11,7 @@ import FirebaseStorage
 class ProfileEditViewController: UIViewController{
 
     @IBOutlet weak var photoSelectButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
@@ -132,6 +133,8 @@ extension ProfileEditViewController{
         self.photoSelectButton.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.photoSelectButton.clipsToBounds = true
         self.photoSelectButton.layer.cornerRadius = self.photoSelectButton.bounds.width/2
+        self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.width/2
+        self.profileImageView.alpha = 0.3
         self.photoSelectButton.layer.masksToBounds = true
         self.nickNameTextField.layer.cornerRadius = 4
         self.nickNameTextField.clipsToBounds = true
@@ -145,6 +148,7 @@ extension ProfileEditViewController{
         self.emailTextField.layer.cornerRadius = 4
         self.emailTextField.clipsToBounds = true
         self.emailTextField.setLeftPaddingPoints(16)
+        self.updateProfileImage()
         self.imageURL = UserDefaults.standard.string(forKey: "imageUrl") ?? ""
         self.nickNameTextField.text = UserDefaults.standard.string(forKey: "nickName")
         self.phoneNumberTextField.text = UserDefaults.standard.string(forKey: "phoneNumber")
@@ -154,6 +158,31 @@ extension ProfileEditViewController{
         self.unselectedPhoneNumberTextFieldUI()
         self.unselectedAccountTextFieldUI()
         self.unselectedEmailTextFieldUI()
+    }
+    
+    //MARK: Kingfisher로 프로필 이미지 가져오고 , 예외 처리
+    private func updateProfileImage(){
+        guard let urlImage = UserDefaults.standard.string(forKey: "imageUrl") else {
+            self.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
+            return
+        }
+        if urlImage == "" {
+            self.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
+            return
+        }
+        self.profileImageView.showViewIndicator()
+        let url = URL(string: urlImage)
+        self.profileImageView.kf.setImage(with: url) { [weak self] result in
+            guard let strongself = self else { return }
+            switch result {
+            case .success(_):
+                strongself.profileImageView.dismissViewndicator()
+            case .failure( _):
+                print("프로필 이미지 URL의 이미지를 가져올 수 없음!!")
+                strongself.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
+                strongself.profileImageView.dismissViewndicator()
+            }
+        }
     }
     
     private func editSuccessSallyAlertPresent(){
@@ -196,7 +225,7 @@ extension ProfileEditViewController{
         actionsheet.addAction(album)
         
         let basic = UIAlertAction(title: "기본 이미지로 변경", style: .default, handler: {_ in
-            self.photoSelectButton.setImage(#imageLiteral(resourceName: "icPhotoMid"), for: .normal)
+            self.profileImageView.image = #imageLiteral(resourceName: "illustSallyBlank")
             self.imageURL = ""
             self.photoSelectButton.isSelected = false
         })
@@ -214,7 +243,7 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate , UINavigat
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        self.photoSelectButton.setImage(image, for: .normal)
+        self.profileImageView.image = image
         self.photoSelectButton.isSelected = true
         picker.dismiss(animated: true, completion: nil)
     }
