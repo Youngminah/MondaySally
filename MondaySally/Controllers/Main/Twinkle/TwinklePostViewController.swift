@@ -96,12 +96,12 @@ extension TwinklePostViewController{
         })
         actionsheet.addAction(cancel)
         
-        //MARK: 트윙클 삭제 버튼 눌렀을 때
-        let album = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
-            guard let strongself = self else { return }
-            strongself.deleteTwinkleButtonTap()
-        })
-        actionsheet.addAction(album)
+//        //MARK: 트윙클 삭제 버튼 눌렀을 때
+//        let album = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+//            guard let strongself = self else { return }
+//            strongself.deleteTwinkleButtonTap()
+//        })
+//        actionsheet.addAction(album)
         
         //MARK: 트윙클 수정 버튼 눌렀을 때
         let basic = UIAlertAction(title: "수정", style: .default, handler: { [weak self] _ in

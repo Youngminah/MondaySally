@@ -86,6 +86,7 @@ class TwinkleWriteViewController: UIViewController {
     }
     
     @IBAction func selectImageButtonTap(_ sender: UIButton) {
+        if sender.isSelected { return }
         let vc = UIImagePickerController()
         self.photoTag = sender.tag
         vc.sourceType = .photoLibrary
