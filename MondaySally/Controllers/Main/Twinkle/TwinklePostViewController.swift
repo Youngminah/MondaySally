@@ -19,7 +19,7 @@ class TwinklePostViewController: UIViewController {
     @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTextFieldBottom: NSLayoutConstraint!
-    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -47,21 +47,12 @@ class TwinklePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setInitialSet()
         self.hideKeyboardWhenTappedAround()
         self.updateUI()
-        self.commentTextField.delegate = self
+        self.commentTextView.delegate = self
         self.attemptFetchDetail(with : index)
 
-    }
-     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        if originHeartStatus != self.likeButton.isSelected{
-            self.attemptFetchTwinkleLike(with: index)
-
-        }
     }
     
     //MARK: 컨테이너 뷰 연결
@@ -78,27 +69,20 @@ class TwinklePostViewController: UIViewController {
     }
     
     @IBAction func commentWriteButtonTap(_ sender: UIButton) {
-        guard let content = self.commentTextField.text else {
+        guard let content = self.commentTextView.text else {
             return
         }
         if content == ""{
             self.showSallyNotationAlert(with: "댓글을 입력해 주세요.")
             return
         }
-        self.commentTextField.text = ""
+        self.commentTextView.text = ""
         self.attemptFetchCommentWrite(with: index, with: content)
         self.tableView.scrollToBottom()
     }
     
     @IBAction func likeButtonTouchUp(_ sender: UIButton) {
-        self.likeButton.isSelected = !self.likeButton.isSelected
-        if self.likeButton.isSelected{
-            self.likeCount = self.likeCount + 1
-            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
-        }else{
-            self.likeCount = self.likeCount - 1
-            self.likeCountLabel.text = "좋아요 \(self.likeCount)개"
-        }
+        self.attemptFetchTwinkleLike(with: index)
     }
 }
 
@@ -147,6 +131,7 @@ extension TwinklePostViewController{
         vc.editContent = data.content
         vc.editReceipt = data.receiptImageUrl
         vc.editTwinkleIndex = index
+        vc.isAcceptedFlag = data.isAccepted
         vc.giftName = data.giftName
         vc.clover = data.clover
         vc.delegate = self
@@ -296,12 +281,19 @@ extension TwinklePostViewController {
 
 // MARK: 트윙클 좋아요 API
 extension TwinklePostViewController {
-    
     private func attemptFetchTwinkleLike(with index :Int) {
         self.likeViewModel.didFinishFetch = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 print("좋아요/좋아요취소 요청에 성공했습니다 !! ")
+                strongSelf.likeButton.isSelected = !strongSelf.likeButton.isSelected
+                if strongSelf.likeButton.isSelected{
+                    strongSelf.likeCount = strongSelf.likeCount + 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }else{
+                    strongSelf.likeCount = strongSelf.likeCount - 1
+                    strongSelf.likeCountLabel.text = "좋아요 \(strongSelf.likeCount)개"
+                }
                 strongSelf.refreshDelegate?.doRefresh()
             }
         }
@@ -361,8 +353,6 @@ extension TwinklePostViewController {
         self.commentWriteViewModel.fetchTwinkleCommentWrite(with: index, with: content)
     }
     
-    
-    
     // MARK: 트윙클 댓글 삭제 API
     private func attemptFetchCommentDelete(with index: Int) {
         self.commentDeleteViewModel.updateLoadingStatus = {
@@ -421,7 +411,7 @@ extension TwinklePostViewController {
         self.postTextView.text = data.content
         let contentSize = self.postTextView.sizeThatFits(self.postTextView.bounds.size)
         self.postTextView.frame = CGRect(x: 0 , y:0, width: contentSize.width, height: contentSize.height)
-        self.tableHeaderView.frame.size.height = self.view.width + 165 + self.postTextView.contentSize.height
+        self.tableHeaderView.frame.size.height = self.view.width + 166 + self.postTextView.contentSize.height
     }
     
     //삼한연산자로 바꾸기
@@ -446,18 +436,43 @@ extension TwinklePostViewController {
         self.navigationItem.backButtonTitle = " "
         self.postTextView.textContainer.lineFragmentPadding = 0;
         self.postTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
-        self.commentTextField.layer.borderWidth = 1
-        self.commentTextField.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
-        self.commentTextField.layer.cornerRadius = self.commentTextField.bounds.height/2 - 3
-        self.commentTextField.setLeftPaddingPoints(16)
-        self.commentTextField.setRightPaddingPoints(16)
+        self.commentTextView.layer.borderWidth = 1
+        self.commentTextView.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
+        self.commentTextView.layer.cornerRadius = self.commentTextView.bounds.height/2 - 3
+        self.commentTextView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16);
+        //self.commentTextView.setRightPaddingPoints(16)
         self.commentButton.layer.cornerRadius = self.commentButton.bounds.height/2 - 3
     }
 }
 
 
 //키보드가 올라가거나 내려갈때, 입력 필드의 배치 지정해주기. && 글자수 제한.
-extension TwinklePostViewController : UITextFieldDelegate {
+extension TwinklePostViewController : UITextViewDelegate {
+
+    //텍스트뷰 글자수 제한
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count <= 100
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1) {
+            self.commentTextView.text = nil
+            self.commentTextView.textColor = UIColor.label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            self.commentTextView.text = "댓글을 입력해주세요."
+            self.commentTextView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        }
+    }
+    
+    private func placeholderSetting() {
+        self.commentTextView.text = "댓글을 입력해주세요."
+        self.commentTextView.textColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+    }
     
     private func setInitialSet(){
         NotificationCenter.default.addObserver(self,
@@ -468,22 +483,7 @@ extension TwinklePostViewController : UITextFieldDelegate {
                                                selector: #selector(adjustInputView),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-    }
-
-    //텍스트뷰 글자수 제한
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let char = string.cString(using: String.Encoding.utf8) {
-            let isBackSpace = strcmp(char, "\\b")
-            if isBackSpace == -92 {
-                return true
-            }
-        }
-        guard let text = textField.text else {return false}
-        // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
-        if text.count > 100 { 
-            return false
-        }
-        return true
+        self.placeholderSetting()
     }
     
     //아무곳이나 클릭하면 키보드 내려가게 하기
@@ -504,8 +504,6 @@ extension TwinklePostViewController : UITextFieldDelegate {
         
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-            print(commentTextFieldBottom.constant)
-            print(adjustmentHeight)
             commentTextFieldBottom.constant = adjustmentHeight
         } else {
             commentTextFieldBottom.constant = 0

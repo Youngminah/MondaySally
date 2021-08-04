@@ -49,9 +49,11 @@ class TwinkleWriteViewController: UIViewController {
     //처음 작성시 API로 보낼 미증빙/ 증빙기프트 인덱스
     var giftIndex = Int() // 트윙클 작성 서버 요청시 쿼리로 보낼 트윙클 인덱스
     
-    //수정을 위한 데이터
+    
+    //MARK: 수정을 위한 데이터 <리펙토링 필요>
     var editTwinkleIndex = Int() //수정시 쿼리로 보내야하는 트윙클 인덱스
     var editFlag = Bool()
+    var isAcceptedFlag : String?
     var editImageList = [String]()
     var editReceipt = String()
     var editContent = String()
@@ -74,6 +76,13 @@ class TwinkleWriteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    private func isAcceptedReceipt(){
+        guard let flag = self.isAcceptedFlag else { return }
+        if flag == "Y"{
+            self.receiptDeleteButton.isHidden = true
+        }
     }
     
     @IBAction func selectImageButtonTap(_ sender: UIButton) {
@@ -398,6 +407,8 @@ extension TwinkleWriteViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 작성에 성공했습니다 !! ")
+                UserDefaults.standard.setValue(true, forKey: "twinkleRefreshFlag")
+                UserDefaults.standard.setValue(true, forKey: "homeRefreshFlag")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 작성되었습니다.") {
                     strongSelf.delegate?.doRefresh()
                     strongSelf.navigationController?.popViewController(animated: true)
@@ -526,6 +537,8 @@ extension TwinkleWriteViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("트윙클 수정에 성공했습니다 !! ")
+                UserDefaults.standard.setValue(true, forKey: "twinkleRefreshFlag")
+                UserDefaults.standard.setValue(true, forKey: "homeRefreshFlag")
                 strongSelf.showSallyNotationAlert(with: "트윙클이 수정되었습니다.") {
                     strongSelf.delegate?.doRefresh()
                     strongSelf.navigationController?.popViewController(animated: true)

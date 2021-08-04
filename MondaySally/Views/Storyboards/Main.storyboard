@@ -213,7 +213,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0P-W3-lpx">
-                                                <rect key="frame" x="16" y="635.33333333333337" width="343" height="62"/>
+                                                <rect key="frame" x="16" y="620" width="343" height="62"/>
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="62" id="VQM-l0-gRv"/>
@@ -234,16 +234,16 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="l0P-W3-lpx" firstAttribute="top" secondItem="W6b-T9-uxV" secondAttribute="bottom" constant="16" id="5aZ-ey-yaE"/>
                                             <constraint firstItem="los-Mr-9ln" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="8Y4-3v-FTr"/>
+                                            <constraint firstAttribute="bottom" secondItem="l0P-W3-lpx" secondAttribute="bottom" constant="113" id="Bot-8d-EFa"/>
                                             <constraint firstItem="los-Mr-9ln" firstAttribute="top" secondItem="q44-9R-C4G" secondAttribute="bottom" constant="20" id="CTs-iP-Cxb"/>
                                             <constraint firstItem="l0P-W3-lpx" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="P2s-AU-VSe"/>
                                             <constraint firstAttribute="trailing" secondItem="W6b-T9-uxV" secondAttribute="trailing" constant="16" id="QgC-Cg-dDG"/>
                                             <constraint firstItem="Hpw-BR-3xz" firstAttribute="top" secondItem="Ggj-Cg-iNt" secondAttribute="top" id="Qvk-Yk-ZV2"/>
                                             <constraint firstAttribute="trailing" secondItem="l0P-W3-lpx" secondAttribute="trailing" constant="16" id="S7n-E1-57O"/>
-                                            <constraint firstItem="l0P-W3-lpx" firstAttribute="top" secondItem="W6b-T9-uxV" secondAttribute="bottom" constant="31.333333333333371" id="dBg-N4-KtH"/>
                                             <constraint firstItem="W6b-T9-uxV" firstAttribute="top" secondItem="los-Mr-9ln" secondAttribute="bottom" constant="16" id="eIy-B1-ii5"/>
                                             <constraint firstAttribute="trailing" secondItem="q44-9R-C4G" secondAttribute="trailing" constant="16" id="eJ6-q4-51S"/>
-                                            <constraint firstAttribute="bottom" secondItem="l0P-W3-lpx" secondAttribute="bottom" constant="97.666666666666629" id="f20-kn-MnM"/>
                                             <constraint firstItem="W6b-T9-uxV" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="pKf-zg-a3F"/>
                                             <constraint firstItem="q44-9R-C4G" firstAttribute="top" secondItem="Hpw-BR-3xz" secondAttribute="bottom" constant="16" id="phY-Ea-GjU"/>
                                             <constraint firstItem="q44-9R-C4G" firstAttribute="leading" secondItem="Ggj-Cg-iNt" secondAttribute="leading" constant="16" id="tJe-hd-Ovg"/>
@@ -972,10 +972,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ave-Hx-4ax">
-                                                                        <rect key="frame" x="356" y="16" width="42" height="16"/>
+                                                                        <rect key="frame" x="353.66666666666669" y="16" width="44.333333333333314" height="16"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="13"/>
                                                                         <color key="tintColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="더보기" image="chevron.right" catalog="system">
+                                                                        <state key="normal" title="더보기 " image="icChevronRightGray">
                                                                             <color key="titleColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="11" weight="light"/>
                                                                         </state>
@@ -1013,10 +1013,10 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gle-rZ-0Ye">
-                                                                        <rect key="frame" x="356" y="12.666666666666742" width="42" height="16"/>
+                                                                        <rect key="frame" x="353.66666666666669" y="12.666666666666742" width="44.333333333333314" height="16"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansKR-Light" family="Noto Sans KR" pointSize="13"/>
                                                                         <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <state key="normal" title="더보기" image="chevron.right" catalog="system">
+                                                                        <state key="normal" title="더보기 " image="icChevronRightGray">
                                                                             <color key="titleColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="11" weight="light"/>
                                                                         </state>
@@ -1558,8 +1558,8 @@
                                                     </constraints>
                                                     <state key="normal" image="illustSallyBlank"/>
                                                 </button>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iWt-YB-xdV">
-                                                    <rect key="frame" x="73" y="16" width="76.666666666666686" height="35"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iWt-YB-xdV">
+                                                    <rect key="frame" x="73" y="14" width="76.666666666666686" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알 수 없음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOZ-7t-9hJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="17.666666666666668"/>
@@ -1594,7 +1594,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grb-s5-xFM">
-                                                    <rect key="frame" x="333.66666666666669" y="11" width="30.333333333333314" height="35"/>
+                                                    <rect key="frame" x="333.66666666666669" y="9" width="30.333333333333314" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="grb-s5-xFM" secondAttribute="height" multiplier="19:22" id="71z-Fu-uP0"/>
                                                         <constraint firstAttribute="height" constant="35" id="gog-d1-KdE"/>
@@ -1642,7 +1642,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="iWt-YB-xdV" firstAttribute="top" secondItem="bmu-WI-3yU" secondAttribute="top" id="Qcu-O0-p0I"/>
+                                                <constraint firstItem="iWt-YB-xdV" firstAttribute="top" secondItem="bmu-WI-3yU" secondAttribute="top" constant="-2" id="Qcu-O0-p0I"/>
                                                 <constraint firstItem="grb-s5-xFM" firstAttribute="top" secondItem="iWt-YB-xdV" secondAttribute="top" constant="-5" id="W6I-sY-rcd"/>
                                                 <constraint firstAttribute="bottom" secondItem="q5i-Gj-ChI" secondAttribute="bottom" constant="16" id="XaD-O9-Ke5"/>
                                                 <constraint firstAttribute="trailing" secondItem="A0a-ZS-AHJ" secondAttribute="trailing" id="Y4e-GB-Zvk"/>
@@ -1955,10 +1955,10 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJe-kK-jgZ">
-                                    <rect key="frame" x="286.33333333333331" y="16" width="72.666666666666686" height="19"/>
+                                    <rect key="frame" x="285.66666666666669" y="27" width="73.333333333333314" height="19"/>
                                     <fontDescription key="fontDescription" name="NotoSansKR-Thin" family="Noto Sans KR" pointSize="13"/>
                                     <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="프로필 수정" image="chevron.right" catalog="system">
+                                    <state key="normal" title="프로필 수정 " image="icChevronRightGray">
                                         <color key="titleColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="thin"/>
                                     </state>
@@ -2003,7 +2003,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Xli-iR-PhL" firstAttribute="centerY" secondItem="EKW-7d-Qfi" secondAttribute="centerY" id="3ZK-lB-mmH"/>
-                                <constraint firstItem="LJe-kK-jgZ" firstAttribute="top" secondItem="EKW-7d-Qfi" secondAttribute="top" constant="16" id="Nmx-Ss-bzc"/>
+                                <constraint firstItem="LJe-kK-jgZ" firstAttribute="top" secondItem="EKW-7d-Qfi" secondAttribute="top" constant="27" id="Nmx-Ss-bzc"/>
                                 <constraint firstAttribute="trailing" secondItem="LJe-kK-jgZ" secondAttribute="trailing" constant="16" id="RuO-SC-eak"/>
                                 <constraint firstItem="Xli-iR-PhL" firstAttribute="leading" secondItem="EKW-7d-Qfi" secondAttribute="leading" constant="16" id="Tso-kE-4dm"/>
                                 <constraint firstItem="Ixb-El-56F" firstAttribute="centerY" secondItem="EKW-7d-Qfi" secondAttribute="centerY" id="cbx-yZ-bMt"/>
@@ -2333,7 +2333,7 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="47.666666666666657" width="329" height="17.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="47.666666666666686" width="329" height="17.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2441,6 +2441,9 @@ The following sets forth attribution notions for third party software that may b
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZS-b1-q50">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-9x-oYk">
+                                                <rect key="frame" x="126.66666666666669" y="25" width="122" height="122"/>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5W-JP-hzr">
                                                 <rect key="frame" x="126.66666666666669" y="25" width="122" height="122"/>
                                                 <constraints>
@@ -2546,12 +2549,16 @@ The following sets forth attribution notions for third party software that may b
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="b9f-9x-oYk" firstAttribute="width" secondItem="R5W-JP-hzr" secondAttribute="width" id="9Fy-eR-hMa"/>
                                             <constraint firstAttribute="height" constant="724" id="BuY-vv-WBp"/>
                                             <constraint firstItem="R5W-JP-hzr" firstAttribute="centerX" secondItem="XZS-b1-q50" secondAttribute="centerX" id="DBl-a4-GOV"/>
+                                            <constraint firstItem="b9f-9x-oYk" firstAttribute="centerX" secondItem="R5W-JP-hzr" secondAttribute="centerX" id="J3i-Dp-0rK"/>
                                             <constraint firstItem="cr3-Km-rGK" firstAttribute="centerX" secondItem="XZS-b1-q50" secondAttribute="centerX" id="SBK-Py-WMW"/>
                                             <constraint firstItem="GGL-bc-4nk" firstAttribute="leading" secondItem="XZS-b1-q50" secondAttribute="leading" constant="16" id="W7e-01-tsS"/>
                                             <constraint firstItem="cr3-Km-rGK" firstAttribute="top" secondItem="GGL-bc-4nk" secondAttribute="bottom" constant="25" id="ZFp-NW-jBx"/>
                                             <constraint firstItem="cr3-Km-rGK" firstAttribute="leading" secondItem="XZS-b1-q50" secondAttribute="leading" constant="16" id="aAX-Sc-HSP"/>
+                                            <constraint firstItem="b9f-9x-oYk" firstAttribute="height" secondItem="R5W-JP-hzr" secondAttribute="height" id="eRz-Yn-nDp"/>
+                                            <constraint firstItem="b9f-9x-oYk" firstAttribute="centerY" secondItem="R5W-JP-hzr" secondAttribute="centerY" id="ed4-Vl-i9C"/>
                                             <constraint firstItem="GGL-bc-4nk" firstAttribute="top" secondItem="R5W-JP-hzr" secondAttribute="bottom" constant="25" id="exu-Y1-mVA"/>
                                             <constraint firstItem="GGL-bc-4nk" firstAttribute="centerX" secondItem="XZS-b1-q50" secondAttribute="centerX" id="oVH-zf-3Cz"/>
                                             <constraint firstAttribute="trailing" secondItem="cr3-Km-rGK" secondAttribute="trailing" constant="16" id="qal-bh-oQ5"/>
@@ -2602,6 +2609,7 @@ The following sets forth attribution notions for third party software that may b
                         <outlet property="nickNameTextField" destination="K2I-JY-rq3" id="7oI-eL-zXD"/>
                         <outlet property="phoneNumberTextField" destination="i5c-gh-wdd" id="hN0-xj-Lam"/>
                         <outlet property="photoSelectButton" destination="R5W-JP-hzr" id="VC3-3c-q8F"/>
+                        <outlet property="profileImageView" destination="b9f-9x-oYk" id="wPq-Md-mO0"/>
                         <outlet property="scrollView" destination="l0T-8Q-8H6" id="e4u-FO-Nbl"/>
                         <outlet property="scrollViewBottom" destination="1w6-gI-wms" id="wp5-zq-uU9"/>
                     </connections>
@@ -2614,7 +2622,7 @@ The following sets forth attribution notions for third party software that may b
         <scene sceneID="sCo-W4-HyZ">
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationView" id="NWg-9E-41e" customClass="MainNavigationViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="dropShadow" backIndicatorImage="icChevronLeftGray" backIndicatorTransitionMaskImage="icChevronLeftGray" id="RCK-bv-3qC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="dropShadow" id="RCK-bv-3qC">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -3251,7 +3259,7 @@ The following sets forth attribution notions for third party software that may b
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bny-fW-i9h">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="885"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -3476,27 +3484,29 @@ The following sets forth attribution notions for third party software that may b
                                 </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabBarShadow" translatesAutoresizingMaskIntoConstraints="NO" id="j58-mv-feV">
-                                <rect key="frame" x="0.0" y="890" width="414" height="10"/>
+                                <rect key="frame" x="0.0" y="875" width="414" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="8Vy-ic-zI2"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0P-M3-luT">
-                                <rect key="frame" x="0.0" y="900" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="885" width="414" height="115"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ljp-8u-awy">
-                                        <rect key="frame" x="16" y="11" width="382" height="50"/>
+                                        <rect key="frame" x="16" y="15" width="382" height="55"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVN-0G-piT">
-                                                <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dSW-8N-Q4h">
+                                                <rect key="frame" x="0.0" y="0.0" width="305" height="55"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="kVN-0G-piT" secondAttribute="height" multiplier="305:50" id="rJA-5l-lPc"/>
+                                                    <constraint firstAttribute="width" secondItem="dSW-8N-Q4h" secondAttribute="height" multiplier="305:55" id="o6c-j9-91m"/>
                                                 </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            </textView>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHy-1a-1af">
-                                                <rect key="frame" x="312" y="0.0" width="70" height="50"/>
+                                                <rect key="frame" x="312" y="0.0" width="70" height="55"/>
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="gFd-Jt-gxh"/>
@@ -3516,8 +3526,8 @@ The following sets forth attribution notions for third party software that may b
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Ljp-8u-awy" secondAttribute="trailing" constant="16" id="30v-Ik-1IM"/>
                                     <constraint firstItem="Ljp-8u-awy" firstAttribute="leading" secondItem="U0P-M3-luT" secondAttribute="leading" constant="16" id="JRA-Hm-dbu"/>
-                                    <constraint firstAttribute="height" constant="100" id="RXx-zN-mRA"/>
-                                    <constraint firstItem="Ljp-8u-awy" firstAttribute="top" secondItem="U0P-M3-luT" secondAttribute="top" constant="11" id="zLy-4L-8R8"/>
+                                    <constraint firstAttribute="height" constant="115" id="RXx-zN-mRA"/>
+                                    <constraint firstItem="Ljp-8u-awy" firstAttribute="top" secondItem="U0P-M3-luT" secondAttribute="top" constant="15" id="zLy-4L-8R8"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3542,8 +3552,8 @@ The following sets forth attribution notions for third party software that may b
                         <outlet property="commentButton" destination="KHy-1a-1af" id="s5W-u2-VDL"/>
                         <outlet property="commentCountLabel" destination="36Z-HI-3gD" id="tGM-wJ-F0h"/>
                         <outlet property="commentTableView" destination="bny-fW-i9h" id="YDM-Bq-2wQ"/>
-                        <outlet property="commentTextField" destination="kVN-0G-piT" id="CST-BO-YGf"/>
                         <outlet property="commentTextFieldBottom" destination="Xbs-n4-LcA" id="LMG-qL-bnX"/>
+                        <outlet property="commentTextView" destination="dSW-8N-Q4h" id="yod-82-j1G"/>
                         <outlet property="editOrDeleteButton" destination="biZ-JS-Nue" id="rns-BR-wji"/>
                         <outlet property="giftNameLabel" destination="uiP-fk-JbA" id="d5B-SK-Mqb"/>
                         <outlet property="likeButton" destination="FqN-7W-31j" id="BBI-0t-fRt"/>
@@ -3926,7 +3936,7 @@ The following sets forth attribution notions for third party software that may b
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bsb-Hs-fk3"/>
+        <segue reference="u5m-rk-Y52"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="buttonPhotoAdd" width="105" height="105"/>
@@ -3936,7 +3946,7 @@ The following sets forth attribution notions for third party software that may b
         <image name="dummylogo" width="500" height="500"/>
         <image name="gridQr" width="301" height="301"/>
         <image name="group131" width="18" height="4"/>
-        <image name="icChevronLeftGray" width="9.3333330154418945" height="15.333333015441895"/>
+        <image name="icChevronRightGray" width="6.3333334922790527" height="9.3333330154418945"/>
         <image name="icCloverBlue" width="25" height="25"/>
         <image name="icCloverDarkGray" width="11" height="11"/>
         <image name="icCloverGray" width="11" height="11"/>

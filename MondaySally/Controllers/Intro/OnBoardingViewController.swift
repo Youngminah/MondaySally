@@ -82,9 +82,9 @@ class OnBoardingViewController: UIViewController {
 
             let contentLabel = UILabel()
             contentLabel.frame = CGRect(x: titleLabel.frame.origin.x,
-                                      y: titleLabel.bottom + 17,
+                                      y: titleLabel.bottom + 10,
                                       width: titleLabel.bounds.width,
-                                      height: 37)
+                                      height: 50)
             contentLabel.textAlignment = .center
             contentLabel.font = UIFont(name: "NotoSansKR-Light", size: 15)
             contentLabel.numberOfLines = 2

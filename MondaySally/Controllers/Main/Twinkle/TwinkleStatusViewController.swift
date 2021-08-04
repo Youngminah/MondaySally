@@ -46,7 +46,12 @@ extension TwinkleStatusViewController: UICollectionViewDelegate, UICollectionVie
         }
         guard let data = self.viewModel.twinkleProveList(at: indexPath.row) else { return }
         if data.isProved == "Y"{
-            return
+//            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TwinklePostView") as? TwinklePostViewController else{
+//                return
+//            }
+//            guard let twinkleIndex = data.twinkleIdx else { return }
+//            vc.index = twinkleIndex
+//            self.navigationController?.pushViewController(vc, animated: true)
         }else {
             vc.editFlag = false
             vc.giftIndex = data.idx

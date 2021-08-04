@@ -40,6 +40,7 @@ class TwinklePostCommentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
     @IBAction func deleteButtonTap(_ sender: UIButton) {
         self.showSallyQuestionAlert(with: "댓글을 삭제하시겠습니까?", message: "삭제된 댓글은 복구가 불가능합니다.") { [weak self] () in
             guard let strongSelf = self else { return }
@@ -48,7 +49,6 @@ class TwinklePostCommentCell: UITableViewCell {
     }
     
     func updateUI(with data: TwinkleCommentInfo){
-        //self.commentTextView =
         index = data.index
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(string: data.nickName, attributes: mediumAttributes))
@@ -108,7 +108,6 @@ extension TwinklePostCommentCell {
     @objc func noAlert() {
         SallyNotificationAlert.shared.noAlert()
     }
-    
 }
 
 

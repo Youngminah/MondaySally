@@ -44,15 +44,12 @@ class GiftShopDetailViewController: UIViewController {
                                            y: 0,
                                            width: self.tagContentView.frame.width,
                                            height: self.tagContentView.frame.height)
-        //print("x: \(optionTitleLabel.left) y:\(optionTitleLabel.bottom + 20) width: \(view.frame.size.width - 32) height: \(applyButton.top - optionTitleLabel.bottom)")
-        //self.collectionView.center = self.tagContentView.center
     }
     
     @IBAction func giftApplyButton(_ sender: UIButton) {
         self.showSallyQuestionAlert(with: "해당 기프트 신청을\n하시겠습니까?") {[weak self] () in
             guard let strongSelf = self else { return }
             guard let clover = strongSelf.giftDetailViewModel.getOptionClover(at: strongSelf.selectOpionIndex) else { return }
-            print(strongSelf.giftIndex)
             strongSelf.input = GiftRequestInput(giftIdx: strongSelf.giftIndex, usedClover: clover)
             guard let input = strongSelf.input else { return }
             strongSelf.attemptFetchGiftRequest(with :input)
@@ -226,6 +223,8 @@ extension GiftShopDetailViewController {
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
                 print("기프트 신청에 성공했습니다 !! ")
+                UserDefaults.standard.setValue(true, forKey: "twinkleRefreshFlag")
+                UserDefaults.standard.setValue(true, forKey: "homeRefreshFlag")
                 strongSelf.moveToCompletedView()
             }
         }

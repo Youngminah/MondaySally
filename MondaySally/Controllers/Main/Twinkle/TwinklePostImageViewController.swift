@@ -25,6 +25,7 @@ extension TwinklePostImageViewController: TwinkleImagePreviewDelegate{
         if imageList.count == 1{
             self.pageControl.isHidden = true
         }else {
+            self.pageControl.isHidden = false
             self.pageControl.numberOfPages = imageList.count
         }
         self.collectionView.reloadData()

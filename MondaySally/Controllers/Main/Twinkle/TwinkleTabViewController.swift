@@ -14,19 +14,21 @@ class TwinkleTabViewController: UIViewController {
     private let likeViewModel = TwinkleLikeViewModel(dataService: TwinkleDataService())
     
     private var twinkleStatusViewController: TwinkleStatusViewController!
-    private var refreshFlag = false
+    //private var refreshFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl?.addTarget(self,
-                                                      action: #selector(didPullToRefresh),
-                                                      for: .valueChanged)
+        self.initialSetting()
         self.refreshOfTwinkleTotal()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if UserDefaults.standard.bool(forKey: "twinkleRefreshFlag") {
+            self.refreshOfTwinkleTotal()
+            self.twinkleStatusViewController.refreshCollectionview()
+            UserDefaults.standard.setValue(false, forKey: "twinkleRefreshFlag")
+        }
     }
     
     @objc private func didPullToRefresh() {
@@ -50,6 +52,14 @@ class TwinkleTabViewController: UIViewController {
         self.viewModel.pageIndex = 1
         self.viewModel.endOfPage = false
         self.attemptFetchTwinkleTotal(with: false)
+    }
+    
+    private func initialSetting(){
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+        UserDefaults.standard.setValue(false, forKey: "twinkleRefreshFlag")
     }
 }
 

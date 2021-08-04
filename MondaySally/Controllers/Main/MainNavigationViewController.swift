@@ -13,12 +13,39 @@ class MainNavigationViewController: UINavigationController {
         super.viewDidLoad()
         self.navigationBar.applyFontAndSize()
         //self.navigationBar.setBackgroundImage(UIImage(), for:.default)
-            
-        self.navigationBar.backIndicatorImage = UIImage(named: "icChevronLeftGray")
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icChevronLeftGray")
+//        var backImage = UIImage(named: "icChevronLeftGray")
+//        backImage = resizeImage(image: backImage!, newWidth: 20)
+//        self.navigationBar.backIndicatorImage = backImage
+//        self.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.setBackBtnTarget(target: self, action: #selector(dismissBackButton))
+        if #available(iOS 14.0, *) {
+            self.navigationItem.backBarButtonItem?.menu = nil
+        }
         self.navigationItem.backBarButtonItem?.title = " "
         self.navigationItem.backButtonTitle = " "
         self.navigationBar.backItem?.backButtonTitle = " "
         self.navigationBar.layoutIfNeeded()
     }
+    
+    @objc func dismissBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setBackBtnTarget(target: AnyObject?, action: Selector) {
+        var backImg: UIImage = UIImage(named: "icChevronLeftGray")!
+        let leftPadding: CGFloat = 8
+        let adjustSizeForBetterHorizontalAlignment: CGSize = CGSize(width: backImg.size.width + leftPadding, height: backImg.size.height)
+
+        UIGraphicsBeginImageContextWithOptions(adjustSizeForBetterHorizontalAlignment, false, 0)
+        backImg.draw(at: CGPoint(x: leftPadding, y: 0))
+        backImg = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        self.navigationBar.backIndicatorImage = backImg
+        self.navigationBar.backIndicatorTransitionMaskImage = backImg
+
+        let backBtn: UIBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: target, action: action)
+        self.navigationItem.backBarButtonItem = backBtn
+    }
 }
+
