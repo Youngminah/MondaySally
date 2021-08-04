@@ -494,7 +494,6 @@ extension TwinklePostViewController : UITextFieldDelegate {
         if noti.name == UIResponder.keyboardWillShowNotification {
             let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
             print(commentTextFieldBottom.constant)
-            print(adjustmentHeight)
             commentTextFieldBottom.constant = adjustmentHeight
         } else {
             commentTextFieldBottom.constant = 0
