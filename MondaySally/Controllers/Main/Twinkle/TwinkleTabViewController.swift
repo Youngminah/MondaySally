@@ -18,10 +18,7 @@ class TwinkleTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl?.addTarget(self,
-                                                      action: #selector(didPullToRefresh),
-                                                      for: .valueChanged)
+        self.initialSetting()
         self.refreshOfTwinkleTotal()
     }
     
@@ -50,6 +47,14 @@ class TwinkleTabViewController: UIViewController {
         self.viewModel.pageIndex = 1
         self.viewModel.endOfPage = false
         self.attemptFetchTwinkleTotal(with: false)
+    }
+    
+    private func initialSetting(){
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
+        UserDefaults.standard.setValue(false, forKey: "twinkleRefreshFlag")
     }
 }
 

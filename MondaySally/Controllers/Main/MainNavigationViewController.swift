@@ -33,7 +33,7 @@ class MainNavigationViewController: UINavigationController {
     
     func setBackBtnTarget(target: AnyObject?, action: Selector) {
         var backImg: UIImage = UIImage(named: "icChevronLeftGray")!
-        let leftPadding: CGFloat = 10
+        let leftPadding: CGFloat = 8
         let adjustSizeForBetterHorizontalAlignment: CGSize = CGSize(width: backImg.size.width + leftPadding, height: backImg.size.height)
 
         UIGraphicsBeginImageContextWithOptions(adjustSizeForBetterHorizontalAlignment, false, 0)

@@ -2333,7 +2333,7 @@ The following sets forth attribution notions for third party software that may b
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="MIT License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSl-e6-2fh">
-                                                        <rect key="frame" x="0.0" y="47.666666666666686" width="329" height="17.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="47.666666666666657" width="329" height="17.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3069,11 +3069,11 @@ The following sets forth attribution notions for third party software that may b
             <objects>
                 <viewController id="9Qg-rV-NQR" customClass="GiftHistoryPreViewController" customModule="MondaySally" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7m-Tt-kym">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="136.66666666666666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-h3-kgr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="54"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="58.666666666666657"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="9" minimumInteritemSpacing="0.0" id="FTR-Ic-QUb">
                                     <size key="itemSize" width="128" height="108"/>
@@ -3083,7 +3083,7 @@ The following sets forth attribution notions for third party software that may b
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GiftHistoryPreViewCell" id="lNB-m5-Iup" customClass="GiftHistoryPreViewCell" customModule="MondaySally" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="-17" width="128" height="88"/>
+                                        <rect key="frame" x="16" y="-14.666666666666666" width="128" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Gw-iu-Ut6">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="88"/>
