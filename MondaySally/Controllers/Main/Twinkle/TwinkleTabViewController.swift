@@ -26,6 +26,8 @@ class TwinkleTabViewController: UIViewController {
         super.viewWillAppear(true)
         if UserDefaults.standard.bool(forKey: "twinkleRefreshFlag") {
             self.refreshOfTwinkleTotal()
+            self.twinkleStatusViewController.refreshCollectionview()
+            UserDefaults.standard.setValue(false, forKey: "twinkleRefreshFlag")
         }
     }
     

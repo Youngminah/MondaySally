@@ -56,10 +56,14 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchHome()
-        self.scrollView.refreshControl = UIRefreshControl()
-        self.scrollView.refreshControl?.addTarget(self,
-                                                      action: #selector(didPullToRefresh),
-                                                      for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if UserDefaults.standard.bool(forKey: "homeRefreshFlag") {
+            self.attemptFetchHome()
+            UserDefaults.standard.setValue(false, forKey: "homeRefreshFlag")
+        }
     }
     
     //MARK: 테이블뷰/컬렉션뷰 위로 스크롤시 리프레시
@@ -103,7 +107,6 @@ extension HomeTabViewController {
                 }
             }
         }
-        
         
         self.viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
@@ -225,6 +228,11 @@ extension HomeTabViewController: UICollectionViewDelegate, UICollectionViewDataS
 extension HomeTabViewController {
     
     private func updateUI(){
+        UserDefaults.standard.setValue(false, forKey: "homeRefreshFlag")
+        self.scrollView.refreshControl = UIRefreshControl()
+        self.scrollView.refreshControl?.addTarget(self,
+                                                      action: #selector(didPullToRefresh),
+                                                      for: .valueChanged)
         self.firstRankingImageButton.clipsToBounds = true
         self.secondRankingImageButton.clipsToBounds = true
         self.thirdRankingImageButton.clipsToBounds = true
