@@ -82,7 +82,7 @@ class OnBoardingViewController: UIViewController {
 
             let contentLabel = UILabel()
             contentLabel.frame = CGRect(x: titleLabel.frame.origin.x,
-                                      y: titleLabel.bottom + 14,
+                                      y: titleLabel.bottom + 10,
                                       width: titleLabel.bounds.width,
                                       height: 50)
             contentLabel.textAlignment = .center

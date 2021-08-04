@@ -131,6 +131,7 @@ extension TwinklePostViewController{
         vc.editContent = data.content
         vc.editReceipt = data.receiptImageUrl
         vc.editTwinkleIndex = index
+        vc.isAcceptedFlag = data.isAccepted
         vc.giftName = data.giftName
         vc.clover = data.clover
         vc.delegate = self
