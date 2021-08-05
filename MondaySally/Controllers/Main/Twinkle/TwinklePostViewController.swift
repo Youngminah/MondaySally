@@ -494,6 +494,9 @@ extension TwinklePostViewController : UITextViewDelegate {
     }
 
     @objc override func dismissKeyboard() {
+        if commentTextView.text.isEmpty {
+            self.placeholderSetting()
+        }
         view.endEditing(true)
     }
     
