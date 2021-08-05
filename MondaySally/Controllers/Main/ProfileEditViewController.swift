@@ -47,7 +47,6 @@ class ProfileEditViewController: UIViewController{
             guard let phoneNumber = strongSelf.phoneNumberTextField.text else { return }
             guard let account = strongSelf.accountTextField.text else { return }
             guard let email = strongSelf.emailTextField.text else { return }
-            print("되니?")
             if nickName.count == 0 {
                 strongSelf.showSallyNotationAlert(with: "닉네임을 입력해주세요.")
                 return
@@ -89,7 +88,7 @@ class ProfileEditViewController: UIViewController{
                 strongSelf.attemptFetchEditProfile(with: input)
                 return
             }
-            guard let photo = strongSelf.photoSelectButton.imageView?.image else {
+            guard let photo = strongSelf.profileImageView.image else {
                 return
             }
             guard let imageData = photo.pngData() else {

@@ -69,6 +69,7 @@ class TwinkleWriteViewController: UIViewController {
             self.originImageTwinkleBeforeEdit()
             self.originReceiptImageBeforEdit()
             self.editWillLoad()
+            self.isAcceptedReceipt()
         }else {
             self.notEditWillLoad()
         }
@@ -79,13 +80,16 @@ class TwinkleWriteViewController: UIViewController {
     }
     
     private func isAcceptedReceipt(){
+        self.receiptDeleteButton.isHidden = false
         guard let flag = self.isAcceptedFlag else { return }
         if flag == "Y"{
             self.receiptDeleteButton.isHidden = true
+            self.receiptImageButton.alpha = 0.5
         }
     }
     
     @IBAction func selectImageButtonTap(_ sender: UIButton) {
+        if sender.isSelected { return }
         let vc = UIImagePickerController()
         self.photoTag = sender.tag
         vc.sourceType = .photoLibrary
@@ -165,14 +169,12 @@ extension TwinkleWriteViewController{
     private func originReceiptImageBeforEdit(){
         self.receiptImageButton.showViewIndicator()
         let urlString = URL(string: editReceipt)
-        print(editReceipt)
         self.receiptImageButton.kf.setImage(with: urlString, for: .normal, completionHandler:  { [weak self] result in
             guard let strongself = self else{ return }
             switch result {
             case .success( _):
                 strongself.receiptImageButton.dismissViewndicator()
                 strongself.receiptImageButton.isSelected = true
-                strongself.receiptDeleteButton.isHidden = false
             case .failure(let error):
                 print(error.errorDescription ?? "")
                 strongself.receiptImageButton.dismissViewndicator()

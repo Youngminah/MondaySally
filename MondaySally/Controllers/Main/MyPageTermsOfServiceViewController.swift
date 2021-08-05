@@ -26,7 +26,7 @@ class MyPageTermsOfServiceViewController: UIViewController {
         self.personalInfoTextview.layer.borderWidth = 1
         self.personalInfoTextview.layer.borderColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.personalInfoTextview.layer.cornerRadius = 4
-        self.serviceTextview.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4);
-        self.personalInfoTextview.textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4);
+        self.serviceTextview.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 14, right: 10);
+        self.personalInfoTextview.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 14, right: 10);
     }
 }
