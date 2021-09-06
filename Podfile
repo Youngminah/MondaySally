@@ -11,6 +11,7 @@ target 'MondaySally' do
   # 파이어베이스 관련 라이브러리
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
 
