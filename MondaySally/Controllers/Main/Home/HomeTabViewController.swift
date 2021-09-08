@@ -56,6 +56,16 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
         self.attemptFetchHome()
+        let button = UIButton(type: .roundedRect)
+        button.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
+        button.setTitle("Test Crash", for: [])
+        button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
+        scrollView.addSubview(button)
+    }
+    
+    @IBAction func crashButtonTapped(_ sender: AnyObject) {
+        let numbers = [0]
+        let _ = numbers[1]
     }
     
     override func viewWillAppear(_ animated: Bool) {

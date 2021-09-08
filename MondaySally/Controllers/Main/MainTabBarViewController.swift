@@ -12,6 +12,7 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupStyle()
+
     }
     
     private func setupStyle() {
