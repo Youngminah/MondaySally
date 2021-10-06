@@ -73,7 +73,6 @@
 		BB5FE5C426982FE700F2A7A6 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5C326982FE700F2A7A6 /* EditProfileViewModel.swift */; };
 		BB5FE5CE269B7C2400F2A7A6 /* SallyNotificationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */; };
 		BB5FE5D0269C74B800F2A7A6 /* GiftShopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */; };
-		BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */; };
 		BB5FE5D7269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift */; };
 		BB5FE5D9269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5FE5D8269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift */; };
 		BB5FE5DB269E28C800F2A7A6 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB5FE5DA269E28C800F2A7A6 /* NotoSansKR-Light.otf */; };
@@ -91,6 +90,7 @@
 		BB73508826A4AD64004C955F /* TwinkleWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73508726A4AD64004C955F /* TwinkleWriteViewModel.swift */; };
 		BB73508A26A4AD76004C955F /* TwinkleLikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73508926A4AD76004C955F /* TwinkleLikeViewModel.swift */; };
 		BB73508C26A4AEC8004C955F /* TwinkleDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73508B26A4AEC8004C955F /* TwinkleDataService.swift */; };
+		BB9B94E226E6377D00BEDFC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9B94E126E6377D00BEDFC5 /* GoogleService-Info.plist */; };
 		BBA56EEA268F2FDA000FDFC0 /* BM_Dohyeon.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */; };
 		BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA56EEB268F360A000FDFC0 /* Main.storyboard */; };
 		BBA56EEF268F6A73000FDFC0 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */; };
@@ -216,7 +216,6 @@
 		BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SallyNotificationAlert.swift; sourceTree = "<group>"; };
 		BB5FE5CF269C74B800F2A7A6 /* GiftShopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShopHeader.swift; sourceTree = "<group>"; };
 		BB5FE5D3269DB06000F2A7A6 /* MondaySally.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MondaySally.entitlements; sourceTree = "<group>"; };
-		BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB5FE5D6269DD38600F2A7A6 /* FCMDeviceTokenSaveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDeviceTokenSaveResponse.swift; sourceTree = "<group>"; };
 		BB5FE5D8269DDC4600F2A7A6 /* FCMDeviceTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDeviceTokenViewModel.swift; sourceTree = "<group>"; };
 		BB5FE5DA269E28C800F2A7A6 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -234,6 +233,7 @@
 		BB73508726A4AD64004C955F /* TwinkleWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleWriteViewModel.swift; sourceTree = "<group>"; };
 		BB73508926A4AD76004C955F /* TwinkleLikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleLikeViewModel.swift; sourceTree = "<group>"; };
 		BB73508B26A4AEC8004C955F /* TwinkleDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleDataService.swift; sourceTree = "<group>"; };
+		BB9B94E126E6377D00BEDFC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBA56EE9268F2FDA000FDFC0 /* BM_Dohyeon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BM_Dohyeon.otf; sourceTree = "<group>"; };
 		BBA56EEB268F360A000FDFC0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BBA56EEE268F6A73000FDFC0 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -544,7 +544,7 @@
 				BBEB830B268B02A200B9CA54 /* Views */,
 				BBD09EB4268B3B5A00AF4A56 /* Controllers */,
 				BBEB8304268B008D00B9CA54 /* Info.plist */,
-				BB5FE5D4269DB59500F2A7A6 /* GoogleService-Info.plist */,
+				BB9B94E126E6377D00BEDFC5 /* GoogleService-Info.plist */,
 			);
 			path = MondaySally;
 			sourceTree = "<group>";
@@ -706,7 +706,7 @@
 				BBD09EC2268B9AE500AF4A56 /* NotoSansKR-Regular.otf in Resources */,
 				BB5FE5DB269E28C800F2A7A6 /* NotoSansKR-Light.otf in Resources */,
 				BBA56EEC268F360A000FDFC0 /* Main.storyboard in Resources */,
-				BB5FE5D5269DB59500F2A7A6 /* GoogleService-Info.plist in Resources */,
+				BB9B94E226E6377D00BEDFC5 /* GoogleService-Info.plist in Resources */,
 				BBEB8300268B008D00B9CA54 /* Assets.xcassets in Resources */,
 				BBEB82FE268B008600B9CA54 /* Register.storyboard in Resources */,
 			);
