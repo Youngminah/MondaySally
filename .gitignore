@@ -206,5 +206,5 @@ iOSInjectionProject/
 Secret/
 Assets.xcassets/
 *.xcuserstate
-
+*.xcscheme
 # Packages/

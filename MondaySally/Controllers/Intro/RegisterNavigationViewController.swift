@@ -11,18 +11,14 @@ class RegisterNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.applyFontAndSize()
-        //self.setupStyle()
-        self.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationBar.layoutIfNeeded()
-
+        self.setUp()
     }
     
-    private func setupStyle() {
-        UINavigationBar.clearShadow()
-        self.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
+    private func setUp(){
+        self.navigationBar.applyFontAndSize()
+        self.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationBar.layoutIfNeeded()
     }
-
 }
 
 
