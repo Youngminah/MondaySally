@@ -205,5 +205,6 @@ iOSInjectionProject/
 # 숨길 폴더
 Secret/
 Assets.xcassets/
+*.xcuserstate
 
 # Packages/
