@@ -16,10 +16,6 @@ class IntroViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
     @IBAction func directStartButtonTap(_ sender: UIButton) {
         guard let vc = self.storyboard?.instantiateViewController(identifier: "OnBoardingViewController") as? OnBoardingViewController else {
             return
@@ -39,8 +35,7 @@ class IntroViewController: UIViewController {
 // MARK: - Networking
 extension IntroViewController {
     
-    //MARK: 자동로그인 API 호출 함수
-    private func attemptFetchAutoLogin() {
+    private func attemptFetchAutoLogin() { //자동로그인 API 호출 함수
         
         self.viewModel.updateLoadingStatus = {
             DispatchQueue.main.async { [weak self] in
@@ -74,8 +69,8 @@ extension IntroViewController {
         self.viewModel.fetchAutoLogin()
     }
     
-    //MARK: FCM 디바이스 토큰 서버에 전달 API 함수
-    private func attemptFetchFCMTokenSend() {
+    private func attemptFetchFCMTokenSend() { //FCM 디바이스 토큰 서버에 전달 API 함수
+        
         self.fCMTokenViewModel.updateLoadingStatus = { [weak self] () in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {

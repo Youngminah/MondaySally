@@ -26,7 +26,7 @@ class OnBoardingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.startButton.layer.cornerRadius = 4
-        self.checkFromMyPage()
+        self.showOrHideStartButton()
     }
     
     @IBAction func startButtonTab(_ sender: UIButton) {
@@ -35,7 +35,7 @@ class OnBoardingViewController: UIViewController {
         self.present(registerVC, animated: true, completion: nil)
     }
     
-    private func checkFromMyPage(){
+    private func showOrHideStartButton(){
         self.title = "온보딩"
         self.isFromMyPage ? (self.startButton.isHidden = true) : (self.startButton.isHidden = false)
     }

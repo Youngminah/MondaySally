@@ -461,31 +461,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BBD09EB4268B3B5A00AF4A56 /* Controllers */ = {
+		BBD09EB4268B3B5A00AF4A56 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				BBD09ED2268E07C700AF4A56 /* Intro */,
 				BBA56EED268F6A47000FDFC0 /* Main */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		BBD09EB6268B3C0700AF4A56 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				BBEB830C268B039B00B9CA54 /* Splash */,
 				BBEB82FC268B008600B9CA54 /* Register.storyboard */,
 				BBA56EEB268F360A000FDFC0 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		BBD09EB7268B3C2E00AF4A56 /* Resources */ = {
+		BBD09EB7268B3C2E00AF4A56 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				BBEB82F6268B008600B9CA54 /* AppDelegate.swift */,
 				BBEB82F8268B008600B9CA54 /* SceneDelegate.swift */,
 			);
-			path = Resources;
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		BBD09EBC268B9A9D00AF4A56 /* Font */ = {
@@ -537,38 +538,37 @@
 			isa = PBXGroup;
 			children = (
 				BB5FE5D3269DB06000F2A7A6 /* MondaySally.entitlements */,
-				BBEB830A268B028400B9CA54 /* Configuration */,
+				BBEB830A268B028400B9CA54 /* Resources */,
 				BB5FE5B62696412F00F2A7A6 /* Network */,
+				BBEB8310268B03D600B9CA54 /* Extension */,
 				BBD09EB3268B3B4400AF4A56 /* Models */,
 				BBD09EB2268B3B3C00AF4A56 /* ViewModels */,
 				BBEB830B268B02A200B9CA54 /* Views */,
-				BBD09EB4268B3B5A00AF4A56 /* Controllers */,
+				BBD09EB4268B3B5A00AF4A56 /* ViewControllers */,
 				BBEB8304268B008D00B9CA54 /* Info.plist */,
 				BB9B94E126E6377D00BEDFC5 /* GoogleService-Info.plist */,
 			);
 			path = MondaySally;
 			sourceTree = "<group>";
 		};
-		BBEB830A268B028400B9CA54 /* Configuration */ = {
+		BBEB830A268B028400B9CA54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				BBEB830E268B03CC00B9CA54 /* Secret */,
 				BBD09EBC268B9A9D00AF4A56 /* Font */,
-				BBEB8310268B03D600B9CA54 /* Extension */,
 				BBEB8311268B03DC00B9CA54 /* CommonClass */,
-				BBEB8312268B03E200B9CA54 /* Base */,
-				BBD09EB7268B3C2E00AF4A56 /* Resources */,
+				BBD09EB7268B3C2E00AF4A56 /* SupportingFiles */,
+				BBEB82FF268B008D00B9CA54 /* Assets.xcassets */,
 			);
-			path = Configuration;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BBEB830B268B02A200B9CA54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BBD09EB6268B3C0700AF4A56 /* Storyboards */,
-				BBEB830C268B039B00B9CA54 /* Splash */,
-				BBEB8301268B008D00B9CA54 /* LaunchScreen.storyboard */,
-				BBEB82FF268B008D00B9CA54 /* Assets.xcassets */,
+				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
+				BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,6 +576,7 @@
 		BBEB830C268B039B00B9CA54 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				BBEB8301268B008D00B9CA54 /* LaunchScreen.storyboard */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -598,6 +599,7 @@
 				BBEB831E268B053900B9CA54 /* Color.swift */,
 				BBEB8320268B056400B9CA54 /* UIButton.swift */,
 				BBEB8322268B057E00B9CA54 /* UIViewController.swift */,
+				BBEB8326268B0B5700B9CA54 /* BaseViewController.swift */,
 				BBEB8324268B05CC00B9CA54 /* UINavigationBar.swift */,
 				BBD09EC7268DC4AA00AF4A56 /* UIView.swift */,
 				BBD09ED5268E14D300AF4A56 /* UITextField.swift */,
@@ -615,18 +617,8 @@
 			isa = PBXGroup;
 			children = (
 				BBEB8316268B049D00B9CA54 /* Device.swift */,
-				BBEB8318268B04C800B9CA54 /* IndicatorView.swift */,
-				BB5FE5CD269B7C2400F2A7A6 /* SallyNotificationAlert.swift */,
 			);
 			path = CommonClass;
-			sourceTree = "<group>";
-		};
-		BBEB8312268B03E200B9CA54 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				BBEB8326268B0B5700B9CA54 /* BaseViewController.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		CFB246CB7CD2758945911B49 /* Pods */ = {
@@ -1094,6 +1086,7 @@
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.by.sallyoflaw.mondaysally;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

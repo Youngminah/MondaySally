@@ -17,8 +17,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateUI()
-        self.codeTextField.delegate = self
+        self.setUpView()
     }
     
     
@@ -33,15 +32,6 @@ class RegisterViewController: UIViewController {
             return
         }
         self.attemptFetchTeamCode(withId :teamCodeId)
-    }
-
-    private func updateUI(){
-        self.completeButton.layer.cornerRadius = 4
-        self.codeTextField.layer.cornerRadius = 4
-        self.codeTextField.clipsToBounds = true
-        self.codeTextField.setLeftPaddingPoints(16)
-        self.unselectedTextFieldUI()
-        self.disableButtonSetting()
     }
     
     //화면 아무곳 클릭하면 키보드 내려가게 하기.
@@ -119,9 +109,7 @@ extension RegisterViewController {
     private func attemptFetchFCMTokenSend() {
         
         self.fCMTokenViewModel.updateLoadingStatus = { [weak self] () in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 let _ = strongSelf.fCMTokenViewModel.isLoading ? strongSelf.showIndicator() : strongSelf.dismissIndicator()
             }
@@ -140,11 +128,8 @@ extension RegisterViewController {
             }
         }
         
-        self.fCMTokenViewModel.didFinishFetch = { () in
-            DispatchQueue.main.async {
-                //guard let strongSelf = self else { return}
-                print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
-            }
+        self.fCMTokenViewModel.didFinishFetch = {
+            print("SUCCESS : FCM으로부터 생성된 디바이스 토큰을 서버 전달에 성공했습니다 !! ")
         }
         
         guard let token = UserDefaults.standard.string(forKey: "FCMToken") else {
@@ -162,12 +147,12 @@ extension RegisterViewController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (codeTextField.text! as NSString).replacingCharacters(in: range, with: string)
         if newText.count > 0 {
-            self.enableButtonSetting()
+            self.setEnableButton()
             if newText.count > 8 {
                 return false
             }
         } else {
-            self.disableButtonSetting()
+            self.setDisableButton()
         }
         return true
     }
@@ -178,31 +163,43 @@ extension RegisterViewController : UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.selectedTextFieldUI()
+        self.setSelectedTextField()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.unselectedTextFieldUI()
+        self.setUnselectedTextField()
+    }
+}
+
+extension RegisterViewController {
+    
+    private func setUpView(){
+        self.completeButton.layer.cornerRadius = 4
+        self.codeTextField.layer.cornerRadius = 4
+        self.codeTextField.clipsToBounds = true
+        self.codeTextField.setLeftPaddingPoints(16)
+        self.setUnselectedTextField()
+        self.setDisableButton()
+        self.codeTextField.delegate = self
     }
     
-    private func enableButtonSetting(){
+    private func setEnableButton(){
         self.completeButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4284791946, blue: 0.2459045947, alpha: 1)
         self.completeButton.isEnabled = true
     }
     
-    private func disableButtonSetting(){
+    private func setDisableButton(){
         self.completeButton.layer.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         self.completeButton.isEnabled = false
     }
     
-    private func selectedTextFieldUI(){
+    private func setSelectedTextField(){
         self.codeTextField.layer.borderWidth = 1
         self.codeTextField.layer.borderColor = #colorLiteral(red: 1, green: 0.4705882353, blue: 0.3058823529, alpha: 1)
     }
     
-    private func unselectedTextFieldUI(){
+    private func setUnselectedTextField(){
         self.codeTextField.layer.borderWidth = 0.5
         self.codeTextField.layer.borderColor = #colorLiteral(red: 0.6862745098, green: 0.6862745098, blue: 0.6862745098, alpha: 1)
     }
 }
-
